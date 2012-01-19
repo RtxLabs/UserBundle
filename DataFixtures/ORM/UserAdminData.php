@@ -26,7 +26,6 @@ class UserAdminData implements FixtureInterface, ContainerAwareInterface
         $userAdmin->setFirstName('Admin');
         $userAdmin->addRole('ROLE_ADMIN');
         $userAdmin->addRole('ROLE_USER');
-        $userAdmin->addRole('ROLE_INVENTORY');
 
         $encoder = $this->container->get('security.encoder_factory')->getEncoder($userAdmin);
         $userAdmin->setPassword($encoder->encodePassword('admin', $userAdmin->getSalt()));

@@ -114,7 +114,7 @@ class UserController extends Controller
 
             $this->getRequest()->getSession()->setFlash('saved.successful', 1);
             return new \Symfony\Component\HttpFoundation\RedirectResponse(
-                $this->generateUrl('core_admin_user')
+                $this->generateUrl('rtxlabs_bundle_user_list')
             );
         }
 
@@ -143,7 +143,7 @@ class UserController extends Controller
 
         $this->getRequest()->getSession()->setFlash('deleted.successful', 1);
         return new \Symfony\Component\HttpFoundation\RedirectResponse(
-            $this->generateUrl('core_admin_user')
+            $this->generateUrl('rtxlabs_bundle_user_list')
         );
     }
 }

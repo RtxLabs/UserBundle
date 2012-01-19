@@ -9,13 +9,13 @@ use Symfony\Component\Serializer\Normalizer\NormalizableInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 
 /**
- * Rotex\Sbp\CoreBundle\Entity\User
+ * RtxLabs\UserBundle\Entity\User
  *
- * @ORM\Table(name="core_user")
- * @ORM\Entity(repositoryClass="Rotex\Sbp\CoreBundle\Entity\UserRepository")
+ * @ORM\Table(name="rtxlabs_user")
+ * @ORM\Entity(repositoryClass="RtxLabs\UserBundle\Entity\UserRepository")
  * @ORM\HasLifecycleCallbacks
  */
-class User implements UserInterface, NormalizableInterface
+class User implements UserInterface
 {
     /**
      * @var integer $id
@@ -548,42 +548,5 @@ class User implements UserInterface, NormalizableInterface
             }
 
         }
-    }
-
-    /**
-     * Normalizes the object into an array of scalars|arrays.
-     *
-     * It is important to understand that the normalize() call should normalize
-     * recursively all child objects of the implementor.
-     *
-     * @param SerializerInterface $serializer The serializer is given so that you
-     *   can use it to normalize objects contained within this object.
-     * @param string|null $format The format is optionally given to be able to normalize differently
-     *   based on different output formats.
-     * @return array|scalar
-     */
-    function normalize(SerializerInterface $serializer, $format = null)
-    {
-        $normalizer = new GetMethodNormalizer();
-        $normalizer->setSerializer($serializer);
-
-        return $normalizer->normalize($this, $format);
-    }
-
-    /**
-     * Denormalizes the object back from an array of scalars|arrays.
-     *
-     * It is important to understand that the normalize() call should denormalize
-     * recursively all child objects of the implementor.
-     *
-     * @param SerializerInterface $serializer The serializer is given so that you
-     *   can use it to denormalize objects contained within this object.
-     * @param array|scalar $data The data from which to re-create the object.
-     * @param string|null $format The format is optionally given to be able to denormalize differently
-     *   based on different input formats.
-     */
-    function denormalize(SerializerInterface $serializer, $data, $format = null)
-    {
-        JsonEntityBinder::bind($this, $data);
     }
 }

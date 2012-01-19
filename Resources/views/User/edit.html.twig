@@ -10,13 +10,13 @@
 
 {% block main %}
     <div class="page-header">
-        <h2>{{ "core.user.edit.header" | trans }}</h2>
+        <h2>{{ "rtxlabs.user.edit.header" | trans }}</h2>
     </div>
     
     {% if form_errors(form) %}
         <div class="alert-message error">
             <p>
-            <strong>{{ "core.general.notification.error.header" | trans }}</strong>
+            <strong>{{ "rtxlabs.general.notification.error.header" | trans }}</strong>
                 <p id="notification-error-body">
                     {{ form_errors(form) }}
                 </p>
@@ -28,7 +28,7 @@
         <form method="post" action="{{ path('core_admin_user_save', {'id': user.id ? user.id : -1})}}"
             {{ form_enctype(form) }}>
             <fieldset>
-                <legend>{{ "core.user.edit.legend" | trans }}</legend>
+                <legend>{{ "rtxlabs.user.edit.legend" | trans }}</legend>
                 <div class="clearfix">
                     {{ form_label(form.firstName) }}
                     <div class="input">{{ form_widget(form.firstName) }}</div>

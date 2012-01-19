@@ -27,7 +27,7 @@ class UserRepository extends EntityRepository
                               ->getSingleResult();
     }
 
-    public function getFindByFilterQuery(\Rotex\Sbp\CoreBundle\Model\UserFilter $filter)
+    public function getFindByFilterQuery(\RtxLabs\UserBundle\Model\UserFilter $filter)
     {
         $query = $this->createQueryBuilder('u')
                               ->where('u.deletedAt IS NULL');
