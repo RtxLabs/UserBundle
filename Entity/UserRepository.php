@@ -1,6 +1,6 @@
 <?php
 
-namespace Rotex\Sbp\CoreBundle\Entity;
+namespace RtxLabs\UserBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
 

@@ -8,13 +8,20 @@
     <parameters>
         <parameter key="rtx_labs_user.example.class">RtxLabs\UserBundle\Example</parameter>
     </parameters>
+    -->
 
     <services>
-        <service id="rtx_labs_user.example" class="%rtx_labs_user.example.class%">
-            <argument type="service" id="service_id" />
-            <argument>plain_value</argument>
-            <argument>%parameter_name%</argument>
+        <service id="rtxlabs.user.user_manager" class="RtxLabs\UserBundle\Entity\User">
+            <argument type="service" id="security.encoder_factory" />
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument>Rotex\Sbp\CoreBundle\Entity\User</argument>
         </service>
     </services>
-    -->
+
+    <services>
+        <service id="rtxlabs.user.login_success" class="Rotex\Sbp\CoreBundle\Handler\LoginHandler">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+        </service>
+    </services>
+
 </container>

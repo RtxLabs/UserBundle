@@ -1,8 +1,8 @@
 <?php
 
-namespace Rotex\Sbp\CoreBundle\Model;
+namespace RtxLabs\UserBundle\Model;
 
-use Rotex\Sbp\CoreBundle\Entity\User;
+use RtxLabs\UserBundle\Entity\User;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;

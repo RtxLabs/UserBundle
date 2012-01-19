@@ -1,19 +1,19 @@
 <?php
-namespace Rotex\Sbp\CoreBundle\Controller;
+namespace RtxLabs\UserBundle\Controller;
 
-use Rotex\Sbp\CoreBundle\Form\UserFilterType;
-use Rotex\Sbp\CoreBundle\Model\UserFilter;
+use RtxLabs\UserBundle\Form\UserFilterType;
+use RtxLabs\UserBundle\Model\UserFilter;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Rotex\Sbp\CoreBundle\Entity\User;
-use Rotex\Sbp\CoreBundle\Form\UserType;
+use RtxLabs\UserBundle\Entity\User;
+use RtxLabs\UserBundle\Form\UserType;
 
 class UserController extends Controller
 {
     /**
-     * @Route("/admin/user", name="core_admin_user")
+     * @Route("/admin/user", name="rtxlabs_bundle_user_list")
      * @Template()
      *
      * @return array
@@ -28,7 +28,7 @@ class UserController extends Controller
         $filterForm->bindRequest($this->getRequest());
         $this->getRequest()->getSession()->set('user.filter', $filter);
 
-        $query = $em->getRepository('RotexSbpCoreBundle:User')->getFindByFilterQuery($filter);
+        $query = $em->getRepository('RtxLabsUserBundle:User')->getFindByFilterQuery($filter);
         $paginator = new \Pagerfanta\Pagerfanta(new \Pagerfanta\Adapter\DoctrineORMAdapter($query));
         $paginator->setMaxPerPage($this->container->getParameter('sbp.core.pagesize.default'));
         $paginator->setCurrentPage($this->get('request')->query->get('page', 1), false, true);
@@ -38,7 +38,7 @@ class UserController extends Controller
     }
 
     /**
-     * @Route("/admin/edit/user/{id}", name="core_admin_user_edit")
+     * @Route("/admin/edit/user/{id}", name="rtxlabs_bundle_user_edit")
      * @Template()
      *
      * @param  $id
@@ -47,7 +47,7 @@ class UserController extends Controller
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getEntityManager();
-        $user = $em->find('RotexSbpCoreBundle:User', $id);
+        $user = $em->find('RtxLabsUserBundle:User', $id);
 
         if (!$user) {
             throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException();
@@ -61,7 +61,7 @@ class UserController extends Controller
     }
 
     /**
-     * @Route("/admin/create/user", name="core_admin_user_create")
+     * @Route("/admin/create/user", name="rtxlabs_bundle_user_create")
      * @Template("RotexSbpCoreBundle:User:edit.html.twig")
      *
      * @return array
@@ -75,7 +75,7 @@ class UserController extends Controller
     }
 
     /**
-     * @Route("/admin/save/user/{id}", name="core_admin_user_save")
+     * @Route("/admin/save/user/{id}", name="rtxlabs_bundle_user_save")
      * @Template("RotexSbpCoreBundle:User:edit.html.twig")
      */
     public function saveAction($id)
@@ -88,7 +88,7 @@ class UserController extends Controller
             $newUser = true;
         }
         else {
-            $user = $em->find('RotexSbpCoreBundle:User', $id);
+            $user = $em->find('RtxLabsUserBundle:User', $id);
         }
 
         if (!$user) {
@@ -123,7 +123,7 @@ class UserController extends Controller
     }
 
     /**
-     * @Route("/admin/delete/user/{id}", name="core_admin_user_delete")
+     * @Route("/admin/delete/user/{id}", name="rtxlabs_bundle_user_delete")
      *
      * @param  $id
      * @return array
@@ -131,7 +131,7 @@ class UserController extends Controller
     public function deleteAction($id)
     {
         $em = $this->getDoctrine()->getEntityManager();
-        $user = $em->find('RotexSbpCoreBundle:User', $id);
+        $user = $em->find('RtxLabsUserBundle:User', $id);
 
         if (!$user) {
             throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException();

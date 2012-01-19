@@ -1,13 +1,12 @@
 <?php
 
-namespace Rotex\Sbp\CoreBundle\Entity;
+namespace RtxLabs\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 use Symfony\Component\Serializer\Normalizer\NormalizableInterface;
 use Symfony\Component\Serializer\SerializerInterface;
-use Rotex\Sbp\CoreBundle\Serializer\Normalizer\GetMethodNormalizer;
 
 /**
  * Rotex\Sbp\CoreBundle\Entity\User

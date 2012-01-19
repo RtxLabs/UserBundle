@@ -1,5 +1,5 @@
 <?php
-namespace Rotex\Sbp\CoreBundle\Model;
+namespace RtxLabs\UserBundle\Model;
 
 class UserFilter
 {

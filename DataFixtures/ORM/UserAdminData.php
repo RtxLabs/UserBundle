@@ -1,10 +1,10 @@
 <?php
-namespace Rotex\Sbp\CoreBundle\DataFixtures\ORM;
+namespace RtxLabs\UserBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Rotex\Sbp\CoreBundle\Entity\User;
+use RtxLabs\UserBundle\Entity\User;
 
 class UserAdminData implements FixtureInterface, ContainerAwareInterface
 {
