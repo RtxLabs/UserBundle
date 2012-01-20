@@ -11,15 +11,13 @@
     -->
 
     <services>
-        <service id="rtxlabs.user.user_manager" class="RtxLabs\UserBundle\Entity\User">
+        <service id="rtxlabs.user.user_manager" class="RtxLabs\UserBundle\Model\UserManager">
             <argument type="service" id="security.encoder_factory" />
             <argument type="service" id="doctrine.orm.entity_manager" />
-            <argument>Rotex\Sbp\CoreBundle\Entity\User</argument>
+            <argument>RtxLabs\UserBundle\Entity\User</argument>
         </service>
-    </services>
 
-    <services>
-        <service id="rtxlabs.user.login_success" class="Rotex\Sbp\CoreBundle\Handler\LoginHandler">
+        <service id="rtxlabs.user.login_success" class="RtxLabs\UserBundle\Handler\LoginHandler">
             <argument type="service" id="doctrine.orm.entity_manager" />
         </service>
     </services>
