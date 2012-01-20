@@ -4,7 +4,7 @@
 
 {% block breadcrumb %}
     {{ parent() }}
-    {% include "RotexSbpCoreBundle::breadcrumb.html.twig" with {"url": url('core_admin_user'), "name": "core.user.header"} %}
+    {% include "RotexSbpCoreBundle::breadcrumb.html.twig" with {"url": url('rtxlabs_bundle_user_list'), "name": "core.user.header"} %}
     {% include "RotexSbpCoreBundle::breadcrumb.html.twig" with {"url": "#", "name": "core.user.edit.header", "last": true } %}
 {% endblock %}
 
