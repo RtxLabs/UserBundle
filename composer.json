@@ -1,0 +1,22 @@
+{
+  "name": "rtxlabs/user-bundle",
+  "description": "Add Authentication features for SmartBusinessPlatform Symfony2 projects.",
+  "keywords": ["User", "Authentication"],
+  "type": "symfony-bundle",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Timo Haberkern",
+      "email": "timo.haberkern@rotex.de"
+    }
+  ],
+  "require": {
+    "symfony/framework-bundle": "2.*",
+    "rtxlabs/backbone-bundle": "*",
+    "rtxlabs/core-bundle": "*"
+  },
+  "autoload": {
+    "psr-0": { "RtxLabs\\UserBundle": "" }
+  },
+  "target-dir": "RtxLabs/UserBundle"
+}
