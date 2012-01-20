@@ -62,7 +62,7 @@ class UserController extends Controller
 
     /**
      * @Route("/create/user", name="rtxlabs_bundle_user_create")
-     * @Template("RotexSbpCoreBundle:User:edit.html.twig")
+     * @Template("RtxLabsUserBundle:User:edit.html.twig")
      *
      * @return array
      */
@@ -76,7 +76,7 @@ class UserController extends Controller
 
     /**
      * @Route("/save/user/{id}", name="rtxlabs_bundle_user_save")
-     * @Template("RotexSbpCoreBundle:User:edit.html.twig")
+     * @Template("RtxLabsUserBundle:User:edit.html.twig")
      */
     public function saveAction($id)
     {
