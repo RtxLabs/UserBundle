@@ -13,7 +13,7 @@ use RtxLabs\UserBundle\Form\UserType;
 class UserController extends Controller
 {
     /**
-     * @Route("/admin/user", name="rtxlabs_bundle_user_list")
+     * @Route("/user", name="rtxlabs_bundle_user_list")
      * @Template()
      *
      * @return array
@@ -38,7 +38,7 @@ class UserController extends Controller
     }
 
     /**
-     * @Route("/admin/edit/user/{id}", name="rtxlabs_bundle_user_edit")
+     * @Route("/edit/user/{id}", name="rtxlabs_bundle_user_edit")
      * @Template()
      *
      * @param  $id
@@ -61,7 +61,7 @@ class UserController extends Controller
     }
 
     /**
-     * @Route("/admin/create/user", name="rtxlabs_bundle_user_create")
+     * @Route("/create/user", name="rtxlabs_bundle_user_create")
      * @Template("RotexSbpCoreBundle:User:edit.html.twig")
      *
      * @return array
@@ -75,7 +75,7 @@ class UserController extends Controller
     }
 
     /**
-     * @Route("/admin/save/user/{id}", name="rtxlabs_bundle_user_save")
+     * @Route("/save/user/{id}", name="rtxlabs_bundle_user_save")
      * @Template("RotexSbpCoreBundle:User:edit.html.twig")
      */
     public function saveAction($id)
@@ -123,7 +123,7 @@ class UserController extends Controller
     }
 
     /**
-     * @Route("/admin/delete/user/{id}", name="rtxlabs_bundle_user_delete")
+     * @Route("/delete/user/{id}", name="rtxlabs_bundle_user_delete")
      *
      * @param  $id
      * @return array
