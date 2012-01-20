@@ -2,10 +2,10 @@
 
 {% block breadcrumb %}
     {{ parent() }}
-    {% include "RotexSbpCoreBundle::breadcrumb.html.twig" with {"url": url('core_admin_user'), "name": "core.user.header", "last": true } %}
+    {% include "RotexSbpCoreBundle::breadcrumb.html.twig" with {"url": url('rtxlabs_bundle_user_list'), "name": "core.user.header", "last": true } %}
 {% endblock %}
 
-{% block title %}{{ parent() }} - {{ "core.user.header" | trans }}{% endblock %}
+{% block title %}{{ parent() }} - {{ "rtxlabs.user.header" | trans }}{% endblock %}
 
 {% block main %}
     <div class="page-header">
@@ -36,7 +36,7 @@
             <a href="#" class="toggle-btn"><img src="/bundles/rotexsbpcore/images/icons/toggle_open.png"/></a>
             <h4>{{ "core.general.filter.header" | trans}}</h4>
             <div class="toggle-content">
-                <form action="{{ path('core_admin_user', {'page': paginator.currentPage})}}" id="filter-form" method="POST">
+                <form action="{{ path('rtxlabs_bundle_user_list', {'page': paginator.currentPage})}}" id="filter-form" method="POST">
                     <p>
                     {{ form_label(filterForm.lastname) }}: {{ form_widget(filterForm.lastname) }}
                     {{ form_label(filterForm.firstname) }}: {{ form_widget(filterForm.firstname) }}
@@ -58,14 +58,14 @@
             <thead>
                 <tr>
                     <th>&nbsp;</th>
-                    <th>{{ "core.user.label.firstname" | trans }}</th>
-                    <th>{{ "core.user.label.lastname" | trans }}</th>
-                    <th>{{ "core.user.label.personnel_number" | trans }}</th>
-                    <th>{{ "core.user.label.email" | trans }}</th>
-                    <th>{{ "core.user.label.username" | trans }}</th>
-                    <th>{{ "core.user.label.administrator" | trans }}</th>
-                    <th>{{ "core.user.label.last_login" | trans }}</th>
-                    <th><div class="crud-actions pull-right"><a href="{{ path('core_admin_user_create') }}" class="btn xsmall info">{{ "core.user.label.add" | trans }}</a></div></th>
+                    <th>{{ "rtxlabs.user.label.firstname" | trans }}</th>
+                    <th>{{ "rtxlabs.user.label.lastname" | trans }}</th>
+                    <th>{{ "rtxlabs.user.label.personnel_number" | trans }}</th>
+                    <th>{{ "rtxlabs.user.label.email" | trans }}</th>
+                    <th>{{ "rtxlabs.user.label.username" | trans }}</th>
+                    <th>{{ "rtxlabs.user.label.administrator" | trans }}</th>
+                    <th>{{ "rtxlabs.user.label.last_login" | trans }}</th>
+                    <th><div class="crud-actions pull-right"><a href="{{ path('rtxlabs_bundle_user_create') }}" class="btn xsmall info">{{ "core.user.label.add" | trans }}</a></div></th>
                 </tr>
             </thead>
             <tbody id="list-table-body">
@@ -91,8 +91,8 @@
                         </td>
                         <td>
                             <ul class="crud-actions">
-                                <li><a class="edit" href="{{ path('core_admin_user_edit', {'id': user.id}) }}" title="{{ "core.user.label.edit" | trans }}" rel="tooltip">{{ "core.user.label.edit" | trans }}</a></li>
-                                <li><a class="delete" href="{{ path('core_admin_user_delete', {'id': user.id}) }}" title="{{ "core.user.label.delete" | trans }}" rel="tooltip">{{ "core.user.label.delete" | trans }}</a></li>
+                                <li><a class="edit" href="{{ path('rtxlabs_bundle_user_edit', {'id': user.id}) }}" title="{{ "rtxlabs.user.label.edit" | trans }}" rel="tooltip">{{ "rtxlabs.user.label.edit" | trans }}</a></li>
+                                <li><a class="delete" href="{{ path('rtxlabs_bundle_user_delete', {'id': user.id}) }}" title="{{ "rtxlabs.user.label.delete" | trans }}" rel="tooltip">{{ "rtxlabs.user.label.delete" | trans }}</a></li>
                             </ul>
                         </td>
                     </tr>

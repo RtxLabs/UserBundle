@@ -25,7 +25,7 @@
     {% endif %}
 
     <div class="row">
-        <form method="post" action="{{ path('core_admin_user_save', {'id': user.id ? user.id : -1})}}"
+        <form method="post" action="{{ path('rtxlabs_bundle_user_save', {'id': user.id ? user.id : -1})}}"
             {{ form_enctype(form) }}>
             <fieldset>
                 <legend>{{ "rtxlabs.user.edit.legend" | trans }}</legend>
@@ -63,7 +63,7 @@
 
             {{ form_rest(form) }}
             <input type="submit" class="btn info small" value="{{ "core.general.form.save" | trans }}"/>
-            &nbsp;&nbsp;<a class="btn small" href="{{ path('core_admin_user') }}">{{ "core.general.form.backtolist" | trans }}</a>
+            &nbsp;&nbsp;<a class="btn small" href="{{ path('rtxlabs_bundle_user_list') }}">{{ "core.general.form.backtolist" | trans }}</a>
         </form>
     </div>
 {% endblock %}
