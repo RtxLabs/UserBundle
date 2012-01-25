@@ -1,0 +1,22 @@
+{% extends "RotexSbpCoreBundle::base.html.twig" %}
+
+{% block breadcrumb %}
+{{ parent() }}
+{% include "RotexSbpCoreBundle::breadcrumb.html.twig" with {"url": url('rtxlabs_userbundle_user_index'), "name": "rtxlabs.user.menu.root" } %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {% javascripts
+                '@RtxLabsBackboneBundle/Resources/public/js/json2.js'
+                '@RtxLabsBackboneBundle/Resources/public/js/underscore-min.js'
+                '@RtxLabsBackboneBundle/Resources/public/js/backbone-min.js'
+                '@RtxLabsBackboneBundle/Resources/public/js/extension/backbone.validations.js'
+    %}
+            <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+
+{% endblock %}
+

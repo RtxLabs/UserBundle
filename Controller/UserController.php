@@ -8,43 +8,41 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use RtxLabs\UserBundle\Entity\User;
-use RtxLabs\UserBundle\Form\UserType;
+use Rotex\Sbp\CoreBundle\Binder\Binder;
+use Rotex\Sbp\CoreBundle\Binder\GetMethodBinder;
+use Rotex\Sbp\CoreBundle\Controller\RestController;
+use Rotex\Sbp\CoreBundle\Dencoder\Dencoder;
+use Symfony\Component\HttpFoundation\Response;
 
-class UserController extends Controller
+class UserController extends RestController
 {
     /**
-     * @Route("/user", name="rtxlabs_bundle_user_list")
+     * @Route("/user/index", name="rtxlabs_userbundle_user_index")
      * @Template()
-     *
-     * @return array
+     */
+    public function indexAction()
+    {
+        return array();
+    }
+
+    /**
+     * @Route("/user", name="rtxlabs_userbundle_user_list", requirements={"_method"="GET"}, options={"expose"="true"})
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function listAction()
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $filter = $this->getRequest()->getSession()->get('user.filter', new UserFilter());
+        $user = $em->getRepository("RtxLabsUserBundle:User")->findAll();
+        $binder = GetMethodBinder::create()->bind($user);
 
-        $filterForm = $this->createForm(new UserFilterType(), $filter);
-        $filterForm->bindRequest($this->getRequest());
-        $this->getRequest()->getSession()->set('user.filter', $filter);
-
-        $query = $em->getRepository('RtxLabsUserBundle:User')->getFindByFilterQuery($filter);
-        $paginator = new \Pagerfanta\Pagerfanta(new \Pagerfanta\Adapter\DoctrineORMAdapter($query));
-        $paginator->setMaxPerPage($this->container->getParameter('sbp.core.pagesize.default'));
-        $paginator->setCurrentPage($this->get('request')->query->get('page', 1), false, true);
-
-        return array('filterForm'=>$filterForm->createView(),
-                     'paginator'=>$paginator);
+        return new Response(Dencoder::create()->encode($binder->execute()));
     }
 
     /**
-     * @Route("/edit/user/{id}", name="rtxlabs_bundle_user_edit")
-     * @Template()
-     *
-     * @param  $id
-     * @return array
+     * @Route("/user/{id}", name="rtxlabs_userbundle_user_read", requirements={"_method"="GET"}, options={"expose"="true"})
      */
-    public function editAction($id)
+    public function readAction($id)
     {
         $em = $this->getDoctrine()->getEntityManager();
         $user = $em->find('RtxLabsUserBundle:User', $id);
@@ -53,25 +51,44 @@ class UserController extends Controller
             throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException();
         }
 
-        $user->setPlainPassword('sbp_unchanged_$%!//');
+        $binder = GetMethodBinder::create()
+                    ->bind($user);
 
-        $userForm = $this->createForm(new UserType(), $user);
-        return array('form'=>$userForm->createView(),
-                     'user'=>$user);
+        return new Response(Dencoder::encode($binder->execute()));
     }
 
     /**
-     * @Route("/create/user", name="rtxlabs_bundle_user_create")
-     * @Template("RtxLabsUserBundle:User:edit.html.twig")
-     *
-     * @return array
+     * @Route("/user/{id}",name="rtxlabs_userbundle_user_delete", requirements={"_method"="DELETE"}, options={"expose"="true"})
+     */
+    public function deleteAction($id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $user = $em->find('RtxLabsUserBundle:User', $id);
+
+        if (!$user) {
+            throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException();
+        }
+
+        $user->setDeletedAt(new \DateTime('now'));
+        $this->persistAndFlush($this->getCurrentUser());
+
+        return new Response();
+    }
+
+    /**
+     * @Route("/user",name="rtxlabs_userbundle_user_create", requirements={"_method"="POST"}, options={"expose"="true"})
      */
     public function createAction()
     {
-        $user = new User();
-        $userForm = $this->createForm(new UserType(), $user);
-        return array('form'=>$userForm->createView(),
-                     'user'=>$user);
+
+    }
+
+    /**
+     * @Route("/inventory/{id}", name="inventory_inventory_update", requirements={"_method"="PUT"}, options={"expose"="true"})
+     */
+    public function updateAction($id)
+    {
+
     }
 
     /**
@@ -120,30 +137,5 @@ class UserController extends Controller
 
         return array('form'=>$userForm->createView(),
                      'user'=>$user);
-    }
-
-    /**
-     * @Route("/delete/user/{id}", name="rtxlabs_bundle_user_delete")
-     *
-     * @param  $id
-     * @return array
-     */
-    public function deleteAction($id)
-    {
-        $em = $this->getDoctrine()->getEntityManager();
-        $user = $em->find('RtxLabsUserBundle:User', $id);
-
-        if (!$user) {
-            throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException();
-        }
-
-        $user->setDeletedAt(new \DateTime('now'));
-        $em->persist($user);
-        $em->flush();
-
-        $this->getRequest()->getSession()->setFlash('deleted.successful', 1);
-        return new \Symfony\Component\HttpFoundation\RedirectResponse(
-            $this->generateUrl('rtxlabs_bundle_user_list')
-        );
     }
 }
