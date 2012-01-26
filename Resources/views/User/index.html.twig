@@ -1,10 +1,5 @@
 {% extends "RtxLabsUserBundle::base.html.twig" %}
 
-{% block breadcrumb %}
-{{ parent() }}
-{% include "RotexSbpCoreBundle::breadcrumb.html.twig" with {"url": url('rtxlabs_userbundle_user_index'), "name": "rtxlabs.user.menu.root" } %}
-{% endblock %}
-
 {% block main %}
 <div id="user-main" class="full-block clearfix">
 </div>
@@ -33,6 +28,7 @@
             '@RtxLabsUserBundle/Resources/public/js/Collection/UserCollection.js'
             '@RtxLabsUserBundle/Resources/public/js/View/UserListRowView.js'
             '@RtxLabsUserBundle/Resources/public/js/View/UserListView.js'
+            '@RtxLabsUserBundle/Resources/public/js/View/UserView.js'
             '@RtxLabsUserBundle/Resources/public/js/Router/UserRouter.js'
 %}
     <script src="{{ asset_url }}"></script>

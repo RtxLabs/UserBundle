@@ -36,7 +36,7 @@ class UserController extends RestController
         $user = $em->getRepository("RtxLabsUserBundle:User")->findAll();
         $binder = GetMethodBinder::create()->bind($user);
 
-        return new Response(Dencoder::create()->encode($binder->execute()));
+        return new Response(Dencoder::encode($binder->execute()));
     }
 
     /**
@@ -80,7 +80,19 @@ class UserController extends RestController
      */
     public function createAction()
     {
+        $user = new User();
 
+        $this->createDoctrineBinder()
+                ->bind(Dencoder::decode($this->getRequest()->getContent()))
+                ->field("plainPassword", $this->getRequest()->get('password'))
+                ->to($user)
+                ->execute();
+
+        $this->persistAndFlush($user);
+
+        //$this->get('sbp.core.mailer')->sendWelcomeEmailMessage($user);
+
+        return new Response(Dencoder::encode($this->createDoctrineBinder()->bind($user)->execute()));
     }
 
     /**
@@ -88,6 +100,13 @@ class UserController extends RestController
      */
     public function updateAction($id)
     {
+        $em = $this->getDoctrine()->getEntityManager();
+        $user = $em->find('RtxLabsUserBundle:User', $id);
+
+        if (!$user) {
+            throw $this->createNotFoundException('Unable to find user.');
+        }
+
 
     }
 

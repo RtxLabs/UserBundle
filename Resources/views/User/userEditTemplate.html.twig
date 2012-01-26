@@ -1,11 +1,11 @@
 <script type="text/template" id="user-edit-template">
     <div class="page-header">
-        <h2>{{ "inventory.edit.header" | trans }}</h2>
+        <h2>{{ "rtxlabs.user.edit.header" | trans }}</h2>
     </div>
     <div class="alert-message success"  style="display: none;">
         <p>
             <strong>{{ "core.general.notification.success.header" | trans }}</strong>
-            {{ "inventory.notification.success.body" | trans }}
+            {{ "rtxlabs.user.notification.user_successfully_saved" | trans }}
         </p>
     </div>
     <div class="alert-message error" style="display: none;">
@@ -17,21 +17,52 @@
     </div>
 
     <div class="row">
-        <form class="form-stacked" action="#">
+        <form action="#">
             <fieldset>
-                <legend>{{ 'inventory.edit.fieldset.name' | trans }}</legend>
-
-                <div class="clearfix">
-                    <label>{{ 'inventory.edit.label.name' | trans }}:</label>
-                    <div class="input"><input class="small" id="inventory-name" name="inventory-name" type="text"></div>
+                <legend>{{ "rtxlabs.user.edit.legend" | trans }}</legend>
+                <div class="clearfix" id="user-firstname-div">
+                    <label for="user-firstname">{{ 'rtxlabs.user.label.firstname' | trans }}:</label>
+                    <div class="input"><input class="medium" id="user-firstname" name="user[firstname]" type="text"></div>
+                </div>
+                <div class="clearfix" id="user-lastname-div">
+                    <label>{{ 'rtxlabs.user.label.lastname' | trans }}:</label>
+                    <div class="input"><input class="medium" id="user-lastname" name="user[lastname]" type="text"></div>
                 </div>
 
-                <div class="clearfix">
-                    <label>{{ 'inventory.edit.label.ignorelists' | trans }}:</label>
-                    <div class="input"><input class="large" id="ignore-list" type="text"></div>
+                <div class="clearfix" id="user-personnelNumber-div">
+                    <label>{{ 'rtxlabs.user.label.personnel_number' | trans }}:</label>
+                    <div class="input"><input class="small" id="user-personnelNumber" name="user[personnelNumber]" type="text"></div>
+                </div>
+
+                <div class="clearfix" id="user-email-div">
+                    <label>{{ 'rtxlabs.user.label.email' | trans }}:</label>
+                    <div class="input"><input class="large" id="user-email" name="user[email]" type="text"></div>
+                </div>
+
+            <fieldset>
+                <legend>{{ "rtxlabs.user.edit.legend.accessdata" | trans }}</legend>
+
+                <div class="clearfix" id="user-username-div">
+                    <label>{{ 'rtxlabs.user.label.username' | trans }}:</label>
+                    <div class="input"><input class="medium" id="user-username" name="user[username]" type="text"></div>
+                </div>
+
+                <div class="clearfix" id="user-password-div">
+                    <label>{{ 'rtxlabs.user.label.password' | trans }}:</label>
+                    <div class="input"><input class="medium" id="user-password" name="user[password]" type="password"></div>
+                </div>
+                <div class="clearfix" id="user-password2-div">
+                    <label>{{ 'rtxlabs.user.label.password2' | trans }}:</label>
+                    <div class="input"><input class="medium" id="user-password2" type="password"></div>
+                </div>
+
+                <div class="clearfix" id="user-admin-div">
+                    <label>{{ 'rtxlabs.user.label.administrator' | trans }}:</label>
+                    <div class="input"><input class="small" id="user-admin" name="user[admin]" type="checkbox"></div>
                 </div>
             </fieldset>
-            <input id="save-inventory" type="button" class="btn small info" value="{{ "core.general.form.save" | trans }}"/>
+
+            <input id="save-user" type="button" class="btn small info" value="{{ "core.general.form.save" | trans }}"/>
             &nbsp;&nbsp;
             <a href="#" class="btn small">{{ "core.general.form.backtolist" | trans}}</a>
         </form>

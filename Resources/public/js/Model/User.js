@@ -6,5 +6,28 @@ App.User.Model.User = Backbone.Model.extend({
     initialize: function() {
         //this.roles = new App.User.Collection.RoleCollection();
         //this.groups = new App.User.Collection.GroupCollection();
+    },
+
+    validate: {
+        firstname: {
+            required: true
+        },
+        lastname: {
+            required: true
+        },
+        password: {
+            required: true,
+            minlength: 5
+        },
+        username: {
+            required: true
+        },
+        email: {
+            required: true,
+            type: "email"
+        },
+        personnelNumber: {
+            pattern: /^[0-9]{4}$/
+        }
     }
 });

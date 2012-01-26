@@ -20,7 +20,7 @@ App.User.Router.UserRouter = Backbone.Router.extend({
     },
 
     new: function() {
-        new App.Andon.View.LineView({
+        new App.User.View.UserView({
             model: new App.User.Model.User(),
             collection: this.user
         });
