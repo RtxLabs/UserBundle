@@ -8,6 +8,16 @@ App.User.Model.User = Backbone.Model.extend({
         //this.groups = new App.User.Collection.GroupCollection();
     },
 
+    defaults: {
+        firstname: "",
+        lastname: "",
+        email: "",
+        personnelNumber: "",
+        username: "",
+        password: "",
+        admin: false
+    },
+
     validate: {
         firstname: {
             required: true

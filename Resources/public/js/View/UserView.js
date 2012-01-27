@@ -14,8 +14,8 @@ App.User.View.UserView = Backbone.View.extend({
         this.template = _.template($('#user-edit-template').html());
         this.changedAttributes = new Backbone.Model();
 
-        _.bindAll(this, 'render');
-        this.render();
+        //_.bindAll(this, 'render');
+        //this.render();
     },
 
     render: function() {

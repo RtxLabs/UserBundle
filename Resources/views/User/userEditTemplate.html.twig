@@ -23,21 +23,21 @@
                     <legend>{{ "rtxlabs.user.edit.legend" | trans }}</legend>
                     <div class="clearfix" id="user-firstname-div">
                         <label for="user-firstname">{{ 'rtxlabs.user.label.firstname' | trans }}:</label>
-                        <div class="input"><input class="medium" id="user-firstname" name="user[firstname]" type="text"></div>
+                        <div class="input"><input class="medium" id="user-firstname" name="user[firstname]" type="text" value="<%= firstname %>"></div>
                     </div>
                     <div class="clearfix" id="user-lastname-div">
                         <label for="user-lastname">{{ 'rtxlabs.user.label.lastname' | trans }}:</label>
-                        <div class="input"><input class="medium" id="user-lastname" name="user[lastname]" type="text"></div>
+                        <div class="input"><input class="medium" id="user-lastname" name="user[lastname]" type="text" value="<%= lastname %>"></div>
                     </div>
 
                     <div class="clearfix" id="user-personnelNumber-div">
                         <label for="user-personnelNumber">{{ 'rtxlabs.user.label.personnel_number' | trans }}:</label>
-                        <div class="input"><input class="small" id="user-personnelNumber" name="user[personnelNumber]" type="text"></div>
+                        <div class="input"><input class="small" id="user-personnelNumber" name="user[personnelNumber]" type="text" value="<%= personnelNumber %>"></div>
                     </div>
 
                     <div class="clearfix" id="user-email-div">
                         <label for="user-email">{{ 'rtxlabs.user.label.email' | trans }}:</label>
-                        <div class="input"><input class="large" id="user-email" name="user[email]" type="text"></div>
+                        <div class="input"><input class="large" id="user-email" name="user[email]" type="text" value="<%= email %>"></div>
                     </div>
                 </fieldset>
             </div>
@@ -47,7 +47,7 @@
 
                     <div class="clearfix" id="user-username-div">
                         <label for="user-username">{{ 'rtxlabs.user.label.username' | trans }}:</label>
-                        <div class="input"><input class="medium" id="user-username" name="user[username]" type="text"></div>
+                        <div class="input"><input class="medium" id="user-username" name="user[username]" type="text" value="<%= username %>"></div>
                     </div>
                     <div class="clearfix" id="user-password-div">
                         <label for="user-password">{{ 'rtxlabs.user.label.password' | trans }}:</label>
@@ -59,7 +59,7 @@
                     </div>
                     <div class="clearfix" id="user-admin-div">
                         <label for="user-admin">{{ 'rtxlabs.user.label.administrator' | trans }}:</label>
-                        <div class="input"><input class="small" id="user-admin" name="user[admin]" type="checkbox"></div>
+                        <div class="input"><input class="small" id="user-admin" name="user[admin]" type="checkbox" <%= admin==true ? 'checked=checked' : '' %> ></div>
                     </div>
                 </fieldset>
             </div>

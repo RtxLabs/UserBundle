@@ -9,6 +9,8 @@ App.User.View.UserListView = Backbone.View.extend({
         _.bindAll(this, 'render');
         this.collection.bind('reset', this.render);
         this.collection.bind('remove', this.render);
+
+        this.render();
     },
 
     render: function() {

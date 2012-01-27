@@ -34,7 +34,11 @@ class UserController extends RestController
         $em = $this->getDoctrine()->getEntityManager();
 
         $user = $em->getRepository("RtxLabsUserBundle:User")->findAll();
-        $binder = GetMethodBinder::create()->bind($user);
+        $binder = GetMethodBinder::create()
+                        ->bind($user)
+                        ->field('admin', function($user) {
+                            return $user->hasRole('ROLE_ADMIN');
+                        });
 
         return new Response(Dencoder::encode($binder->execute()));
     }
@@ -52,7 +56,8 @@ class UserController extends RestController
         }
 
         $binder = GetMethodBinder::create()
-                    ->bind($user);
+                    ->bind($user)
+                    ->field('admin', $user->hasRole('ROLE_ADMIN'));
 
         return new Response(Dencoder::encode($binder->execute()));
     }
@@ -82,13 +87,7 @@ class UserController extends RestController
     {
         $user = new User();
 
-        $this->createDoctrineBinder()
-                ->bind(Dencoder::decode($this->getRequest()->getContent()))
-                ->field("plainPassword", $this->getRequest()->get('password'))
-                ->to($user)
-                ->execute();
-
-        $this->persistAndFlush($user);
+        $this->updateUser($user, $this->getRequest());
 
         //$this->get('sbp.core.mailer')->sendWelcomeEmailMessage($user);
 
@@ -96,7 +95,7 @@ class UserController extends RestController
     }
 
     /**
-     * @Route("/inventory/{id}", name="inventory_inventory_update", requirements={"_method"="PUT"}, options={"expose"="true"})
+     * @Route("/user/{id}", name="rtxlabs_userbundle_user_update", requirements={"_method"="PUT"}, options={"expose"="true"})
      */
     public function updateAction($id)
     {
@@ -107,54 +106,28 @@ class UserController extends RestController
             throw $this->createNotFoundException('Unable to find user.');
         }
 
+        $this->updateUser($user, $this->getRequest());
 
+        return new Response(Dencoder::encode($this->createDoctrineBinder()->bind($user)->execute()));
     }
 
-    /**
-     * @Route("/save/user/{id}", name="rtxlabs_bundle_user_save")
-     * @Template("RtxLabsUserBundle:User:edit.html.twig")
-     */
-    public function saveAction($id)
+
+    protected function updateUser($user, $request)
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $this->createDoctrineBinder()
+            ->bind(Dencoder::decode($request->getContent()))
+            ->field("plainPassword", $request->get('password'))
+            ->to($user)
+            ->execute();
 
-        $newUser = false;
-        if ($id == -1) {
-            $user = new User();
-            $newUser = true;
-        }
-        else {
-            $user = $em->find('RtxLabsUserBundle:User', $id);
-        }
 
-        if (!$user) {
-            throw $this->createNotFoundException('Unable to find user.');
-        }
+        if ($user->getPlainPassword() != "sbp_unchanged_$%!//" ||
+            $user->getPlainPassword() != "") {
 
-        $userForm = $this->createForm(new UserType(), $user);
-        $userForm->bindRequest($this->getRequest());
-
-        if ($userForm->isValid()) {
-
-            if ($newUser) {
-                $this->get('sbp.core.mailer')->sendWelcomeEmailMessage($user);
-            }
-
-            if ($user->getPlainPassword() != "sbp_unchanged_$%!//") {
-                $user_manager = $this->get('sbp.core.user_manager');
-                $user_manager->updatePassword($user);
-            }
-
-            $em->persist($user);
-            $em->flush();
-
-            $this->getRequest()->getSession()->setFlash('saved.successful', 1);
-            return new \Symfony\Component\HttpFoundation\RedirectResponse(
-                $this->generateUrl('rtxlabs_bundle_user_list')
-            );
+            $user_manager = $this->get('rtxlabs.user.user_manager');
+            $user_manager->updatePassword($user);
         }
 
-        return array('form'=>$userForm->createView(),
-                     'user'=>$user);
+        $this->persistAndFlush($user);
     }
 }
