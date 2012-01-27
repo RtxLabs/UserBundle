@@ -5,6 +5,7 @@ use Doctrine\Common\DataFixtures\FixtureInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use RtxLabs\UserBundle\Entity\User;
+use Doctrine\Common\Persistence\ObjectManager;
 
 class UserAdminData implements FixtureInterface, ContainerAwareInterface
 {
@@ -15,7 +16,7 @@ class UserAdminData implements FixtureInterface, ContainerAwareInterface
         $this->container = $container;
     }
 
-    public function load($manager)
+    public function load(ObjectManager $manager)
     {
         $userAdmin = new User();
         $userAdmin->setUsername('admin');

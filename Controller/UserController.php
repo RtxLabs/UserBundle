@@ -66,7 +66,7 @@ class UserController extends RestController
         $user = $em->find('RtxLabsUserBundle:User', $id);
 
         if (!$user) {
-            throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException();
+            throw $this->createNotFoundException();
         }
 
         $user->setDeletedAt(new \DateTime('now'));

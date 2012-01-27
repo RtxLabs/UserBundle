@@ -11,60 +11,65 @@
     <div class="alert-message error" style="display: none;">
         <p>
             <strong>{{ "core.general.notification.error.header" | trans }}</strong>
-        <p  id="notification-error-body">
-        </p>
+            <p id="notification-error-body">
+            </p>
         </p>
     </div>
 
-    <div class="row">
-        <form action="#">
-            <fieldset>
-                <legend>{{ "rtxlabs.user.edit.legend" | trans }}</legend>
-                <div class="clearfix" id="user-firstname-div">
-                    <label for="user-firstname">{{ 'rtxlabs.user.label.firstname' | trans }}:</label>
-                    <div class="input"><input class="medium" id="user-firstname" name="user[firstname]" type="text"></div>
-                </div>
-                <div class="clearfix" id="user-lastname-div">
-                    <label>{{ 'rtxlabs.user.label.lastname' | trans }}:</label>
-                    <div class="input"><input class="medium" id="user-lastname" name="user[lastname]" type="text"></div>
-                </div>
+    <form action="#" class="well">
+        <div class="row">
+            <div class="span8">
+                <fieldset>
+                    <legend>{{ "rtxlabs.user.edit.legend" | trans }}</legend>
+                    <div class="clearfix" id="user-firstname-div">
+                        <label for="user-firstname">{{ 'rtxlabs.user.label.firstname' | trans }}:</label>
+                        <div class="input"><input class="medium" id="user-firstname" name="user[firstname]" type="text"></div>
+                    </div>
+                    <div class="clearfix" id="user-lastname-div">
+                        <label for="user-lastname">{{ 'rtxlabs.user.label.lastname' | trans }}:</label>
+                        <div class="input"><input class="medium" id="user-lastname" name="user[lastname]" type="text"></div>
+                    </div>
 
-                <div class="clearfix" id="user-personnelNumber-div">
-                    <label>{{ 'rtxlabs.user.label.personnel_number' | trans }}:</label>
-                    <div class="input"><input class="small" id="user-personnelNumber" name="user[personnelNumber]" type="text"></div>
-                </div>
+                    <div class="clearfix" id="user-personnelNumber-div">
+                        <label for="user-personnelNumber">{{ 'rtxlabs.user.label.personnel_number' | trans }}:</label>
+                        <div class="input"><input class="small" id="user-personnelNumber" name="user[personnelNumber]" type="text"></div>
+                    </div>
 
-                <div class="clearfix" id="user-email-div">
-                    <label>{{ 'rtxlabs.user.label.email' | trans }}:</label>
-                    <div class="input"><input class="large" id="user-email" name="user[email]" type="text"></div>
-                </div>
+                    <div class="clearfix" id="user-email-div">
+                        <label for="user-email">{{ 'rtxlabs.user.label.email' | trans }}:</label>
+                        <div class="input"><input class="large" id="user-email" name="user[email]" type="text"></div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="span8">
+                <fieldset>
+                    <legend>{{ "rtxlabs.user.edit.legend.accessdata" | trans }}</legend>
 
-            <fieldset>
-                <legend>{{ "rtxlabs.user.edit.legend.accessdata" | trans }}</legend>
-
-                <div class="clearfix" id="user-username-div">
-                    <label>{{ 'rtxlabs.user.label.username' | trans }}:</label>
-                    <div class="input"><input class="medium" id="user-username" name="user[username]" type="text"></div>
-                </div>
-
-                <div class="clearfix" id="user-password-div">
-                    <label>{{ 'rtxlabs.user.label.password' | trans }}:</label>
-                    <div class="input"><input class="medium" id="user-password" name="user[password]" type="password"></div>
-                </div>
-                <div class="clearfix" id="user-password2-div">
-                    <label>{{ 'rtxlabs.user.label.password2' | trans }}:</label>
-                    <div class="input"><input class="medium" id="user-password2" type="password"></div>
-                </div>
-
-                <div class="clearfix" id="user-admin-div">
-                    <label>{{ 'rtxlabs.user.label.administrator' | trans }}:</label>
-                    <div class="input"><input class="small" id="user-admin" name="user[admin]" type="checkbox"></div>
-                </div>
-            </fieldset>
-
-            <input id="save-user" type="button" class="btn small info" value="{{ "core.general.form.save" | trans }}"/>
-            &nbsp;&nbsp;
-            <a href="#" class="btn small">{{ "core.general.form.backtolist" | trans}}</a>
-        </form>
-    </div>
+                    <div class="clearfix" id="user-username-div">
+                        <label for="user-username">{{ 'rtxlabs.user.label.username' | trans }}:</label>
+                        <div class="input"><input class="medium" id="user-username" name="user[username]" type="text"></div>
+                    </div>
+                    <div class="clearfix" id="user-password-div">
+                        <label for="user-password">{{ 'rtxlabs.user.label.password' | trans }}:</label>
+                        <div class="input"><input class="medium" id="user-password" name="user[password]" type="password"></div>
+                    </div>
+                    <div class="clearfix" id="user-password2-div">
+                        <label for="user-password2">{{ 'rtxlabs.user.label.password2' | trans }}:</label>
+                        <div class="input"><input class="medium" id="user-password2" type="password"></div>
+                    </div>
+                    <div class="clearfix" id="user-admin-div">
+                        <label for="user-admin">{{ 'rtxlabs.user.label.administrator' | trans }}:</label>
+                        <div class="input"><input class="small" id="user-admin" name="user[admin]" type="checkbox"></div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        <div class="row">
+            <div class="actions">
+                <input id="save-user" type="button" class="btn small info" value="{{ "core.general.form.save" | trans }}"/>
+                &nbsp;&nbsp;
+                <a href="#" class="btn small">{{ "core.general.form.backtolist" | trans}}</a>
+            </div>
+        </div>
+    </form>
 </script>
