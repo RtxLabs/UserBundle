@@ -20,24 +20,34 @@ App.User.Model.User = Backbone.Model.extend({
 
     validate: {
         firstname: {
-            required: true
+            required: true,
+            minlength: 1
         },
         lastname: {
-            required: true
+            required: true,
+            minlength: 1
         },
         password: {
             required: true,
             minlength: 5
         },
         username: {
-            required: true
+            required: true,
+            minlength: 1
         },
         email: {
             required: true,
+            minlength: 1,
             type: "email"
         },
         personnelNumber: {
             pattern: /^[0-9]{4}$/
+        }
+    },
+
+    validate: function(attributes) {
+        if (attributes.password !== attributes.passwordRepeat) {
+            return {passwordRepeat: 'match'};
         }
     }
 });

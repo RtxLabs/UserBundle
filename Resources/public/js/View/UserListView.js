@@ -18,7 +18,14 @@ App.User.View.UserListView = Backbone.View.extend({
 
         this.collection.each(this.renderLineItem);
 
+        this.updateBreadcrumb();
+
         return this;
+    },
+
+    updateBreadcrumb: function() {
+        var lastSpanEl = $(".breadcrumb .divider").last().parent();
+        lastSpanEl.next().remove();
     },
 
     renderLineItem: function(user) {

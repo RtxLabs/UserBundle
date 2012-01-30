@@ -6,7 +6,7 @@ rtxlabs.user.label.personnel_number: Personalnummer
 rtxlabs.user.label.email: E-Mail
 rtxlabs.user.label.username: Benutzername
 rtxlabs.user.label.password: Passwort
-rtxlabs.user.label.password2: Passwort wiederholen
+rtxlabs.user.label.passwordRepeat: Passwort wiederholen
 
 rtxlabs.user.edit.legend.accessdata: Anmeldedaten
 
@@ -29,7 +29,7 @@ rtxlabs.user.validation.email: Eine E-Mail-Adresse muß angegeben werden
 rtxlabs.user.validation.personnelNumber: Eine gültige Personalnummer (4 Stellen) muß angegeben werden
 rtxlabs.user.validation.username: Ein Benutzername muß angegeben werden
 rtxlabs.user.validation.password: Ein Passwort muß angegeben werden und mindestens 5 Zeichen lang sein
-rtxlabs.user.validation.passwordMatch: Die Passwörter stimmen nicht überein
+rtxlabs.user.validation.passwordRepeat: Die Passwörter stimmen nicht überein
 
 # --- Welcome Email
 rtxlabs.user.mail.title.welcome: Willkommen

@@ -4,18 +4,15 @@ App.User.View.UserView = Backbone.View.extend({
     el: $('#user-main'),
 
     events: {
-        "click #save-user": "save",
-        "change input": "formChanged",
-        "change select": "formChanged"
+        "click #save-user": "save"
     },
 
     initialize: function() {
 
         this.template = _.template($('#user-edit-template').html());
-        this.changedAttributes = new Backbone.Model();
 
-        //_.bindAll(this, 'render');
-        //this.render();
+        _.bindAll(this, 'render');
+        this.render();
     },
 
     render: function() {
@@ -30,10 +27,17 @@ App.User.View.UserView = Backbone.View.extend({
         $('form div').removeClass('error');
         $('#notification-error-body').html('');
 
-        this.model.save(this.changedAttributes.attributes, {
+        this.isNew = this.model.isNew();
+        var self = this;
+
+        this.model.save(this.getFormValues(), {
             success: function(user, response) {
                 $('.success').show();
                 $('.error').hide();
+
+                if (self.isNew) {
+                    self.collection.add(user);
+                }
             },
             error: function(user, response){
                 if (response.responseText !== undefined) {
@@ -49,26 +53,35 @@ App.User.View.UserView = Backbone.View.extend({
                     });
                 }
 
-
                 $('.success').hide();
                 $('.error').show();
             }
         });
     },
 
-    updateBreadcrumb: function() {
-        $(".breadcrumb").append("<li>"+ExposeTranslation.get('rtxlabs.user.edit.header')+"</li>");
+    getFormValues: function() {
+        var values = new Backbone.Model();
+        var idPattern = /(\w.+)\-(\w*\d*\-*_*)/;
+
+        var collection = $('form [name^="user["]');
+
+        $('form [name^="user["]').each(function(index, dom) {
+
+            var el = $(dom);
+            var result = dom.id.match(idPattern);
+
+            var obj = "{\""+result[2] +"\":\""+el.val()+"\"}";
+            var objInst = JSON.parse(obj);
+
+            values.set(objInst);
+        });
+
+        return values.attributes;
     },
 
-    formChanged: function(event) {
-        var changed = event.currentTarget;
-        var value = $("#"+changed.id).val();
-
-        var idPattern = /(\w.+)\-(\w*\d*\-*_*)/;
-        var result = changed.id.match(idPattern);
-
-        var obj = "{\""+result[2] +"\":\""+value+"\"}";
-        var objInst = JSON.parse(obj);
-        this.changedAttributes.set(objInst);
+    updateBreadcrumb: function() {
+        var lastSpanEl = $(".breadcrumb .divider").last().parent();
+        lastSpanEl.next().remove();
+        $(".breadcrumb").append("<li>"+ExposeTranslation.get('rtxlabs.user.edit.header')+"</li>");
     }
 });

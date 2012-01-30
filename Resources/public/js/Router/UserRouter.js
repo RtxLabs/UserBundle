@@ -32,10 +32,7 @@ App.User.Router.UserRouter = Backbone.Router.extend({
     new: function() {
         $('.twipsy').remove();
 
-
-        this.editView = new App.User.View.UserView({
-            model: new App.User.Model.User()
-        });
+        this.updateEditView(new App.User.Model.User());
     },
 
     edit: function(id) {
@@ -43,11 +40,10 @@ App.User.Router.UserRouter = Backbone.Router.extend({
 
         var user = this.user.get(id);
         if (user === undefined) {
+            var self = this;
             Core.DataCache.load("App.User.Model.User", id, {
                 success: function(user) {
-                    this.editView = new App.User.View.UserView({
-                        model: user
-                    });
+                    self.updateEditView(user);
                 },
                 failure: function() {
                     new Error({ message: "Error loading user"});
@@ -55,13 +51,20 @@ App.User.Router.UserRouter = Backbone.Router.extend({
             });
         }
         else {
-            /*if (this.editView !== undefined) {
-                this.editView.remove();
-            }*/
-            this.editView = new App.User.View.UserView({
-                model: user
-            });
+            this.updateEditView(user);
+        }
+    },
+
+    updateEditView: function(user) {
+        if (this.editView !== undefined) {
+            this.editView.model = user;
             this.editView.render();
+        }
+        else {
+            this.editView = new App.User.View.UserView({
+                model: user,
+                collection: this.user
+            });
         }
     }
 });
