@@ -42,3 +42,12 @@ rtxlabs.user.mail.title.request_resetting: Passwort zurücksetzen
 rtxlabs.user.mail.title.request_resetting_information: Um ein neues Passwort für SmartBusinessPlatform zu vergeben, klicken Sie bitte auf folgenden Link.
 
 
+# --- Group management
+rtxlabs.user.group.header: Benutzergruppen
+rtxlabs.user.group.label.name: Name
+rtxlabs.user.group.label.user_amount: Anzahl Benutzer
+rtxlabs.user.group.label.add: Gruppe hinzufügen
+rtxlabs.user.group.edit.header: Gruppe bearbeiten
+rtxlabs.user.group.edit.legend: Gruppeninformationen
+rtxlabs.user.group.edit.legend.accessdata: Zugeordnete Rollen
+

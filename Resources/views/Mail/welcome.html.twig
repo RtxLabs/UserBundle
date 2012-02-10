@@ -1,0 +1,15 @@
+{% extends 'RtxLabsUserBundle:Mail:mail_layout.html.twig' %}
+
+{% block rtxlabs_email_subject %}[SmartBusinessPlatform] - {{ "rtxlabs.user.mail.title.welcome" | trans }}{% endblock %}
+
+{% block rtxlabs_email_body %}
+
+<p>{{ "rtxlabs.user.mail.title.welcome" | trans }}:</p>
+<ul>
+    <li>{{ "rtxlabs.user.mail.label.username" | trans }}: {{ user.username }}</li>
+    <li>{{ "rtxlabs.user.mail.label.password" | trans }}: {{ user.plainPassword }}</li>
+</ul>
+<br/>
+{{ "rtxlabs.user.mail.label.login" | trans }}: <a href="{{ homepage }}">{{ homepage }}</a>
+
+{% endblock %}

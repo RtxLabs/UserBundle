@@ -17,6 +17,9 @@ use Symfony\Component\Serializer\SerializerInterface;
  */
 class User implements UserInterface
 {
+    const ROLE_DEFAULT = 'ROLE_USER';
+    const ROLE_SUPER_ADMIN = 'ROLE_SUPER_ADMIN';
+
     /**
      * @var integer $id
      *
@@ -51,7 +54,6 @@ class User implements UserInterface
      * not persisted, only for validation
      */
     protected $plainPassword;
-
 
     /**
      * @var string $firstname
@@ -126,11 +128,21 @@ class User implements UserInterface
      * @ORM\Column(name="confirmation_token", type="string", length="255", nullable=true)
      */
     protected $confirmationToken;
-    
+
+    /**
+     *
+     * @ORM\ManyToMany(targetEntity="Group", inversedBy="users")
+     * @ORM\JoinTable(name="rtxlabs_usergroup",
+     *              joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *              inverseJoinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id")}
+     * )
+     */
+    protected $groups;
+
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -150,7 +162,7 @@ class User implements UserInterface
     /**
      * Get personnelNumber
      *
-     * @return string 
+     * @return string
      */
     public function getPersonnelNumber()
     {
@@ -170,7 +182,7 @@ class User implements UserInterface
     /**
      * Get username
      *
-     * @return string 
+     * @return string
      */
     public function getUsername()
     {
@@ -190,7 +202,7 @@ class User implements UserInterface
     /**
      * Get password
      *
-     * @return string 
+     * @return string
      */
     public function getPassword()
     {
@@ -210,7 +222,7 @@ class User implements UserInterface
     /**
      * Get firstname
      *
-     * @return string 
+     * @return string
      */
     public function getFirstname()
     {
@@ -230,7 +242,7 @@ class User implements UserInterface
     /**
      * Get email
      *
-     * @return string 
+     * @return string
      */
     public function getEmail()
     {
@@ -250,14 +262,14 @@ class User implements UserInterface
     /**
      * Get lastname
      *
-     * @return string 
+     * @return string
      */
     public function getLastname()
     {
         return $this->lastname;
     }
 
-/**
+    /**
      * @ORM\PrePersist
      * @return void
      */
@@ -325,7 +337,7 @@ class User implements UserInterface
         $this->roles = $roles;
     }
 
-     /**
+    /**
      * Gets an array of roles.
      *
      * @return array An array of Role objects
@@ -334,8 +346,12 @@ class User implements UserInterface
     {
         $roles = $this->roles;
 
-        // make sure to have at least one role
-        $roles[] = 'ROLE_DEFAULT';
+        foreach ($this->getGroups() as $group) {
+            $roles = array_merge($roles, $group->getRoles());
+        }
+
+        // we need to make sure to have at least one role
+        $roles[] = static::ROLE_DEFAULT;
 
         return array_unique($roles);
     }
@@ -348,7 +364,7 @@ class User implements UserInterface
     public function addRole($role)
     {
         $role = strtoupper($role);
-        if ($role === 'ROLE_DEFAULT') {
+        if ($role === static::ROLE_DEFAULT) {
             return;
         }
 
@@ -392,7 +408,7 @@ class User implements UserInterface
     /**
      * Get locale
      *
-     * @return string 
+     * @return string
      */
     public function getLocale()
     {
@@ -412,7 +428,7 @@ class User implements UserInterface
     /**
      * Get lastLogin
      *
-     * @return datetime 
+     * @return datetime
      */
     public function getLastLogin()
     {
@@ -432,7 +448,7 @@ class User implements UserInterface
     /**
      * Get deletedAt
      *
-     * @return datetime 
+     * @return datetime
      */
     public function getDeletedAt()
     {
@@ -452,7 +468,7 @@ class User implements UserInterface
     /**
      * Get salt
      *
-     * @return string 
+     * @return string
      */
     public function getSalt()
     {
@@ -472,7 +488,7 @@ class User implements UserInterface
     /**
      * Get createdAt
      *
-     * @return datetime 
+     * @return datetime
      */
     public function getCreatedAt()
     {
@@ -492,7 +508,7 @@ class User implements UserInterface
     /**
      * Get updatedAt
      *
-     * @return datetime 
+     * @return datetime
      */
     public function getUpdatedAt()
     {
@@ -512,7 +528,7 @@ class User implements UserInterface
     /**
      * Get confirmationToken
      *
-     * @return string 
+     * @return string
      */
     public function getConfirmationToken()
     {
@@ -548,5 +564,40 @@ class User implements UserInterface
             }
 
         }
+    }
+
+    /**
+     * Add groups
+     *
+     * @param RtxLabs\UserBundle\Entity\Group $groups
+     */
+    public function addGroups(\RtxLabs\UserBundle\Entity\Group $groups)
+    {
+        $this->groups[] = $groups;
+    }
+
+    /**
+     * Get groups
+     *
+     * @return Doctrine\Common\Collections\Collection
+     */
+    public function getGroups()
+    {
+        return $this->groups;
+    }
+
+    /**
+     * Gets the name of the groups which includes the user.
+     *
+     * @return array
+     */
+    public function getGroupNames()
+    {
+        $names = array();
+        foreach ($this->getGroups() as $group) {
+            $names[] = $group->getName();
+        }
+
+        return $names;
     }
 }

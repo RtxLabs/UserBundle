@@ -4,8 +4,7 @@ App.User.Model.User = Backbone.Model.extend({
     urlRoot: Routing.generate("rtxlabs_userbundle_user_list"),
 
     initialize: function() {
-        //this.roles = new App.User.Collection.RoleCollection();
-        //this.groups = new App.User.Collection.GroupCollection();
+        this.groups = new App.User.Collection.GroupCollection();
     },
 
     defaults: {
@@ -15,7 +14,8 @@ App.User.Model.User = Backbone.Model.extend({
         personnelNumber: "",
         username: "",
         password: "",
-        admin: false
+        admin: false,
+        locale: "de"
     },
 
     validate: {
@@ -29,7 +29,7 @@ App.User.Model.User = Backbone.Model.extend({
         },
         password: {
             required: true,
-            minlength: 5
+            minlength:5
         },
         username: {
             required: true,
@@ -42,12 +42,6 @@ App.User.Model.User = Backbone.Model.extend({
         },
         personnelNumber: {
             pattern: /^[0-9]{4}$/
-        }
-    },
-
-    validate: function(attributes) {
-        if (attributes.password !== attributes.passwordRepeat) {
-            return {passwordRepeat: 'match'};
         }
     }
 });

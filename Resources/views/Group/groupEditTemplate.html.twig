@@ -1,0 +1,46 @@
+<script type="text/template" id="group-edit-template">
+    <div class="page-header">
+        <h2>{{ "rtxlabs.user.group.edit.header" | trans }}</h2>
+    </div>
+    <div class="alert-message success"  style="display: none;">
+        <p>
+            <strong>{{ "core.general.notification.success.header" | trans }}</strong>
+            {{ "rtxlabs.user.notification.user_successfully_saved" | trans }}
+        </p>
+    </div>
+    <div class="alert-message error" style="display: none;">
+        <p>
+            <strong>{{ "core.general.notification.error.header" | trans }}</strong>
+        <p id="notification-error-body">
+        </p>
+        </p>
+    </div>
+
+    <form action="#" class="well">
+        <div class="row">
+            <div class="span8">
+                <fieldset>
+                    <legend>{{ "rtxlabs.user.group.edit.legend" | trans }}</legend>
+                    <div class="clearfix" id="group-name-div">
+                        <label for="group-name">{{ 'rtxlabs.user.group.label.name' | trans }}:</label>
+                        <div class="input"><input class="medium" id="group-name" name="group[name]" type="text" value="<%= name %>"></div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="span8">
+                <fieldset>
+                    <legend>{{ "rtxlabs.user.group.edit.legend.accessdata" | trans }}</legend>
+
+
+                </fieldset>
+            </div>
+        </div>
+        <div class="row">
+            <div class="actions">
+                <input id="save-group" type="button" class="btn small info" value="{{ "core.general.form.save" | trans }}"/>
+                &nbsp;&nbsp;
+                <a href="#" class="btn small">{{ "core.general.form.backtolist" | trans}}</a>
+            </div>
+        </div>
+    </form>
+</script>

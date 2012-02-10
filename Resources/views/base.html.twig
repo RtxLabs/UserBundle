@@ -1,10 +1,5 @@
 {% extends "RotexSbpCoreBundle::base.html.twig" %}
 
-{% block breadcrumb %}
-{{ parent() }}
-{% include "RotexSbpCoreBundle::breadcrumb.html.twig" with {"url": url('rtxlabs_userbundle_user_index'), "name": "core.menu.settings.user" } %}
-{% endblock %}
-
 {% block javascripts %}
     {{ parent() }}
 
