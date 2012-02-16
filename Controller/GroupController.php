@@ -19,9 +19,9 @@ class GroupController extends RestController
      */
     public function indexAction()
     {
-        $roleManager = $this->get('sbp.core.rolemanager');
+        $roleManager = $this->get('rtxlabs.user.rolemanager');
 
-        return array();
+        return array('roles'=>$roleManager->getRoles());
     }
 
     /**
@@ -44,6 +44,24 @@ class GroupController extends RestController
     }
 
     /**
+     * @Route("/usergroup/{id}", name="rtxlabs_userbundle_group_read", requirements={"_method"="GET"}, options={"expose"="true"})
+     */
+    public function readAction($id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $group = $em->find('RtxLabsUserBundle:Group', $id);
+
+        if (!$group) {
+            throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException();
+        }
+
+        $binder = GetMethodBinder::create()
+                    ->bind($group);
+
+        return new Response(Dencoder::encode($binder->execute()));
+    }
+
+    /**
      * @Route("/usergroup/{id}",name="rtxlabs_userbundle_group_delete", requirements={"_method"="DELETE"}, options={"expose"="true"})
      */
     public function deleteAction($id)
@@ -59,6 +77,77 @@ class GroupController extends RestController
         $this->persistAndFlush($group);
 
         return new Response();
+    }
+
+    /**
+     * @Route("/usergroup",name="rtxlabs_userbundle_group_create", requirements={"_method"="POST"}, options={"expose"="true"})
+     */
+    public function createAction()
+    {
+        $group = new Group();
+
+        $errors = $this->updateGroup($group, $this->getRequest());
+        if (count($errors) > 0) {
+            return new Response(Dencoder::encode($errors), 406);
+        }
+
+        return new Response(Dencoder::encode($this->createDoctrineBinder()->bind($group)->execute()));
+    }
+
+    /**
+     * @Route("/usergroup/{id}", name="rtxlabs_userbundle_group_update", requirements={"_method"="PUT"}, options={"expose"="true"})
+     */
+    public function updateAction($id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $group = $em->find('RtxLabsUserBundle:Group', $id);
+
+        if (!$group) {
+            throw $this->createNotFoundException('Unable to find group.');
+        }
+
+        $errors = $this->updateGroup($group, $this->getRequest());
+        if (count($errors) > 0) {
+            return new Response(Dencoder::encode($errors), 406);
+        }
+
+        return new Response(Dencoder::encode($this->createDoctrineBinder()->bind($group)->execute()));
+    }
+
+
+    protected function updateGroup($group, $request)
+    {
+        $json = Dencoder::decode($request->getContent());
+        $this->createDoctrineBinder()
+            ->bind($json)
+            ->field('roles', explode(',', $json->roles))
+            ->to($group)
+            ->execute();
+
+        $validator = $this->get('validator');
+        $errors = $validator->validate($group);
+
+        if (count($errors)) {
+
+            $errors = array_map(function($error){
+                                return $error->getMessage();
+                            }, $errors);
+        }
+
+        if (count($errors) > 0) {
+            $result = array();
+            foreach ($errors as $violation) {
+                $result[$violation->getPropertyPath()] = $violation->getMessage();
+            }
+
+            return $result;
+        }
+        else {
+            $this->persistAndFlush($group);
+            return true;
+        }
+
+        return array();
     }
 
 }

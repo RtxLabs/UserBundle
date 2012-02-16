@@ -11,7 +11,7 @@
 
 {% include 'RtxLabsUserBundle:Group:groupListTemplate.html.twig' %}
 {% include 'RtxLabsUserBundle:Group:groupListRowTemplate.html.twig' %}
-{% include 'RtxLabsUserBundle:Group:groupEditTemplate.html.twig' %}
+{% include 'RtxLabsUserBundle:Group:groupEditTemplate.html.twig' with {'roles': roles} %}
 
 {% endblock %}
 

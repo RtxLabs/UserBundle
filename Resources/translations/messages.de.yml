@@ -25,9 +25,9 @@ rtxlabs.user.notification.user_successfully_deleted: Benutzer erfolgreich gelös
 
 rtxlabs.user.validation.firstname: Ein Vorname muß angegeben werden
 rtxlabs.user.validation.lastname: Ein Nachname muß angegeben werden
-rtxlabs.user.validation.email: Eine E-Mail-Adresse muß angegeben werden
-rtxlabs.user.validation.personnelNumber: Eine gültige Personalnummer (4 Stellen) muß angegeben werden
-rtxlabs.user.validation.username: Ein Benutzername muß angegeben werden
+rtxlabs.user.validation.email: Eine E-Mail-Adresse muß angegeben werden und eindeutig sein
+rtxlabs.user.validation.personnelNumber: Eine gültige Personalnummer (4 Stellen) muß angegeben werden und eindeutig sein
+rtxlabs.user.validation.username: Ein Benutzername muß angegeben werden und eindeutig sein
 rtxlabs.user.validation.password: Ein Passwort muß angegeben werden und mindestens 5 Zeichen lang sein
 rtxlabs.user.validation.passwordRepeat: Die Passwörter stimmen nicht überein
 
@@ -40,8 +40,7 @@ rtxlabs.user.mail.label.login: Anmeldeseite
 # --- Password resseting email
 rtxlabs.user.mail.title.request_resetting: Passwort zurücksetzen
 rtxlabs.user.mail.title.request_resetting_information: Um ein neues Passwort für SmartBusinessPlatform zu vergeben, klicken Sie bitte auf folgenden Link.
-
-
+l
 # --- Group management
 rtxlabs.user.group.header: Benutzergruppen
 rtxlabs.user.group.label.name: Name
@@ -51,3 +50,7 @@ rtxlabs.user.group.edit.header: Gruppe bearbeiten
 rtxlabs.user.group.edit.legend: Gruppeninformationen
 rtxlabs.user.group.edit.legend.accessdata: Zugeordnete Rollen
 
+rtxlabs.user.group.label.roles: Rollen
+rtxlabs.user.group.validation.name: Ein Gruppenname muss angegeben werden
+
+rtxlabs.user.group.roles.selector: Bitte Rollen auswählen

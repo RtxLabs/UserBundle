@@ -40,11 +40,15 @@ App.User.View.UserView = Backbone.View.extend({
                 }
             },
             error: function(user, response){
-                if (response.responseText !== undefined) {
+                if (response.responseText !== undefined && response.status != 406) {
                     // Server error
                     $('#notification-error-body').append(response.responseText);
                 }
                 else {
+                    if (response.responseText !== undefined) {
+                        response = JSON.parse(response.responseText);
+                    }
+
                     // Client validation error
                     $.each(response, function(key, value) {
                         $('#user-'+key+'-div').addClass('error');

@@ -4,6 +4,7 @@ namespace RtxLabs\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\Role\RoleInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * RtxLabs\UserBundle\Entity\Group
@@ -24,6 +25,7 @@ class Group
 
     /**
      * @ORM\Column(type="string", name="name", length="255")
+     * @Assert\NotBlank()
      */
     protected $name;
 

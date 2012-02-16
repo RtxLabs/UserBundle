@@ -87,9 +87,12 @@ class UserController extends RestController
     {
         $user = new User();
 
-        $this->updateUser($user, $this->getRequest());
+        $errors = $this->updateUser($user, $this->getRequest());
+        if (count($errors) > 0 ) {
+            return new Response(Dencoder::encode($errors), 406);
+        }
 
-        //$this->get('sbp.core.mailer')->sendWelcomeEmailMessage($user);
+        $this->get('sbp.core.mailer')->sendWelcomeEmailMessage($user);
 
         return new Response(Dencoder::encode($this->createDoctrineBinder()->bind($user)->execute()));
     }
@@ -106,7 +109,10 @@ class UserController extends RestController
             throw $this->createNotFoundException('Unable to find user.');
         }
 
-        $this->updateUser($user, $this->getRequest());
+        $errors = $this->updateUser($user, $this->getRequest());
+        if (count($errors) > 0) {
+            return new Response(Dencoder::encode($errors), 406);
+        }
 
         return new Response(Dencoder::encode($this->createDoctrineBinder()->bind($user)->execute()));
     }
@@ -114,12 +120,34 @@ class UserController extends RestController
 
     protected function updateUser($user, $request)
     {
+        $json = Dencoder::decode($request->getContent());
         $this->createDoctrineBinder()
-            ->bind(Dencoder::decode($request->getContent()))
-            ->field("plainPassword", $request->get('password'))
+            ->bind($json)
+            ->field("plainPassword", $json->password)
             ->to($user)
             ->execute();
 
+        $validator = $this->get('validator');
+        $errors = $validator->validate($user);
+
+        if ($json->password != $json->passwordRepeat) {
+            $errors['passwordRepeat'] = "Passwords doesn't match";
+        }
+
+        if (count($errors) > 0) {
+
+            $result = array();
+            foreach ($errors as $key=>$violation) {
+                if ($violation instanceof \Symfony\Component\Validator\ConstraintViolation) {
+                    $result[$violation->getPropertyPath()] = $violation->getMessage();
+                }
+                else {
+                    $result[$key] = $violation;
+                }
+            }
+
+            return $result;
+        }
 
         if ($user->getPlainPassword() != "sbp_unchanged_$%!//" ||
             $user->getPlainPassword() != "") {
@@ -129,5 +157,7 @@ class UserController extends RestController
         }
 
         $this->persistAndFlush($user);
+
+        return array();
     }
 }

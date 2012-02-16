@@ -8,12 +8,19 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizableInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 /**
  * RtxLabs\UserBundle\Entity\User
  *
  * @ORM\Table(name="rtxlabs_user")
  * @ORM\Entity(repositoryClass="RtxLabs\UserBundle\Entity\UserRepository")
  * @ORM\HasLifecycleCallbacks
+ *
+ * @UniqueEntity("email")
+ * @UniqueEntity("username")
+ * @UniqueEntity("personnelNumber")
  */
 class User implements UserInterface
 {
@@ -33,6 +40,8 @@ class User implements UserInterface
      * @var string $personnelNumber
      *
      * @ORM\Column(name="personnel_number", type="string", length=10, unique=true)
+     * @Assert\NotBlank()
+     * @Assert\Regex("/[0-9]{4}/")
      */
     private $personnelNumber;
 
@@ -40,6 +49,7 @@ class User implements UserInterface
      * @var string $username
      *
      * @ORM\Column(name="username", type="string", length=255, unique=true)
+     * @Assert\MinLength(limit=6)
      */
     private $username;
 
@@ -47,6 +57,7 @@ class User implements UserInterface
      * @var string $password
      *
      * @ORM\Column(name="password", type="string", length=255)
+     * @Assert\MinLength(limit=5)
      */
     private $password;
 
@@ -59,6 +70,7 @@ class User implements UserInterface
      * @var string $firstname
      *
      * @ORM\Column(name="firstname", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $firstname;
 
@@ -66,6 +78,7 @@ class User implements UserInterface
      * @var string $lastname
      *
      * @ORM\Column(name="lastname", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $lastname;
 
@@ -73,6 +86,7 @@ class User implements UserInterface
      * @var string $email
      *
      * @ORM\Column(name="email", type="string", length=255)
+     * @Assert\Email()
      */
     private $email;
 
@@ -294,6 +308,7 @@ class User implements UserInterface
     public function __construct()
     {
         $this->roles = array();
+        $this->groups = array();
         $this->salt = base_convert(sha1(uniqid(mt_rand(), true)), 16, 36);
     }
 

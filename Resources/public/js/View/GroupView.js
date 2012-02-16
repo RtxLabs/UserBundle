@@ -4,7 +4,7 @@ App.User.View.GroupView = Backbone.View.extend({
     el: $('#group-main'),
 
     events: {
-        "click #save-user": "save"
+        "click #save-group": "save"
     },
 
     initialize: function() {
@@ -19,6 +19,9 @@ App.User.View.GroupView = Backbone.View.extend({
         $(this.el).html(this.template(this.model.toJSON()));
 
         this.updateBreadcrumb();
+
+        $(".chzn-select").chosen();
+
         return this;
     },
 

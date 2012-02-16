@@ -30,8 +30,21 @@
             <div class="span8">
                 <fieldset>
                     <legend>{{ "rtxlabs.user.group.edit.legend.accessdata" | trans }}</legend>
-
-
+                    
+                    <div class="clear_fix" id="group-roles-div">
+                        <label for="group-roles">{{ 'rtxlabs.user.group.label.roles' | trans }}:</label>
+                        <div class="input">
+                            <select id="group-roles" name="group[roles]" multiple="multiple" class="span6 chzn-select" data-placeholder="{{ 'rtxlabs.user.group.roles.selector' | trans }}" size="15">
+                                {% for groupname, group in roles %}
+                                    <optgroup label="{{ ('rotex.sbp.'~groupname~'.role.groupname') | trans }}">
+                                        {% for role in group %}
+                                            <option value="{{ role }}" <%= _.indexOf(roles, '{{ role }}') != -1 ? 'selected="selected"' : '' %> >{{ ('rotex.sbp.'~groupname~'.role.'~role | lower) | trans }}</option>
+                                        {% endfor %}
+                                    </optgroup>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
                 </fieldset>
             </div>
         </div>
