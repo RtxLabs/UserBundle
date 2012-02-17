@@ -22,7 +22,13 @@ class UserController extends RestController
      */
     public function indexAction()
     {
-        return array();
+        $roleManager = $this->get('rtxlabs.user.rolemanager');
+
+        $em = $this->getDoctrine()->getEntityManager();
+        $groups = $em->getRepository('RtxLabsUserBundle:Group')->findAll();
+
+        return array('roles'=>$roleManager->getRoles(),
+                     'groups'=>$groups);
     }
 
     /**

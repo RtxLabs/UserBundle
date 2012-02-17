@@ -6,7 +6,7 @@
 
 {% include 'RtxLabsUserBundle:User:userListTemplate.html.twig' %}
 {% include 'RtxLabsUserBundle:User:userListRowTemplate.html.twig' %}
-{% include 'RtxLabsUserBundle:User:userEditTemplate.html.twig' %}
+{% include 'RtxLabsUserBundle:User:userEditTemplate.html.twig' with {'roles': roles, 'groups': groups} %}
 
 {% endblock %}
 

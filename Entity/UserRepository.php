@@ -17,12 +17,26 @@ class UserRepository extends EntityRepository
         return $this->getFindAllQuery()->getResult();
     }
 
+    public function find($id)
+    {
+        return $this->createQueryBuilder('u')
+                        ->select('u, g')
+                        ->where('u.id=:id')
+                            ->setParameter('id', $id)
+                        ->andWhere('u.deletedAt IS NULL')
+                        ->join('u.groups', 'g')
+                        ->getQuery()
+                        ->getSingleResult();
+    }
+
     public function findOneByUsername($username)
     {
         return $this->createQueryBuilder('u')
+                              ->select('u, g')
                               ->where('u.username=:username')
                                 ->setParameter('username', $username)
                               ->andWhere('u.deletedAt IS NULL')
+                              ->join('u.groups', 'g')
                               ->getQuery()
                               ->getSingleResult();
     }
@@ -30,7 +44,9 @@ class UserRepository extends EntityRepository
     public function getFindByFilterQuery(\RtxLabs\UserBundle\Model\UserFilter $filter)
     {
         $query = $this->createQueryBuilder('u')
-                              ->where('u.deletedAt IS NULL');
+                              ->select('u, g')
+                              ->where('u.deletedAt IS NULL')
+                              ->join('u.groups', 'g');
 
         if ($filter->getFirstname() != null) {
             $query = $query->andWhere('u.firstname LIKE :firstname')

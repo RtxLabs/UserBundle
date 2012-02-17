@@ -65,6 +65,38 @@
             </div>
         </div>
         <div class="row">
+            <div class="span16">
+                <fieldset>
+                    <legend>{{ "rtxlabs.user.group.edit.legend.accessdata" | trans }}</legend>
+
+                    <div class="clear_fix" id="user-roles-div">
+                        <label for="group-roles">{{ 'rtxlabs.user.label.roles' | trans }}:</label>
+                        <div class="input">
+                            <select id="group-roles" name="group[roles]" multiple="multiple" class="span6 chzn-select" data-placeholder="{{ 'rtxlabs.user.roles.selector' | trans }}" size="15">
+                                {% for groupname, group in roles %}
+                                <optgroup label="{{ ('rotex.sbp.'~groupname~'.role.groupname') | trans }}">
+                                    {% for role in group %}
+                                    <option value="{{ role }}" <%= _.indexOf(obj.roles, '{{ role }}') != -1 ? 'selected="selected"' : '' %> >{{ ('rotex.sbp.'~groupname~'.role.'~role | lower) | trans }}</option>
+                                    {% endfor %}
+                                </optgroup>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="clear_fix" id="user-group-div">
+                        <label for="user-group">{{ 'rtxlabs.user.label.groups' | trans }}:</label>
+                        <div class="input">
+                            <select id="user-group" name="group[roles]" multiple="multiple" class="span6 chzn-select" data-placeholder="{{ 'rtxlabs.user.groups.selector' | trans }}" size="15">
+                                {% for group in groups %}
+                                    <option value="{{ group.id }}" <%= _.find(obj.groups, function(group){ group.id == {{ group.id }} }) !== undefined ? 'selected="selected"' : '' %> >{{ group }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        <div class="row">
             <div class="actions">
                 <input id="save-user" type="button" class="btn small info" value="{{ "core.general.form.save" | trans }}"/>
                 &nbsp;&nbsp;

@@ -7,6 +7,14 @@ App.User.Model.User = Backbone.Model.extend({
         this.groups = new App.User.Collection.GroupCollection();
     },
 
+    hasGroup: function(id) {
+        var groups = _.find(this.groups, function(group){
+            return id == group.id;
+        });
+
+        return groups !== undefined;
+    },
+
     defaults: {
         firstname: "",
         lastname: "",
@@ -15,7 +23,8 @@ App.User.Model.User = Backbone.Model.extend({
         username: "",
         password: "",
         admin: false,
-        locale: "de"
+        locale: "de",
+        roles: []
     },
 
     validate: {

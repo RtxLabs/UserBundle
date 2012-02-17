@@ -19,6 +19,9 @@ App.User.View.UserView = Backbone.View.extend({
         $(this.el).html(this.template(this.model.toJSON()));
 
         this.updateBreadcrumb();
+
+        $(".chzn-select").chosen();
+
         return this;
     },
 
