@@ -34,21 +34,23 @@ App.User.View.GroupView = Backbone.View.extend({
         var self = this;
 
         this.model.save(this.getFormValues(), {
+            wait: true,
             success: function(group, response) {
-                $('.success').show();
-                $('.error').hide();
+                $('.alert-success').show();
+                $('.alert-error').hide();
 
                 if (self.isNew) {
                     self.collection.add(group);
                 }
             },
             error: function(group, response){
-                if (response.responseText !== undefined) {
+                if (response.responseText !== undefined && response.status != 406) {
                     // Server error
                     $('#notification-error-body').append(response.responseText);
                 }
                 else {
-                    // Client validation error
+                    response = JSON.parse(response.responseText);
+
                     $.each(response, function(key, value) {
                         $('#group-'+key+'-div').addClass('error');
                         $('#group-'+key).addClass('error');
@@ -56,8 +58,8 @@ App.User.View.GroupView = Backbone.View.extend({
                     });
                 }
 
-                $('.success').hide();
-                $('.error').show();
+                $('.alert-success').hide();
+                $('.alert-error').show();
             }
         });
     },

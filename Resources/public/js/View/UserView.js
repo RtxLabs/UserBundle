@@ -21,6 +21,8 @@ App.User.View.UserView = Backbone.View.extend({
         this.updateBreadcrumb();
 
         $(".chzn-select").chosen();
+        $('[rel=tooltip]').tooltip('hide');
+        $('[rel=tooltip]').tooltip();
 
         return this;
     },
@@ -35,8 +37,8 @@ App.User.View.UserView = Backbone.View.extend({
 
         this.model.save(this.getFormValues(), {
             success: function(user, response) {
-                $('.success').show();
-                $('.error').hide();
+                $('.alert-success').show();
+                $('.alert-error').hide();
 
                 if (self.isNew) {
                     self.collection.add(user);
@@ -48,11 +50,8 @@ App.User.View.UserView = Backbone.View.extend({
                     $('#notification-error-body').append(response.responseText);
                 }
                 else {
-                    if (response.responseText !== undefined) {
-                        response = JSON.parse(response.responseText);
-                    }
+                    response = JSON.parse(response.responseText);
 
-                    // Client validation error
                     $.each(response, function(key, value) {
                         $('#user-'+key+'-div').addClass('error');
                         $('#user-'+key).addClass('error');
@@ -60,8 +59,8 @@ App.User.View.UserView = Backbone.View.extend({
                     });
                 }
 
-                $('.success').hide();
-                $('.error').show();
+                $('.alert-success').hide();
+                $('.alert-error').show();
             }
         });
     },

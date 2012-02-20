@@ -49,6 +49,7 @@ class User implements UserInterface
      * @var string $username
      *
      * @ORM\Column(name="username", type="string", length=255, unique=true)
+     * @Assert\NotBlank()
      * @Assert\MinLength(limit=6)
      */
     private $username;
@@ -57,6 +58,7 @@ class User implements UserInterface
      * @var string $password
      *
      * @ORM\Column(name="password", type="string", length=255)
+     * @Assert\NotBlank()
      * @Assert\MinLength(limit=5)
      */
     private $password;

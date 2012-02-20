@@ -5,16 +5,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use RtxLabs\UserBundle\Entity\Group;
-use Rotex\Sbp\CoreBundle\Binder\Binder;
-use Rotex\Sbp\CoreBundle\Binder\GetMethodBinder;
+use RtxLabs\DataTransformationBundle\Binder\Binder;
+use RtxLabs\DataTransformationBundle\Binder\GetMethodBinder;
 use Rotex\Sbp\CoreBundle\Controller\RestController;
-use Rotex\Sbp\CoreBundle\Dencoder\Dencoder;
+use RtxLabs\DataTransformationBundle\Dencoder\Dencoder;
 use Symfony\Component\HttpFoundation\Response;
 
 class GroupController extends RestController
 {
     /**
-     * @Route("/usergroup/index", name="rtxlabs_userbundle_usergroup_index")
+     * @Route("/usergroup/index", name="ugma")
+     * @Route("/usergroup/index#new", name="ugcr")
      * @Template()
      */
     public function indexAction()
@@ -118,6 +119,7 @@ class GroupController extends RestController
     protected function updateGroup($group, $request)
     {
         $json = Dencoder::decode($request->getContent());
+
         $this->createDoctrineBinder()
             ->bind($json)
             ->field('roles', explode(',', $json->roles))
@@ -126,13 +128,6 @@ class GroupController extends RestController
 
         $validator = $this->get('validator');
         $errors = $validator->validate($group);
-
-        if (count($errors)) {
-
-            $errors = array_map(function($error){
-                                return $error->getMessage();
-                            }, $errors);
-        }
 
         if (count($errors) > 0) {
             $result = array();

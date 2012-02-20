@@ -16,7 +16,7 @@ App.User.View.UserListRowView = Backbone.View.extend({
     },
 
     deleteUser: function() {
-        $('.twipsy').remove();
+        $('[rel=tooltip]').tooltip('hide');
 
         if (true == confirm(ExposeTranslation.get('rtxlabs.user.delete.confirm'))) {
             this.model.destroy();
@@ -26,8 +26,7 @@ App.User.View.UserListRowView = Backbone.View.extend({
     render: function() {
         $(this.el).html(this.template(this.model.toJSON()));
 
-        // Restore Twipsy tooltips
-        this.$('[rel=tooltip]').twipsy();
+        $('[rel=tooltip]').tooltip();
 
         return this;
     }

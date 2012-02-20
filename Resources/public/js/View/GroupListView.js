@@ -14,11 +14,12 @@ App.User.View.GroupListView = Backbone.View.extend({
     },
 
     render: function() {
-        this.el.html(this.template());
+        $(this.el).html(this.template());
 
         this.collection.each(this.renderLineItem);
 
         this.updateBreadcrumb();
+        $('[rel=tooltip]').tooltip();
 
         return this;
     },

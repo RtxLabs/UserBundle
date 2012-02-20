@@ -25,32 +25,5 @@ App.User.Model.User = Backbone.Model.extend({
         admin: false,
         locale: "de",
         roles: []
-    },
-
-    validate: {
-        firstname: {
-            required: true,
-            minlength: 1
-        },
-        lastname: {
-            required: true,
-            minlength: 1
-        },
-        password: {
-            required: true,
-            minlength:5
-        },
-        username: {
-            required: true,
-            minlength: 1
-        },
-        email: {
-            required: true,
-            minlength: 1,
-            type: "email"
-        },
-        personnelNumber: {
-            pattern: /^[0-9]{4}$/
-        }
     }
 });

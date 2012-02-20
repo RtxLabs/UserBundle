@@ -8,16 +8,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use RtxLabs\UserBundle\Entity\User;
-use Rotex\Sbp\CoreBundle\Binder\Binder;
-use Rotex\Sbp\CoreBundle\Binder\GetMethodBinder;
+use RtxLabs\DataTransformationBundle\Binder\Binder;
+use RtxLabs\DataTransformationBundle\Binder\GetMethodBinder;
 use Rotex\Sbp\CoreBundle\Controller\RestController;
-use Rotex\Sbp\CoreBundle\Dencoder\Dencoder;
+use RtxLabs\DataTransformationBundle\Dencoder\Dencoder;
 use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends RestController
 {
     /**
-     * @Route("/user/index", name="rtxlabs_userbundle_user_index")
+     * @Route("/user/index", name="uma")
+     * @Route("/user/index#new", name="ucr")
      * @Template()
      */
     public function indexAction()

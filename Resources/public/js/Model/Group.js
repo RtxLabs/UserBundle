@@ -7,13 +7,5 @@ App.User.Model.Group = Backbone.Model.extend({
         name: '',
         userCount: 0,
         roles: []
-    },
-
-    validate: {
-
-        name: {
-            required: true,
-            minlength: 1
-        }
     }
 });
