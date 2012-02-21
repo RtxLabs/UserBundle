@@ -24,7 +24,7 @@ class UserRepository extends EntityRepository
                         ->where('u.id=:id')
                             ->setParameter('id', $id)
                         ->andWhere('u.deletedAt IS NULL')
-                        ->join('u.groups', 'g')
+                        ->leftJoin('u.groups', 'g')
                         ->getQuery()
                         ->getSingleResult();
     }
@@ -36,7 +36,7 @@ class UserRepository extends EntityRepository
                               ->where('u.username=:username')
                                 ->setParameter('username', $username)
                               ->andWhere('u.deletedAt IS NULL')
-                              ->join('u.groups', 'g')
+                              ->leftJoin('u.groups', 'g')
                               ->getQuery()
                               ->getSingleResult();
     }
@@ -46,7 +46,7 @@ class UserRepository extends EntityRepository
         $query = $this->createQueryBuilder('u')
                               ->select('u, g')
                               ->where('u.deletedAt IS NULL')
-                              ->join('u.groups', 'g');
+                              ->leftJoin('u.groups', 'g');
 
         if ($filter->getFirstname() != null) {
             $query = $query->andWhere('u.firstname LIKE :firstname')
@@ -74,7 +74,9 @@ class UserRepository extends EntityRepository
     public function getFindAllQuery()
     {
         return $this->createQueryBuilder('u')
+                              ->select('u, g')
                               ->where('u.deletedAt IS NULL')
+                              ->leftJoin('u.groups', 'g')
                               ->getQuery();
     }
 }

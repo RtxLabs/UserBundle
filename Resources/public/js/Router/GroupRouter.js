@@ -12,7 +12,7 @@ App.User.Router.GroupRouter = Backbone.Router.extend({
     },
 
     index: function() {
-        $('.twipsy').remove();
+        $('[rel=tooltip]').tooltip('hide');
 
         if (this.groups.length == 0) {
             var self = this;
@@ -32,13 +32,13 @@ App.User.Router.GroupRouter = Backbone.Router.extend({
     },
 
     new: function() {
-        $('.twipsy').remove();
+        $('[rel=tooltip]').tooltip('hide');
 
         this.updateEditView(new App.User.Model.Group());
     },
 
     edit: function(id) {
-        $('.twipsy').remove();
+        $('[rel=tooltip]').tooltip('hide');
 
         var group = this.groups.get(id);
         if (group === undefined) {

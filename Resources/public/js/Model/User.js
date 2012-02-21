@@ -4,7 +4,7 @@ App.User.Model.User = Backbone.Model.extend({
     urlRoot: Routing.generate("rtxlabs_userbundle_user_list"),
 
     initialize: function() {
-        this.groups = new App.User.Collection.GroupCollection();
+
     },
 
     hasGroup: function(id) {
@@ -24,6 +24,7 @@ App.User.Model.User = Backbone.Model.extend({
         password: "",
         admin: false,
         locale: "de",
-        roles: []
+        roles: [],
+        groups: []
     }
 });

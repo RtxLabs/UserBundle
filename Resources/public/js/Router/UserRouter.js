@@ -12,7 +12,7 @@ App.User.Router.UserRouter = Backbone.Router.extend({
     },
 
     index: function() {
-        $('.twipsy').remove();
+        $('[rel=tooltip]').tooltip('hide');
 
         if (this.user.length == 0) {
             this.user.fetch({
@@ -30,13 +30,13 @@ App.User.Router.UserRouter = Backbone.Router.extend({
     },
 
     new: function() {
-        $('.twipsy').remove();
+        $('[rel=tooltip]').tooltip('hide');
 
         this.updateEditView(new App.User.Model.User());
     },
 
     edit: function(id) {
-        $('.twipsy').remove();
+        $('[rel=tooltip]').tooltip('hide');
 
         var user = this.user.get(id);
         if (user === undefined) {

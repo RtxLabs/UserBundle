@@ -19,6 +19,7 @@ class UserController extends RestController
     /**
      * @Route("/user/index", name="uma")
      * @Route("/user/index#new", name="ucr")
+     * @Route("/user/index#account", name="uac")
      * @Template()
      */
     public function indexAction()
@@ -41,11 +42,12 @@ class UserController extends RestController
         $em = $this->getDoctrine()->getEntityManager();
 
         $user = $em->getRepository("RtxLabsUserBundle:User")->findAll();
-        $binder = GetMethodBinder::create()
+        $binder = $this->createDoctrineBinder()
                         ->bind($user)
                         ->field('admin', function($user) {
                             return $user->hasRole('ROLE_ADMIN');
-                        });
+                        })
+                        ->join('groups', $this->createDoctrineBinder());
 
         return new Response(Dencoder::encode($binder->execute()));
     }
@@ -62,9 +64,10 @@ class UserController extends RestController
             throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException();
         }
 
-        $binder = GetMethodBinder::create()
+        $binder = $this->createDoctrineBinder()
                     ->bind($user)
-                    ->field('admin', $user->hasRole('ROLE_ADMIN'));
+                    ->field('admin', $user->hasRole('ROLE_ADMIN'))
+                    ->join('groups', $this->createDoctrineBinder());
 
         return new Response(Dencoder::encode($binder->execute()));
     }

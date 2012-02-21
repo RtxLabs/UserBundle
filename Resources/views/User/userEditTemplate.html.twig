@@ -76,7 +76,7 @@
                                 {% for groupname, group in roles %}
                                 <optgroup label="{{ ('rotex.sbp.'~groupname~'.role.groupname') | trans }}">
                                     {% for role in group %}
-                                    <option value="{{ role }}" <%= _.indexOf(obj.roles, '{{ role }}') != -1 ? 'selected="selected"' : '' %> >{{ ('rotex.sbp.'~groupname~'.role.'~role | lower) | trans }}</option>
+                                    <option value="{{ role }}" <%= _.find(roles, function(role){ return role.name == '{{ role }}' }) !== undefined ? 'selected="selected"' : '' %> >{{ ('rotex.sbp.'~groupname~'.role.'~role | lower) | trans }}</option>
                                     {% endfor %}
                                 </optgroup>
                                 {% endfor %}
@@ -88,7 +88,7 @@
                         <div class="input">
                             <select id="user-group" name="group[roles]" multiple="multiple" class="span6 chzn-select" data-placeholder="{{ 'rtxlabs.user.groups.selector' | trans }}" size="15">
                                 {% for group in groups %}
-                                    <option value="{{ group.id }}" <%= _.find(obj.groups, function(group){ group.id == {{ group.id }} }) !== undefined ? 'selected="selected"' : '' %> >{{ group }}</option>
+                                    <option value="{{ group.id }}" <%= _.find(obj.groups, function(group){ return group.id == {{ group.id }} }) !== undefined ? 'selected="selected"' : '' %> >{{ group }}</option>
                                 {% endfor %}
                             </select>
                         </div>
