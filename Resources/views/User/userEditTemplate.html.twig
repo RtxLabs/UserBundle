@@ -62,7 +62,7 @@
                         <div class="input">
                             <select id="user-locale" class="chzn-single" name="user[locale]">
                                 {% for locale in rtx_available_locales() %}
-                                    <option value="{{ locale }}" <%= locale == "{{ locale }}" ? 'selected="selected"' : '' %> >{{ locale | rtx_locale_realname }}</option>
+                                    <option value="{{ locale }}" <%= locale == "{{ locale }}" ? 'selected="selected"' : '' %> >{{ locale | rtx_locale_realname(app.user.locale) }}</option>
                                 {% endfor %}
                             </select>
                         </div>
@@ -86,7 +86,7 @@
                                 {% for groupname, group in roles %}
                                 <optgroup label="{{ ('rotex.sbp.'~groupname~'.role.groupname') | trans }}">
                                     {% for role in group %}
-                                    <option value="{{ role }}" <%= _.find(roles, function(role){ return role.name == '{{ role }}' }) !== undefined ? 'selected="selected"' : '' %> >{{ ('rotex.sbp.'~groupname~'.role.'~role | lower) | trans }}</option>
+                                    <option value="{{ role }}" <%= _.find(roles, function(role){ return role == '{{ role }}' }) !== undefined ? 'selected="selected"' : '' %> >{{ ('rotex.sbp.'~groupname~'.role.'~role | lower) | trans }}</option>
                                     {% endfor %}
                                 </optgroup>
                                 {% endfor %}
