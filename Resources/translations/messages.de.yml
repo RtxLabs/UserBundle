@@ -7,6 +7,7 @@ rtxlabs.user.label.email: E-Mail
 rtxlabs.user.label.username: Benutzername
 rtxlabs.user.label.password: Passwort
 rtxlabs.user.label.passwordRepeat: Passwort wiederholen
+rtxlabs.user.label.locale: Sprache Benutzeroberfläche
 
 rtxlabs.user.edit.legend.accessdata: Anmeldedaten
 

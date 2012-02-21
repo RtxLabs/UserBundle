@@ -57,6 +57,16 @@
                         <label for="user-passwordRepeat">{{ 'rtxlabs.user.label.passwordRepeat' | trans }}:</label>
                         <div class="input"><input class="medium" id="user-passwordRepeat" name="user[passwordRepeat]"type="password"></div>
                     </div>
+                    <div class="control-group" id="user-locale-div">
+                        <label for="user-admin">{{ 'rtxlabs.user.label.locale' | trans }}:</label>
+                        <div class="input">
+                            <select id="user-locale" class="chzn-single" name="user[locale]">
+                                {% for locale in rtx_available_locales() %}
+                                    <option value="{{ locale }}" <%= locale == "{{ locale }}" ? 'selected="selected"' : '' %> >{{ locale | rtx_locale_realname }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
                     <div class="control-group" id="user-admin-div">
                         <label for="user-admin">{{ 'rtxlabs.user.label.administrator' | trans }}:</label>
                         <div class="input"><input class="small" id="user-admin" name="user[admin]" type="checkbox" <%= admin==true ? 'checked=checked' : '' %> ></div>

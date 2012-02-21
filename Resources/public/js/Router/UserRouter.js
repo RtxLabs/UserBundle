@@ -4,7 +4,8 @@ App.User.Router.UserRouter = Backbone.Router.extend({
     routes: {
         "": "index",
         "new": "new",
-        "edit/:id": "edit"
+        "edit/:id": "edit",
+        "account": "editAccount"
     },
 
     initialize: function() {
@@ -53,6 +54,12 @@ App.User.Router.UserRouter = Backbone.Router.extend({
         else {
             this.updateEditView(user);
         }
+    },
+
+    editAccount: function() {
+        $('[rel=tooltip]').tooltip('hide');
+
+        
     },
 
     updateEditView: function(user) {

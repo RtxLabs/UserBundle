@@ -21,6 +21,7 @@ App.User.View.UserView = Backbone.View.extend({
         this.updateBreadcrumb();
 
         $(".chzn-select").chosen();
+        $(".chzn-single").chosen();
         $('[rel=tooltip]').tooltip('hide');
         $('[rel=tooltip]').tooltip();
 
