@@ -82,7 +82,7 @@
                     <div class="control-group" id="user-roles-div">
                         <label for="group-roles">{{ 'rtxlabs.user.label.roles' | trans }}:</label>
                         <div class="input">
-                            <select id="group-roles" name="group[roles]" multiple="multiple" class="span6 chzn-select" data-placeholder="{{ 'rtxlabs.user.roles.selector' | trans }}" size="15">
+                            <select id="group-roles" name="user[roles]" multiple="multiple" class="span6 chzn-select" data-placeholder="{{ 'rtxlabs.user.roles.selector' | trans }}" size="15">
                                 {% for groupname, group in roles %}
                                 <optgroup label="{{ ('rotex.sbp.'~groupname~'.role.groupname') | trans }}">
                                     {% for role in group %}
@@ -96,7 +96,7 @@
                     <div class="control-group" id="user-group-div">
                         <label for="user-group">{{ 'rtxlabs.user.label.groups' | trans }}:</label>
                         <div class="input">
-                            <select id="user-group" name="group[roles]" multiple="multiple" class="span6 chzn-select" data-placeholder="{{ 'rtxlabs.user.groups.selector' | trans }}" size="15">
+                            <select id="user-group" name="user[groups]" multiple="multiple" class="span6 chzn-select" data-placeholder="{{ 'rtxlabs.user.groups.selector' | trans }}" size="15">
                                 {% for group in groups %}
                                     <option value="{{ group.id }}" <%= _.find(obj.groups, function(group){ return group.id == {{ group.id }} }) !== undefined ? 'selected="selected"' : '' %> >{{ group }}</option>
                                 {% endfor %}
