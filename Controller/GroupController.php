@@ -35,7 +35,7 @@ class GroupController extends RestController
 
         $groups = $em->getRepository("RtxLabsUserBundle:Group")->findAll();
 
-        $binder = GetMethodBinder::create()
+        $binder = $this->createDoctrineBinder()
                                     ->bind($groups)
                                     ->field('userCount', function($group) {
                                             return count($group->getUsers());
@@ -56,8 +56,7 @@ class GroupController extends RestController
             throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException();
         }
 
-        $binder = GetMethodBinder::create()
-                    ->bind($group);
+        $binder = $this->createDoctrineBinder()->bind($group);
 
         return new Response(Dencoder::encode($binder->execute()));
     }
