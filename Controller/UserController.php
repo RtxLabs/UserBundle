@@ -133,6 +133,7 @@ class UserController extends RestController
         $json = Dencoder::decode($request->getContent());
         $this->createDoctrineBinder()
             ->bind($json)
+            ->field("roles", explode(",", $json->roles))
             ->field("plainPassword", $json->password)
             ->to($user)
             ->execute();
