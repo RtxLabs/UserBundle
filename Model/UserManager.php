@@ -3,6 +3,7 @@
 namespace RtxLabs\UserBundle\Model;
 
 use RtxLabs\UserBundle\Entity\User;
+use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -67,13 +68,13 @@ class UserManager implements UserProviderInterface
      */
     function loadUserByUsername($username)
     {
-        $user = $this->repository->findOneByUsername($username);
+        $userArray = $this->repository->findByUsername($username);
 
-        if (null === $user) {
+        if (empty($userArray)) {
             throw new UsernameNotFoundException(sprintf('User "%s" not found.', $username));
         }
 
-        return $user;
+        return $userArray[0];
     }
 
     /**
