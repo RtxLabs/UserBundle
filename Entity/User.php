@@ -3,7 +3,6 @@
 namespace RtxLabs\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 use Symfony\Component\Serializer\Normalizer\NormalizableInterface;
 use Symfony\Component\Serializer\SerializerInterface;
@@ -20,7 +19,6 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *
  * @UniqueEntity("email")
  * @UniqueEntity("username")
- * @UniqueEntity("personnelNumber")
  */
 class User implements UserInterface
 {
@@ -35,15 +33,6 @@ class User implements UserInterface
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    /**
-     * @var string $personnelNumber
-     *
-     * @ORM\Column(name="personnel_number", type="string", length=10, unique=true)
-     * @Assert\NotBlank()
-     * @Assert\Regex("/[0-9]{4}/")
-     */
-    private $personnelNumber;
 
     /**
      * @var string $username
@@ -156,6 +145,13 @@ class User implements UserInterface
     protected $groups;
 
     /**
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="UserAttribute", mappedBy="user", cascade={"persist"})
+     */
+    protected $attributes;
+
+    /**
      * Get id
      *
      * @return integer
@@ -163,26 +159,6 @@ class User implements UserInterface
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set personnelNumber
-     *
-     * @param string $personnelNumber
-     */
-    public function setPersonnelNumber($personnelNumber)
-    {
-        $this->personnelNumber = $personnelNumber;
-    }
-
-    /**
-     * Get personnelNumber
-     *
-     * @return string
-     */
-    public function getPersonnelNumber()
-    {
-        return $this->personnelNumber;
     }
 
     /**
@@ -328,7 +304,7 @@ class User implements UserInterface
      * @param UserInterface $account
      * @return bool
      */
-    public function equals(UserInterface $account)
+    public function equals(\Symfony\Component\Security\Core\User\UserInterface $account)
     {
         if ($account->getUsername() != $this->getUsername()) {
             return false;
@@ -616,5 +592,35 @@ class User implements UserInterface
         }
 
         return $names;
+    }
+
+    /**
+     * Add groups
+     *
+     * @param RtxLabs\UserBundle\Entity\Group $groups
+     */
+    public function addGroup(\RtxLabs\UserBundle\Entity\Group $groups)
+    {
+        $this->groups[] = $groups;
+    }
+
+    /**
+     * Add attributes
+     *
+     * @param RtxLabs\UserBundle\Entity\UserAttribute $attributes
+     */
+    public function addUserAttribute(\RtxLabs\UserBundle\Entity\UserAttributeInterface $attributes)
+    {
+        $this->attributes[] = $attributes;
+    }
+
+    /**
+     * Get attributes
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getAttributes()
+    {
+        return $this->attributes;
     }
 }

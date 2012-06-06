@@ -4,7 +4,6 @@ namespace RtxLabs\UserBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use RtxLabs\UserBundle\Entity\User;
 use Doctrine\Common\Persistence\ObjectManager;
 
 class UserAdminData implements FixtureInterface, ContainerAwareInterface
@@ -18,7 +17,11 @@ class UserAdminData implements FixtureInterface, ContainerAwareInterface
 
     public function load(ObjectManager $manager)
     {
-        $userAdmin = new User();
+        $userClass = $this->container->getParameter("rtxlabs.user.class");
+
+        $userAdmin = new $userClass();
+        assert($userAdmin instanceof \RtxLabs\UserBundle\Entity\UserInterface);
+
         $userAdmin->setUsername('admin');
         $userAdmin->setLocale('de');
         $userAdmin->setPersonnelNumber('1081');

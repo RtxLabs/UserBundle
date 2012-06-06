@@ -6,13 +6,14 @@
 
     <parameters>
         <parameter key="rtxlabs.user.roles"></parameter>
+        <parameter key="rtxlabs.user.class">RtxLabs\UserBundle\Entity\User</parameter>
     </parameters>
 
     <services>
         <service id="rtxlabs.user.user_manager" class="RtxLabs\UserBundle\Model\UserManager">
             <argument type="service" id="security.encoder_factory" />
             <argument type="service" id="doctrine.orm.entity_manager" />
-            <argument>RtxLabs\UserBundle\Entity\User</argument>
+            <argument>%rtxlabs.user.class%</argument>
         </service>
 
         <service id="rtxlabs.user.rolemanager" class="RtxLabs\UserBundle\Model\RoleManager">

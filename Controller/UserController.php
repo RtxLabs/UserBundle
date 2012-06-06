@@ -2,12 +2,12 @@
 namespace RtxLabs\UserBundle\Controller;
 
 use RtxLabs\UserBundle\Form\UserFilterType;
+use RtxLabs\UserBundle\Entity\UserRepositoryInterface;
 use RtxLabs\UserBundle\Model\UserFilter;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use RtxLabs\UserBundle\Entity\User;
 use RtxLabs\DataTransformationBundle\Binder\Binder;
 use RtxLabs\DataTransformationBundle\Binder\GetMethodBinder;
 use Rotex\Sbp\CoreBundle\Controller\RestController;
@@ -41,7 +41,7 @@ class UserController extends RestController
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $user = $em->getRepository("RtxLabsUserBundle:User")->findAll();
+        $user = $this->getUserRepository()->findAll();
         $binder = $this->createDoctrineBinder()
                         ->bind($user)
                         ->field('admin', function($user) {
@@ -57,8 +57,7 @@ class UserController extends RestController
      */
     public function readAction($id)
     {
-        $em = $this->getDoctrine()->getEntityManager();
-        $user = $em->find('RtxLabsUserBundle:User', $id);
+        $user = $this->getUserRepository()->find($id);
 
         if (!$user) {
             throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException();
@@ -77,8 +76,7 @@ class UserController extends RestController
      */
     public function deleteAction($id)
     {
-        $em = $this->getDoctrine()->getEntityManager();
-        $user = $em->find('RtxLabsUserBundle:User', $id);
+        $user = $this->getUserRepository()->find($id);
 
         if (!$user) {
             throw $this->createNotFoundException();
@@ -95,7 +93,8 @@ class UserController extends RestController
      */
     public function createAction()
     {
-        $user = new User();
+        $userClass = $this->getUserClass();
+        $user = new $userClass();
 
         $errors = $this->updateUser($user, $this->getRequest());
         if (count($errors) > 0 ) {
@@ -112,8 +111,7 @@ class UserController extends RestController
      */
     public function updateAction($id)
     {
-        $em = $this->getDoctrine()->getEntityManager();
-        $user = $em->find('RtxLabsUserBundle:User', $id);
+        $user = $this->getUserRepository()->find($id);
 
         if (!$user) {
             throw $this->createNotFoundException('Unable to find user.');
@@ -170,5 +168,22 @@ class UserController extends RestController
         $this->persistAndFlush($user);
 
         return array();
+    }
+
+    /**
+     * @return \RtxLabs\UserBundle\Entity\UserRepositoryInterface
+     */
+    private function getUserRepository() {
+        $repository = $this->getDoctrine()->getRepository($this->getUserClass());
+        assert($repository instanceof UserRepositoryInterface);
+        return $repository;
+    }
+
+    /**
+     * @return \RtxLabs\UserBundle\Entity\UserInterface
+     */
+    private function getUserClass() {
+        $user = $this->container->getParameter("rtxlabs.user.class");
+        return $user;
     }
 }
