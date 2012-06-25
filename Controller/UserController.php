@@ -16,6 +16,8 @@ use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends RestController
 {
+    private static $PASSWORD_PLACEHOLDER = "sbp_unchanged_$%!//";
+
     /**
      * @Route("/user/index", name="uma")
      * @Route("/user/index#new", name="ucr")
@@ -66,6 +68,8 @@ class UserController extends RestController
         $binder = $this->createDoctrineBinder()
                     ->bind($user)
                     ->field('admin', $user->hasRole('ROLE_ADMIN'))
+                    ->field('plainPassword', self::$PASSWORD_PLACEHOLDER)
+                    ->field('passwordRepeat', self::$PASSWORD_PLACEHOLDER)
                     ->join('groups', $this->createDoctrineBinder());
 
         return new Response(Dencoder::encode($binder->execute()));
@@ -158,7 +162,7 @@ class UserController extends RestController
             return $result;
         }
 
-        if ($user->getPlainPassword() != "sbp_unchanged_$%!//" ||
+        if ($user->getPlainPassword() != self::$PASSWORD_PLACEHOLDER ||
             $user->getPlainPassword() != "") {
 
             $user_manager = $this->get('rtxlabs.user.user_manager');

@@ -617,10 +617,27 @@ class User implements UserInterface
     /**
      * Get attributes
      *
-     * @return Doctrine\Common\Collections\Collection 
+     * @return Doctrine\Common\Collections\Collection
      */
     public function getAttributes()
     {
         return $this->attributes;
+    }
+
+    /**
+     * @param boolean $required
+     * @return void
+     */
+    public function setPasswordRequired($required)
+    {
+        // TODO: Implement setPasswordRequired() method.
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPasswordRequired()
+    {
+        // TODO: Implement getPasswordRequired() method.
     }
 }

@@ -15,6 +15,7 @@ rtxlabs.user.label.administrator: Administrator
 rtxlabs.user.label.last_login: Letzter Login
 rtxlabs.user.label.edit: Benutzer bearbeiten
 rtxlabs.user.label.delete: Benutzer löschen
+rtxlabs.user.label.passwordRequired: Passworteingabe
 rtxlabs.user.label.has_admin_rights: Ist Administrator
 rtxlabs.user.validation.password.match: Passwörter müssen übereinstimmen
 rtxlabs.user.edit.header: Benutzer bearbeiten
@@ -36,6 +37,7 @@ rtxlabs.user.validation.personnelNumber: Eine gültige Personalnummer (4 Stellen
 rtxlabs.user.validation.username: Ein Benutzername muß angegeben werden und eindeutig sein
 rtxlabs.user.validation.password: Ein Passwort muß angegeben werden und mindestens 5 Zeichen lang sein
 rtxlabs.user.validation.passwordRepeat: Die Passwörter stimmen nicht überein
+rtxlabs.user.validation.passwordRequiredAndFilled: Ein Passwort muß angegeben werden
 
 # --- Welcome Email
 rtxlabs.user.mail.title.welcome: Willkommen
@@ -43,7 +45,7 @@ rtxlabs.user.mail.label.username: Benutzername
 rtxlabs.user.mail.label.password: Passwort
 rtxlabs.user.mail.label.login: Anmeldeseite
 
-# --- Password resseting email
+# --- Password resetting email
 rtxlabs.user.mail.title.request_resetting: Passwort zurücksetzen
 rtxlabs.user.mail.title.request_resetting_information: Um ein neues Passwort für SmartBusinessPlatform zu vergeben, klicken Sie bitte auf folgenden Link.
 
