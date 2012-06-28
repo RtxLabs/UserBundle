@@ -1,14 +1,3 @@
-{% extends "RotexSbpCoreBundle::base.html.twig" %}
+{% extends "RotexSbpCoreBundle::backbone.html.twig" %}
 
-{% block javascripts %}
-    {{ parent() }}
-
-    {% javascripts
-                '@RtxLabsBackboneBundle/Resources/public/js/json2.js'
-                '@RtxLabsBackboneBundle/Resources/public/js/underscore.js'
-                '@RtxLabsBackboneBundle/Resources/public/js/backbone.js'
-    %}
-        <script src="{{ asset_url }}"></script>
-    {% endjavascripts %}
-{% endblock %}
 

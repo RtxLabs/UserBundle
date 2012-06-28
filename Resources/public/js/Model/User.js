@@ -23,6 +23,8 @@ App.User.Model.User = Backbone.Model.extend({
         username: "",
         passwordRequired: true,
         password: "",
+        plainPassword: "",
+        passwordRepeat: "",
         admin: false,
         locale: "de",
         roles: [],

@@ -3,7 +3,7 @@ Core.ns("App.User.Router");
 App.User.Router.UserRouter = Backbone.Router.extend({
     routes: {
         "": "index",
-        "new": "new",
+        "create": "create",
         "edit/:id": "edit",
         "account": "editAccount"
     },
@@ -30,7 +30,7 @@ App.User.Router.UserRouter = Backbone.Router.extend({
         }
     },
 
-    new: function() {
+    create: function() {
         $('[rel=tooltip]').tooltip('hide');
 
         this.updateEditView(new App.User.Model.User());
@@ -59,7 +59,7 @@ App.User.Router.UserRouter = Backbone.Router.extend({
     editAccount: function() {
         $('[rel=tooltip]').tooltip('hide');
 
-        
+        new App.User.View.MyAccountView();
     },
 
     updateEditView: function(user) {

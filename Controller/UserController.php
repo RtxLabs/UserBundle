@@ -20,7 +20,7 @@ class UserController extends RestController
 
     /**
      * @Route("/user/index", name="uma")
-     * @Route("/user/index#new", name="ucr")
+     * @Route("/user/index#create", name="ucr")
      * @Route("/user/index#account", name="uac")
      * @Template()
      */
@@ -44,14 +44,10 @@ class UserController extends RestController
         $em = $this->getDoctrine()->getEntityManager();
 
         $user = $this->getUserRepository()->findAll();
-        $binder = $this->createDoctrineBinder()
-                        ->bind($user)
-                        ->field('admin', function($user) {
-                            return $user->hasRole('ROLE_ADMIN');
-                        })
-                        ->join('groups', $this->createDoctrineBinder());
+        $userArray = $this->createUserBinder()->bind($user)->execute();
+        $json = Dencoder::encode($userArray);
 
-        return new Response(Dencoder::encode($binder->execute()));
+        return new Response($json);
     }
 
     /**
@@ -65,14 +61,10 @@ class UserController extends RestController
             throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException();
         }
 
-        $binder = $this->createDoctrineBinder()
-                    ->bind($user)
-                    ->field('admin', $user->hasRole('ROLE_ADMIN'))
-                    ->field('plainPassword', self::$PASSWORD_PLACEHOLDER)
-                    ->field('passwordRepeat', self::$PASSWORD_PLACEHOLDER)
-                    ->join('groups', $this->createDoctrineBinder());
+        $userArray = $this->createUserBinder()->bind($user)->execute();
+        $json = Dencoder::encode($userArray);
 
-        return new Response(Dencoder::encode($binder->execute()));
+        return new Response($json);
     }
 
     /**
@@ -107,7 +99,10 @@ class UserController extends RestController
 
         $this->get('sbp.core.mailer')->sendWelcomeEmailMessage($user);
 
-        return new Response(Dencoder::encode($this->createDoctrineBinder()->bind($user)->execute()));
+        $userArray = $this->createUserBinder()->bind($user)->execute();
+        $json = Dencoder::encode($userArray);
+
+        return new Response($json);
     }
 
     /**
@@ -126,29 +121,34 @@ class UserController extends RestController
             return new Response(Dencoder::encode($errors), 406);
         }
 
-        return new Response(Dencoder::encode($this->createDoctrineBinder()->bind($user)->execute()));
+        $userArray = $this->createDoctrineBinder()->bind($user)->execute();
+        $json = Dencoder::encode($userArray);
+
+        return new Response($json);
     }
 
 
     protected function updateUser($user, $request)
     {
         $json = Dencoder::decode($request->getContent());
-        $this->createDoctrineBinder()
+        $binder = $this->createDoctrineBinder()
             ->bind($json)
-            ->field("roles", explode(",", $json->roles))
             ->field("plainPassword", $json->password)
-            ->to($user)
-            ->execute();
+            ->to($user);
+
+        if ($this->getCurrentUser()->isAdmin()) {
+            $binder->field("roles", explode(",", $json->roles));
+        }
+        else {
+            $binder->except("roles");
+        }
+
+        $binder->execute();
 
         $validator = $this->get('validator');
         $errors = $validator->validate($user);
 
-        if ($json->password != $json->passwordRepeat) {
-            $errors['passwordRepeat'] = "Passwords doesn't match";
-        }
-
         if (count($errors) > 0) {
-
             $result = array();
             foreach ($errors as $key=>$violation) {
                 if ($violation instanceof \Symfony\Component\Validator\ConstraintViolation) {
@@ -177,7 +177,8 @@ class UserController extends RestController
     /**
      * @return \RtxLabs\UserBundle\Entity\UserRepositoryInterface
      */
-    private function getUserRepository() {
+    private function getUserRepository()
+    {
         $repository = $this->getDoctrine()->getRepository($this->getUserClass());
         assert($repository instanceof UserRepositoryInterface);
         return $repository;
@@ -189,5 +190,17 @@ class UserController extends RestController
     private function getUserClass() {
         $user = $this->container->getParameter("rtxlabs.user.class");
         return $user;
+    }
+
+    private function createUserBinder()
+    {
+        $binder = $this->createDoctrineBinder()
+            ->field('admin', function($user) { return $user->hasRole('ROLE_ADMIN'); })
+            ->field('plainPassword', self::$PASSWORD_PLACEHOLDER)
+            ->field('passwordRepeat', self::$PASSWORD_PLACEHOLDER)
+            ->except("password")
+            ->join('groups', $this->createDoctrineBinder());
+
+        return $binder;
     }
 }
