@@ -24,7 +24,6 @@ class UserAdminData implements FixtureInterface, ContainerAwareInterface
 
         $userAdmin->setUsername('admin');
         $userAdmin->setLocale('de');
-        $userAdmin->setPersonnelNumber('1081');
         $userAdmin->setEmail('demo@demo.de');
         $userAdmin->setLastName('Admin');
         $userAdmin->setFirstName('Admin');

@@ -4,7 +4,8 @@ App.User.View.UserView = Backbone.View.extend({
     el: $('#user-main'),
 
     events: {
-        "click #save-user": "save"
+        "click #save-user": "handleSave",
+        "click #user-passwordRequired": "handlePasswordRequiredChange"
     },
 
     initialize: function() {
@@ -25,10 +26,16 @@ App.User.View.UserView = Backbone.View.extend({
         $('[rel=tooltip]').tooltip('hide');
         $('[rel=tooltip]').tooltip();
 
+        this.updatePasswordFieldVisibility();
+
         return this;
     },
 
-    save: function() {
+    handlePasswordRequiredChange: function() {
+        this.updatePasswordFieldVisibility();
+    },
+
+    handleSave: function() {
         $('form:input').removeClass('error');
         $('form div').removeClass('error');
         $('#notification-error-body').html('');
@@ -83,7 +90,23 @@ App.User.View.UserView = Backbone.View.extend({
             values.set(objInst);
         });
 
+        values.attributes.passwordRequired = $("#user-passwordRequired").attr('checked') == 'checked';
+        values.attributes.admin = $("#user-admin").attr('checked') == 'checked';
+
         return values.attributes;
+    },
+
+    updatePasswordFieldVisibility: function() {
+        var passwordRequired = $('#user-passwordRequired').attr('checked') == 'checked';
+
+        if (passwordRequired) {
+            $('#user-password-div').show();
+            $('#user-passwordRepeat-div').show();
+        }
+        else {
+            $('#user-password-div').hide();
+            $('#user-passwordRepeat-div').hide();
+        }
     },
 
     updateBreadcrumb: function() {

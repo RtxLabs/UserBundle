@@ -61,6 +61,19 @@ interface UserInterface extends \Symfony\Component\Security\Core\User\UserInterf
     public function getEmail();
 
     /**
+     * @abstract
+     * @param boolean $required
+     * @return void
+     */
+    public function setPasswordRequired($required);
+
+    /**
+     * @abstract
+     * @return mixed
+     */
+    public function getPasswordRequired();
+
+    /**
      * Set roles
      *
      * @param array $roles

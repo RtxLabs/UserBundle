@@ -1,0 +1,72 @@
+<script type="text/template" id="myaccount-template">
+    <div class="page-header">
+        <h2>{{ "rtxlabs.user.myaccount.header" | trans }}</h2>
+    </div>
+
+    <form class="well">
+        <div class="row">
+            <div class="span6">
+                <fieldset>
+                    <legend>{{ 'rtxlabs.user.edit.legend' | trans }}</legend>
+                    <div class="control-group">
+                        <label for="myaccount-firstname">{{ 'rtxlabs.user.label.firstname' | trans }}</label>
+                        <div class="input">
+                            <input id="myaccount-firstname" class="medium" type="text" value="<%= firstname %>">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="myaccount-lastname">{{ 'rtxlabs.user.label.lastname' | trans }}</label>
+                        <div class="input">
+                            <input id="myaccount-lastname" class="medium" type="text" value="<%= lastname %>">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="myaccount-email">{{ 'rtxlabs.user.label.email' | trans }}</label>
+                        <div class="input">
+                            <input id="myaccount-email" class="medium" type="text" value="<%= email %>">
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="span5">
+                <fieldset>
+                    <legend>{{ 'rtxlabs.user.edit.legend.accessdata' | trans }}</legend>
+                    <div class="control-group">
+                        <label for="myaccount-plainPassword">{{ 'rtxlabs.user.label.password' | trans }}</label>
+                        <div class="input">
+                            <input id="myaccount-plainPassword" class="medium" type="password"
+                                   value="<%= plainPassword %>" <%= passwordRequired==false ? 'disabled=disabled' : '' %>>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="myaccount-passwordRepeat">{{ 'rtxlabs.user.label.passwordRepeat' | trans }}</label>
+                        <div class="input">
+                            <input id="myaccount-passwordRepeat" class="medium" type="password"
+                                   value="<%= passwordRepeat %>" <%= passwordRequired==false ? 'disabled=disabled' : '' %>>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="myaccount-locale">{{ 'rtxlabs.user.label.locale' | trans }}</label>
+                        <div class="input">
+                            <select id="myaccount-locale" class="chzn-single">
+                                {% for locale in rtx_available_locales() %}
+                                    <option value="{{ locale }}" <%= locale == "{{ locale }}" ? 'selected="selected"' : '' %> >
+                                        {{ locale | rtx_locale_realname(app.user.locale) }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </form>
+
+    <div class="row">
+        <div class="form-actions">
+            <button id="myaccount-save-btn" type="button" class="btn btn-primary">
+                {{ 'core.general.form.save' | trans }}
+            </button>
+        </div>
+    </div>
+</script>

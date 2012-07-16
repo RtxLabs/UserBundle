@@ -49,13 +49,23 @@
                         <label for="user-username">{{ 'rtxlabs.user.label.username' | trans }}:</label>
                         <div class="input"><input class="medium" id="user-username" name="user[username]" type="text" value="<%= username %>"></div>
                     </div>
+                    <div class="control-group" id="password-required-div">
+                        <label for="user-passwordRequired">{{ 'rtxlabs.user.label.passwordRequired' | trans }}:</label>
+                        <div class="input"><input id="user-passwordRequired" type="checkbox" name="user[passwordRequired]" <%= passwordRequired==true ? 'checked=checked' : '' %>/></div>
+                    </div>
                     <div class="control-group" id="user-password-div">
                         <label for="user-password">{{ 'rtxlabs.user.label.password' | trans }}:</label>
-                        <div class="input"><input class="medium" id="user-password" name="user[password]" type="password"></div>
+                        <div class="input">
+                            <input class="medium" id="user-password" name="user[password]" type="password"
+                                   value="<%= plainPassword %>">
+                        </div>
                     </div>
                     <div class="control-group" id="user-passwordRepeat-div">
                         <label for="user-passwordRepeat">{{ 'rtxlabs.user.label.passwordRepeat' | trans }}:</label>
-                        <div class="input"><input class="medium" id="user-passwordRepeat" name="user[passwordRepeat]"type="password"></div>
+                        <div class="input">
+                            <input class="medium" id="user-passwordRepeat" name="user[passwordRepeat]"
+                                   type="password" value="<%= passwordRepeat %>">
+                        </div>
                     </div>
                     <div class="control-group" id="user-locale-div">
                         <label for="user-admin">{{ 'rtxlabs.user.label.locale' | trans }}:</label>
