@@ -54,9 +54,10 @@ App.User.View.MyAccountView = App.Core.View.View.extend({
             roles: this.model.get('roles').join(',')
         }, {
             success: function(user, response) {
-                self.showAlert("alert-success",
+                self.showNotification(
                     ExposeTranslation.get("core.general.notification.success.header"),
-                    ExposeTranslation.get("core.general.notification.save.success"));
+                    ExposeTranslation.get("core.general.notification.save.success"),
+                    "success");
 
                 $('#myaccount-save-btn').removeAttr('disabled');
             },

@@ -121,7 +121,7 @@ class GroupController extends RestController
 
         $this->createDoctrineBinder()
             ->bind($json)
-            ->field('roles', explode(',', $json->roles))
+            ->field('roles', explode(',', $json["roles"]))
             ->to($group)
             ->execute();
 

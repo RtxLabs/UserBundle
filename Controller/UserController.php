@@ -133,11 +133,11 @@ class UserController extends RestController
         $json = Dencoder::decode($request->getContent());
         $binder = $this->createDoctrineBinder()
             ->bind($json)
-            ->field("plainPassword", $json->password)
+            ->field("plainPassword", $json["password"])
             ->to($user);
 
         if ($this->getCurrentUser()->isAdmin()) {
-            $binder->field("roles", explode(",", $json->roles));
+            $binder->field("roles", explode(",", $json["roles"]));
         }
         else {
             $binder->except("roles");
