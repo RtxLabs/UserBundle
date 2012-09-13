@@ -15,7 +15,7 @@ class GroupController extends RestController
 {
     /**
      * @Route("/usergroup/index", name="ugma")
-     * @Route("/usergroup/index#new", name="ugcr")
+     * @Route("/usergroup/index#create", name="ugcr")
      * @Template()
      */
     public function indexAction()
