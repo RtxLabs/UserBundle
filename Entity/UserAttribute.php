@@ -36,8 +36,8 @@ class UserAttribute implements UserAttributeInterface
     private $value;
 
     /**
-     * @var Rotex\Sbp\SecurityBundle\Entity\User
-     * @ORM\ManyToOne(targetEntity="Rotex\Sbp\SecurityBundle\Entity\User")
+     * @var User
+     * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
