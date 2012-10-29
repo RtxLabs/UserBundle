@@ -34,6 +34,38 @@ class UserManager implements UserProviderInterface
     }
 
     /**
+     * Generates the registration token if it is not set.
+     */
+    public function generateRegistrationToken(\RtxLabs\UserBundle\Entity\UserInterface $user)
+    {
+        $user->setRegistrationToken($this->generateToken());
+    }
+
+    /**
+     * Finds a user either by confirmation token
+     *
+     * @param string $token
+     *
+     * @return UserInterface
+     */
+    public function findUserByRegistrationToken($token)
+    {
+        return $this->repository->findOneByRegistrationToken($token);
+    }
+
+    /**
+     * Finds a user either by confirmation token
+     *
+     * @param string $token
+     *
+     * @return UserInterface
+     */
+    public function findUserByConfirmationToken($token)
+    {
+        return $this->repository->findOneByConfirmationToken($token);
+    }
+    
+    /**
      * Generates a token.
      */
     public function generateToken()
@@ -122,7 +154,7 @@ class UserManager implements UserProviderInterface
 
     function saveUser(UserInterface $user) {
         $this->em->persist($user);
-//        $this->em->flush();
+        $this->em->flush();
     }
 
     protected function getEncoder(\RtxLabs\UserBundle\Entity\UserInterface $user)

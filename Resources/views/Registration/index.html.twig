@@ -1,0 +1,62 @@
+{% extends "RotexSbpCoreBundle::backbone.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    {% stylesheets
+        '@RtxLabsUserBundle/Resources/public/css/user.css'
+    %}
+
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block main %}
+<div id="registration-main" class="full-block clearfix">
+</div>
+
+{% include 'RtxLabsUserBundle:Registration:registrationTemplate.html.twig' %}
+{% include 'RtxLabsUserBundle:Registration:confirmedTemplate.html.twig' %}
+
+{% endblock %}
+
+{% block navigation %}
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand" href="#">SmartBusinessPlatform</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+{% javascripts
+    '@RotexSbpCoreBundle/Resources/public/js/md5.js'
+    '@RotexSbpCoreBundle/Resources/public/js/core_gravatar.js'
+%}
+    <script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+
+{% javascripts
+    '@RtxLabsUserBundle/Resources/public/js/Application.js'
+
+    '@RtxLabsUserBundle/Resources/public/js/Model/User.js'
+
+    '@RtxLabsUserBundle/Resources/public/js/Collection/UserCollection.js'
+
+    '@RtxLabsUserBundle/Resources/public/js/View/RegistrationView.js'
+    '@RtxLabsUserBundle/Resources/public/js/View/ConfirmedView.js'
+
+    '@RtxLabsUserBundle/Resources/public/js/Router/RegistrationRouter.js'
+%}
+    <script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+
+<script type="text/javascript">
+    App.User.initRegistrationModule();
+</script>
+{% endblock %}
+

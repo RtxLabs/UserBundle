@@ -23,6 +23,15 @@ rtxlabs.user.edit.legend: Benutzerinformationen
 rtxlabs.user.delete.confirm: Benutzer wirklich löschen?
 rtxlabs.user.myaccount.header: Mein Account
 
+rtxlabs.user.registration.header: Benutzerregistrierung
+rtxlabs.user.registration.save: Registrierung abschicken
+rtxlabs.user.registration.success: Registrierung erfolgreich
+rtxlabs.user.registration.confirmed: |
+  Ihre Registrierungsbestätigung war erfolgreich.
+rtxlabs.user.registration.rediret: |
+  Sie werden in Kürze weitergeleitet. Falls nicht,
+rtxlabs.user.registration.rediret.link: klicken sie bitte hier.
+
 rtxlabs.user.label.groups: Gruppen
 rtxlabs.user.label.roles: Rollen
 rtxlabs.user.roles.selector: Bitte Rolle(n) auswählen
@@ -45,6 +54,21 @@ rtxlabs.user.mail.title.welcome: Willkommen
 rtxlabs.user.mail.label.username: Benutzername
 rtxlabs.user.mail.label.password: Passwort
 rtxlabs.user.mail.label.login: Anmeldeseite
+
+# --- Registration Email
+rtxlabs.user.mail.registration.title: Vielen Dank für Ihre Registrierung
+rtxlabs.user.mail.salutation: Sehr geehrter Geschäftspartner,  
+rtxlabs.user.mail.registration.body: um die Registrierung abzuschließen klicken Sie bitte auf folgenden Link
+rtxlabs.user.mail.registration.link: Registrierung abschließen
+rtxlabs.user.mail.label.information: Nachfolgend Ihre eingegebenen Daten
+rtxlabs.user.mail.label.firstname: Vorname
+rtxlabs.user.mail.label.lastname: Nachname
+rtxlabs.user.mail.label.email: eMail
+rtxlabs.user.mail.footer: |
+  Mit freundlichen Grüßen,
+  
+  ROTEX
+  Heating Systems GmbH
 
 # --- Password resetting email
 rtxlabs.user.mail.title.request_resetting: Passwort zurücksetzen
