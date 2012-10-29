@@ -31,7 +31,6 @@ App.User.View.RegistrationView = Backbone.View.extend({
             },
             error: function(user, response){
                 if (response.responseText !== undefined && response.status != 406) {
-                    // Server error
                     $('#notification-error-body').append(response.responseText);
                 }
                 else {
@@ -43,7 +42,6 @@ App.User.View.RegistrationView = Backbone.View.extend({
                         $('#notification-error-body').append(ExposeTranslation.get('rtxlabs.user.validation.'+key)+'<br/>');
                     });
                 }
-
                 $('.alert-success').hide();
                 $('.alert-error').show();
             }

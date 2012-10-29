@@ -23,7 +23,7 @@ rtxlabs.user.edit.legend: Benutzerinformationen
 rtxlabs.user.delete.confirm: Benutzer wirklich löschen?
 rtxlabs.user.myaccount.header: Mein Account
 
-rtxlabs.user.registration.header: Benutzerregistrierung
+rtxlabs.user.registration.header: Registrierung
 rtxlabs.user.registration.save: Registrierung abschicken
 rtxlabs.user.registration.success: Registrierung erfolgreich
 rtxlabs.user.registration.confirmed: |

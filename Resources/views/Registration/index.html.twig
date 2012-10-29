@@ -33,6 +33,13 @@
 {% block javascripts %}
     {{ parent() }}
 
+    <script type="text/javascript">
+        function redirectOnConfirm() {
+            setTimeout(function() {
+                window.location.href = '{{ path('uac') }}';
+            }, 10000);
+        }
+    </script>
 {% javascripts
     '@RotexSbpCoreBundle/Resources/public/js/md5.js'
     '@RotexSbpCoreBundle/Resources/public/js/core_gravatar.js'

@@ -58,6 +58,9 @@
                         <label for="registration-admin">{{ 'rtxlabs.user.label.locale' | trans }}:</label>
                         <div class="input">
                             <select id="registration-locale" class="chzn-single" name="registration[locale]">
+                                {% for locale in rtx_available_locales() %}
+                                    <option value="{{ locale }}">{{ locale | rtx_locale_realname(locale) }}</option>
+                                {% endfor %}
                             </select>
                         </div>
                     </div>
