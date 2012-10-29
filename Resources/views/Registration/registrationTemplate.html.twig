@@ -1,0 +1,76 @@
+<script type="text/template" id="registration-template">
+    <div class="page-header">
+        <h2>{{ "rtxlabs.user.registration.header" | trans }}</h2>
+    </div>
+    <div class="alert alert-success"  style="display: none;">
+        <p>
+            <strong>{{ "core.general.notification.success.header" | trans }}</strong>
+            {{ "rtxlabs.user.notification.user_successfully_saved" | trans }}
+        </p>
+    </div>
+    <div class="alert alert-error" style="display: none;">
+        <p>
+            <strong>{{ "core.general.notification.error.header" | trans }}</strong>
+            <p id="notification-error-body">
+            </p>
+        </p>
+    </div>
+
+    <form class="well">
+        <div class="row">
+            <div class="span6">
+                <fieldset>
+                    <legend>{{ "rtxlabs.user.edit.legend.accessdata" | trans }}</legend>
+                    <div class="control-group" id="registration-username-div">
+                        <label for="registration-username">{{ 'rtxlabs.user.label.username' | trans }}:</label>
+                        <div class="input"><input class="medium" id="registration-username" name="registration[username]" type="text" value=""></div>
+                    </div>
+                    <div class="control-group" id="registration-password-div">
+                        <label for="registration-password">{{ 'rtxlabs.user.label.password' | trans }}:</label>
+                        <div class="input">
+                            <input class="medium" id="registration-password" name="registration[password]" type="password"  value="">
+                        </div>
+                    </div>
+                    <div class="control-group" id="registration-passwordRepeat-div">
+                        <label for="registration-passwordRepeat">{{ 'rtxlabs.user.label.passwordRepeat' | trans }}:</label>
+                        <div class="input">
+                            <input class="medium" id="registration-passwordRepeat" name="registration[passwordRepeat]" type="password" value="">
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="span6">
+                <fieldset>
+                    <legend>{{ "rtxlabs.user.edit.legend" | trans }}</legend>
+                    <div class="control-group" id="registration-firstname-div">
+                        <label for="registration-firstname">{{ 'rtxlabs.user.label.firstname' | trans }}:</label>
+                        <div class="input"><input class="medium" id="registration-firstname" name="registration[firstname]" type="text" value=""></div>
+                    </div>
+                    <div class="control-group" id="registration-lastname-div">
+                        <label for="registration-lastname">{{ 'rtxlabs.user.label.lastname' | trans }}:</label>
+                        <div class="input"><input class="medium" id="registration-lastname" name="registration[lastname]" type="text" value=""></div>
+                    </div>
+                    <div class="control-group" id="registration-email-div">
+                        <label for="registration-email">{{ 'rtxlabs.user.label.email' | trans }}:</label>
+                        <div class="input"><input class="large" id="registration-email" name="registration[email]" type="text" value=""></div>
+                    </div>
+                    <div class="control-group" id="registration-locale-div">
+                        <label for="registration-admin">{{ 'rtxlabs.user.label.locale' | trans }}:</label>
+                        <div class="input">
+                            <select id="registration-locale" class="chzn-single" name="registration[locale]">
+                                {% for locale in rtx_available_locales() %}
+                                    <option value="{{ locale }}">{{ locale | rtx_locale_realname(locale) }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-actions">
+                <button id="save-registration" type="button" class="btn small btn-info">{{ "rtxlabs.user.registration.save" | trans }}</button>
+            </div>
+        </div>
+    </form>
+</script>

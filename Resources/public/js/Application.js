@@ -9,5 +9,10 @@ App.User = {
     initGroupModule: function() {
         this.router = new App.User.Router.GroupRouter();
         Backbone.history.start();
+    },
+
+    initRegistrationModule: function() {
+        this.router = new App.User.Router.RegistrationRouter();
+        Backbone.history.start();
     }
 };

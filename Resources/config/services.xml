@@ -20,6 +20,17 @@
             <argument>%rtxlabs.user.roles%</argument>
         </service>
 
+        <service id="rtxlabs.user.mailer" class="RtxLabs\UserBundle\Mailer\Mailer" >
+            <argument type="service" id="router" />
+            <argument type="service" id="mailer" />
+            <argument type="service" id="templating" />
+            <argument type="collection">
+                <argument type="string" key="welcome.template">RtxLabsUserBundle:Mail:welcome</argument>
+                <argument type="string" key="resetting.template">RtxLabsUserBundle:Mail:resetting</argument>
+                <argument type="string" key="registration.template">RtxLabsUserBundle:Mail:registration</argument>
+            </argument>
+        </service>
+
         <service id="rtxlabs.user.login_success" class="RtxLabs\UserBundle\Handler\LoginHandler">
             <argument type="service" id="doctrine.orm.entity_manager" />
         </service>

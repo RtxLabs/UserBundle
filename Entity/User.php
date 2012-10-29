@@ -77,6 +77,7 @@ class User implements UserInterface
      * @var string $email
      *
      * @ORM\Column(name="email", type="string", length=255)
+     * @Assert\NotBlank()
      * @Assert\Email()
      */
     private $email;
@@ -130,10 +131,24 @@ class User implements UserInterface
      * Random string sent to the user email address in order to verify it
      *
      * @var string
-     * @ORM\Column(name="confirmation_token", type="string", length="255", nullable=true)
+     * @ORM\Column(name="password_token", type="string", length="255", nullable=true)
      */
-    protected $confirmationToken;
+    protected $passwordToken;
 
+    /**
+     * Random string sent to the user email address in order to enable a new account
+     *
+     * @var string
+     * @ORM\Column(name="registration_token", type="string", length="255", nullable=true)
+     */
+    protected $registrationToken;
+
+    /**
+     * @var boolean
+     * @ORM\Column(name="active", type="boolean", nullable=false)
+     */
+    protected $active = false;
+    
     /**
      *
      * @ORM\ManyToMany(targetEntity="Group", inversedBy="users")
@@ -509,23 +524,43 @@ class User implements UserInterface
     }
 
     /**
-     * Set confirmationToken
+     * Set passwordToken
      *
-     * @param string $confirmationToken
+     * @param string $passwordToken
      */
-    public function setConfirmationToken($confirmationToken)
+    public function setPasswordToken($passwordToken)
     {
-        $this->confirmationToken = $confirmationToken;
+        $this->passwordToken = $passwordToken;
     }
 
     /**
-     * Get confirmationToken
+     * Get passwordToken
      *
      * @return string
      */
-    public function getConfirmationToken()
+    public function getPasswordToken()
     {
-        return $this->confirmationToken;
+        return $this->passwordToken;
+    }
+
+    /**
+     * Set registrationToken
+     *
+     * @param string $registrationToken
+     */
+    public function setRegistrationToken($registrationToken)
+    {
+        $this->registrationToken = $registrationToken;
+    }
+
+    /**
+     * Get registrationToken
+     *
+     * @return string
+     */
+    public function getRegistrationToken()
+    {
+        return $this->registrationToken;
     }
 
     public function getPlainPassword()
@@ -639,5 +674,43 @@ class User implements UserInterface
     public function getPasswordRequired()
     {
         // TODO: Implement getPasswordRequired() method.
+    }
+
+    /**
+     * Set active
+     * 
+     * @param boolean $active
+     */
+    public function setActive($active)
+    {
+        $this->active = (Boolean) $active;
+    }
+    
+    /**
+     * @return boolean
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+    
+    public function isAccountNonExpired()
+    {
+        return ($this->deletedAt === null);
+    }
+
+    public function isEnabled() 
+    {
+        return $this->active;
+    }
+
+    public function isAccountNonLocked()
+    {
+        return true;
+    }
+
+    public function isCredentialsNonExpired()
+    {
+        return true;
     }
 }

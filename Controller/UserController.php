@@ -97,7 +97,7 @@ class UserController extends RestController
             return new Response(Dencoder::encode($errors), 406);
         }
 
-        $this->get('sbp.core.mailer')->sendWelcomeEmailMessage($user);
+        $this->get('rtxlabs.user.mailer')->sendWelcomeEmailMessage($user);
 
         $userArray = $this->createUserBinder()->bind($user)->execute();
         $json = Dencoder::encode($userArray);
