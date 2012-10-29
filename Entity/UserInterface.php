@@ -2,7 +2,7 @@
 
 namespace RtxLabs\UserBundle\Entity;
 
-interface UserInterface extends \Symfony\Component\Security\Core\User\UserInterface
+interface UserInterface extends \Symfony\Component\Security\Core\User\AdvancedUserInterface
 {
     /**
      * Set username
@@ -206,18 +206,32 @@ interface UserInterface extends \Symfony\Component\Security\Core\User\UserInterf
     public function getGroupNames();
 
     /**
-     * Set confirmationToken
+     * Set passwordToken
      *
-     * @param string $confirmationToken
+     * @param string $passwordToken
      */
-    public function setConfirmationToken($confirmationToken);
+    public function setPasswordToken($passwordToken);
 
     /**
-     * Get confirmationToken
+     * Get passwordToken
      *
      * @return string
      */
-    public function getConfirmationToken();
+    public function getPasswordToken();
+
+    /**
+     * Get registrationToken
+     *
+     * @return string
+     */
+    public function getRegistrationToken();
+    
+    /**
+     * Set registrationToken
+     *
+     * @param string $registrationToken
+     */
+    public function setRegistrationToken($registrationToken);
 
     public function getPlainPassword();
 
@@ -226,4 +240,12 @@ interface UserInterface extends \Symfony\Component\Security\Core\User\UserInterf
     public function addUserAttribute(UserAttributeInterface $attributes);
 
     public function getAttributes();
+    
+    public function isAccountNonExpired();
+
+    public function isAccountNonLocked();
+
+    public function isCredentialsNonExpired();
+
+    public function isEnabled();
 }
