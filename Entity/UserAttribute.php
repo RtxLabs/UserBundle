@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="rtxlabs_user_attribute")
  * @ORM\Entity(repositoryClass="RtxLabs\UserBundle\Entity\UserAttributeRepository")
  */
-class UserAttribute implements UserAttributeInterface
+class UserAttribute implements \RtxLabs\UserBundle\Model\UserAttributeInterface
 {
     /**
      * @var integer $id

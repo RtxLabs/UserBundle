@@ -12,7 +12,7 @@ interface GroupManagerInterface
 
     /**
      * @abstract
-     * @return \RtxLabs\UserBundle\Entity\GroupInterface
+     * @return \RtxLabs\UserBundle\Model\GroupInterface
      */
     function createGroup();
 }

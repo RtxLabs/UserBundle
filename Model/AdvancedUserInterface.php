@@ -1,8 +1,8 @@
 <?php
 
-namespace RtxLabs\UserBundle\Entity;
+namespace RtxLabs\UserBundle\Model;
 
-interface UserInterface extends \Symfony\Component\Security\Core\User\AdvancedUserInterface
+interface AdvancedUserInterface extends \Symfony\Component\Security\Core\User\AdvancedUserInterface
 {
     /**
      * Set username

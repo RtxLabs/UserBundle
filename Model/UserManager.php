@@ -28,7 +28,7 @@ class UserManager implements UserProviderInterface
     /**
      * Generates the confirmation token if it is not set.
      */
-    public function generateConfirmationToken(\RtxLabs\UserBundle\Entity\UserInterface $user)
+    public function generateConfirmationToken(\RtxLabs\UserBundle\Entity\User $user)
     {
         $user->setConfirmationToken($this->generateToken());
     }
@@ -36,7 +36,7 @@ class UserManager implements UserProviderInterface
     /**
      * Generates the registration token if it is not set.
      */
-    public function generateRegistrationToken(\RtxLabs\UserBundle\Entity\UserInterface $user)
+    public function generateRegistrationToken(\RtxLabs\UserBundle\Entity\User $user)
     {
         $user->setRegistrationToken($this->generateToken());
     }
@@ -99,7 +99,7 @@ class UserManager implements UserProviderInterface
 
     /**
      * @param string $username
-     * @return \RtxLabs\UserBundle\Entity\UserInterface
+     * @return \RtxLabs\UserBundle\Model\UserInterface
      * @throws \Symfony\Component\Security\Core\Exception\UsernameNotFoundException
      */
     function loadUserByUsername($username)
@@ -157,7 +157,7 @@ class UserManager implements UserProviderInterface
         $this->em->flush();
     }
 
-    protected function getEncoder(\RtxLabs\UserBundle\Entity\UserInterface $user)
+    protected function getEncoder(\RtxLabs\UserBundle\Entity\User $user)
     {
         return $this->encoderFactory->getEncoder($user);
     }
