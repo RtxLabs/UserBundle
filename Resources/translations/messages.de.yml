@@ -29,9 +29,9 @@ rtxlabs.user.registration.save: Registrierung abschicken
 rtxlabs.user.registration.success: Registrierung erfolgreich
 rtxlabs.user.registration.confirmed: |
   Ihre Registrierungsbestätigung war erfolgreich.
-rtxlabs.user.registration.rediret: |
+rtxlabs.user.registration.redirect: |
   Sie werden in Kürze weitergeleitet. Falls nicht,
-rtxlabs.user.registration.rediret.link: klicken sie bitte hier.
+rtxlabs.user.registration.redirect.link: klicken sie bitte hier.
 
 rtxlabs.user.password.header: Passwort vergessen
 rtxlabs.user.password.save: Passwort ändern
