@@ -16,7 +16,7 @@ class PasswordController {
     private static $PASSWORD_PLACEHOLDER = "sbp_unchanged_$%!//";
 
     /**
-     * @Template("RtxLabsUserBundle:Password:index.html.twig")
+     * @Template("RtxLabsUserBundle:Password:passwordTemplate.html.twig")
      */
     public function indexAction()
     {
@@ -27,6 +27,14 @@ class PasswordController {
      * @Template("RtxLabsUserBundle:Password:resetTemplate.html.twig")
      */
     public function resetAction($token) 
+    {
+        return array();
+    }
+    
+    /**
+     * @Template("RtxLabsUserBundle:Password:confirmedTemplate.html.twig")
+     */
+    public function confirmAction() 
     {
         return array();
     }

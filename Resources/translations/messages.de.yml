@@ -35,7 +35,7 @@ rtxlabs.user.registration.rediret.link: klicken sie bitte hier.
 
 rtxlabs.user.password.header: Passwort vergessen
 rtxlabs.user.password.save: Passwort ändern
-rtxlabs.user.password.success: Passwort ändern erfolgreich
+rtxlabs.user.password.success: Passwort erfolgreich geändert
 rtxlabs.user.password.confirmed: Ihr Passwort wurde erfolgreich geändert.
 rtxlabs.user.password.reset: Passwort zurücksetzen
 rtxlabs.user.password.reset.mail: E-Mail senden

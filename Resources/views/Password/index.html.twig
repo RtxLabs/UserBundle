@@ -12,50 +12,27 @@
 {% endblock %}
 
 {% block main %}
-<div id="password-main" class="full-block clearfix">
-</div>
-
-{% include 'RtxLabsUserBundle:Password:passwordTemplate.html.twig' %}
-{% include 'RtxLabsUserBundle:Password:resetTemplate.html.twig' %}
-{% include 'RtxLabsUserBundle:Password:confirmedTemplate.html.twig' %}
-
 {% endblock %}
 
 {% block navigation %}
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container">
-                <a class="brand" href="#">SmartBusinessPlatform</a>
+                <a class="brand" href="#">{{ pageTitle }}</a>
             </div>
         </div>
     </div>
 {% endblock %}
 
-{% block javascripts %}
-    {{ parent() }}
+{% block breadcrumbs %}
+{% endblock %}
 
+{% block javascripts %}
 {% javascripts
     '@RotexSbpCoreBundle/Resources/public/js/md5.js'
     '@RotexSbpCoreBundle/Resources/public/js/core_gravatar.js'
 %}
     <script src="{{ asset_url }}"></script>
 {% endjavascripts %}
-
-{% javascripts
-    '@RtxLabsUserBundle/Resources/public/js/Application.js'
-
-    '@RtxLabsUserBundle/Resources/public/js/Model/User.js'
-
-    '@RtxLabsUserBundle/Resources/public/js/View/PasswordView.js'
-    '@RtxLabsUserBundle/Resources/public/js/View/ConfirmedView.js'
-
-    '@RtxLabsUserBundle/Resources/public/js/Router/PasswordRouter.js'
-%}
-    <script src="{{ asset_url }}"></script>
-{% endjavascripts %}
-
-<script type="text/javascript">
-    App.User.initPasswordModule();
-</script>
 {% endblock %}
 
