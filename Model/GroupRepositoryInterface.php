@@ -1,5 +1,5 @@
 <?php
-namespace RtxLabs\UserBundle\Entity;
+namespace RtxLabs\UserBundle\Model;
 
 interface GroupRepositoryInterface
 {

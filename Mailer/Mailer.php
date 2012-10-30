@@ -23,10 +23,10 @@ class Mailer
     }
 
     /**
-     * @param RtxLabs\UserBundle\Entity\UserInterface $user
+     * @param RtxLabs\UserBundle\Model\UserInterface $user
      * @return void
      */
-    public function sendResettingEmailMessage(\RtxLabs\UserBundle\Entity\UserInterface $user)
+    public function sendResettingEmailMessage(\RtxLabs\UserBundle\Entity\User $user)
     {
         $template = $this->parameters['resetting.template'].".html.twig";
 
@@ -39,10 +39,10 @@ class Mailer
     }
 
     /**
-     * @param RtxLabs\UserBundle\Entity\UserInterface $user
+     * @param RtxLabs\UserBundle\Model\UserInterface $user
      * @return void
      */
-    public function sendRegistrationEmailMessage(\RtxLabs\UserBundle\Entity\UserInterface $user)
+    public function sendRegistrationEmailMessage(\RtxLabs\UserBundle\Entity\User $user)
     {
         $template = $this->parameters['registration.template'].".html.twig";
 
@@ -55,10 +55,10 @@ class Mailer
     }
 
     /**
-     * @param RtxLabs\UserBundle\Entity\UserInterface $user
+     * @param RtxLabs\UserBundle\Model\UserInterface $user
      * @return void
      */
-    public function sendWelcomeEmailMessage(\RtxLabs\UserBundle\Entity\UserInterface $user)
+    public function sendWelcomeEmailMessage(\RtxLabs\UserBundle\Entity\User $user)
     {
         $template = $this->parameters['welcome.template'].".html.twig";
 
