@@ -128,7 +128,7 @@ class UserManager implements UserProviderInterface
      */
     function createUser()
     {
-        $user = new \RtxLabs\UserBundle\Entity\User;
+        $user = new $this->class();
         return $user;
     }
 
