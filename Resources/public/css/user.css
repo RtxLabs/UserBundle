@@ -1,7 +1,15 @@
-.confirmed {
-    background-color: #FFFFFF;
+.row-fluid .confirmed[class*="span"] {
+    margin: 30px 25%;
+    background-color: #F9F9F9;
     border-radius: 0 0 6px 6px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-    margin: 0 -20px;
     padding: 20px;
+}
+
+#password-email-div .control-label {
+    width: 60px;
+}
+
+#password-email-div .controls {
+    margin-left: 80px;
 }
