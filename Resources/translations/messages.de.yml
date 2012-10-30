@@ -22,15 +22,23 @@ rtxlabs.user.edit.header: Benutzer bearbeiten
 rtxlabs.user.edit.legend: Benutzerinformationen
 rtxlabs.user.delete.confirm: Benutzer wirklich löschen?
 rtxlabs.user.myaccount.header: Mein Account
+rtxlabs.user.cancel: abbrechen
 
 rtxlabs.user.registration.header: Registrierung
 rtxlabs.user.registration.save: Registrierung abschicken
 rtxlabs.user.registration.success: Registrierung erfolgreich
 rtxlabs.user.registration.confirmed: |
   Ihre Registrierungsbestätigung war erfolgreich.
-rtxlabs.user.registration.rediret: |
+rtxlabs.user.registration.redirect: |
   Sie werden in Kürze weitergeleitet. Falls nicht,
-rtxlabs.user.registration.rediret.link: klicken sie bitte hier.
+rtxlabs.user.registration.redirect.link: klicken sie bitte hier.
+
+rtxlabs.user.password.header: Passwort vergessen
+rtxlabs.user.password.save: Passwort ändern
+rtxlabs.user.password.success: Passwort erfolgreich geändert
+rtxlabs.user.password.confirmed: Ihr Passwort wurde erfolgreich geändert.
+rtxlabs.user.password.reset: Passwort zurücksetzen
+rtxlabs.user.password.reset.mail: E-Mail senden
 
 rtxlabs.user.label.groups: Gruppen
 rtxlabs.user.label.roles: Rollen

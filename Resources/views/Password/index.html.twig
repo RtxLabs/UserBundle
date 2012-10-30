@@ -1,0 +1,38 @@
+{% extends "RotexSbpCoreBundle::backbone.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    {% stylesheets
+        '@RtxLabsUserBundle/Resources/public/css/user.css'
+    %}
+
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block main %}
+{% endblock %}
+
+{% block navigation %}
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand" href="#">{{ pageTitle }}</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block breadcrumbs %}
+{% endblock %}
+
+{% block javascripts %}
+{% javascripts
+    '@RotexSbpCoreBundle/Resources/public/js/md5.js'
+    '@RotexSbpCoreBundle/Resources/public/js/core_gravatar.js'
+%}
+    <script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+{% endblock %}
+
