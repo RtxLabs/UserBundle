@@ -20,7 +20,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @UniqueEntity("email")
  * @UniqueEntity("username")
  */
-class User implements UserInterface
+class User implements \RtxLabs\UserBundle\Model\AdvancedUserInterface
 {
     const ROLE_DEFAULT = 'ROLE_USER';
     const ROLE_SUPER_ADMIN = 'ROLE_SUPER_ADMIN';
@@ -644,7 +644,7 @@ class User implements UserInterface
      *
      * @param RtxLabs\UserBundle\Entity\UserAttribute $attributes
      */
-    public function addUserAttribute(\RtxLabs\UserBundle\Entity\UserAttributeInterface $attributes)
+    public function addUserAttribute(\RtxLabs\UserBundle\Model\UserAttributeInterface $attributes)
     {
         $this->attributes[] = $attributes;
     }

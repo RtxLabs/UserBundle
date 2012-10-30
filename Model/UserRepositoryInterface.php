@@ -1,6 +1,6 @@
 <?php
 
-namespace RtxLabs\UserBundle\Entity;
+namespace RtxLabs\UserBundle\Model;
 
 use RtxLabs\UserBundle\Model\UserFilter;
 
@@ -11,14 +11,14 @@ interface UserRepositoryInterface
     /**
      * @abstract
      * @param $id
-     * @return UserInterface
+     * @return \RtxLabs\UserBundle\Model\AdvancedUserInterface
      */
     public function find($id);
 
     /**
      * @abstract
      * @param $username
-     * @return UserInterface
+     * @return \RtxLabs\UserBundle\Model\AdvancedUserInterface
      */
     public function findOneByUsername($username);
 

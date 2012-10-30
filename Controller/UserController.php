@@ -2,7 +2,7 @@
 namespace RtxLabs\UserBundle\Controller;
 
 use RtxLabs\UserBundle\Form\UserFilterType;
-use RtxLabs\UserBundle\Entity\UserRepositoryInterface;
+use RtxLabs\UserBundle\Model\UserRepositoryInterface;
 use RtxLabs\UserBundle\Model\UserFilter;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -175,7 +175,7 @@ class UserController extends RestController
     }
 
     /**
-     * @return \RtxLabs\UserBundle\Entity\UserRepositoryInterface
+     * @return \RtxLabs\UserBundle\Model\UserRepositoryInterface
      */
     private function getUserRepository()
     {
@@ -185,7 +185,7 @@ class UserController extends RestController
     }
 
     /**
-     * @return \RtxLabs\UserBundle\Entity\UserInterface
+     * @return \RtxLabs\UserBundle\Model\UserInterface
      */
     private function getUserClass() {
         $user = $this->container->getParameter("rtxlabs.user.class");

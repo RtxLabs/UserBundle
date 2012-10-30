@@ -4,7 +4,7 @@ namespace RtxLabs\UserBundle\Model;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Doctrine\ORM\EntityManager;
 use RtxLabs\UserBundle\Entity\Group;
-use RtxLabs\UserBundle\Entity\GroupRepositoryInterface;
+use RtxLabs\UserBundle\Model\GroupRepositoryInterface;
 
 class GroupManager implements  GroupManagerInterface
 {
@@ -14,7 +14,7 @@ class GroupManager implements  GroupManagerInterface
     private $groupClass;
 
     /**
-     * @var \RtxLabs\UserBundle\Entity\GroupRepositoryInterface
+     * @var \RtxLabs\UserBundle\Model\GroupRepositoryInterface
      */
     private $groupRepository;
 
