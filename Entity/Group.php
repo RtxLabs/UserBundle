@@ -100,7 +100,7 @@ class Group
      *
      * @param CuteFlow\CoreBundle\Entity\User $users
      */
-    public function addUsers(UserInterface $users)
+    public function addUsers(\RtxLabs\UserBundle\Model\UserInterface $users)
     {
         $this->users[] = $users;
     }

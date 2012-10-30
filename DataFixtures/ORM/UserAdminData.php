@@ -20,7 +20,7 @@ class UserAdminData implements FixtureInterface, ContainerAwareInterface
         $userClass = $this->container->getParameter("rtxlabs.user.class");
 
         $userAdmin = new $userClass();
-        assert($userAdmin instanceof \RtxLabs\UserBundle\Entity\UserInterface);
+        assert($userAdmin instanceof \RtxLabs\UserBundle\Model\UserInterface);
 
         $userAdmin->setUsername('admin');
         $userAdmin->setLocale('de');
