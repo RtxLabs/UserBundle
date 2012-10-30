@@ -105,7 +105,7 @@ class RegistrationController extends RestController
         return $binder;
     }
 
-    function signin(\RtxLabs\UserBundle\Model\AdvancedUserInterface $user) {
+    protected function signin(\RtxLabs\UserBundle\Model\AdvancedUserInterface $user) {
         $token = new UsernamePasswordToken($user, $user->getPassword(), 'secured_area', $user->getRoles());
         $session = $this->getRequest()->getSession();
         $session->set('_security_secured_area', serialize($token));

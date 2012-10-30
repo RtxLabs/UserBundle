@@ -23,11 +23,12 @@ class Mailer
     }
 
     /**
-     * @param RtxLabs\UserBundle\Model\UserInterface $user
      * @return void
      */
-    public function sendResettingEmailMessage(\RtxLabs\UserBundle\Entity\User $user)
+    public function sendResettingEmailMessage($user)
     {
+        assert($user instanceof \RtxLabs\UserBundle\Model\UserInterface ||
+               $user instanceof \RtxLabs\UserBundle\Model\AdvancedUserInterface);
         $template = $this->parameters['resetting.template'].".html.twig";
 
         $url = $this->router->generate('core_dashboard', array(), true);
@@ -39,11 +40,12 @@ class Mailer
     }
 
     /**
-     * @param RtxLabs\UserBundle\Model\UserInterface $user
      * @return void
      */
-    public function sendRegistrationEmailMessage(\RtxLabs\UserBundle\Entity\User $user)
+    public function sendRegistrationEmailMessage($user)
     {
+        assert($user instanceof \RtxLabs\UserBundle\Model\UserInterface ||
+               $user instanceof \RtxLabs\UserBundle\Model\AdvancedUserInterface);
         $template = $this->parameters['registration.template'].".html.twig";
 
         $url = $this->router->generate('rtxlabs_user_registration_confirm', array('token' => $user->getRegistrationToken()), true);
@@ -55,11 +57,12 @@ class Mailer
     }
 
     /**
-     * @param RtxLabs\UserBundle\Model\UserInterface $user
      * @return void
      */
-    public function sendWelcomeEmailMessage(\RtxLabs\UserBundle\Entity\User $user)
+    public function sendWelcomeEmailMessage($user)
     {
+        assert($user instanceof \RtxLabs\UserBundle\Model\UserInterface ||
+               $user instanceof \RtxLabs\UserBundle\Model\AdvancedUserInterface);
         $template = $this->parameters['welcome.template'].".html.twig";
 
         $url = $this->router->generate('core_dashboard', array(), true);
