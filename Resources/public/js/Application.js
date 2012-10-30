@@ -14,5 +14,10 @@ App.User = {
     initRegistrationModule: function() {
         this.router = new App.User.Router.RegistrationRouter();
         Backbone.history.start();
+    },
+
+    initPasswordModule: function() {
+        this.router = new App.User.Router.PasswordRouter();
+        Backbone.history.start();
     }
 };
