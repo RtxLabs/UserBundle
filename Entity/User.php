@@ -47,8 +47,12 @@ class User implements \RtxLabs\UserBundle\Model\AdvancedUserInterface
      * @var string $password
      *
      * @ORM\Column(name="password", type="string", length=255)
-     * @Assert\NotBlank()
-     * @Assert\MinLength(limit=5)
+     * @Assert\NotBlank(message = "rtxlabs.user.validation.passwordRequiredAndFilled")
+     * @Assert\Regex(
+     *     pattern="/^.*(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[\d]).*$/",
+     *     match=true,
+     *     message="rtxlabs.user.validation.passwordRequirements"
+     * )
      */
     private $password;
 
