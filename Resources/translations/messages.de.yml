@@ -39,6 +39,9 @@ rtxlabs.user.password.success: Passwort erfolgreich geändert
 rtxlabs.user.password.confirmed: Ihr Passwort wurde erfolgreich geändert.
 rtxlabs.user.password.reset: Passwort zurücksetzen
 rtxlabs.user.password.reset.mail: E-Mail senden
+rtxlabs.user.password.reset.mail.invalid: Dies ist keine gültige E-Mail Adresse.
+rtxlabs.user.password.reset.mail.notfound: Die eingegebene E-Mail Adresse existiert nicht im System.
+rtxlabs.user.password.reset.send: Eine E-Mail mit Informationen zum Zurücksetzen ihres Passworts wurde ihnen zugesandt.
 
 rtxlabs.user.label.groups: Gruppen
 rtxlabs.user.label.roles: Rollen
@@ -53,9 +56,10 @@ rtxlabs.user.validation.lastname: Ein Nachname muß angegeben werden
 rtxlabs.user.validation.email: Eine E-Mail-Adresse muß angegeben werden und eindeutig sein
 rtxlabs.user.validation.personnelNumber: Eine gültige Personalnummer (4 Stellen) muß angegeben werden und eindeutig sein
 rtxlabs.user.validation.username: Ein Benutzername muß angegeben werden und eindeutig sein
-rtxlabs.user.validation.password: Ein Passwort muß angegeben werden und mindestens 5 Zeichen lang sein
+rtxlabs.user.validation.password: Ein Passwort muß angegeben werden und mindestens 8 Zeichen lang sein
 rtxlabs.user.validation.passwordRepeat: Die Passwörter stimmen nicht überein
 rtxlabs.user.validation.passwordRequiredAndFilled: Ein Passwort muß angegeben werden
+rtxlabs.user.validation.passwordRequirements: Ein Passwort muss mindestens 8 Zeichen lang sein, sowie einen Großbuchstaben, einen Kleinbuchstaben und eine Ziffer enthalten
 
 # --- Welcome Email
 rtxlabs.user.mail.title.welcome: Willkommen
@@ -80,7 +84,7 @@ rtxlabs.user.mail.footer: |
 
 # --- Password resetting email
 rtxlabs.user.mail.title.request_resetting: Passwort zurücksetzen
-rtxlabs.user.mail.title.request_resetting_information: Um ein neues Passwort für SmartBusinessPlatform zu vergeben, klicken Sie bitte auf folgenden Link.
+rtxlabs.user.mail.title.request_resetting_information: um ein neues Passwort für %name% zu vergeben, klicken Sie bitte auf folgenden Link
 
 # --- Group management
 rtxlabs.user.group.header: Benutzergruppen

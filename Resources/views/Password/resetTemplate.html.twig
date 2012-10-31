@@ -1,41 +1,38 @@
 {% extends "RtxLabsUserBundle:Password:index.html.twig" %}
 {% block main %}
-    <div id="password-main" class="full-block clearfix">
-        <div class="alert alert-success"  style="display: none;">
-            <p>
-                <strong>{{ "core.general.notification.success.header" | trans }}</strong>
-                {{ "rtxlabs.user.notification.user_successfully_saved" | trans }}
-            </p>
+    {% if (app.session.hasFlash('reset-error') or errorList) %}
+        <div class="alert alert-error span6 center">
+            <strong>{{ "core.general.notification.error.header" | trans }}</strong>
+            <ul>
+                {% if (app.session.hasFlash('reset-error')) %}
+                    <li>{{ app.session.flash('reset-error') | trans }}</li>
+                {% endif %}
+                {% for error in errorList %}
+                    <li>{{ error | trans }}</li>
+                {% endfor %}
+            </ul>
         </div>
-        <div class="alert alert-error" style="display: none;">
-            <p>
-                <strong>{{ "core.general.notification.error.header" | trans }}</strong>
-                <p id="notification-error-body">
-                </p>
-            </p>
-        </div>
-        <div class="row">
-            <div class="span6 confirmed">
-                <legend>{{ 'rtxlabs.user.password.header' | trans }}:</legend>
-                <form class="form-horizontal">
-                    <div class="control-group" id="password-div">
-                        <label class="control-label" for="password-password">{{ 'rtxlabs.user.label.password' | trans }}:</label>
-                        <div class="input controls">
-                            <input class="medium" id="password" name="password[password]" type="password"  value="">
-                        </div>
+    {% endif %}
+
+    <div class="row">
+        <div class="span6 confirmed">
+            <legend>{{ 'rtxlabs.user.password.save' | trans }}:</legend>
+            <form action="{{ path('rtxlabs_user_password_reset_update', {'token': token}) }}" method="POST" class="form-horizontal">
+            <form class="form-horizontal">
+                <div class="control-group" id="password-div">
+                    <label class="control-label" for="password-password">{{ 'rtxlabs.user.label.password' | trans }}:</label>
+                    <div class="input controls">
+                        <input class="medium" id="password" name="password[password]" type="password" value="">
                     </div>
-                    <div class="control-group" id="password-passwordRepeat-div">
-                        <label class="control-label" for="password-passwordRepeat">{{ 'rtxlabs.user.label.passwordRepeat' | trans }}:</label>
-                        <div class="input controls">
-                            <input class="medium" id="password-repeat" name="password[passwordRepeat]" type="password" value="">
-                        </div>
+                </div>
+                <div class="control-group" id="passwordRepeat-div">
+                    <label class="control-label" for="password-passwordRepeat">{{ 'rtxlabs.user.label.passwordRepeat' | trans }}:</label>
+                    <div class="input controls">
+                        <input class="medium" id="password-repeat" name="password[passwordRepeat]" type="password" value="">
                     </div>
-                    <button id="save-password" type="button" class="btn small btn-info">{{ "rtxlabs.user.password.save" | trans }}</button>
-                </form>
-            </div>
+                </div>
+                <button type="submit" id="reset-password" type="button" class="btn small btn-info">{{ "rtxlabs.user.password.save" | trans }}</button>
+            </form>
         </div>
     </div>
-{% endblock %}
-
-{% block javascripts %}
 {% endblock %}

@@ -31,7 +31,7 @@ class Mailer
                $user instanceof \RtxLabs\UserBundle\Model\AdvancedUserInterface);
         $template = $this->parameters['resetting.template'].".html.twig";
 
-        $url = $this->router->generate('core_dashboard', array(), true);
+        $url = $this->router->generate('rtxlabs_user_password_reset', array('token' => $user->getPasswordToken()), true);
         $rendered = $this->templating->render($template, array(
             'user' => $user,
             'homepage' => $url
