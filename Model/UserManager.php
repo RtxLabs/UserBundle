@@ -28,9 +28,9 @@ class UserManager implements UserProviderInterface
     /**
      * Generates the confirmation token if it is not set.
      */
-    public function generateConfirmationToken(\RtxLabs\UserBundle\Entity\User $user)
+    public function generatePasswordToken(\RtxLabs\UserBundle\Entity\User $user)
     {
-        $user->setConfirmationToken($this->generateToken());
+        $user->setPasswordToken($this->generateToken());
     }
 
     /**
@@ -42,7 +42,7 @@ class UserManager implements UserProviderInterface
     }
 
     /**
-     * Finds a user either by confirmation token
+     * Finds a user by registration token
      *
      * @param string $token
      *
@@ -54,17 +54,29 @@ class UserManager implements UserProviderInterface
     }
 
     /**
-     * Finds a user either by confirmation token
+     * Finds a user by password token
      *
      * @param string $token
      *
      * @return UserInterface
      */
-    public function findUserByConfirmationToken($token)
+    public function findUserByPasswordToken($token)
     {
-        return $this->repository->findOneByConfirmationToken($token);
+        return $this->repository->findOneByPasswordToken($token);
     }
-    
+
+    /**
+     * Finds a user by email
+     *
+     * @param string $token
+     *
+     * @return UserInterface
+     */
+    public function findUserByEmail($email)
+    {
+        return $this->repository->findOneByEmail($email);
+    }
+
     /**
      * Generates a token.
      */
