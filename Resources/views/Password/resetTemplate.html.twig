@@ -17,7 +17,7 @@
     <div class="row">
         <div class="span6 confirmed">
             <legend>{{ 'rtxlabs.user.password.save' | trans }}:</legend>
-            <form action="{{ path('rtxlabs_user_password_reset', {'token': token}) }}" method="POST" class="form-horizontal">
+            <form action="{{ path('rtxlabs_user_password_reset_update', {'token': token}) }}" method="POST" class="form-horizontal">
             <form class="form-horizontal">
                 <div class="control-group" id="password-div">
                     <label class="control-label" for="password-password">{{ 'rtxlabs.user.label.password' | trans }}:</label>
