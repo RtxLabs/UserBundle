@@ -3,7 +3,6 @@
 namespace RtxLabs\UserBundle\Model;
 
 use RtxLabs\UserBundle\Entity\User;
-use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
@@ -155,7 +154,7 @@ class UserManager implements UserProviderInterface
     /**
      * {@inheritDoc}
      */
-    function refreshUser(UserInterface $user)
+    function refreshUser(\Symfony\Component\Security\Core\User\UserInterface $user)
     {
 //        if (!$user instanceof User) {
 //            throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', get_class($user)));
@@ -164,7 +163,7 @@ class UserManager implements UserProviderInterface
         return $this->loadUserByUsername($user->getUsername());
     }
 
-    function saveUser(UserInterface $user) {
+    function saveUser(\Symfony\Component\Security\Core\User\UserInterface $user) {
         $this->em->persist($user);
         $this->em->flush();
     }
