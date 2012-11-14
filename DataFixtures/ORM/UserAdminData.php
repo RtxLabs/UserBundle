@@ -20,7 +20,8 @@ class UserAdminData implements FixtureInterface, ContainerAwareInterface
         $userClass = $this->container->getParameter("rtxlabs.user.class");
 
         $userAdmin = new $userClass();
-        assert($userAdmin instanceof \RtxLabs\UserBundle\Model\UserInterface);
+        assert($userAdmin instanceof \RtxLabs\UserBundle\Model\UserInterface || 
+                $userAdmin instanceof \RtxLabs\UserBundle\Model\AdvancedUserInterface);
 
         $userAdmin->setUsername('admin');
         $userAdmin->setLocale('de');
@@ -29,6 +30,7 @@ class UserAdminData implements FixtureInterface, ContainerAwareInterface
         $userAdmin->setFirstName('Admin');
         $userAdmin->addRole('ROLE_ADMIN');
         $userAdmin->addRole('ROLE_USER');
+        $userAdmin->setActive(true);
 
         $encoder = $this->container->get('security.encoder_factory')->getEncoder($userAdmin);
         $userAdmin->setPassword($encoder->encodePassword('admin', $userAdmin->getSalt()));
