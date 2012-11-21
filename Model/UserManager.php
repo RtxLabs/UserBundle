@@ -3,7 +3,6 @@
 namespace RtxLabs\UserBundle\Model;
 
 use RtxLabs\UserBundle\Entity\User;
-use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
@@ -28,9 +27,9 @@ class UserManager implements UserProviderInterface
     /**
      * Generates the confirmation token if it is not set.
      */
-    public function generateConfirmationToken(\RtxLabs\UserBundle\Entity\User $user)
+    public function generatePasswordToken(\RtxLabs\UserBundle\Entity\User $user)
     {
-        $user->setConfirmationToken($this->generateToken());
+        $user->setPasswordToken($this->generateToken());
     }
 
     /**
@@ -42,7 +41,7 @@ class UserManager implements UserProviderInterface
     }
 
     /**
-     * Finds a user either by confirmation token
+     * Finds a user by registration token
      *
      * @param string $token
      *
@@ -54,17 +53,29 @@ class UserManager implements UserProviderInterface
     }
 
     /**
-     * Finds a user either by confirmation token
+     * Finds a user by password token
      *
      * @param string $token
      *
      * @return User
      */
-    public function findUserByConfirmationToken($token)
+    public function findUserByPasswordToken($token)
     {
-        return $this->repository->findOneByConfirmationToken($token);
+        return $this->repository->findOneByPasswordToken($token);
     }
-    
+
+    /**
+     * Finds a user by email
+     *
+     * @param string $token
+     *
+     * @return UserInterface
+     */
+    public function findUserByEmail($email)
+    {
+        return $this->repository->findOneByEmail($email);
+    }
+
     /**
      * Generates a token.
      */
@@ -143,7 +154,7 @@ class UserManager implements UserProviderInterface
     /**
      * {@inheritDoc}
      */
-    function refreshUser(UserInterface $user)
+    function refreshUser(\Symfony\Component\Security\Core\User\UserInterface $user)
     {
 //        if (!$user instanceof User) {
 //            throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', get_class($user)));
@@ -152,7 +163,7 @@ class UserManager implements UserProviderInterface
         return $this->loadUserByUsername($user->getUsername());
     }
 
-    function saveUser(UserInterface $user) {
+    function saveUser(\Symfony\Component\Security\Core\User\UserInterface $user) {
         $this->em->persist($user);
         $this->em->flush();
     }

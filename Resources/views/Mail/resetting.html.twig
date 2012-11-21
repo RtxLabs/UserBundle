@@ -4,12 +4,15 @@
 
 {% block rtxlabs_email_body %}
 
-<p>{{ "rtxlabs.user.mail.title.request_resetting_information" | trans }}:</p>
+<p>{{ "rtxlabs.user.mail.salutation" | trans }}</p>
+<p>{{ "rtxlabs.user.mail.title.request_resetting_information" | trans({"%name%": pageTitle}) }}:</p>
+<a href="{{ homepage }}">{{ "rtxlabs.user.mail.title.request_resetting" | trans }}</a>
+<br/>
+<br/>
 <ul>
     <li>{{ "rtxlabs.user.mail.label.username" | trans }}: {{ user.username }}</li>
-    <li>{{ "rtxlabs.user.mail.label.confirmation_token" | trans }}: {{ user.confirmationToken }}</li>
 </ul>
 <br/>
-{{ "rtxlabs.user.mail.label.login" | trans }}: <a href="{{ homepage }}">{{ homepage }}</a>
+<p>{{ "rtxlabs.user.mail.footer" | trans | raw }}</p>
 
 {% endblock %}

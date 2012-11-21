@@ -205,20 +205,6 @@ interface UserInterface extends \Symfony\Component\Security\Core\User\UserInterf
      */
     public function getGroupNames();
 
-    /**
-     * Set passwordToken
-     *
-     * @param string $passwordToken
-     */
-    public function setPasswordToken($passwordToken);
-
-    /**
-     * Get passwordToken
-     *
-     * @return string
-     */
-    public function getPasswordToken();
-
     public function getPlainPassword();
 
     public function setPlainPassword($plainPassword);
