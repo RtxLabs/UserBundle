@@ -46,7 +46,7 @@ class UserManager implements UserProviderInterface
      *
      * @param string $token
      *
-     * @return UserInterface
+     * @return User
      */
     public function findUserByRegistrationToken($token)
     {
@@ -58,7 +58,7 @@ class UserManager implements UserProviderInterface
      *
      * @param string $token
      *
-     * @return UserInterface
+     * @return User
      */
     public function findUserByConfirmationToken($token)
     {
@@ -88,7 +88,7 @@ class UserManager implements UserProviderInterface
     }
 
 
-    public function updatePassword(UserInterface $user)
+    public function updatePassword($user)
     {
         if (0 !== strlen($password = $user->getPlainPassword())) {
             $encoder = $this->getEncoder($user);
@@ -99,7 +99,7 @@ class UserManager implements UserProviderInterface
 
     /**
      * @param string $username
-     * @return \RtxLabs\UserBundle\Model\UserInterface
+     * @return \RtxLabs\UserBundle\Entity\User
      * @throws \Symfony\Component\Security\Core\Exception\UsernameNotFoundException
      */
     function loadUserByUsername($username)
@@ -157,7 +157,7 @@ class UserManager implements UserProviderInterface
         $this->em->flush();
     }
 
-    protected function getEncoder(\RtxLabs\UserBundle\Entity\User $user)
+    protected function getEncoder($user)
     {
         return $this->encoderFactory->getEncoder($user);
     }
