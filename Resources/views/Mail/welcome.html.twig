@@ -1,6 +1,6 @@
 {% extends 'RtxLabsUserBundle:Mail:mail_layout.html.twig' %}
 
-{% block rtxlabs_email_subject %}[SmartBusinessPlatform] - {{ "rtxlabs.user.mail.title.welcome" | trans }}{% endblock %}
+{% block rtxlabs_email_subject %}[{{ pageTitle }}] - {{ "rtxlabs.user.mail.title.welcome" | trans }}{% endblock %}
 
 {% block rtxlabs_email_body %}
 

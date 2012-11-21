@@ -25,6 +25,7 @@ rtxlabs.user.myaccount.header: Mein Account
 rtxlabs.user.cancel: abbrechen
 
 rtxlabs.user.registration.header: Registrierung
+rtxlabs.user.registration.register: Registrieren
 rtxlabs.user.registration.save: Registrierung abschicken
 rtxlabs.user.registration.success: Registrierung erfolgreich
 rtxlabs.user.registration.confirmed: |
@@ -97,5 +98,14 @@ rtxlabs.user.group.edit.legend.accessdata: Zugeordnete Rollen
 
 rtxlabs.user.group.label.roles: Rollen
 rtxlabs.user.group.validation.name: Ein Gruppenname muss angegeben werden
-
 rtxlabs.user.group.roles.selector: Bitte Rolle(n) auswählen
+
+# Login Form
+rtxlabs.user.login.message: Bitte melden Sie sich mit Ihrem Benutzernamen / Passwort an
+rtxlabs.user.login.form.username: Benutzername
+rtxlabs.user.login.form.password: Passwort
+rtxlabs.user.login.form.remember_me: Angemeldet bleiben
+rtxlabs.user.login.form.login: Login
+rtxlabs.user.login.form.error: Benutzer konnte mit den angegebenen Daten nicht angemeldet werden. Bitte versuchen Sie es erneut.
+rtxlabs.user.login.lost_password: Passwort vergessen
+rtxlabs.user.login.hide_notification: Hinweis ausblenden
