@@ -1,6 +1,7 @@
-{% extends "RotexSbpCoreBundle::layout.html.twig" %}
+{% extends "RotexSbpCoreBundle::base.html.twig" %}
 
 {% block stylesheets %}
+    {{ parent() }}
 
     {% stylesheets
         '@RotexSbpCoreBundle/Resources/public/css/bootstrap.css'
