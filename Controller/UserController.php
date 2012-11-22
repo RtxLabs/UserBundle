@@ -137,7 +137,7 @@ class UserController extends RestController
             ->to($user);
 
         if ($this->getCurrentUser()->isAdmin()) {
-            $binder->field("roles", explode(",", $json->roles));
+            $binder->field("roles", $json->roles);
         }
         else {
             $binder->except("roles");
@@ -185,7 +185,7 @@ class UserController extends RestController
     }
 
     /**
-     * @return \RtxLabs\UserBundle\Model\UserInterface
+     * @return \RtxLabs\UserBundle\Entity\User
      */
     private function getUserClass() {
         $user = $this->container->getParameter("rtxlabs.user.class");
