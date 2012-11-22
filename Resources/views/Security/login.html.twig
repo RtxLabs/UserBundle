@@ -1,29 +1,16 @@
-<!doctype html>
-<!--[if IE 7 ]><html lang="en" class="no-js ie7"> <![endif]-->
-<!--[if IE 8 ]><html lang="en" class="no-js ie8"> <![endif]-->
-<!--[if IE 9 ]><html lang="en" class="no-js ie9"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends "RotexSbpCoreBundle::layout.html.twig" %}
 
-    <title>{% block title %}{{ pageTitle }}{% endblock %}</title>
-    {% block stylesheets %}
-        {% stylesheets
-            '@RotexSbpCoreBundle/Resources/public/css/bootstrap.css'
-            '@RotexSbpCoreBundle/Resources/public/css/application.css'
-        %}
-            <link rel="stylesheet" href="{{ asset_url }}" />
-        {% endstylesheets %}
-    {% endblock %}
-    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+{% block stylesheets %}
 
-    <!-- Google WebFonts -->
-    <link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
-</head>
+    {% stylesheets
+        '@RotexSbpCoreBundle/Resources/public/css/bootstrap.css'
+        '@RotexSbpCoreBundle/Resources/public/css/application.css'
+    %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
 
-<body>
+{% block navigation %}
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container">
@@ -31,6 +18,12 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block breadcrumbs %}
+{% endblock %}
+
+{% block main %}
     <div class="login container">
         <div class="content">
             <div class="page-header">
@@ -69,20 +62,11 @@
             </form>
         </div>
     </div>
-    <div class="footer">
-        <div class="container">
-            <footer>
-                <p>
-                    <span class="copyright">
-                    &copy; ROTEX Heating Systems GmbH.
-                    </span>
-                </p>
-            </footer>
-        </div>
-    </div>
+{% endblock %}
+
+{% block javascripts %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script>!window.jQuery && document.write(unescape('%3Cscript src="bundles/rotexsbpcore/js/jquery/jquery-1.7.1.min.js"%3E%3C/script%3E'))</script>
 
     <script src="/bundles/rotexsbpcore/js/login_bootstrap.js"></script>
-</body>
-</html>
+{% endblock %}
