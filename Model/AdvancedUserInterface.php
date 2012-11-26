@@ -240,12 +240,4 @@ interface AdvancedUserInterface extends \Symfony\Component\Security\Core\User\Ad
     public function addUserAttribute(UserAttributeInterface $attributes);
 
     public function getAttributes();
-    
-    public function isAccountNonExpired();
-
-    public function isAccountNonLocked();
-
-    public function isCredentialsNonExpired();
-
-    public function isEnabled();
 }
