@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\Security\Core\SecurityContext;
+use Rotex\Sbp\CoreBundle\Http\ValidationErrorResponse;
 use Rotex\Sbp\CoreBundle\Controller\RestController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -15,7 +16,7 @@ use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
 class RegistrationController extends RestController
 {
-    private static $PASSWORD_PLACEHOLDER = "sbp_unchanged_$%!//";
+    private static $PASSWORD_PLACEHOLDER = "Sbp_unchanged_1$%!//";
 
     /**
      * @Template("RtxLabsUserBundle:Registration:index.html.twig")
@@ -31,7 +32,7 @@ class RegistrationController extends RestController
         $user = $user_manager->createUser();
         $errors = $this->updateUser($user, $this->getRequest(), $user_manager);
         if (count($errors) > 0 ) {
-            return new Response(Dencoder::encode($errors), 406);
+            return new ValidationErrorResponse($errors);
         }
 
         $this->get('rtxlabs.user.mailer')->sendRegistrationEmailMessage($user);
@@ -71,19 +72,10 @@ class RegistrationController extends RestController
         $validator = $this->get('validator');
         $errors = $validator->validate($user);
         if (count($errors) > 0) {
-            $result = array();
-            foreach ($errors as $key=>$violation) {
-                if ($violation instanceof \Symfony\Component\Validator\ConstraintViolation) {
-                    $result[$violation->getPropertyPath()] = $violation->getMessage();
-                }
-                else {
-                    $result[$key] = $violation;
-                }
-            }
-            return $result;
+            return $errors;
         }
 
-        if ($user->getPlainPassword() != self::$PASSWORD_PLACEHOLDER ||
+        if ($user->getPlainPassword() != self::$PASSWORD_PLACEHOLDER &&
             $user->getPlainPassword() != "") {
             $user_manager->updatePassword($user);
         }

@@ -10,13 +10,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use RtxLabs\DataTransformationBundle\Binder\Binder;
 use RtxLabs\DataTransformationBundle\Binder\GetMethodBinder;
+use Rotex\Sbp\CoreBundle\Http\ValidationErrorResponse;
 use Rotex\Sbp\CoreBundle\Controller\RestController;
 use RtxLabs\DataTransformationBundle\Dencoder\Dencoder;
 use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends RestController
 {
-    private static $PASSWORD_PLACEHOLDER = "sbp_unchanged_$%!//";
+    private static $PASSWORD_PLACEHOLDER = "Sbp_unchanged_1$%!//";
 
     /**
      * @Route("/user/index", name="uma")
@@ -111,14 +112,18 @@ class UserController extends RestController
     public function updateAction($id)
     {
         $user = $this->getUserRepository()->find($id);
+        $json = Dencoder::decode($this->getRequest()->getContent());
 
         if (!$user) {
             throw $this->createNotFoundException('Unable to find user.');
         }
 
-        $errors = $this->updateUser($user, $this->getRequest());
+        $errors = $this->updateUser($user, $json);
+        if($json->plainPassword !== $json->passwordRepeat) {
+            $errors[] = array('propertyPath' => 'passwordRepeat', 'message' => 'rtxlabs.user.validation.passwordRepeat');
+        }
         if (count($errors) > 0) {
-            return new Response(Dencoder::encode($errors), 406);
+            return new ValidationErrorResponse($errors);
         }
 
         $userArray = $this->createDoctrineBinder()->bind($user)->execute();
@@ -128,13 +133,13 @@ class UserController extends RestController
     }
 
 
-    protected function updateUser($user, $request)
+    protected function updateUser($user, $json)
     {
-        $json = Dencoder::decode($request->getContent());
         $binder = $this->createDoctrineBinder()
             ->bind($json)
-            ->field("plainPassword", $json->password)
-            ->to($user);
+            ->field("plainPassword", $json->plainPassword)
+            ->to($user)
+            ->except("password");
 
         if ($this->getCurrentUser()->isAdmin()) {
             $binder->field("roles", $json->roles);
@@ -142,33 +147,20 @@ class UserController extends RestController
         else {
             $binder->except("roles");
         }
-
         $binder->execute();
 
         $validator = $this->get('validator');
         $errors = $validator->validate($user);
-
         if (count($errors) > 0) {
-            $result = array();
-            foreach ($errors as $key=>$violation) {
-                if ($violation instanceof \Symfony\Component\Validator\ConstraintViolation) {
-                    $result[$violation->getPropertyPath()] = $violation->getMessage();
-                }
-                else {
-                    $result[$key] = $violation;
-                }
-            }
-
-            return $result;
+            return $errors;
         }
 
-        if ($user->getPlainPassword() != self::$PASSWORD_PLACEHOLDER ||
+        if ($user->getPlainPassword() != self::$PASSWORD_PLACEHOLDER &&
             $user->getPlainPassword() != "") {
 
             $user_manager = $this->get('rtxlabs.user.user_manager');
             $user_manager->updatePassword($user);
         }
-
         $this->persistAndFlush($user);
 
         return array();
