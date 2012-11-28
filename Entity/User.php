@@ -65,7 +65,7 @@ class User implements \RtxLabs\UserBundle\Model\AdvancedUserInterface
      * @var string $firstname
      *
      * @ORM\Column(name="firstname", type="string", length=255)
-     * @Assert\NotBlank(message = "rtxlabs.user.validation.firstname)
+     * @Assert\NotBlank(message = "rtxlabs.user.validation.firstname")
      */
     private $firstname;
 
