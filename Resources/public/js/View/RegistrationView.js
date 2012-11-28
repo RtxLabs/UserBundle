@@ -1,6 +1,6 @@
 Core.ns('App.User.View');
 
-App.User.View.RegistrationView = Backbone.View.extend({
+App.User.View.RegistrationView = App.Core.View.ListView.extend({
     el: $('#registration-main'),
 
     events: {
@@ -19,32 +19,19 @@ App.User.View.RegistrationView = Backbone.View.extend({
     },
 
     handleSave: function() {
+        var self = this;
         $('form:input').removeClass('error');
         $('form div').removeClass('error');
-        $('#notification-error-body').html('');
 
         this.model.save(this.getFormValues(), {
             url: 'register',
             success: function(user, response) {
                 $('.alert-success').show();
                 $('.alert-error').hide();
+                self.defaultSuccess(self);
             },
-            error: function(user, response){
-                if (response.responseText !== undefined && response.status != 406) {
-                    $('#notification-error-body').append(response.responseText);
-                }
-                else {
-                    response = JSON.parse(response.responseText);
-
-                    $.each(response, function(key, value) {
-                        $('#user-'+key+'-div').addClass('error');
-                        $('#user-'+key).addClass('error');
-                        $('#notification-error-body').append(ExposeTranslation.get('rtxlabs.user.validation.'+key)+'<br/>');
-                    });
-                }
-                $('.alert-success').hide();
-                $('.alert-error').show();
-            }
+            error: self.defaultError,
+            scope: self
         });
     },
 
