@@ -8,6 +8,7 @@ rtxlabs.user.label.username: Benutzername
 rtxlabs.user.label.password: Passwort
 rtxlabs.user.label.passwordRepeat: Passwort wiederholen
 rtxlabs.user.label.locale: Sprache Benutzeroberfläche
+rtxlabs.user.label.tos: Hiermit akzeptiere ich die %link_start%Nutzungsbedingungen%link_end%
 
 rtxlabs.user.edit.legend.accessdata: Anmeldedaten
 
