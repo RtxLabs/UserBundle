@@ -17,8 +17,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Entity(repositoryClass="RtxLabs\UserBundle\Entity\UserRepository")
  * @ORM\HasLifecycleCallbacks
  *
- * @UniqueEntity("email")
- * @UniqueEntity("username")
+ * @UniqueEntity(fields="email", message="rtxlabs.user.validation.email.inUse")
+ * @UniqueEntity(fields="username", message="rtxlabs.user.validation.username.inUse")
  */
 class User implements \RtxLabs\UserBundle\Model\AdvancedUserInterface
 {

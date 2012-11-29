@@ -26,9 +26,13 @@ App.User.View.RegistrationView = App.Core.View.ListView.extend({
         this.model.save(this.getFormValues(), {
             url: 'register',
             success: function(user, response) {
-                $('.alert-success').show();
-                $('.alert-error').hide();
-                self.defaultSuccess(self);
+                if(response.success == false &&
+                    response.message.status == '304') {
+                    window.location.href = response.message.url;
+                }
+                else {
+                    self.defaultSuccess(self);
+                }
             },
             error: self.defaultError,
             scope: self
