@@ -34,6 +34,14 @@ rtxlabs.user.registration.redirect: |
   Sie werden in Kürze weitergeleitet. Falls nicht,
 rtxlabs.user.registration.redirect.link: klicken sie bitte hier.
 
+rtxlabs.user.reactivation.title: Account-Reaktivierung
+rtxlabs.user.reactivation.confirmed: |
+  Die Reaktivierung ihres Accounts war erfolgreich.
+rtxlabs.user.reactivation.success: Reaktivierung erfolgreich
+rtxlabs.user.reactivation.information: |
+  Die angegebene E-Mail war bereits im System hinterlegt. Der dazugehörige Account ist im Moment nicht aktiv.
+  Eine E-Mail mit Informationen zur Realtivierung des Accounts wurde ihnen zugesandt.
+
 rtxlabs.user.password.header: Passwort vergessen
 rtxlabs.user.password.save: Passwort ändern
 rtxlabs.user.password.success: Passwort erfolgreich geändert
@@ -55,8 +63,10 @@ rtxlabs.user.notification.user_successfully_deleted: Benutzer erfolgreich gelös
 rtxlabs.user.validation.firstname: Ein Vorname muß angegeben werden
 rtxlabs.user.validation.lastname: Ein Nachname muß angegeben werden
 rtxlabs.user.validation.email: Eine E-Mail-Adresse muß angegeben werden und eindeutig sein
+rtxlabs.user.validation.email.inUse: Die E-Mail-Adresse ist bereits vergeben
 rtxlabs.user.validation.personnelNumber: Eine gültige Personalnummer (4 Stellen) muß angegeben werden und eindeutig sein
 rtxlabs.user.validation.username: Ein Benutzername muß angegeben werden und eindeutig sein
+rtxlabs.user.validation.username.inUse: Der Benutzername ist bereits vergeben
 rtxlabs.user.validation.password: Ein Passwort muß angegeben werden und mindestens 8 Zeichen lang sein
 rtxlabs.user.validation.passwordRepeat: Die Passwörter stimmen nicht überein
 rtxlabs.user.validation.passwordRequiredAndFilled: Ein Passwort muß angegeben werden
@@ -86,6 +96,14 @@ rtxlabs.user.mail.footer: |
 # --- Password resetting email
 rtxlabs.user.mail.title.request_resetting: Passwort zurücksetzen
 rtxlabs.user.mail.title.request_resetting_information: um ein neues Passwort für %name% zu vergeben, klicken Sie bitte auf folgenden Link
+
+# --- Account reactivation email
+rtxlabs.user.mail.reactivation.title: Ihr Account ist im Moment nicht aktiv
+rtxlabs.user.mail.reactivation.body: |
+  sie waren bereits im System hinterlegt und ihr Account ist im Moment nicht mehr aktiv.
+  Um ihren Account wieder zu reaktivieren klicken Sie bitte auf folgenden Link
+rtxlabs.user.mail.reactivation.link: Account reaktivieren
+rtxlabs.user.mail.reactivation.information: Nachfolgend erhalten sie weitere Anmeldeinformationen
 
 # --- Group management
 rtxlabs.user.group.header: Benutzergruppen

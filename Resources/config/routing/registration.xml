@@ -17,4 +17,9 @@
         <default key="_controller">RtxLabsUserBundle:Registration:confirm</default>
         <requirement key="_method">GET</requirement>
     </route>
+
+    <route id="rtxlabs_user_reactivation_confirm" pattern="/reactivate/{token}">
+        <default key="_controller">RtxLabsUserBundle:Registration:reactivate</default>
+        <requirement key="_method">GET</requirement>
+    </route>
 </routes>

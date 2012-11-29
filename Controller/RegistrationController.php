@@ -28,9 +28,24 @@ class RegistrationController extends RestController
     
     public function registerAction()
     {
+        $json = Dencoder::decode($this->getRequest()->getContent());
         $user_manager = $this->get('rtxlabs.user.user_manager');
+        $user = $user_manager->findUserByEmail($json->email);
+
+        if($user instanceof User && $user->getDeletedAt() !== null) {
+            $user_manager->generateRegistrationToken($user);
+            $user_manager->saveUser($user);
+            $this->get('rtxlabs.user.mailer')->sendReactivationEmailMessage($user);
+            $response['success'] = false;
+            $response['message'] = array(
+                'status' => 304,
+                'url'    => $this->container->get('router')->generate('rtxlabs_user_registration_register').'#reactivation'
+            );
+            return new Response(Dencoder::encode($response));
+        }
+
         $user = $user_manager->createUser();
-        $errors = $this->updateUser($user, $this->getRequest(), $user_manager);
+        $errors = $this->updateUser($user, $json, $user_manager);
         if (count($errors) > 0 ) {
             return new ValidationErrorResponse($errors);
         }
@@ -58,9 +73,23 @@ class RegistrationController extends RestController
         return new RedirectResponse($this->container->get('router')->generate('rtxlabs_user_registration_register').'#confirmed');
     }
 
-    protected function updateUser($user, $request, $user_manager)
+    public function reactivateAction($token)
     {
-        $json = Dencoder::decode($request->getContent());
+        $user_manager = $this->get('rtxlabs.user.user_manager');
+        $user = $user_manager->findUserByRegistrationToken($token);
+
+        if (!$user) {
+            return new RedirectResponse($this->container->get('router')->generate('rtxlabs_userbundle_login'));
+        }
+        $user->setRegistrationToken(null);
+        $user->setDeletedAt(null);
+
+        $user_manager->saveUser($user);
+        return new RedirectResponse($this->container->get('router')->generate('rtxlabs_user_registration_register').'#reactivation/confirmed');
+    }
+
+    protected function updateUser($user, $json, $user_manager)
+    {
         $binder = $this->createDoctrineBinder()
             ->bind($json)
             ->field("plainPassword", $json->password)
@@ -71,6 +100,9 @@ class RegistrationController extends RestController
 
         $validator = $this->get('validator');
         $errors = $validator->validate($user);
+        if($json->password !== $json->passwordRepeat) {
+            $errors[] = array('propertyPath' => 'passwordRepeat', 'message' => 'rtxlabs.user.validation.passwordRepeat');
+        }
         if (count($errors) > 0) {
             return $errors;
         }
