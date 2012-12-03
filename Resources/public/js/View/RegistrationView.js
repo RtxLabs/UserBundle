@@ -1,6 +1,6 @@
 Core.ns('App.User.View');
 
-App.User.View.RegistrationView = App.Core.View.ListView.extend({
+App.User.View.RegistrationView = App.Core.View.View.extend({
     el: $('#registration-main'),
 
     events: {
@@ -26,9 +26,13 @@ App.User.View.RegistrationView = App.Core.View.ListView.extend({
         this.model.save(this.getFormValues(), {
             url: 'register',
             success: function(user, response) {
-                $('.alert-success').show();
-                $('.alert-error').hide();
-                self.defaultSuccess(self);
+                if(response.success == false &&
+                    response.message.status == '304') {
+                    window.location.href = response.message.url;
+                }
+                else {
+                    self.defaultSuccess(self);
+                }
             },
             error: self.defaultError,
             scope: self
@@ -51,8 +55,7 @@ App.User.View.RegistrationView = App.Core.View.ListView.extend({
             values.set(objInst);
         });
 
-        values.attributes.passwordRequired = $("#user-passwordRequired").attr('checked') == 'checked';
-        values.attributes.admin = $("#user-admin").attr('checked') == 'checked';
+        values.attributes.tos = $("#registration-tos").attr('checked') == 'checked';
         return values.attributes;
     }
 });
