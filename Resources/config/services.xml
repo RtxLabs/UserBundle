@@ -28,6 +28,7 @@
                 <argument type="string" key="welcome.template">RtxLabsUserBundle:Mail:welcome</argument>
                 <argument type="string" key="resetting.template">RtxLabsUserBundle:Mail:resetting</argument>
                 <argument type="string" key="registration.template">RtxLabsUserBundle:Mail:registration</argument>
+                <argument type="string" key="reactivation.template">RtxLabsUserBundle:Mail:reactivation</argument>
             </argument>
         </service>
 

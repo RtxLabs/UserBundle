@@ -59,6 +59,23 @@ class Mailer
     /**
      * @return void
      */
+    public function sendReactivationEmailMessage($user)
+    {
+        assert($user instanceof \RtxLabs\UserBundle\Model\UserInterface ||
+               $user instanceof \RtxLabs\UserBundle\Model\AdvancedUserInterface);
+        $template = $this->parameters['reactivation.template'].".html.twig";
+
+        $url = $this->router->generate('rtxlabs_user_reactivation_confirm', array('token' => $user->getRegistrationToken()), true);
+        $rendered = $this->templating->render($template, array(
+            'user' => $user,
+            'homepage' => $url
+        ));
+        $this->sendEmailMessage($rendered, $user->getEmail());
+    }
+
+    /**
+     * @return void
+     */
     public function sendWelcomeEmailMessage($user)
     {
         assert($user instanceof \RtxLabs\UserBundle\Model\UserInterface ||
