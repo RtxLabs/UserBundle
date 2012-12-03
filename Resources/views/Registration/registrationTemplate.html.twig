@@ -20,17 +20,17 @@
         <div class="row">
             <div class="span6">
                 <legend>{{ "rtxlabs.user.edit.legend.accessdata" | trans }}</legend>
-                <div class="control-group" id="registration-username-div">
+                <div class="control-group" id="registration-username-div" name="username">
                     <label for="registration-username">{{ 'rtxlabs.user.label.username' | trans }}:</label>
                     <div class="input"><input class="medium" id="registration-username" name="registration[username]" type="text" value=""></div>
                 </div>
-                <div class="control-group" id="registration-password-div">
+                <div class="control-group" id="registration-password-div" name="plainPassword">
                     <label for="registration-password">{{ 'rtxlabs.user.label.password' | trans }}:</label>
                     <div class="input">
                         <input class="medium" id="registration-password" name="registration[password]" type="password"  value="">
                     </div>
                 </div>
-                <div class="control-group" id="registration-passwordRepeat-div">
+                <div class="control-group" id="registration-passwordRepeat-div" name="passwordRepeat">
                     <label for="registration-passwordRepeat">{{ 'rtxlabs.user.label.passwordRepeat' | trans }}:</label>
                     <div class="input">
                         <input class="medium" id="registration-passwordRepeat" name="registration[passwordRepeat]" type="password" value="">
@@ -39,15 +39,15 @@
             </div>
             <div class="span6">
                 <legend>{{ "rtxlabs.user.edit.legend" | trans }}</legend>
-                <div class="control-group" id="registration-firstname-div">
+                <div class="control-group" id="registration-firstname-div" name="firstname">
                     <label for="registration-firstname">{{ 'rtxlabs.user.label.firstname' | trans }}:</label>
                     <div class="input"><input class="medium" id="registration-firstname" name="registration[firstname]" type="text" value=""></div>
                 </div>
-                <div class="control-group" id="registration-lastname-div">
+                <div class="control-group" id="registration-lastname-div" name="lastname">
                     <label for="registration-lastname">{{ 'rtxlabs.user.label.lastname' | trans }}:</label>
                     <div class="input"><input class="medium" id="registration-lastname" name="registration[lastname]" type="text" value=""></div>
                 </div>
-                <div class="control-group" id="registration-email-div">
+                <div class="control-group" id="registration-email-div" name="email">
                     <label for="registration-email">{{ 'rtxlabs.user.label.email' | trans }}:</label>
                     <div class="input"><input class="large" id="registration-email" name="registration[email]" type="text" value=""></div>
                 </div>
@@ -65,8 +65,8 @@
         </div>
         <div class="row">
             <div class="form-actions">
-                <label class="checkbox">
-                    <input id="registration-tos" type="checkbox" name="registration[tos]">
+                <label class="checkbox" name="tos">
+                    <input id="registration-tos" type="checkbox" name="registration[tos]" value="">
                     {{ 'rtxlabs.user.label.tos' | trans({
                         '%link_start%' : '<a href="#">', '%link_end%' : '</a>'}) | raw }}
                 </label>

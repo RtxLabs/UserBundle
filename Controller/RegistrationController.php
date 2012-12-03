@@ -46,6 +46,9 @@ class RegistrationController extends RestController
 
         $user = $user_manager->createUser();
         $errors = $this->updateUser($user, $json, $user_manager);
+        if(!$json->tos) {
+            $errors[] = array('propertyPath' => 'tos', 'message' => 'rtxlabs.user.tos');
+        }
         if (count($errors) > 0 ) {
             return new ValidationErrorResponse($errors);
         }

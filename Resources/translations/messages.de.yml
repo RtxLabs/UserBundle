@@ -24,6 +24,7 @@ rtxlabs.user.edit.legend: Benutzerinformationen
 rtxlabs.user.delete.confirm: Benutzer wirklich löschen?
 rtxlabs.user.myaccount.header: Mein Account
 rtxlabs.user.cancel: abbrechen
+rtxlabs.user.tos: Bitte akzeptieren sie die Nutzungsbedingungen
 
 rtxlabs.user.registration.header: Registrierung
 rtxlabs.user.registration.register: Registrieren
