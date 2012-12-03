@@ -29,12 +29,12 @@ class RegistrationController extends RestController
     public function registerAction()
     {
         $json = Dencoder::decode($this->getRequest()->getContent());
-        $user_manager = $this->get('rtxlabs.user.user_manager');
-        $user = $user_manager->findUserByEmail($json->email);
+        $userManager = $this->get('rtxlabs.user.user_manager');
+        $user = $userManager->findUserByEmail($json->email);
 
         if($user instanceof User && $user->getDeletedAt() !== null) {
-            $user_manager->generateRegistrationToken($user);
-            $user_manager->saveUser($user);
+            $userManager->generateRegistrationToken($user);
+            $userManager->saveUser($user);
             $this->get('rtxlabs.user.mailer')->sendReactivationEmailMessage($user);
             $response['success'] = false;
             $response['message'] = array(
@@ -44,8 +44,8 @@ class RegistrationController extends RestController
             return new Response(Dencoder::encode($response));
         }
 
-        $user = $user_manager->createUser();
-        $errors = $this->updateUser($user, $json, $user_manager);
+        $user = $userManager->createUser();
+        $errors = $this->updateUser($user, $json, $userManager);
         if(!$json->tos) {
             $errors[] = array('propertyPath' => 'tos', 'message' => 'rtxlabs.user.tos');
         }
@@ -62,8 +62,8 @@ class RegistrationController extends RestController
     
     public function confirmAction($token)
     {
-        $user_manager = $this->get('rtxlabs.user.user_manager');
-        $user = $user_manager->findUserByRegistrationToken($token);
+        $userManager = $this->get('rtxlabs.user.user_manager');
+        $user = $userManager->findUserByRegistrationToken($token);
 
         if (!$user) {
             return new RedirectResponse($this->container->get('router')->generate('rtxlabs_userbundle_login'));
@@ -71,15 +71,15 @@ class RegistrationController extends RestController
         $user->setRegistrationToken(null);
         $user->setActive(true);
 
-        $user_manager->saveUser($user);
+        $userManager->saveUser($user);
         $this->signin($user);
         return new RedirectResponse($this->container->get('router')->generate('rtxlabs_user_registration_register').'#confirmed');
     }
 
     public function reactivateAction($token)
     {
-        $user_manager = $this->get('rtxlabs.user.user_manager');
-        $user = $user_manager->findUserByRegistrationToken($token);
+        $userManager = $this->get('rtxlabs.user.user_manager');
+        $user = $userManager->findUserByRegistrationToken($token);
 
         if (!$user) {
             return new RedirectResponse($this->container->get('router')->generate('rtxlabs_userbundle_login'));
@@ -87,11 +87,11 @@ class RegistrationController extends RestController
         $user->setRegistrationToken(null);
         $user->setDeletedAt(null);
 
-        $user_manager->saveUser($user);
+        $userManager->saveUser($user);
         return new RedirectResponse($this->container->get('router')->generate('rtxlabs_user_registration_register').'#reactivation/confirmed');
     }
 
-    protected function updateUser($user, $json, $user_manager)
+    protected function updateUser($user, $json, $userManager)
     {
         $binder = $this->createDoctrineBinder()
             ->bind($json)
@@ -99,7 +99,7 @@ class RegistrationController extends RestController
             ->to($user);
         $binder->except("roles");
         $binder->execute();
-        $user_manager->generateRegistrationToken($user);
+        $userManager->generateRegistrationToken($user);
 
         $validator = $this->get('validator');
         $errors = $validator->validate($user);
@@ -112,11 +112,11 @@ class RegistrationController extends RestController
 
         if ($user->getPlainPassword() != self::$PASSWORD_PLACEHOLDER &&
             $user->getPlainPassword() != "") {
-            $user_manager->updatePassword($user);
+            $userManager->updatePassword($user);
         }
 
         $this->persistAndFlush($user);
-        $user_manager->saveUser($user);
+        $userManager->saveUser($user);
 
         return array();
     }
