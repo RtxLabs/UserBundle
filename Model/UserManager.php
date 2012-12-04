@@ -168,7 +168,7 @@ class UserManager implements UserProviderInterface
         $this->em->flush();
     }
 
-    protected function getEncoder(\RtxLabs\UserBundle\Entity\User $user)
+    protected function getEncoder($user)
     {
         return $this->encoderFactory->getEncoder($user);
     }
