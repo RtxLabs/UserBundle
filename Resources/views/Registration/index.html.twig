@@ -1,5 +1,18 @@
 {% extends "RotexSbpCoreBundle::backbone.html.twig" %}
 
+{% block breadcrumbs %}
+{% endblock %}
+
+{% block navigation %}
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand" href="#">{{ pageTitle }}</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
 {% block stylesheets %}
     {{ parent() }}
 
@@ -12,26 +25,36 @@
 {% endblock %}
 
 {% block main %}
-<div id="registration-main" class="full-block clearfix">
-</div>
+    {{ parent() }}
 
-{% include 'RtxLabsUserBundle:Registration:registrationTemplate.html.twig' %}
-{% include 'RtxLabsUserBundle:Registration:confirmedTemplate.html.twig' %}
+    <div id="registration-main" class="full-block clearfix"></div>
 
-{% endblock %}
-
-{% block navigation %}
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container">
-                <a class="brand" href="#">SmartBusinessPlatform</a>
-            </div>
-        </div>
-    </div>
+    {% include 'RtxLabsUserBundle:Reactivation:reactivationTemplate.html.twig' %}
+    {% include 'RtxLabsUserBundle:Reactivation:confirmedTemplate.html.twig' %}
+    {% include 'RtxLabsUserBundle:Registration:registrationTemplate.html.twig' %}
+    {% include 'RtxLabsUserBundle:Registration:confirmedTemplate.html.twig' %}
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
+
+    {% javascripts
+
+        '@RtxLabsUserBundle/Resources/public/js/Application.js'
+
+        '@RtxLabsUserBundle/Resources/public/js/Model/User.js'
+
+        '@RtxLabsUserBundle/Resources/public/js/Collection/UserCollection.js'
+
+        '@RtxLabsUserBundle/Resources/public/js/View/ReactivationView.js'
+        '@RtxLabsUserBundle/Resources/public/js/View/RegistrationView.js'
+        '@RtxLabsUserBundle/Resources/public/js/View/ConfirmedView.js'
+        '@RtxLabsUserBundle/Resources/public/js/View/ReactivationConfirmedView.js'
+
+        '@RtxLabsUserBundle/Resources/public/js/Router/RegistrationRouter.js'
+    %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 
     <script type="text/javascript">
         function redirectOnConfirm() {
@@ -40,30 +63,9 @@
             }, 10000);
         }
     </script>
-{% javascripts
-    '@RotexSbpCoreBundle/Resources/public/js/md5.js'
-    '@RotexSbpCoreBundle/Resources/public/js/core_gravatar.js'
-%}
-    <script src="{{ asset_url }}"></script>
-{% endjavascripts %}
 
-{% javascripts
-    '@RtxLabsUserBundle/Resources/public/js/Application.js'
-
-    '@RtxLabsUserBundle/Resources/public/js/Model/User.js'
-
-    '@RtxLabsUserBundle/Resources/public/js/Collection/UserCollection.js'
-
-    '@RtxLabsUserBundle/Resources/public/js/View/RegistrationView.js'
-    '@RtxLabsUserBundle/Resources/public/js/View/ConfirmedView.js'
-
-    '@RtxLabsUserBundle/Resources/public/js/Router/RegistrationRouter.js'
-%}
-    <script src="{{ asset_url }}"></script>
-{% endjavascripts %}
-
-<script type="text/javascript">
-    App.User.initRegistrationModule();
-</script>
+    <script type="text/javascript">
+        App.User.initRegistrationModule();
+    </script>
 {% endblock %}
 

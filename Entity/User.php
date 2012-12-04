@@ -17,8 +17,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Entity(repositoryClass="RtxLabs\UserBundle\Entity\UserRepository")
  * @ORM\HasLifecycleCallbacks
  *
- * @UniqueEntity("email")
- * @UniqueEntity("username")
+ * @UniqueEntity(fields="email", message="rtxlabs.user.validation.email.inUse")
+ * @UniqueEntity(fields="username", message="rtxlabs.user.validation.username.inUse")
  */
 class User implements \RtxLabs\UserBundle\Model\AdvancedUserInterface
 {
@@ -38,7 +38,7 @@ class User implements \RtxLabs\UserBundle\Model\AdvancedUserInterface
      * @var string $username
      *
      * @ORM\Column(name="username", type="string", length=255, unique=true)
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message = "rtxlabs.user.validation.username")
      * @Assert\MinLength(limit=6)
      */
     private $username;
@@ -47,6 +47,11 @@ class User implements \RtxLabs\UserBundle\Model\AdvancedUserInterface
      * @var string $password
      *
      * @ORM\Column(name="password", type="string", length=255)
+     */
+    private $password;
+
+    /**
+     * not persisted, only for validation
      * @Assert\NotBlank(message = "rtxlabs.user.validation.passwordRequiredAndFilled")
      * @Assert\Regex(
      *     pattern="/^.*(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[\d]).*$/",
@@ -54,18 +59,13 @@ class User implements \RtxLabs\UserBundle\Model\AdvancedUserInterface
      *     message="rtxlabs.user.validation.passwordRequirements"
      * )
      */
-    private $password;
-
-    /**
-     * not persisted, only for validation
-     */
     protected $plainPassword;
 
     /**
      * @var string $firstname
      *
      * @ORM\Column(name="firstname", type="string", length=255)
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message = "rtxlabs.user.validation.firstname")
      */
     private $firstname;
 
@@ -73,7 +73,7 @@ class User implements \RtxLabs\UserBundle\Model\AdvancedUserInterface
      * @var string $lastname
      *
      * @ORM\Column(name="lastname", type="string", length=255)
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message = "rtxlabs.user.validation.lastname")
      */
     private $lastname;
 
@@ -81,7 +81,7 @@ class User implements \RtxLabs\UserBundle\Model\AdvancedUserInterface
      * @var string $email
      *
      * @ORM\Column(name="email", type="string", length=255)
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message = "rtxlabs.user.validation.email")
      * @Assert\Email()
      */
     private $email;

@@ -1,6 +1,6 @@
 {% extends 'RtxLabsUserBundle:Mail:mail_layout.html.twig' %}
 
-{% block rtxlabs_email_subject %}{{ "rtxlabs.user.mail.title.request_resetting" | trans }}{% endblock %}
+{% block rtxlabs_email_subject %}[{{ pageTitle }}] - {{ "rtxlabs.user.mail.title.request_resetting" | trans }}{% endblock %}
 
 {% block rtxlabs_email_body %}
 

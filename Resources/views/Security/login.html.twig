@@ -1,40 +1,34 @@
-<!doctype html>
-<!--[if IE 7 ]><html lang="en" class="no-js ie7"> <![endif]-->
-<!--[if IE 8 ]><html lang="en" class="no-js ie8"> <![endif]-->
-<!--[if IE 9 ]><html lang="en" class="no-js ie9"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends "RotexSbpCoreBundle::base.html.twig" %}
 
-    <title>{% block title %}SmartBusinessPlatform{% endblock %}</title>
-    {% block stylesheets %}
-        {% stylesheets
-            '@RotexSbpCoreBundle/Resources/public/css/bootstrap.css'
-            '@RotexSbpCoreBundle/Resources/public/css/application.css'
-        %}
-            <link rel="stylesheet" href="{{ asset_url }}" />
-        {% endstylesheets %}
-    {% endblock %}
-    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+{% block stylesheets %}
+    {{ parent() }}
 
-    <!-- Google WebFonts -->
-    <link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
-</head>
+    {% stylesheets
+        '@RotexSbpCoreBundle/Resources/public/css/bootstrap.css'
+        '@RotexSbpCoreBundle/Resources/public/css/application.css'
+    %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
 
-<body>
+{% block navigation %}
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container">
-                <a class="brand" href="#">SmartBusinessPlatform</a>
+                <a class="brand" href="#">{{ pageTitle }}</a>
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block breadcrumbs %}
+{% endblock %}
+
+{% block main %}
     <div class="login container">
         <div class="content">
             <div class="page-header">
-                <h2>{{ "core.login.message" | trans }}</h2>
+                <h2>{{ "rtxlabs.user.login.message" | trans }}</h2>
             </div>
 
             {% if error %}
@@ -44,12 +38,12 @@
             {% endif %}
 
             <form action="{{ path("_security_check") }}" method="post">
-                <label>{{ "core.login.form.username"|trans }}</label>
+                <label>{{ "rtxlabs.user.login.form.username"|trans }}</label>
                 <div class="input">
                     <input type="text" id="username" name="_username" value="{{ last_username }}" class="xlarge">
                 </div>
 
-                <label>{{ "core.login.form.password"|trans }}</label>
+                <label>{{ "rtxlabs.user.login.form.password"|trans }}</label>
                 <div class="input">
                     <input type="password" id="password" name="_password" class="xlarge">
                 </div>
@@ -57,31 +51,23 @@
                 <div class="input">
                     <label class="checkbox">
                         <input type="checkbox" name="_remember_me"/>
-                        {{ "core.login.form.remember_me"|trans }}
+                        {{ "rtxlabs.user.login.form.remember_me"|trans }}
                     </label>
                 </div>
 
                 <div class="form-actions">
-                    <input type="submit" class="btn large primary" value="{{ "core.login.form.login"|trans }}" />
-                    <a href="#" class="forgot">{{ "core.login.lost_password"|trans }}</a>
+                    <input type="submit" class="btn large primary" value="{{ "rtxlabs.user.login.form.login"|trans }}" />
+                    <a href="{{ path('rtxlabs_user_password_forgotten') }}" class="forgot">{{ "rtxlabs.user.login.lost_password"|trans }}</a>
+                    <a href="{{ path('rtxlabs_user_registration_register') }}" class="forgot">{{ "rtxlabs.user.registration.register"|trans }}</a>
                 </div>
             </form>
         </div>
     </div>
-    <div class="footer">
-        <div class="container">
-            <footer>
-                <p>
-                    <span class="copyright">
-                    &copy; ROTEX Heating Systems GmbH.
-                    </span>
-                </p>
-            </footer>
-        </div>
-    </div>
+{% endblock %}
+
+{% block javascripts %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script>!window.jQuery && document.write(unescape('%3Cscript src="bundles/rotexsbpcore/js/jquery/jquery-1.7.1.min.js"%3E%3C/script%3E'))</script>
 
     <script src="/bundles/rotexsbpcore/js/login_bootstrap.js"></script>
-</body>
-</html>
+{% endblock %}

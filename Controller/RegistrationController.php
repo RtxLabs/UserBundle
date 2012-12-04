@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\Security\Core\SecurityContext;
+use Rotex\Sbp\CoreBundle\Http\ValidationErrorResponse;
 use Rotex\Sbp\CoreBundle\Controller\RestController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -15,7 +16,7 @@ use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
 class RegistrationController extends RestController
 {
-    private static $PASSWORD_PLACEHOLDER = "sbp_unchanged_$%!//";
+    private static $PASSWORD_PLACEHOLDER = "Sbp_unchanged_1$%!//";
 
     /**
      * @Template("RtxLabsUserBundle:Registration:index.html.twig")
@@ -27,11 +28,29 @@ class RegistrationController extends RestController
     
     public function registerAction()
     {
-        $user_manager = $this->get('rtxlabs.user.user_manager');
-        $user = $user_manager->createUser();
-        $errors = $this->updateUser($user, $this->getRequest(), $user_manager);
+        $json = Dencoder::decode($this->getRequest()->getContent());
+        $userManager = $this->get('rtxlabs.user.user_manager');
+        $user = $userManager->findUserByEmail($json->email);
+
+        if($user instanceof User && $user->getDeletedAt() !== null) {
+            $userManager->generateRegistrationToken($user);
+            $userManager->saveUser($user);
+            $this->get('rtxlabs.user.mailer')->sendReactivationEmailMessage($user);
+            $response['success'] = false;
+            $response['message'] = array(
+                'status' => 304,
+                'url'    => $this->container->get('router')->generate('rtxlabs_user_registration_register').'#reactivation'
+            );
+            return new Response(Dencoder::encode($response));
+        }
+
+        $user = $userManager->createUser();
+        $errors = $this->updateUser($user, $json, $userManager);
+        if(!$json->tos) {
+            $errors[] = array('propertyPath' => 'tos', 'message' => 'rtxlabs.user.tos');
+        }
         if (count($errors) > 0 ) {
-            return new Response(Dencoder::encode($errors), 406);
+            return new ValidationErrorResponse($errors);
         }
 
         $this->get('rtxlabs.user.mailer')->sendRegistrationEmailMessage($user);
@@ -43,8 +62,8 @@ class RegistrationController extends RestController
     
     public function confirmAction($token)
     {
-        $user_manager = $this->get('rtxlabs.user.user_manager');
-        $user = $user_manager->findUserByRegistrationToken($token);
+        $userManager = $this->get('rtxlabs.user.user_manager');
+        $user = $userManager->findUserByRegistrationToken($token);
 
         if (!$user) {
             return new RedirectResponse($this->container->get('router')->generate('rtxlabs_userbundle_login'));
@@ -52,44 +71,52 @@ class RegistrationController extends RestController
         $user->setRegistrationToken(null);
         $user->setActive(true);
 
-        $user_manager->saveUser($user);
+        $userManager->saveUser($user);
         $this->signin($user);
         return new RedirectResponse($this->container->get('router')->generate('rtxlabs_user_registration_register').'#confirmed');
     }
 
-    protected function updateUser($user, $request, $user_manager)
+    public function reactivateAction($token)
     {
-        $json = Dencoder::decode($request->getContent());
+        $userManager = $this->get('rtxlabs.user.user_manager');
+        $user = $userManager->findUserByRegistrationToken($token);
+
+        if (!$user) {
+            return new RedirectResponse($this->container->get('router')->generate('rtxlabs_userbundle_login'));
+        }
+        $user->setRegistrationToken(null);
+        $user->setDeletedAt(null);
+
+        $userManager->saveUser($user);
+        return new RedirectResponse($this->container->get('router')->generate('rtxlabs_user_registration_register').'#reactivation/confirmed');
+    }
+
+    protected function updateUser($user, $json, $userManager)
+    {
         $binder = $this->createDoctrineBinder()
             ->bind($json)
             ->field("plainPassword", $json->password)
             ->to($user);
         $binder->except("roles");
         $binder->execute();
-        $user_manager->generateRegistrationToken($user);
+        $userManager->generateRegistrationToken($user);
 
         $validator = $this->get('validator');
         $errors = $validator->validate($user);
+        if($json->password !== $json->passwordRepeat) {
+            $errors[] = array('propertyPath' => 'passwordRepeat', 'message' => 'rtxlabs.user.validation.passwordRepeat');
+        }
         if (count($errors) > 0) {
-            $result = array();
-            foreach ($errors as $key=>$violation) {
-                if ($violation instanceof \Symfony\Component\Validator\ConstraintViolation) {
-                    $result[$violation->getPropertyPath()] = $violation->getMessage();
-                }
-                else {
-                    $result[$key] = $violation;
-                }
-            }
-            return $result;
+            return $errors;
         }
 
-        if ($user->getPlainPassword() != self::$PASSWORD_PLACEHOLDER ||
+        if ($user->getPlainPassword() != self::$PASSWORD_PLACEHOLDER &&
             $user->getPlainPassword() != "") {
-            $user_manager->updatePassword($user);
+            $userManager->updatePassword($user);
         }
 
         $this->persistAndFlush($user);
-        $user_manager->saveUser($user);
+        $userManager->saveUser($user);
 
         return array();
     }

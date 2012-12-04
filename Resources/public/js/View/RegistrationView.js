@@ -1,6 +1,6 @@
 Core.ns('App.User.View');
 
-App.User.View.RegistrationView = Backbone.View.extend({
+App.User.View.RegistrationView = App.Core.View.View.extend({
     el: $('#registration-main'),
 
     events: {
@@ -19,32 +19,23 @@ App.User.View.RegistrationView = Backbone.View.extend({
     },
 
     handleSave: function() {
+        var self = this;
         $('form:input').removeClass('error');
         $('form div').removeClass('error');
-        $('#notification-error-body').html('');
 
         this.model.save(this.getFormValues(), {
             url: 'register',
             success: function(user, response) {
-                $('.alert-success').show();
-                $('.alert-error').hide();
-            },
-            error: function(user, response){
-                if (response.responseText !== undefined && response.status != 406) {
-                    $('#notification-error-body').append(response.responseText);
+                if(response.success == false &&
+                    response.message.status == '304') {
+                    window.location.href = response.message.url;
                 }
                 else {
-                    response = JSON.parse(response.responseText);
-
-                    $.each(response, function(key, value) {
-                        $('#user-'+key+'-div').addClass('error');
-                        $('#user-'+key).addClass('error');
-                        $('#notification-error-body').append(ExposeTranslation.get('rtxlabs.user.validation.'+key)+'<br/>');
-                    });
+                    self.defaultSuccess(self);
                 }
-                $('.alert-success').hide();
-                $('.alert-error').show();
-            }
+            },
+            error: self.defaultError,
+            scope: self
         });
     },
 
@@ -64,8 +55,7 @@ App.User.View.RegistrationView = Backbone.View.extend({
             values.set(objInst);
         });
 
-        values.attributes.passwordRequired = $("#user-passwordRequired").attr('checked') == 'checked';
-        values.attributes.admin = $("#user-admin").attr('checked') == 'checked';
+        values.attributes.tos = $("#registration-tos").attr('checked') == 'checked';
         return values.attributes;
     }
 });
