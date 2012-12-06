@@ -24,7 +24,7 @@ class Group
     protected $id;
 
     /**
-     * @ORM\Column(type="string", name="name", length="255")
+     * @ORM\Column(type="string", name="name", length=255)
      * @Assert\NotBlank()
      */
     protected $name;
