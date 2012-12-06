@@ -93,7 +93,7 @@ class User implements \RtxLabs\UserBundle\Model\AdvancedUserInterface
     protected $roles;
 
     /**
-     * @ORM\Column(type="string", length="5", nullable=true)
+     * @ORM\Column(type="string", length=5, nullable=true)
      * @var String
      */
     protected $locale;
@@ -113,7 +113,7 @@ class User implements \RtxLabs\UserBundle\Model\AdvancedUserInterface
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length="255")
+     * @ORM\Column(type="string", length=255)
      */
     protected $salt;
 
@@ -135,7 +135,7 @@ class User implements \RtxLabs\UserBundle\Model\AdvancedUserInterface
      * Random string sent to the user email address in order to verify it
      *
      * @var string
-     * @ORM\Column(name="password_token", type="string", length="255", nullable=true)
+     * @ORM\Column(name="password_token", type="string", length=255, nullable=true)
      */
     protected $passwordToken;
 
@@ -143,7 +143,7 @@ class User implements \RtxLabs\UserBundle\Model\AdvancedUserInterface
      * Random string sent to the user email address in order to enable a new account
      *
      * @var string
-     * @ORM\Column(name="registration_token", type="string", length="255", nullable=true)
+     * @ORM\Column(name="registration_token", type="string", length=255, nullable=true)
      */
     protected $registrationToken;
 

@@ -119,9 +119,6 @@ class UserController extends RestController
         }
 
         $errors = $this->updateUser($user, $json);
-        if($json->plainPassword !== $json->passwordRepeat) {
-            $errors[] = array('propertyPath' => 'passwordRepeat', 'message' => 'rtxlabs.user.validation.passwordRepeat');
-        }
         if (count($errors) > 0) {
             return new ValidationErrorResponse($errors);
         }
@@ -150,6 +147,9 @@ class UserController extends RestController
         $binder->execute();
 
         $validator = $this->get('validator');
+        if($json->plainPassword !== $json->passwordRepeat) {
+            $errors[] = array('propertyPath' => 'passwordRepeat', 'message' => 'rtxlabs.user.validation.passwordRepeat');
+        }
         $errors = $validator->validate($user);
         if (count($errors) > 0) {
             return $errors;
