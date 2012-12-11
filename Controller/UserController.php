@@ -139,7 +139,7 @@ class UserController extends RestController
             ->except("password");
 
         if ($this->getCurrentUser()->isAdmin()) {
-            $binder->field("roles", $json->roles);
+            $binder->field("roles", explode(",", $json->roles));
         }
         else {
             $binder->except("roles");
