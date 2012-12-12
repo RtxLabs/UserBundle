@@ -23,7 +23,7 @@ class SecurityController extends Controller
     {
         // The security layer will intercept this request
     }
-    
+
     /**
      * @Route("/login", name="rtxlabs_userbundle_login")
      * @Template("RtxLabsUserBundle:Security:login.html.twig")
@@ -39,7 +39,19 @@ class SecurityController extends Controller
         return array(
             'last_username' => $this->get('request')->getSession()->get(SecurityContext::LAST_USERNAME),
             'error'         => $error,
+            'registrationEnabled' => $this->routeExists('rtxlabs_user_registration_register')
         );
     }
 
+    private function routeExists($searched) {
+        $router = $this->get("router");
+
+        foreach ($router->getRouteCollection()->all() as $name => $route) {
+            if ($name == $searched) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
