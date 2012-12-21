@@ -55,8 +55,8 @@ App.User.View.MyAccountView = App.Core.View.View.extend({
         }, {
             success: function(user, response) {
                 self.showNotification(
-                    ExposeTranslation.get("core.general.notification.success.header"),
-                    ExposeTranslation.get("core.general.notification.save.success"),
+                    Translator.get("core.general.notification.success.header"),
+                    Translator.get("core.general.notification.save.success"),
                     "success");
 
                 $('#myaccount-save-btn').removeAttr('disabled');

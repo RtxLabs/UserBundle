@@ -63,7 +63,7 @@ App.User.View.UserView = Backbone.View.extend({
                     $.each(response, function(key, value) {
                         $('#user-'+key+'-div').addClass('error');
                         $('#user-'+key).addClass('error');
-                        $('#notification-error-body').append(ExposeTranslation.get('rtxlabs.user.validation.'+key)+'<br/>');
+                        $('#notification-error-body').append(Translator.get('rtxlabs.user.validation.'+key)+'<br/>');
                     });
                 }
 
@@ -112,6 +112,6 @@ App.User.View.UserView = Backbone.View.extend({
     updateBreadcrumb: function() {
         var lastSpanEl = $(".breadcrumb .divider").last().parent();
         lastSpanEl.next().remove();
-        $(".breadcrumb").append("<li>"+ExposeTranslation.get('rtxlabs.user.edit.header')+"</li>");
+        $(".breadcrumb").append("<li>"+Translator.get('rtxlabs.user.edit.header')+"</li>");
     }
 });

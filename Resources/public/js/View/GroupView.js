@@ -54,7 +54,7 @@ App.User.View.GroupView = Backbone.View.extend({
                     $.each(response, function(key, value) {
                         $('#group-'+key+'-div').addClass('error');
                         $('#group-'+key).addClass('error');
-                        $('#notification-error-body').append(ExposeTranslation.get('rtxlabs.user.group.validation.'+key)+'<br/>');
+                        $('#notification-error-body').append(Translator.get('rtxlabs.user.group.validation.'+key)+'<br/>');
                     });
                 }
 
@@ -85,6 +85,6 @@ App.User.View.GroupView = Backbone.View.extend({
     updateBreadcrumb: function() {
         var lastSpanEl = $(".breadcrumb .divider").last().parent();
         lastSpanEl.next().remove();
-        $(".breadcrumb").append("<li>"+ExposeTranslation.get('rtxlabs.user.group.edit.header')+"</li>");
+        $(".breadcrumb").append("<li>"+Translator.get('rtxlabs.user.group.edit.header')+"</li>");
     }
 });
