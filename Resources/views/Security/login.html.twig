@@ -12,13 +12,7 @@
 {% endblock %}
 
 {% block navigation %}
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container">
-                <a class="brand" href="#">{{ pageTitle | default("SmartBusinessPlatform") }}</a>
-            </div>
-        </div>
-    </div>
+    {% include "RtxLabsUserBundle::navigation.html.twig" %}
 {% endblock %}
 
 {% block breadcrumbs %}
