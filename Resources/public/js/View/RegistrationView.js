@@ -4,7 +4,8 @@ App.User.View.RegistrationView = App.Core.View.View.extend({
     el: $('#registration-main'),
 
     events: {
-        "click #save-registration": "handleSave"
+        "click #save-registration": "handleSave",
+        "click #terms-of-service-open-btn": "renderTermsOfService"
     },
 
     initialize: function() {
@@ -16,6 +17,11 @@ App.User.View.RegistrationView = App.Core.View.View.extend({
         $(this.el).html(this.template());
 
         return this;
+    },
+
+    renderTermsOfService: function() {
+        var view = new App.Core.View.TermsOfServiceView();
+        view.render();
     },
 
     handleSave: function() {
@@ -38,7 +44,6 @@ App.User.View.RegistrationView = App.Core.View.View.extend({
             scope: self
         });
     },
-
 
     getFormValues: function() {
         var values = new Backbone.Model();
