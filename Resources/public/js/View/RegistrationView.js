@@ -20,7 +20,7 @@ App.User.View.RegistrationView = App.Core.View.View.extend({
     },
 
     renderTermsOfService: function() {
-        var view = new App.Core.View.TermsOfServiceView();
+        var view = new App.User.View.TermsOfServiceView();
         view.render();
     },
 
