@@ -4,19 +4,16 @@ App.User.View.MyAccountView = App.Core.View.View.extend({
     el: $('#user-main'),
 
     events: {
-        'click #myaccount-save-btn': 'handleSaveClick'
+        'click #myaccount-save-btn': 'handleSave'
     },
 
     initialize: function() {
         this.template = _.template($('#myaccount-template').html());
         this.loadingTemplate = _.template($('#loading-template').html());
+        _.bindAll(this, 'render');
 
         this.model = new App.User.Model.User({id: window.currentUser.id});
-
-        _.bindAll(this, 'render');
         this.model.bind('change', this.render);
-        this.render();
-
         this.model.fetch();
     },
 
@@ -27,7 +24,7 @@ App.User.View.MyAccountView = App.Core.View.View.extend({
         else {
             this.renderUser();
         }
-
+        
         return this;
     },
 
@@ -39,7 +36,7 @@ App.User.View.MyAccountView = App.Core.View.View.extend({
         $(this.el).html(this.template(this.model.toJSON()));
     },
 
-    handleSaveClick: function() {
+    handleSave: function() {
         var self = this;
 
         $('#myaccount-save-btn').attr('disabled', 'disabled');
@@ -54,17 +51,14 @@ App.User.View.MyAccountView = App.Core.View.View.extend({
             roles: this.model.get('roles').join(',')
         }, {
             success: function(user, response) {
-                self.showNotification(
-                    Translator.get("core.general.notification.success.header"),
-                    Translator.get("core.general.notification.save.success"),
-                    "success");
-
+                self.defaultSuccess(self);
                 $('#myaccount-save-btn').removeAttr('disabled');
             },
             error: function(response) {
-                self.handleError(response);
+                self.defaultError(self);
                 $('#myaccount-save-btn').removeAttr('disabled');
-            }
+            },
+            scope: self
         });
     }
 });

@@ -54,9 +54,9 @@
                         <div class="input"><input id="user-passwordRequired" type="checkbox" name="user[passwordRequired]" <%= passwordRequired==true ? 'checked=checked' : '' %>/></div>
                     </div>
                     <div class="control-group" id="user-password-div">
-                        <label for="user-password">{{ 'rtxlabs.user.label.password' | trans }}:</label>
+                        <label for="user-plainPassword">{{ 'rtxlabs.user.label.password' | trans }}:</label>
                         <div class="input">
-                            <input class="medium" id="user-password" name="user[password]" type="password"
+                            <input class="medium" id="user-plainPassword" name="user[plainPassword]" type="password"
                                    value="<%= plainPassword %>">
                         </div>
                     </div>

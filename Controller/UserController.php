@@ -1,190 +1,139 @@
 <?php
 namespace RtxLabs\UserBundle\Controller;
 
-use RtxLabs\UserBundle\Form\UserFilterType;
-use RtxLabs\UserBundle\Model\UserRepositoryInterface;
-use RtxLabs\UserBundle\Model\UserFilter;
-
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use RtxLabs\DataTransformationBundle\Binder\Binder;
-use RtxLabs\DataTransformationBundle\Binder\GetMethodBinder;
-use Rotex\Sbp\CoreBundle\Http\ValidationErrorResponse;
 use Rotex\Sbp\CoreBundle\Controller\RestController;
 use RtxLabs\DataTransformationBundle\Dencoder\Dencoder;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Doctrine\ORM\EntityManager;
+use RtxLabs\UserBundle\Model\UserManager;
 
+/**
+ * @Route("/user", service="rtxlabs.user.user_controller")
+ */
 class UserController extends RestController
 {
+    private $whitelist = array("firstname", "lastname", "email", "username", 
+        "passwordRequired", "plainPassword", "passwordRepeat", "admin", "locale");
     private static $PASSWORD_PLACEHOLDER = "Sbp_unchanged_1$%!//";
+    protected $container;
+    /**
+     * @var EntityManager $em
+     */
+    protected $em;
+    /**
+     * @var UserManager $um
+     */
+    protected $um;
+    
+    public function __construct(ContainerInterface $container, EntityManager $em, UserManager $um)
+    {
+        $this->container = $container;
+        $this->em = $em;
+        $this->um = $um;
+    }
 
     /**
-     * @Route("/user/index", name="uma")
-     * @Route("/user/index#create", name="ucr")
-     * @Route("/user/index#account", name="uac")
+     * @Route("/index", name="uma")
+     * @Route("/index#create", name="ucr")
+     * @Route("/index#account", name="uac")
      * @Template()
      */
     public function indexAction()
     {
         $roleManager = $this->get('rtxlabs.user.rolemanager');
-
-        $em = $this->getDoctrine()->getEntityManager();
-        $groups = $em->getRepository('RtxLabsUserBundle:Group')->findAll();
-
-        return array('roles'=>$roleManager->getRoles(),
-                     'groups'=>$groups);
+        $groups = $this->em->getRepository('RtxLabsUserBundle:Group')->findAll();
+        return array('roles' => $roleManager->getRoles(), 'groups' => $groups);
     }
 
     /**
-     * @Route("/user", name="rtxlabs_userbundle_user_list", requirements={"_method"="GET"}, options={"expose"="true"})
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @Route("/", name="rtxlabs_userbundle_user_list", requirements={"_method"="GET"}, options={"expose"="true"})
      */
     public function listAction()
     {
-        $em = $this->getDoctrine()->getEntityManager();
-
-        $user = $this->getUserRepository()->findAll();
-        $userArray = $this->createUserBinder()->bind($user)->execute();
-        $json = Dencoder::encode($userArray);
-
-        return new Response($json);
+        return $this->defaultListAction();
     }
 
     /**
-     * @Route("/user/{id}", name="rtxlabs_userbundle_user_read", requirements={"_method"="GET"}, options={"expose"="true"})
+     * @Route("/{id}", name="rtxlabs_userbundle_user_read", requirements={"_method"="GET"}, options={"expose"="true"})
      */
     public function readAction($id)
     {
-        $user = $this->getUserRepository()->find($id);
-
-        if (!$user) {
-            throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException();
-        }
-
-        $userArray = $this->createUserBinder()->bind($user)->execute();
-        $json = Dencoder::encode($userArray);
-
-        return new Response($json);
+        $alert = $this->findEntity($id);
+        return $this->defaultReadAction($alert);
     }
 
     /**
-     * @Route("/user/{id}",name="rtxlabs_userbundle_user_delete", requirements={"_method"="DELETE"}, options={"expose"="true"})
-     */
-    public function deleteAction($id)
-    {
-        $user = $this->getUserRepository()->find($id);
-
-        if (!$user) {
-            throw $this->createNotFoundException();
-        }
-
-        $user->setDeletedAt(new \DateTime('now'));
-        $this->persistAndFlush($this->getCurrentUser());
-
-        return new Response();
-    }
-
-    /**
-     * @Route("/user",name="rtxlabs_userbundle_user_create", requirements={"_method"="POST"}, options={"expose"="true"})
+     * @Route("/",name="rtxlabs_userbundle_user_create", requirements={"_method"="POST"}, options={"expose"="true"})
      */
     public function createAction()
     {
-        $userClass = $this->getUserClass();
-        $user = new $userClass();
-
-        $errors = $this->updateUser($user, $this->getRequest());
-        if (count($errors) > 0 ) {
-            return new Response(Dencoder::encode($errors), 406);
-        }
-
-        $this->get('rtxlabs.user.mailer')->sendWelcomeEmailMessage($user);
-
-        $userArray = $this->createUserBinder()->bind($user)->execute();
-        $json = Dencoder::encode($userArray);
-
-        return new Response($json);
+        return $this->defaultCreateAction($this->whitelist);
     }
-
+    
     /**
-     * @Route("/user/{id}", name="rtxlabs_userbundle_user_update", requirements={"_method"="PUT"}, options={"expose"="true"})
+     * @Route("/{id}", name="rtxlabs_userbundle_user_update", requirements={"_method"="PUT"}, options={"expose"="true"})
      */
     public function updateAction($id)
     {
-        $user = $this->getUserRepository()->find($id);
-        $json = Dencoder::decode($this->getRequest()->getContent());
-
-        if (!$user) {
-            throw $this->createNotFoundException('Unable to find user.');
-        }
-
-        $errors = $this->updateUser($user, $json);
-        if (count($errors) > 0) {
-            return new ValidationErrorResponse($errors);
-        }
-
-        $userArray = $this->createDoctrineBinder()->bind($user)->execute();
-        $json = Dencoder::encode($userArray);
-
-        return new Response($json);
+        $alert = $this->findEntity($id);
+        return $this->defaultUpdateAction($alert, $this->whitelist);
     }
 
-
-    protected function updateUser($user, $json)
+    /**
+     * @Route("/{id}",name="rtxlabs_userbundle_user_delete", requirements={"_method"="DELETE"}, options={"expose"="true"})
+     */
+    public function deleteAction($id)
     {
-        $binder = $this->createDoctrineBinder()
-            ->bind($json)
-            ->field("plainPassword", $json->plainPassword)
-            ->to($user)
-            ->except("password");
+        $user = $this->getDoctrine()
+            ->getRepository('RtxLabsUserBundle:User')
+            ->findOneById($id);
+        if($user) {
+            if(!$this->getCurrentUser()->isAdmin()) {
+                return $this->responseForbidden();
+            }
+            $user->setDeletedAt(new \DateTime('now'));
+            $this->persistAndFlush($user);
+        }
+        return new Response();
+    }
 
+    protected function bindRequestData($user, $whitelist)
+    {
+        $data = Dencoder::decode($this->getRequest()->getContent());
+        $binder = $this->createDataBinder($whitelist)->bind($data)->to($user)->except("password");
+        
         if ($this->getCurrentUser()->isAdmin()) {
-            $binder->field("roles", explode(",", $json->roles));
+            $binder->field("roles", explode(",", $data->roles));
         }
         else {
             $binder->except("roles");
         }
         $binder->execute();
-
+    }
+    
+    protected function findValidationErrors($entity)
+    {
+        $data = Dencoder::decode($this->getRequest()->getContent());
         $validator = $this->get('validator');
-        if($json->plainPassword !== $json->passwordRepeat) {
+        $errors = $validator->validate($entity);
+        
+        if($data->plainPassword !== $data->passwordRepeat) {
             $errors[] = array('propertyPath' => 'passwordRepeat', 'message' => 'rtxlabs.user.validation.passwordRepeat');
         }
-        $errors = $validator->validate($user);
-        if (count($errors) > 0) {
-            return $errors;
+        if ($entity->getPlainPassword() != self::$PASSWORD_PLACEHOLDER &&
+            $entity->getPlainPassword() != "" && !count($errors)) {
+
+            $this->um->updatePassword($entity);
         }
-
-        if ($user->getPlainPassword() != self::$PASSWORD_PLACEHOLDER &&
-            $user->getPlainPassword() != "") {
-
-            $user_manager = $this->get('rtxlabs.user.user_manager');
-            $user_manager->updatePassword($user);
-        }
-        $this->persistAndFlush($user);
-
-        return array();
+        
+        return $errors;
     }
-
-    /**
-     * @return \RtxLabs\UserBundle\Model\UserRepositoryInterface
-     */
-    private function getUserRepository()
-    {
-        $repository = $this->getDoctrine()->getRepository($this->getUserClass());
-        assert($repository instanceof UserRepositoryInterface);
-        return $repository;
-    }
-
-    /**
-     * @return \RtxLabs\UserBundle\Entity\User
-     */
-    private function getUserClass() {
-        $user = $this->container->getParameter("rtxlabs.user.class");
-        return $user;
-    }
-
-    private function createUserBinder()
+    
+    protected function createEntityBinder()
     {
         $binder = $this->createDoctrineBinder()
             ->field('admin', function($user) { return $user->hasRole('ROLE_ADMIN'); })
@@ -194,5 +143,11 @@ class UserController extends RestController
             ->join('groups', $this->createDoctrineBinder());
 
         return $binder;
+    }
+
+    private function responseForbidden($propertyPath = '', $message = 'rtxlabs.user.validation.forbidden')
+    {
+        $error = array('propertyPath' => $propertyPath, 'message' => $message);
+        return new Response(Dencoder::encode($error), '403');
     }
 }

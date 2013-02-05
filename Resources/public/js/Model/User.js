@@ -1,6 +1,6 @@
 Core.ns("App.User.Model");
 
-App.User.Model.User = Backbone.Model.extend({
+App.User.Model.User = App.Core.Model.Model.extend({
     urlRoot: Routing.generate("rtxlabs_userbundle_user_list"),
 
     initialize: function() {
@@ -16,18 +16,19 @@ App.User.Model.User = Backbone.Model.extend({
     },
 
     defaults: {
-        firstname: "",
-        lastname: "",
-        email: "",
-        personnelNumber: "",
-        username: "",
-        passwordRequired: true,
-        password: "",
-        plainPassword: "",
-        passwordRepeat: "",
-        admin: false,
-        locale: "de",
-        roles: [],
-        groups: []
+        "id": null,
+        "firstname": "",
+        "lastname": "",
+        "email": "",
+        "personnelNumber": "",
+        "username": "",
+        "passwordRequired": true,
+        "password": "",
+        "plainPassword": "",
+        "passwordRepeat": "",
+        "admin": false,
+        "locale": "de",
+        "roles": [],
+        "groups": []
     }
 });

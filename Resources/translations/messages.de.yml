@@ -6,7 +6,7 @@ rtxlabs.user.label.personnel_number: Personalnummer
 rtxlabs.user.label.email: E-Mail
 rtxlabs.user.label.username: Benutzername
 rtxlabs.user.label.password: Passwort
-rtxlabs.user.label.passwordRepeat: Passwort wiederholen
+rtxlabs.user.label.passwordRepeat: Passwort (wiederholen)
 rtxlabs.user.label.locale: Sprache Benutzeroberfläche
 rtxlabs.user.label.tos: Hiermit akzeptiere ich die %link_start%Nutzungsbedingungen%link_end%
 
@@ -23,6 +23,7 @@ rtxlabs.user.edit.header: Benutzer bearbeiten
 rtxlabs.user.edit.legend: Benutzerinformationen
 rtxlabs.user.delete.confirm: Benutzer wirklich löschen?
 rtxlabs.user.myaccount.header: Mein Account
+rtxlabs.user.myaccount.edit: Accountinformationen bearbeiten
 rtxlabs.user.cancel: abbrechen
 rtxlabs.user.tos: Bitte akzeptieren sie die Nutzungsbedingungen
 
@@ -30,6 +31,7 @@ rtxlabs.user.registration.header: Registrierung
 rtxlabs.user.registration.register: Registrieren
 rtxlabs.user.registration.save: Registrierung abschicken
 rtxlabs.user.registration.success: Registrierung erfolgreich
+rtxlabs.user.registration.fillIn: Bitte füllen sie alle nachfolgenden Felder aus
 rtxlabs.user.registration.confirmed: |
   Ihre Registrierungsbestätigung war erfolgreich.
 rtxlabs.user.registration.redirect: |
@@ -45,10 +47,12 @@ rtxlabs.user.reactivation.information: |
   Eine E-Mail mit Informationen zur Realtivierung des Accounts wurde ihnen zugesandt.
 
 rtxlabs.user.password.header: Passwort vergessen
+rtxlabs.user.password.forgotten: Passwort vergessen?
 rtxlabs.user.password.save: Passwort ändern
 rtxlabs.user.password.success: Passwort erfolgreich geändert
 rtxlabs.user.password.confirmed: Ihr Passwort wurde erfolgreich geändert.
 rtxlabs.user.password.reset: Passwort zurücksetzen
+rtxlabs.user.password.reset.info: Bitte geben sie ihr neues Passwort ein
 rtxlabs.user.password.reset.mail: E-Mail senden
 rtxlabs.user.password.reset.mail.invalid: Dies ist keine gültige E-Mail Adresse.
 rtxlabs.user.password.reset.mail.notfound: Die eingegebene E-Mail Adresse existiert nicht im System.
@@ -62,6 +66,7 @@ rtxlabs.user.groups.selector: Bitte Gruppe(n) auswählen
 rtxlabs.user.notification.user_successfully_saved: Benutzer erfolgreich gespeichert
 rtxlabs.user.notification.user_successfully_deleted: Benutzer erfolgreich gelöscht
 
+rtxlabs.user.validation.forbidden: Dieser Vorgang ist nicht erlaubt
 rtxlabs.user.validation.firstname: Ein Vorname muß angegeben werden
 rtxlabs.user.validation.lastname: Ein Nachname muß angegeben werden
 rtxlabs.user.validation.email: Eine E-Mail-Adresse muß angegeben werden und eindeutig sein

@@ -1,6 +1,6 @@
 Core.ns('App.User.View');
 
-App.User.View.UserView = Backbone.View.extend({
+App.User.View.UserEditView = App.Core.View.View.extend({
     el: $('#user-main'),
 
     events: {
@@ -9,11 +9,8 @@ App.User.View.UserView = Backbone.View.extend({
     },
 
     initialize: function() {
-
         this.template = _.template($('#user-edit-template').html());
-
         _.bindAll(this, 'render');
-        this.render();
     },
 
     render: function() {
@@ -45,31 +42,13 @@ App.User.View.UserView = Backbone.View.extend({
 
         this.model.save(this.getFormValues(), {
             success: function(user, response) {
-                $('.alert-success').show();
-                $('.alert-error').hide();
-
+                self.defaultSuccess(self);
                 if (self.isNew) {
                     self.collection.add(user);
                 }
             },
-            error: function(user, response){
-                if (response.responseText !== undefined && response.status != 406) {
-                    // Server error
-                    $('#notification-error-body').append(response.responseText);
-                }
-                else {
-                    response = JSON.parse(response.responseText);
-
-                    $.each(response, function(key, value) {
-                        $('#user-'+key+'-div').addClass('error');
-                        $('#user-'+key).addClass('error');
-                        $('#notification-error-body').append(Translator.get('rtxlabs.user.validation.'+key)+'<br/>');
-                    });
-                }
-
-                $('.alert-success').hide();
-                $('.alert-error').show();
-            }
+            error: self.defaultError,
+            scope: self
         });
     },
 
@@ -77,10 +56,7 @@ App.User.View.UserView = Backbone.View.extend({
         var values = new Backbone.Model();
         var idPattern = /(\w.+)\-(\w*\d*\-*_*)/;
 
-        var collection = $('form [name^="user["]');
-
         $('form [name^="user["]').each(function(index, dom) {
-
             var el = $(dom);
             var result = dom.id.match(idPattern);
 

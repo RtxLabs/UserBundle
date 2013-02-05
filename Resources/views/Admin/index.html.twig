@@ -5,9 +5,9 @@
 </div>
 
 {% include 'RtxLabsUserBundle:User:myAccountTemplate.html.twig' %}
-{% include 'RtxLabsUserBundle:User:userListTemplate.html.twig' %}
-{% include 'RtxLabsUserBundle:User:userListRowTemplate.html.twig' %}
-{% include 'RtxLabsUserBundle:User:userEditTemplate.html.twig' with {'roles': roles, 'groups': groups} %}
+{% include 'RtxLabsUserBundle:Admin:userListTemplate.html.twig' %}
+{% include 'RtxLabsUserBundle:Admin:userListRowTemplate.html.twig' %}
+{% include 'RtxLabsUserBundle:Admin:userEditTemplate.html.twig' with {'roles': roles, 'groups': groups} %}
 
 {% endblock %}
 
@@ -23,22 +23,23 @@
 {% endjavascripts %}
 
 {% javascripts
-            '@RtxLabsUserBundle/Resources/public/js/Application.js'
-            '@RtxLabsUserBundle/Resources/public/js/Model/Group.js'
-            '@RtxLabsUserBundle/Resources/public/js/Collection/GroupCollection.js'
-            '@RtxLabsUserBundle/Resources/public/js/Model/User.js'
-            '@RtxLabsUserBundle/Resources/public/js/Collection/UserCollection.js'
-            '@RtxLabsUserBundle/Resources/public/js/View/MyAccountView.js'
-            '@RtxLabsUserBundle/Resources/public/js/View/UserListRowView.js'
-            '@RtxLabsUserBundle/Resources/public/js/View/UserListView.js'
-            '@RtxLabsUserBundle/Resources/public/js/View/UserView.js'
-            '@RtxLabsUserBundle/Resources/public/js/Router/UserRouter.js'
+    '@RtxLabsUserBundle/Resources/public/js/Application.js'
+    '@RtxLabsUserBundle/Resources/public/js/Model/Group.js'
+    '@RtxLabsUserBundle/Resources/public/js/Collection/GroupCollection.js'
+    '@RtxLabsUserBundle/Resources/public/js/Filter/UserFilter.js'
+    '@RtxLabsUserBundle/Resources/public/js/Model/User.js'
+    '@RtxLabsUserBundle/Resources/public/js/Collection/UserCollection.js'
+    '@RtxLabsUserBundle/Resources/public/js/View/MyAccountView.js'
+    '@RtxLabsUserBundle/Resources/public/js/View/UserListRowView.js'
+    '@RtxLabsUserBundle/Resources/public/js/View/UserListView.js'
+    '@RtxLabsUserBundle/Resources/public/js/View/UserEditView.js'
+    '@RtxLabsUserBundle/Resources/public/js/Router/AdminRouter.js'
 %}
     <script src="{{ asset_url }}"></script>
 {% endjavascripts %}
 
 <script type="text/javascript">
-    App.User.initUserModule();
+    App.User.initAdminModule();
 </script>
 {% endblock %}
 
