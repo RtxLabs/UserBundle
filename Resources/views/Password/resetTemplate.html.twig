@@ -2,7 +2,7 @@
 {% block main %}
     <div class="row">
         {% if (app.session.hasFlash('reset-error') or errorList) %}
-            <div class="alert alert-error span6 center">
+            <div class="alert alert-error span8 offset2">
                 <strong>{{ "core.general.notification.error.header" | trans }}</strong>
                 <ul>
                     {% if (app.session.hasFlash('reset-error')) %}
@@ -23,7 +23,6 @@
         <form action="{{ path('rtxlabs_user_password_reset_update', {'token': token}) }}" method="POST">
             <div class="row">
                 <div class="well well-large span8 offset2 form-horizontal">
-                    <legend>{{ 'rtxlabs.user.password.save' | trans }}:</legend>
                     <div class="control-group" id="password-div">
                         <label class="control-label" for="password-password">{{ 'rtxlabs.user.label.password' | trans }}:</label>
                         <div class="input controls">
@@ -40,8 +39,8 @@
             </div>
             <div class="row">
                 <div class="form-actions span8 offset2">
-                    <button type="submit" id="reset-password" type="button" class="btn small btn-info">{{ "rtxlabs.user.password.save" | trans }}</button>
-                    <a class="btn btn-link" href="{{ path('rtxlabs_userbundle_login') }}">{{ "rtxlabs.user.cancel" | trans }}</a>
+                    <button type="submit" id="reset-password" type="button" class="btn small btn-info pull-right">{{ "rtxlabs.user.password.save" | trans }}</button>
+                    <a class="btn btn-link pull-right" href="{{ path('rtxlabs_userbundle_login') }}">{{ "rtxlabs.user.cancel" | trans }}</a>
                 </div>
             </div>
         </form>

@@ -4,7 +4,7 @@ App.User.View.UserListRowView = App.Core.View.View.extend({
     tagName: 'tr',
 
     events: {
-        'click .delete': 'handleDelete'
+        'click .user-delete': 'handleDelete'
     },
 
     initialize: function() {

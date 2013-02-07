@@ -31,7 +31,7 @@ class RegistrationController extends RestController
         $json = Dencoder::decode($this->getRequest()->getContent());
         $userManager = $this->get('rtxlabs.user.user_manager');
         $user = $userManager->findUserByEmail($json->email);
-
+        
         if($user instanceof User && $user->getDeletedAt() !== null) {
             $userManager->generateRegistrationToken($user);
             $userManager->saveUser($user);
@@ -52,12 +52,13 @@ class RegistrationController extends RestController
         if (count($errors) > 0 ) {
             return new ValidationErrorResponse($errors);
         }
-
+        
+        $this->persistAndFlush($user);
+        $userManager->saveUser($user);
         $this->get('rtxlabs.user.mailer')->sendRegistrationEmailMessage($user);
 
         $userArray = $this->createUserBinder()->bind($user)->execute();
-        $json = Dencoder::encode($userArray);
-        return new Response($json);
+        return new Response(Dencoder::encode($userArray));
     }
     
     public function confirmAction($token)
@@ -114,10 +115,6 @@ class RegistrationController extends RestController
             $user->getPlainPassword() != "") {
             $userManager->updatePassword($user);
         }
-
-        $this->persistAndFlush($user);
-        $userManager->saveUser($user);
-
         return array();
     }
 

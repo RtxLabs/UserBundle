@@ -5,12 +5,14 @@
     <td><%= personnelNumber %></td>
     <td><%= email %></td>
     <td><%= username %></td>
-    <td><%= _.indexOf(roles, 'ROLE_ADMIN')==-1 ? "&nbsp;" : '<img src="/bundles/rotexsbpcore/images/icons/tick.png" alt="yes">' %></td>
+    <td><%= _.indexOf(roles, 'ROLE_ADMIN')==-1 ? "&nbsp;" : '<i class="icon-ok"></i>' %></td>
     <td><%= lastLogin==null ? '-' : Core.formatDateString(lastLogin, 'DD.MM.YYYY') %></td>
     <td>
-        <ul class="crud-actions">
-            <li><a class="edit" href="#edit/<%= id %>" title="{{ "core.general.tooltip.edit" | trans }}" rel="tooltip">{{ "core.general.label.edit" | trans }}</a></li>
-            <li><a class="delete" href="#" title="{{ "core.general.tooltip.delete" | trans }}" rel="tooltip">{{ "core.general.label.delete" | trans }}</a></li>
-        </ul>
+        <a class="user-edit" href="#edit/<%= id %>" title="{{ "core.general.tooltip.edit" | trans }}" rel="tooltip">
+            <i class="icon-pencil"></i>
+        </a>
+        <a class="user-delete" href="#" title="{{ "core.general.tooltip.delete" | trans }}" rel="tooltip">
+            <i class="icon-trash"></i>
+        </a>
     </td>
 </script>

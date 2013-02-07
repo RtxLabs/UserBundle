@@ -1,18 +1,15 @@
 Core.ns('App.User.View');
 
-App.User.View.GroupView = Backbone.View.extend({
-    el: $('#group-main'),
+App.User.View.GroupEditView = Backbone.View.extend({
+    el: $('#user-main'),
 
     events: {
-        "click #save-group": "save"
+        "click #save-group": "handleSave"
     },
 
     initialize: function() {
-
         this.template = _.template($('#group-edit-template').html());
-
         _.bindAll(this, 'render');
-        this.render();
     },
 
     render: function() {
@@ -25,7 +22,7 @@ App.User.View.GroupView = Backbone.View.extend({
         return this;
     },
 
-    save: function() {
+    handleSave: function() {
         $('form:input').removeClass('error');
         $('form div').removeClass('error');
         $('#notification-error-body').html('');

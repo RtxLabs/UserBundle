@@ -10,6 +10,10 @@
     </parameters>
 
     <services>
+        <service id="user.menu_builder" class="RtxLabs\UserBundle\Menu\MenuBuilder">
+            <argument type="service" id="security.context" />
+            <tag name="sbp.menu.main"/>
+        </service>
         <service id="rtxlabs.user.user_manager" class="RtxLabs\UserBundle\Model\UserManager">
             <argument type="service" id="security.encoder_factory" />
             <argument type="service" id="doctrine.orm.entity_manager" />
@@ -34,12 +38,6 @@
 
         <service id="rtxlabs.user.login_success" class="RtxLabs\UserBundle\Handler\LoginHandler">
             <argument type="service" id="doctrine.orm.entity_manager" />
-        </service>
-
-        <service id="rtxlabs.user.user_controller" class="RtxLabs\UserBundle\Controller\UserController">
-            <argument type="service" id="service_container"/>
-            <argument type="service" id="doctrine.orm.entity_manager" />
-            <argument type="service" id="rtxlabs.user.user_manager" />
         </service>
     </services>
 
