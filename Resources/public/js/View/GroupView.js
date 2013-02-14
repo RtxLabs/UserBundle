@@ -18,8 +18,6 @@ App.User.View.GroupView = Backbone.View.extend({
     render: function() {
         $(this.el).html(this.template(this.model.toJSON()));
 
-        this.updateBreadcrumb();
-
         $(".chzn-select").chosen();
 
         return this;
@@ -80,11 +78,5 @@ App.User.View.GroupView = Backbone.View.extend({
         });
 
         return values.attributes;
-    },
-
-    updateBreadcrumb: function() {
-        var lastSpanEl = $(".breadcrumb .divider").last().parent();
-        lastSpanEl.next().remove();
-        $(".breadcrumb").append("<li>"+Translator.get('rtxlabs.user.group.edit.header')+"</li>");
     }
 });

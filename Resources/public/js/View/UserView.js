@@ -19,8 +19,6 @@ App.User.View.UserView = Backbone.View.extend({
     render: function() {
         $(this.el).html(this.template(this.model.toJSON()));
 
-        this.updateBreadcrumb();
-
         $(".chzn-select").chosen();
         $(".chzn-single").chosen();
         $('[rel=tooltip]').tooltip('hide');
@@ -107,11 +105,5 @@ App.User.View.UserView = Backbone.View.extend({
             $('#user-password-div').hide();
             $('#user-passwordRepeat-div').hide();
         }
-    },
-
-    updateBreadcrumb: function() {
-        var lastSpanEl = $(".breadcrumb .divider").last().parent();
-        lastSpanEl.next().remove();
-        $(".breadcrumb").append("<li>"+Translator.get('rtxlabs.user.edit.header')+"</li>");
     }
 });
