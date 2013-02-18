@@ -17,20 +17,6 @@ class UserController extends RestController
     private static $PASSWORD_PLACEHOLDER = "Sbp_unchanged_1$%!//";
 
     /**
-     * @Route("/user/index", name="uma")
-     * @Route("/user/index#create", name="ucr")
-     * @Route("/user/index#account", name="uac")
-     * @Template()
-     */
-    public function indexAction()
-    {
-        $roleManager = $this->get('rtxlabs.user.rolemanager');
-        $em = $this->getDoctrine()->getEntityManager();
-        $groups = $em->getRepository('RtxLabsUserBundle:Group')->findAll();
-        return array('roles' => $roleManager->getRoles(), 'groups' => $groups);
-    }
-
-    /**
      * @Route("/user", name="rtxlabs_userbundle_user_list", requirements={"_method"="GET"}, options={"expose"="true"})
      */
     public function listAction()
@@ -142,5 +128,23 @@ class UserController extends RestController
     {
         $error = array('propertyPath' => $propertyPath, 'message' => $message);
         return new Response(Dencoder::encode($error), '403');
+    }
+    
+    /**
+     * @return \RtxLabs\UserBundle\Model\UserRepositoryInterface
+     */
+     protected function getRepository()
+     {
+        $repository = $this->getDoctrine()->getRepository($this->getUserClass());
+        assert($repository instanceof \RtxLabs\UserBundle\Entity\UserRepository);
+        return $repository;
+     }
+    
+    /**
+     * @return \RtxLabs\UserBundle\Entity\User
+     */
+    private function getUserClass() {
+        $user = $this->container->getParameter("rtxlabs.user.class");
+        return $user;
     }
 }
