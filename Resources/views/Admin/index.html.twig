@@ -1,25 +1,33 @@
 {% extends "RtxLabsUserBundle::base.html.twig" %}
 
+{% block breadcrumb %}
+    {{ parent() }}
+
+    {% include "RotexSbpCoreBundle::breadcrumb.html.twig" with {"url": url('rtxlabs_userbundle_admin_user_list'), "name": "rtxlabs.user.header"} %}
+{% endblock %}
+
 {% block main %}
-<div id="user-main" class="full-block clearfix">
-</div>
+    {{ parent() }}
+    <div id="user-main" class="full-block clearfix">
+    </div>
 
-{% include 'RtxLabsUserBundle:User:myAccountTemplate.html.twig' %}
-{% include 'RtxLabsUserBundle:Admin:userListTemplate.html.twig' %}
-{% include 'RtxLabsUserBundle:Admin:userListRowTemplate.html.twig' %}
-{% include 'RtxLabsUserBundle:Admin:userEditTemplate.html.twig' with {'roles': roles, 'groups': groups} %}
-
+    {% include 'RtxLabsUserBundle:User:myAccountTemplate.html.twig' %}
+    {% include 'RtxLabsUserBundle:Admin:userListTemplate.html.twig' %}
+    {% include 'RtxLabsUserBundle:Admin:userListRowTemplate.html.twig' %}
+    {% include 'RtxLabsUserBundle:Admin:userEditTemplate.html.twig' with {'roles': roles, 'groups': groups} %}
+    {% include 'RtxLabsUserBundle:Admin:groupListTemplate.html.twig' %}
+    {% include 'RtxLabsUserBundle:Admin:groupListRowTemplate.html.twig' %}
+    {% include 'RtxLabsUserBundle:Admin:groupEditTemplate.html.twig' with {'roles': roles} %}
 {% endblock %}
 
 {% block javascripts %}
+    {{ parent() }}
 
-{{ parent() }}
-
-{% javascripts
-            '@RotexSbpCoreBundle/Resources/public/js/md5.js'
-            '@RotexSbpCoreBundle/Resources/public/js/core_gravatar.js'
-%}
-    <script src="{{ asset_url }}"></script>
+    {% javascripts
+        '@RotexSbpCoreBundle/Resources/public/js/md5.js'
+        '@RotexSbpCoreBundle/Resources/public/js/core_gravatar.js'
+    %}
+        <script src="{{ asset_url }}"></script>
 {% endjavascripts %}
 
 {% javascripts
@@ -33,6 +41,9 @@
     '@RtxLabsUserBundle/Resources/public/js/View/UserListRowView.js'
     '@RtxLabsUserBundle/Resources/public/js/View/UserListView.js'
     '@RtxLabsUserBundle/Resources/public/js/View/UserEditView.js'
+    '@RtxLabsUserBundle/Resources/public/js/View/GroupListRowView.js'
+    '@RtxLabsUserBundle/Resources/public/js/View/GroupListView.js'
+    '@RtxLabsUserBundle/Resources/public/js/View/GroupEditView.js'
     '@RtxLabsUserBundle/Resources/public/js/Router/AdminRouter.js'
 %}
     <script src="{{ asset_url }}"></script>

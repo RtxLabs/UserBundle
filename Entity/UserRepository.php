@@ -18,6 +18,8 @@ class UserRepository extends EntityRepository
     {
         return $this->createFilterQueryBuilder($filter)
             ->select("u")
+            ->setMaxResults($limit)
+            ->setFirstResult($offset)
             ->getQuery()
             ->getResult();
     }

@@ -7,7 +7,10 @@ rtxlabs.user.label.email: E-Mail
 rtxlabs.user.label.username: Benutzername
 rtxlabs.user.label.password: Passwort
 rtxlabs.user.label.passwordRepeat: Passwort (wiederholen)
-rtxlabs.user.label.locale: Sprache Benutzeroberfläche
+rtxlabs.user.label.locale: Sprache
+rtxlabs.user.label.admin.edit: Bearbeiten
+rtxlabs.user.label.admin.list: Liste
+rtxlabs.user.label.admin.create: Erstellen
 rtxlabs.user.label.tos: Hiermit akzeptiere ich die %link_start%Nutzungsbedingungen%link_end%
 
 rtxlabs.user.edit.legend.accessdata: Anmeldedaten
@@ -24,12 +27,12 @@ rtxlabs.user.edit.legend: Benutzerinformationen
 rtxlabs.user.delete.confirm: Benutzer wirklich löschen?
 rtxlabs.user.myaccount.header: Mein Account
 rtxlabs.user.myaccount.edit: Accountinformationen bearbeiten
-rtxlabs.user.cancel: abbrechen
+rtxlabs.user.cancel: Abbrechen
+rtxlabs.user.send: Abschicken
 rtxlabs.user.tos: Bitte akzeptieren sie die Nutzungsbedingungen
 
 rtxlabs.user.registration.header: Registrierung
 rtxlabs.user.registration.register: Registrieren
-rtxlabs.user.registration.save: Registrierung abschicken
 rtxlabs.user.registration.success: Registrierung erfolgreich
 rtxlabs.user.registration.fillIn: Bitte füllen sie alle nachfolgenden Felder aus
 rtxlabs.user.registration.confirmed: |

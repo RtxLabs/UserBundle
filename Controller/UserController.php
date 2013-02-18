@@ -8,49 +8,30 @@ use Rotex\Sbp\CoreBundle\Controller\RestController;
 use RtxLabs\DataTransformationBundle\Dencoder\Dencoder;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Doctrine\ORM\EntityManager;
 use RtxLabs\UserBundle\Model\UserManager;
 
-/**
- * @Route("/user", service="rtxlabs.user.user_controller")
- */
 class UserController extends RestController
 {
     private $whitelist = array("firstname", "lastname", "email", "username", 
         "passwordRequired", "plainPassword", "passwordRepeat", "admin", "locale");
     private static $PASSWORD_PLACEHOLDER = "Sbp_unchanged_1$%!//";
-    protected $container;
-    /**
-     * @var EntityManager $em
-     */
-    protected $em;
-    /**
-     * @var UserManager $um
-     */
-    protected $um;
-    
-    public function __construct(ContainerInterface $container, EntityManager $em, UserManager $um)
-    {
-        $this->container = $container;
-        $this->em = $em;
-        $this->um = $um;
-    }
 
     /**
-     * @Route("/index", name="uma")
-     * @Route("/index#create", name="ucr")
-     * @Route("/index#account", name="uac")
+     * @Route("/user/index", name="uma")
+     * @Route("/user/index#create", name="ucr")
+     * @Route("/user/index#account", name="uac")
      * @Template()
      */
     public function indexAction()
     {
         $roleManager = $this->get('rtxlabs.user.rolemanager');
-        $groups = $this->em->getRepository('RtxLabsUserBundle:Group')->findAll();
+        $em = $this->getDoctrine()->getEntityManager();
+        $groups = $em->getRepository('RtxLabsUserBundle:Group')->findAll();
         return array('roles' => $roleManager->getRoles(), 'groups' => $groups);
     }
 
     /**
-     * @Route("/", name="rtxlabs_userbundle_user_list", requirements={"_method"="GET"}, options={"expose"="true"})
+     * @Route("/user", name="rtxlabs_userbundle_user_list", requirements={"_method"="GET"}, options={"expose"="true"})
      */
     public function listAction()
     {
@@ -58,16 +39,16 @@ class UserController extends RestController
     }
 
     /**
-     * @Route("/{id}", name="rtxlabs_userbundle_user_read", requirements={"_method"="GET"}, options={"expose"="true"})
+     * @Route("/user/{id}", name="rtxlabs_userbundle_user_read", requirements={"_method"="GET"}, options={"expose"="true"})
      */
     public function readAction($id)
     {
-        $alert = $this->findEntity($id);
-        return $this->defaultReadAction($alert);
+        $user = $this->findEntity($id);
+        return $this->defaultReadAction($user);
     }
 
     /**
-     * @Route("/",name="rtxlabs_userbundle_user_create", requirements={"_method"="POST"}, options={"expose"="true"})
+     * @Route("/user",name="rtxlabs_userbundle_user_create", requirements={"_method"="POST"}, options={"expose"="true"})
      */
     public function createAction()
     {
@@ -75,16 +56,16 @@ class UserController extends RestController
     }
     
     /**
-     * @Route("/{id}", name="rtxlabs_userbundle_user_update", requirements={"_method"="PUT"}, options={"expose"="true"})
+     * @Route("/user/{id}", name="rtxlabs_userbundle_user_update", requirements={"_method"="PUT"}, options={"expose"="true"})
      */
     public function updateAction($id)
     {
-        $alert = $this->findEntity($id);
-        return $this->defaultUpdateAction($alert, $this->whitelist);
+        $user = $this->findEntity($id);
+        return $this->defaultUpdateAction($user, $this->whitelist);
     }
 
     /**
-     * @Route("/{id}",name="rtxlabs_userbundle_user_delete", requirements={"_method"="DELETE"}, options={"expose"="true"})
+     * @Route("/user/{id}",name="rtxlabs_userbundle_user_delete", requirements={"_method"="DELETE"}, options={"expose"="true"})
      */
     public function deleteAction($id)
     {
@@ -107,7 +88,18 @@ class UserController extends RestController
         $binder = $this->createDataBinder($whitelist)->bind($data)->to($user)->except("password");
         
         if ($this->getCurrentUser()->isAdmin()) {
-            $binder->field("roles", explode(",", $data->roles));
+            $binder->field("roles", $data->roles);
+
+            $user->getGroups()->clear();
+            $groups = explode(",", $data->group);
+            foreach($groups as $groupId) {
+                $group = $this->getDoctrine()
+                    ->getRepository('RtxLabsUserBundle:Group')
+                    ->findOneById($groupId);
+                if($group) {
+                    $user->addGroup($group);   
+                } 
+            }
         }
         else {
             $binder->except("roles");
@@ -117,6 +109,7 @@ class UserController extends RestController
     
     protected function findValidationErrors($entity)
     {
+        $userManager = $this->get('rtxlabs.user.user_manager');
         $data = Dencoder::decode($this->getRequest()->getContent());
         $validator = $this->get('validator');
         $errors = $validator->validate($entity);
@@ -127,7 +120,7 @@ class UserController extends RestController
         if ($entity->getPlainPassword() != self::$PASSWORD_PLACEHOLDER &&
             $entity->getPlainPassword() != "" && !count($errors)) {
 
-            $this->um->updatePassword($entity);
+            $userManager->updatePassword($entity);
         }
         
         return $errors;

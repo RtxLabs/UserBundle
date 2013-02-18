@@ -305,7 +305,7 @@ class User implements \RtxLabs\UserBundle\Model\AdvancedUserInterface
     public function __construct()
     {
         $this->roles = array();
-        $this->groups = array();
+        $this->groups = new \Doctrine\Common\Collections\ArrayCollection();
         $this->salt = base_convert(sha1(uniqid(mt_rand(), true)), 16, 36);
     }
 

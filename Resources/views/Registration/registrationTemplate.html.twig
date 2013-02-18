@@ -5,61 +5,59 @@
 
     <div class="row">
         <form class="well well-large form-horizontal span8 offset2">
-            <legend>{{ 'rtxlabs.user.registration.fillIn' | trans }}:</legend>
-                <div class="control-group" id="registration-username-div">
-                    <label class="control-label" for="registration-username">{{ 'rtxlabs.user.label.username' | trans }}:</label>
-                    <div class="controls">
-                        <input class="span9" id="registration-username" name="registration[username]" type="text" value="">
-                    </div>
+            <div class="control-group" id="registration-username-div">
+                <label class="control-label" for="registration-username">{{ 'rtxlabs.user.label.username' | trans }}:</label>
+                <div class="controls">
+                    <input class="span9" id="registration-username" name="registration[username]" type="text" value="">
                 </div>
-                <div class="control-group" id="registration-firstname-div">
-                    <label class="control-label" for="registration-firstname">{{ 'rtxlabs.user.label.firstname' | trans }}:</label>
-                    <div class="controls"><input class="span9" id="registration-firstname" name="registration[firstname]" type="text" value=""></div>
+            </div>
+            <div class="control-group" id="registration-firstname-div">
+                <label class="control-label" for="registration-firstname">{{ 'rtxlabs.user.label.firstname' | trans }}:</label>
+                <div class="controls"><input class="span9" id="registration-firstname" name="registration[firstname]" type="text" value=""></div>
+            </div>
+            <div class="control-group" id="registration-lastname-div">
+                <label class="control-label" for="registration-lastname">{{ 'rtxlabs.user.label.lastname' | trans }}:</label>
+                <div class="controls"><input class="span9" id="registration-lastname" name="registration[lastname]" type="text" value=""></div>
+            </div>
+            <div class="control-group" id="registration-email-div">
+                <label class="control-label" for="registration-email">{{ 'rtxlabs.user.label.email' | trans }}:</label>
+                <div class="controls"><input class="large" id="registration-email" name="registration[email]" type="text" value=""></div>
+            </div>
+            <div class="control-group" id="registration-password-div">
+                <label class="control-label" for="registration-password">{{ 'rtxlabs.user.label.password' | trans }}:</label>
+                <div class="controls">
+                    <input class="span9" id="registration-password" name="registration[password]" type="password"  value="">
                 </div>
-                <div class="control-group" id="registration-lastname-div">
-                    <label class="control-label" for="registration-lastname">{{ 'rtxlabs.user.label.lastname' | trans }}:</label>
-                    <div class="controls"><input class="span9" id="registration-lastname" name="registration[lastname]" type="text" value=""></div>
+            </div>
+            <div class="control-group" id="registration-passwordRepeat-div">
+                <label class="control-label" for="registration-passwordRepeat">{{ 'rtxlabs.user.label.passwordRepeat' | trans }}:</label>
+                <div class="controls">
+                    <input class="span9" id="registration-passwordRepeat" name="registration[passwordRepeat]" type="password" value="">
                 </div>
-                <div class="control-group" id="registration-email-div">
-                    <label class="control-label" for="registration-email">{{ 'rtxlabs.user.label.email' | trans }}:</label>
-                    <div class="controls"><input class="large" id="registration-email" name="registration[email]" type="text" value=""></div>
+            </div>
+            <div class="control-group" id="registration-locale-div">
+                <label class="control-label" for="registration-admin">{{ 'rtxlabs.user.label.locale' | trans }}:</label>
+                <div class="controls">
+                    <select id="registration-locale" class="chzn-single" name="registration[locale]">
+                        {% for locale in rtx_available_locales() %}
+                            <option value="{{ locale }}">{{ locale | rtx_locale_realname(locale) }}</option>
+                        {% endfor %}
+                    </select>
                 </div>
-                <div class="control-group" id="registration-password-div">
-                    <label class="control-label" for="registration-password">{{ 'rtxlabs.user.label.password' | trans }}:</label>
-                    <div class="controls">
-                        <input class="span9" id="registration-password" name="registration[password]" type="password"  value="">
-                    </div>
-                </div>
-                <div class="control-group" id="registration-passwordRepeat-div">
-                    <label class="control-label" for="registration-passwordRepeat">{{ 'rtxlabs.user.label.passwordRepeat' | trans }}:</label>
-                    <div class="controls">
-                        <input class="span9" id="registration-passwordRepeat" name="registration[passwordRepeat]" type="password" value="">
-                    </div>
-                </div>
-                <div class="control-group" id="registration-locale-div">
-                    <label class="control-label" for="registration-admin">{{ 'rtxlabs.user.label.locale' | trans }}:</label>
-                    <div class="controls">
-                        <select id="registration-locale" class="chzn-single" name="registration[locale]">
-                            {% for locale in rtx_available_locales() %}
-                                <option value="{{ locale }}">{{ locale | rtx_locale_realname(locale) }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                </div>
-                <div class="offset2" id="registration-tos-div">
-                    <label class="checkbox">
-                        <input id="registration-tos" type="checkbox" name="registration[tos]" value="">
-                        {{ 'rtxlabs.user.label.tos' | trans({
-                            '%link_start%' : '<a id="terms-of-service-open-btn">', '%link_end%' : '</a>'}) | raw }}
-                    </label>
-                </div>
+            </div>
+            <div class="offset2" id="registration-tos-div">
+                <label class="checkbox">
+                    <input id="registration-tos" type="checkbox" name="registration[tos]" value="">
+                    {{ 'rtxlabs.user.label.tos' | trans({
+                        '%link_start%' : '<a id="terms-of-service-open-btn">', '%link_end%' : '</a>'}) | raw }}
+                </label>
             </div>
         </form>
     </div>
     <div class="row">
         <div class="form-actions span8 offset2">
-            <button id="save-registration" type="button" class="btn small btn-info">{{ "rtxlabs.user.registration.save" | trans }}</button>
-            <a class="btn btn-link" href="{{ path('rtxlabs_userbundle_login') }}">{{ "rtxlabs.user.cancel" | trans }}</a>
+            <button id="save-registration" type="button" class="btn small btn-info pull-right">{{ "rtxlabs.user.send" | trans }}</button>
+            <a class="btn btn-link pull-right" href="{{ path('rtxlabs_userbundle_login') }}">{{ "rtxlabs.user.cancel" | trans }}</a>
         </div>
     </div>
 </script>
