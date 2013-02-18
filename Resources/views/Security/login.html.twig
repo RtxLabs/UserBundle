@@ -49,8 +49,8 @@
                 <div class="form-actions">
                     <input type="submit" class="btn large primary" value="{{ "rtxlabs.user.login.form.login"|trans }}" />
                     {% if registrationEnabled %}
-                        <a href="{{ path('rtxlabs_user_password_forgotten') }}" class="forgot">{{ "rtxlabs.user.login.lost_password"|trans }}</a>
-                        <a href="{{ path('rtxlabs_user_registration_register') }}" class="forgot">{{ "rtxlabs.user.registration.register"|trans }}</a>
+                        <a href="{{ path('rtxlabs_user_password_forgotten') }}" class="forgot btn btn-link">{{ "rtxlabs.user.password.forgotten"|trans }}</a>
+                        <a href="{{ path('rtxlabs_user_registration_register') }}" class="forgot btn btn-link">{{ "rtxlabs.user.registration.register"|trans }}</a>
                     {% endif %}
                 </div>
             </form>

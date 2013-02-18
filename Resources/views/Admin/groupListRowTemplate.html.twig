@@ -1,0 +1,12 @@
+<script type="text/template" id="group-list-row-template">
+    <td><%= name %></td>
+    <td><%= userCount %></td>
+    <td>
+        <a class="user-edit" href="#group/edit/<%= id %>" title="{{ "core.general.tooltip.edit" | trans }}" rel="tooltip">
+            <i class="icon-pencil"></i>
+        </a>
+        <a class="group-delete" title="{{ "core.general.tooltip.delete" | trans }}" rel="tooltip">
+            <i class="icon-trash"></i>
+        </a>
+    </td>
+</script>
