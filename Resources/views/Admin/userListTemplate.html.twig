@@ -3,10 +3,19 @@
         <header>
             <h2>{{ "rtxlabs.user.header" | trans }}</h2>
         </header>
+        <div class="input-prepend pull-right">
+            <a href="#create" class="btn btn-link">
+                <i class="icon-plus"></i>
+                {{ "rtxlabs.user.label.add" | trans }}
+            </a>
+        </div>
+        <div class="input-prepend pull-right">
+            <a href="#group/list" class="btn btn-link">
+                <i class="icon-list"></i>
+                {{ "rtxlabs.user.group.header" | trans }}
+            </a>
+        </div>
         <section>
-            <div class="crud-actions">
-                <a href="#create" class="btn xsmall btn-info">{{ "rtxlabs.user.label.add" | trans }}</a>
-            </div>
             <br/>
             <table class="table table-bordered table-striped table-condensed">
                 <thead>
@@ -23,7 +32,6 @@
                 </tr>
                 </thead>
                 <tbody id="list-table-body">
-
                 </tbody>
             </table>
         </section>

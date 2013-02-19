@@ -15,7 +15,7 @@ App.User.Router.RegistrationRouter = Backbone.Router.extend({
     },
     
     confirmed: function() {
-        this.confirmedView = new App.User.View.ConfirmedView();
+        this.confirmedView = new App.User.View.RegistrationConfirmedView();
         this.confirmedView.render();
 
         redirectOnConfirm();
