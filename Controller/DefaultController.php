@@ -10,7 +10,9 @@ class DefaultController extends Controller
     /**
      * @Route("/admin/user", name="rtxlabs_userbundle_admin_user")
      * @Route("/admin/user#list", name="rtxlabs_userbundle_admin_user_list")
+     * @Route("/admin/user#list", name="uma")
      * @Route("/admin/user#group", name="rtxlabs_userbundle_admin_group")
+     * @Route("/admin/user#group", name="ugma")
      * @Route("/admin/user#group/list", name="rtxlabs_userbundle_admin_group_list")
      * @Template("RtxLabsUserBundle:Admin:index.html.twig")
      */
@@ -21,9 +23,8 @@ class DefaultController extends Controller
         $groups = $em->getRepository('RtxLabsUserBundle:Group')->findAll();
         return array('roles' => $roleManager->getRoles(), 'groups' => $groups);
     }
-    
+
     /**
-     * @Route("/account", name="uma")
      * @Route("/account#account", name="uac")
      * @Template("RtxLabsUserBundle:User:index.html.twig")
      */

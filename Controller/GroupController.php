@@ -70,7 +70,7 @@ class GroupController extends RestController
     {
         $data = Dencoder::decode($this->getRequest()->getContent());
         $binder = $this->createDataBinder($whitelist)->bind($data)->to($group);
-        
+
         if ($this->getCurrentUser()->isAdmin()) {
             $binder->field("roles", explode(",", $data->roles));
         }
