@@ -48,4 +48,17 @@ class UserRepository extends EntityRepository
         }
         return $builder;
     }
+
+    public function findOneByAttribute($attribute, $value)
+    {
+        $query = $this->createQueryBuilder('u')
+            ->innerJoin('u.attributes', 'a')
+            ->where('a.name = :attribute')->setParameter('attribute', $attribute)
+            ->andWhere('a.value = :value')->setParameter('value', $value)
+            ->getQuery();
+
+        $user = $query->getSingleResult();
+
+        return $user;
+    }
 }
