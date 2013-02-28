@@ -33,6 +33,7 @@ App.User.Router.AdminRouter = App.Core.Router.CoreRouter.extend({
         if (view == null) {
             view = new App.User.View.UserListView({collection: this.userCollection});
             this.cacheView(view, "UserListView");
+            this.userCollection.limit = 500;
             this.userCollection.fetch();
         }
 
@@ -109,7 +110,7 @@ App.User.Router.AdminRouter = App.Core.Router.CoreRouter.extend({
 
         view.render();
     },
-    
+
     getGroupModel: function(id) {
         var group = this.groupCollection.get(id);
 
@@ -120,7 +121,7 @@ App.User.Router.AdminRouter = App.Core.Router.CoreRouter.extend({
 
         return group;
     },
-    
+
     getUserModel: function(id) {
         var user = this.userCollection.get(id);
 

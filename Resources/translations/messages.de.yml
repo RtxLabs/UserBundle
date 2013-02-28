@@ -1,5 +1,6 @@
 rtxlabs.user.header: Benutzerverwaltung
 rtxlabs.user.label.add: Benutzer hinzufügen
+rtxlabs.user.label.name: Vorname
 rtxlabs.user.label.firstname: Vorname
 rtxlabs.user.label.lastname: Nachname
 rtxlabs.user.label.personnel_number: Personalnummer
@@ -90,7 +91,7 @@ rtxlabs.user.mail.label.login: Anmeldeseite
 
 # --- Registration Email
 rtxlabs.user.mail.registration.title: Vielen Dank für Ihre Registrierung
-rtxlabs.user.mail.salutation: Sehr geehrter Geschäftspartner,  
+rtxlabs.user.mail.salutation: Sehr geehrter Geschäftspartner,
 rtxlabs.user.mail.registration.body: um die Registrierung abzuschließen klicken Sie bitte auf folgenden Link
 rtxlabs.user.mail.registration.link: Registrierung abschließen
 rtxlabs.user.mail.label.information: Nachfolgend Ihre eingegebenen Daten
@@ -99,7 +100,7 @@ rtxlabs.user.mail.label.lastname: Nachname
 rtxlabs.user.mail.label.email: eMail
 rtxlabs.user.mail.footer: |
   Mit freundlichen Grüßen,
-  
+
   ROTEX
   Heating Systems GmbH
 
