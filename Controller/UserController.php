@@ -12,7 +12,7 @@ use RtxLabs\UserBundle\Model\UserManager;
 
 class UserController extends RestController
 {
-    private $whitelist = array("firstname", "lastname", "email", "username", 
+    private $whitelist = array("firstname", "lastname", "email", "username",
         "passwordRequired", "plainPassword", "passwordRepeat", "admin", "locale");
     private static $PASSWORD_PLACEHOLDER = "Sbp_unchanged_1$%!//";
 
@@ -40,7 +40,7 @@ class UserController extends RestController
     {
         return $this->defaultCreateAction($this->whitelist);
     }
-    
+
     /**
      * @Route("/user/{id}", name="rtxlabs_userbundle_user_update", requirements={"_method"="PUT"}, options={"expose"="true"})
      */
@@ -72,7 +72,7 @@ class UserController extends RestController
     {
         $data = Dencoder::decode($this->getRequest()->getContent());
         $binder = $this->createDataBinder($whitelist)->bind($data)->to($user)->except("password");
-        
+
         if ($this->getCurrentUser()->isAdmin()) {
             $binder->field("roles", $data->roles);
 
@@ -83,8 +83,8 @@ class UserController extends RestController
                     ->getRepository('RtxLabsUserBundle:Group')
                     ->findOneById($groupId);
                 if($group) {
-                    $user->addGroup($group);   
-                } 
+                    $user->addGroup($group);
+                }
             }
         }
         else {
@@ -92,14 +92,14 @@ class UserController extends RestController
         }
         $binder->execute();
     }
-    
+
     protected function findValidationErrors($entity)
     {
         $userManager = $this->get('rtxlabs.user.user_manager');
         $data = Dencoder::decode($this->getRequest()->getContent());
         $validator = $this->get('validator');
         $errors = $validator->validate($entity);
-        
+
         if($data->plainPassword !== $data->passwordRepeat) {
             $errors[] = array('propertyPath' => 'passwordRepeat', 'message' => 'rtxlabs.user.validation.passwordRepeat');
         }
@@ -108,10 +108,10 @@ class UserController extends RestController
 
             $userManager->updatePassword($entity);
         }
-        
+
         return $errors;
     }
-    
+
     protected function createEntityBinder()
     {
         $binder = $this->createDoctrineBinder()
@@ -129,7 +129,7 @@ class UserController extends RestController
         $error = array('propertyPath' => $propertyPath, 'message' => $message);
         return new Response(Dencoder::encode($error), '403');
     }
-    
+
     /**
      * @return \RtxLabs\UserBundle\Model\UserRepositoryInterface
      */
@@ -139,7 +139,7 @@ class UserController extends RestController
         assert($repository instanceof \RtxLabs\UserBundle\Entity\UserRepository);
         return $repository;
      }
-    
+
     /**
      * @return \RtxLabs\UserBundle\Entity\User
      */
