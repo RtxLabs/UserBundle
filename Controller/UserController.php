@@ -77,16 +77,16 @@ class UserController extends RestController
             $binder->field("roles", $data->roles);
 
             if(isset($data->group)) {
-				$user->getGroups()->clear();
-				$groups = explode(",", $data->group);
-				foreach($groups as $groupId) {
-					$group = $this->getDoctrine()
-						->getRepository('RtxLabsUserBundle:Group')
-						->findOneById($groupId);
-					if($group) {
-						$user->addGroup($group);
-					}
-				}
+                $user->getGroups()->clear();
+                $groups = explode(",", $data->group);
+                foreach($groups as $groupId) {
+                    $group = $this->getDoctrine()
+                        ->getRepository('RtxLabsUserBundle:Group')
+                        ->findOneById($groupId);
+                    if($group) {
+                        $user->addGroup($group);
+                    }
+                }
             }
         }
         else {
