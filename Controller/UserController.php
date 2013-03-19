@@ -76,15 +76,17 @@ class UserController extends RestController
         if ($this->getCurrentUser()->isAdmin()) {
             $binder->field("roles", $data->roles);
 
-            $user->getGroups()->clear();
-            $groups = explode(",", $data->group);
-            foreach($groups as $groupId) {
-                $group = $this->getDoctrine()
-                    ->getRepository('RtxLabsUserBundle:Group')
-                    ->findOneById($groupId);
-                if($group) {
-                    $user->addGroup($group);
-                }
+            if(isset($data->group)) {
+				$user->getGroups()->clear();
+				$groups = explode(",", $data->group);
+				foreach($groups as $groupId) {
+					$group = $this->getDoctrine()
+						->getRepository('RtxLabsUserBundle:Group')
+						->findOneById($groupId);
+					if($group) {
+						$user->addGroup($group);
+					}
+				}
             }
         }
         else {
