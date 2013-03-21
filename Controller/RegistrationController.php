@@ -16,8 +16,6 @@ use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
 class RegistrationController extends RestController
 {
-    private static $PASSWORD_PLACEHOLDER = "Sbp_unchanged_1$%!//";
-
     /**
      * @Template("RtxLabsUserBundle:Registration:index.html.twig")
      */
@@ -111,7 +109,7 @@ class RegistrationController extends RestController
             return $errors;
         }
 
-        if ($user->getPlainPassword() != self::$PASSWORD_PLACEHOLDER &&
+        if ($user->getPlainPassword() != $this->container->getParameter('password_placeholder') &&
             $user->getPlainPassword() != "") {
             $userManager->updatePassword($user);
         }
@@ -122,8 +120,8 @@ class RegistrationController extends RestController
     {
         $binder = $this->createDoctrineBinder()
             ->field('admin', function($user) { return $user->hasRole('ROLE_ADMIN'); })
-            ->field('plainPassword', self::$PASSWORD_PLACEHOLDER)
-            ->field('passwordRepeat', self::$PASSWORD_PLACEHOLDER)
+            ->field('plainPassword', $this->container->getParameter('password_placeholder'))
+            ->field('passwordRepeat', $this->container->getParameter('password_placeholder'))
             ->except("password")
             ->join('groups', $this->createDoctrineBinder());
         return $binder;
