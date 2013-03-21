@@ -15,9 +15,8 @@ use Symfony\Bundle\FrameworkBundle\Templating\Helper\RequestHelper;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints\Email;
 
-class PasswordController extends RestController {
-    private static $PASSWORD_PLACEHOLDER = "Sbp_unchanged_1$%!//";
-
+class PasswordController extends RestController
+{
     public function indexAction()
     {
         return $this->render(
@@ -105,7 +104,7 @@ class PasswordController extends RestController {
                 array('token' => $token, 'errorList' => $errorList)
             );
         }
-        else if ($user->getPlainPassword() != self::$PASSWORD_PLACEHOLDER &&
+        else if ($user->getPlainPassword() != $this->container->getParameter('password_placeholder') &&
             $user->getPlainPassword() != "") {
             $user->setPasswordToken(null);
             $user_manager->updatePassword($user);
