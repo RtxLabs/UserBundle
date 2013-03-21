@@ -26,7 +26,6 @@ class RegistrationController extends RestController
     
     public function registerAction()
     {
-        
         $json = Dencoder::decode($this->getRequest()->getContent());
         $userManager = $this->get('rtxlabs.user.user_manager');
         $user = $userManager->findUserByEmail($json->email);
