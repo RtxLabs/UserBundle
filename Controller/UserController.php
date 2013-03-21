@@ -14,7 +14,6 @@ class UserController extends RestController
 {
     private $whitelist = array("firstname", "lastname", "email", "username",
         "passwordRequired", "plainPassword", "passwordRepeat", "admin", "locale");
-    private static $PASSWORD_PLACEHOLDER = "Sbp_unchanged_1$%!//";
 
     /**
      * @Route("/user", name="rtxlabs_userbundle_user_list", requirements={"_method"="GET"}, options={"expose"="true"})
@@ -105,7 +104,7 @@ class UserController extends RestController
         if($data->plainPassword !== $data->passwordRepeat) {
             $errors[] = array('propertyPath' => 'passwordRepeat', 'message' => 'rtxlabs.user.validation.passwordRepeat');
         }
-        if ($entity->getPlainPassword() != self::$PASSWORD_PLACEHOLDER &&
+        if ($entity->getPlainPassword() != $this->container->getParameter('password_placeholder') &&
             $entity->getPlainPassword() != "" && !count($errors)) {
 
             $userManager->updatePassword($entity);
@@ -118,8 +117,8 @@ class UserController extends RestController
     {
         $binder = $this->createDoctrineBinder()
             ->field('admin', function($user) { return $user->hasRole('ROLE_ADMIN'); })
-            ->field('plainPassword', self::$PASSWORD_PLACEHOLDER)
-            ->field('passwordRepeat', self::$PASSWORD_PLACEHOLDER)
+            ->field('plainPassword', $this->container->getParameter('password_placeholder'))
+            ->field('passwordRepeat', $this->container->getParameter('password_placeholder'))
             ->except("password")
             ->join('groups', $this->createDoctrineBinder());
 
