@@ -39,6 +39,12 @@
         <service id="rtxlabs.user.login_success" class="RtxLabs\UserBundle\Handler\LoginHandler">
             <argument type="service" id="doctrine.orm.entity_manager" />
         </service>
+
+        <service id="rtxlabs.user.token_manager" class="RtxLabs\UserBundle\Model\ExpiredTokensManager" >
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="string">%user_registration_token_expire_days%</argument>
+            <argument type="string">%user_password_token_expire_days%</argument>
+        </service>
     </services>
 
 </container>
