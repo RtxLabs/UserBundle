@@ -42,8 +42,8 @@
 
         <service id="rtxlabs.user.token_manager" class="RtxLabs\UserBundle\Model\ExpiredTokensManager" >
             <argument type="service" id="doctrine.orm.entity_manager" />
-            <argument type="string">%registration_token_expire_days%</argument>
-            <argument type="string">%password_token_expire_days%</argument>
+            <argument type="string">%user_registration_token_expire_days%</argument>
+            <argument type="string">%user_password_token_expire_days%</argument>
         </service>
     </services>
 

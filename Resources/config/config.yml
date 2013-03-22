@@ -1,4 +1,2 @@
 parameters:
     password_placeholder: "Sbp_unchanged_1$%!//"
-    registration_token_expire_days: 7
-    password_token_expire_days: 1
