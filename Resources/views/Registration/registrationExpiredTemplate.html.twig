@@ -1,0 +1,10 @@
+<script type="text/template" id="registration-expired-template">
+    <div class="row">
+        <div class="span6 confirmed">
+            <legend>{{ 'rtxlabs.user.registration.failure' | trans }}</legend>
+            {{ 'rtxlabs.user.registration.expired' | trans }}<br />
+            {{ 'rtxlabs.user.registration.redirect' | trans }}
+            <a class="edit" href="{{ path('rtxlabs_user_registration_register') }}">{{ 'rtxlabs.user.registration.redirect.link' | trans }}</a>
+        </div>
+    </div>
+</script>

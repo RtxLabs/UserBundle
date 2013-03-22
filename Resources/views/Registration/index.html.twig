@@ -24,6 +24,7 @@
     {% include 'RtxLabsUserBundle:Reactivation:confirmedTemplate.html.twig' %}
     {% include 'RtxLabsUserBundle:Registration:registrationTemplate.html.twig' %}
     {% include 'RtxLabsUserBundle:Registration:registrationConfirmedTemplate.html.twig' %}
+    {% include 'RtxLabsUserBundle:Registration:registrationExpiredTemplate.html.twig' %}
     {% include 'RtxLabsUserBundle:Registration:termsOfServiceTemplate.html.twig' %}
 {% endblock %}
 
@@ -43,6 +44,7 @@
         '@RtxLabsUserBundle/Resources/public/js/View/RegistrationView.js'
         '@RtxLabsUserBundle/Resources/public/js/View/RegistrationConfirmedView.js'
         '@RtxLabsUserBundle/Resources/public/js/View/ReactivationConfirmedView.js'
+        '@RtxLabsUserBundle/Resources/public/js/View/RegistrationExpiredView.js'
 
         '@RtxLabsUserBundle/Resources/public/js/Router/RegistrationRouter.js'
     %}
@@ -53,6 +55,12 @@
         function redirectOnConfirm() {
             setTimeout(function() {
                 window.location.href = '{{ path('uac') }}';
+            }, 10000);
+        }
+
+        function redirectOnExpired() {
+            setTimeout(function() {
+                window.location.href = '{{ path('rtxlabs_user_registration_register') }}';
             }, 10000);
         }
     </script>

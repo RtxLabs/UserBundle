@@ -35,12 +35,16 @@ rtxlabs.user.tos: Bitte akzeptieren sie die Nutzungsbedingungen
 rtxlabs.user.registration.header: Registrierung
 rtxlabs.user.registration.register: Registrieren
 rtxlabs.user.registration.success: Registrierung erfolgreich
+rtxlabs.user.registration.failure: Registrierung fehlgeschlagen
 rtxlabs.user.registration.fillIn: Bitte füllen sie alle nachfolgenden Felder aus
 rtxlabs.user.registration.confirmed: |
   Ihre Registrierungsbestätigung war erfolgreich.
 rtxlabs.user.registration.redirect: |
   Sie werden in Kürze weitergeleitet. Falls nicht,
 rtxlabs.user.registration.redirect.link: klicken sie bitte hier.
+rtxlabs.user.registration.expired: |
+  Ihr Registrierung ist entweder abgelaufen, oder ihr Registrierungsschlüssel war falsch.
+  Bitte registrieren sie sich neu.
 
 rtxlabs.user.reactivation.title: Account-Reaktivierung
 rtxlabs.user.reactivation.confirmed: |

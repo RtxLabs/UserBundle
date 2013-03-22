@@ -21,7 +21,7 @@
             </div>
             <div class="control-group" id="registration-email-div">
                 <label class="control-label" for="registration-email">{{ 'rtxlabs.user.label.email' | trans }}:</label>
-                <div class="controls"><input class="large" id="registration-email" name="registration[email]" type="text" value=""></div>
+                <div class="controls"><input class="span7" id="registration-email" name="registration[email]" type="text" value=""></div>
             </div>
             <div class="control-group" id="registration-password-div">
                 <label class="control-label" for="registration-password">{{ 'rtxlabs.user.label.password' | trans }}:</label>
@@ -38,7 +38,7 @@
             <div class="control-group" id="registration-locale-div">
                 <label class="control-label" for="registration-admin">{{ 'rtxlabs.user.label.locale' | trans }}:</label>
                 <div class="controls">
-                    <select id="registration-locale" class="chzn-single" name="registration[locale]">
+                    <select id="registration-locale" class="chzn-single span6" name="registration[locale]">
                         {% for locale in rtx_available_locales() %}
                             <option value="{{ locale }}">{{ locale | rtx_locale_realname(locale) }}</option>
                         {% endfor %}

@@ -65,7 +65,7 @@ class RegistrationController extends RestController
         $user = $userManager->findUserByRegistrationToken($token);
 
         if (!$user) {
-            return new RedirectResponse($this->container->get('router')->generate('rtxlabs_userbundle_login'));
+            return new RedirectResponse($this->container->get('router')->generate('rtxlabs_user_registration_register').'#expired');
         }
         $user->setRegistrationToken(null);
         $user->setActive(true);

@@ -3,6 +3,7 @@ Core.ns("App.User.Router");
 App.User.Router.RegistrationRouter = Backbone.Router.extend({
     routes: {
         "": "index",
+        "expired": "expired",
         "confirmed": "confirmed",
         "reactivation": "reactivation",
         "reactivation/confirmed": "reactivationConfirmed"
@@ -13,12 +14,19 @@ App.User.Router.RegistrationRouter = Backbone.Router.extend({
         this.registrationView = new App.User.View.RegistrationView({model: userModel});
         this.registrationView.render();
     },
-    
+
     confirmed: function() {
         this.confirmedView = new App.User.View.RegistrationConfirmedView();
         this.confirmedView.render();
 
         redirectOnConfirm();
+    },
+
+    expired: function() {
+        this.expiredView = new App.User.View.RegistrationExpiredView();
+        this.expiredView.render();
+
+        redirectOnExpired();
     },
 
     reactivation: function() {
