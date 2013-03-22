@@ -43,6 +43,10 @@ class UserRepository extends EntityRepository
             $builder->andWhere("u.username = :username")
                 ->setParameter("username", $filter->get('username'));
         }
+        if($filter->has('personnelNumber')) {
+            $builder->andWhere("u.personnelNumber = :personnelNumber")
+                ->setParameter("personnelNumber", $filter->get('personnelNumber')); 
+        }
         if($filter->has('active')) {
             $builder->andWhere("u.active = :active")
                 ->setParameter("active", $filter->get('active'));
