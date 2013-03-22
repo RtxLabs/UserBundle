@@ -157,8 +157,8 @@ class User implements \RtxLabs\UserBundle\Model\AdvancedUserInterface
      *
      * @ORM\ManyToMany(targetEntity="Group", inversedBy="users")
      * @ORM\JoinTable(name="rtxlabs_usergroup",
-     *              joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
-     *              inverseJoinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id")}
+     *              joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id", onDelete="CASCADE")},
+     *              inverseJoinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id", onDelete="CASCADE")}
      * )
      */
     protected $groups;

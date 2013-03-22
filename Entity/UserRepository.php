@@ -43,9 +43,33 @@ class UserRepository extends EntityRepository
             $builder->andWhere("u.username = :username")
                 ->setParameter("username", $filter->get('username'));
         }
-        if($filter->has('personnelNumber')) {
-            $builder->andWhere("u.personnelNumber = :personnelNumber")
-                ->setParameter("personnelNumber", $filter->get('personnelNumber'));
+        if($filter->has('active')) {
+            $builder->andWhere("u.active = :active")
+                ->setParameter("active", $filter->get('active'));
+        }
+        if($filter->has('hasPasswordToken')) {
+            if($filter->get('hasPasswordToken')) {
+                $builder->andWhere("u.passwordToken IS NOT NULL");
+            }
+            else {
+                $builder->andWhere("u.passwordToken IS NULL");
+            }
+        }
+        if($filter->has('hasRegistrationToken')) {
+            if($filter->get('hasRegistrationToken')) {
+                $builder->andWhere("u.registrationToken IS NOT NULL");
+            }
+            else {
+                $builder->andWhere("u.registrationToken IS NULL");
+            }
+        }
+        if($filter->has('createdAt')) {
+            $builder->andWhere("u.createdAt <= :date")
+                    ->setParameter("date", $filter->get('createdAt'));
+        }
+        if($filter->has('updatedAt')) {
+            $builder->andWhere("u.updatedAt <= :date")
+                    ->setParameter("date", $filter->get('updatedAt'));
         }
         return $builder;
     }
