@@ -38,7 +38,7 @@ class UserAttribute implements \RtxLabs\UserBundle\Model\UserAttributeInterface
     /**
      * @var User
      * @ORM\ManyToOne(targetEntity="User")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $user;
 

@@ -4,9 +4,6 @@ namespace RtxLabs\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-use Symfony\Component\Serializer\Normalizer\NormalizableInterface;
-use Symfony\Component\Serializer\SerializerInterface;
-
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
@@ -157,8 +154,8 @@ class User implements \RtxLabs\UserBundle\Model\AdvancedUserInterface
      *
      * @ORM\ManyToMany(targetEntity="Group", inversedBy="users")
      * @ORM\JoinTable(name="rtxlabs_usergroup",
-     *              joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
-     *              inverseJoinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id")}
+     *              joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id", onDelete="CASCADE")},
+     *              inverseJoinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id", onDelete="CASCADE")}
      * )
      */
     protected $groups;
