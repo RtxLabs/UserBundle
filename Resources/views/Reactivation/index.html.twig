@@ -1,0 +1,29 @@
+{% extends "RotexSbpCoreBundle::base.html.twig" %}
+
+{% block navigation %}
+    {% include "RtxLabsUserBundle::navigation.html.twig" %}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    {% stylesheets
+        '@RtxLabsUserBundle/Resources/public/css/user.css'
+    %}
+
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block main %}
+    {{ parent() }}
+
+    <div id="registration-main" class="full-block clearfix">
+        <div class="row">
+            <div class="span6 confirmed">
+                <legend>{{ 'rtxlabs.user.reactivation.title' | trans }}</legend>
+                {{ 'rtxlabs.user.reactivation.information' | trans }}<br />
+            </div>
+        </div>
+    </div>
+{% endblock %}

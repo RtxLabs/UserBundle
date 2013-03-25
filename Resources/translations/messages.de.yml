@@ -44,7 +44,7 @@ rtxlabs.user.registration.redirect: |
 rtxlabs.user.registration.redirect.link: klicken sie bitte hier.
 rtxlabs.user.registration.expired: |
   Ihr Registrierung ist entweder abgelaufen, oder ihr Registrierungsschlüssel war falsch.
-  Bitte registrieren sie sich neu.
+  Bitte registrieren sie sich erneut.
 
 rtxlabs.user.reactivation.title: Account-Reaktivierung
 rtxlabs.user.reactivation.confirmed: |
@@ -52,7 +52,7 @@ rtxlabs.user.reactivation.confirmed: |
 rtxlabs.user.reactivation.success: Reaktivierung erfolgreich
 rtxlabs.user.reactivation.information: |
   Die angegebene E-Mail war bereits im System hinterlegt. Der dazugehörige Account ist im Moment nicht aktiv.
-  Eine E-Mail mit Informationen zur Realtivierung des Accounts wurde ihnen zugesandt.
+  Eine E-Mail mit Informationen zur Reaktivierung des Accounts wurde ihnen zugesandt.
 
 rtxlabs.user.password.header: Passwort vergessen
 rtxlabs.user.password.forgotten: Passwort vergessen?
