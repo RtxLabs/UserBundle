@@ -1,18 +1,25 @@
 <?php
 namespace RtxLabs\UserBundle\DataFixtures\ORM;
 
+use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class UserAdminData implements FixtureInterface, ContainerAwareInterface
+class UserAdminData extends AbstractFixture implements FixtureInterface, ContainerAwareInterface, OrderedFixtureInterface
 {
     private $container;
 
     public function setContainer(ContainerInterface $container = null)
     {
         $this->container = $container;
+    }
+
+    public function getOrder()
+    {
+        return 100;
     }
 
     public function load(ObjectManager $manager)
@@ -37,5 +44,7 @@ class UserAdminData implements FixtureInterface, ContainerAwareInterface
 
         $manager->persist($userAdmin);
         $manager->flush();
+
+        $this->addReference("userbundle-user-admin", $userAdmin);
     }
 }
