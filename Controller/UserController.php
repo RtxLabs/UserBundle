@@ -13,7 +13,7 @@ use RtxLabs\UserBundle\Model\UserManager;
 class UserController extends RestController
 {
     private $whitelist = array("firstname", "lastname", "email", "username",
-        "passwordRequired", "plainPassword", "passwordRepeat", "admin", "locale");
+        "passwordRequired", "plainPassword", "passwordRepeat", "admin", "locale", "active");
 
     /**
      * @Route("/user", name="rtxlabs_userbundle_user_list", requirements={"_method"="GET"}, options={"expose"="true"})
