@@ -21,10 +21,10 @@
     <div id="registration-main" class="full-block clearfix">
         <div class="row">
             <div class="span6 confirmed">
-                <legend>{{ 'rtxlabs.user.reactivation.success' | trans }}</legend>
-                {{ 'rtxlabs.user.reactivation.confirmed' | trans }}<br />
+                <legend>{{ 'rtxlabs.user.registration.failure' | trans }}</legend>
+                {{ 'rtxlabs.user.registration.expired' | trans }}<br />
                 {{ 'rtxlabs.user.registration.redirect' | trans }}
-                <a class="edit" href="{{ path('uac') }}">{{ 'rtxlabs.user.registration.redirect.link' | trans }}</a>
+                <a class="edit" href="{{ path('rtxlabs_user_registration_index') }}">{{ 'rtxlabs.user.registration.redirect.link' | trans }}</a>
             </div>
         </div>
     </div>
@@ -37,7 +37,7 @@
     <script type="text/javascript">
         $(document).ready( function() {
             setTimeout(function() {
-                window.location.href = '{{ path('uac') }}';
+                window.location.href = '{{ path('rtxlabs_user_registration_index') }}';
             }, 10000);
         });
     </script>

@@ -25,7 +25,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/account#account", name="uac")
+     * @Route("/account", name="uac")
      * @Template("RtxLabsUserBundle:User:index.html.twig")
      */
     public function indexUserAction()

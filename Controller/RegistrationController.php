@@ -2,11 +2,7 @@
 namespace RtxLabs\UserBundle\Controller;
 
 use RtxLabs\UserBundle\Entity\User;
-
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Component\Security\Core\SecurityContext;
 use Rotex\Sbp\CoreBundle\Http\ValidationErrorResponse;
 use Rotex\Sbp\CoreBundle\Controller\RestController;
 use Symfony\Component\HttpFoundation\Response;
@@ -37,7 +33,7 @@ class RegistrationController extends RestController
             $response['success'] = false;
             $response['message'] = array(
                 'status' => 304,
-                'url'    => $this->container->get('router')->generate('rtxlabs_user_registration_register').'#reactivation'
+                'url'    => $this->container->get('router')->generate('rtxlabs_user_reactivation_index')
             );
             return new Response(Dencoder::encode($response));
         }
@@ -65,29 +61,24 @@ class RegistrationController extends RestController
         $user = $userManager->findUserByRegistrationToken($token);
 
         if (!$user) {
-            return new RedirectResponse($this->container->get('router')->generate('rtxlabs_userbundle_login'));
+            return new RedirectResponse($this->container->get('router')->generate('rtxlabs_user_registration_expired'));
         }
         $user->setRegistrationToken(null);
         $user->setActive(true);
 
         $userManager->saveUser($user);
         $this->signin($user);
-        return new RedirectResponse($this->container->get('router')->generate('rtxlabs_user_registration_register').'#confirmed');
+        return new RedirectResponse($this->container->get('router')->generate('rtxlabs_user_registration_confirmed'));
     }
 
-    public function reactivateAction($token)
+    public function expiredAction()
     {
-        $userManager = $this->get('rtxlabs.user.user_manager');
-        $user = $userManager->findUserByRegistrationToken($token);
+        return $this->render('RtxLabsUserBundle:Registration:expiredTemplate.html.twig');
+    }
 
-        if (!$user) {
-            return new RedirectResponse($this->container->get('router')->generate('rtxlabs_userbundle_login'));
-        }
-        $user->setRegistrationToken(null);
-        $user->setDeletedAt(null);
-
-        $userManager->saveUser($user);
-        return new RedirectResponse($this->container->get('router')->generate('rtxlabs_user_registration_register').'#reactivation/confirmed');
+    public function confirmedAction()
+    {
+        return $this->render('RtxLabsUserBundle:Registration:confirmedTemplate.html.twig');
     }
 
     protected function updateUser($user, $json, $userManager)

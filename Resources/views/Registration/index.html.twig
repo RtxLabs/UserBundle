@@ -20,10 +20,7 @@
 
     <div id="registration-main" class="full-block clearfix"></div>
 
-    {% include 'RtxLabsUserBundle:Reactivation:reactivationTemplate.html.twig' %}
-    {% include 'RtxLabsUserBundle:Reactivation:confirmedTemplate.html.twig' %}
     {% include 'RtxLabsUserBundle:Registration:registrationTemplate.html.twig' %}
-    {% include 'RtxLabsUserBundle:Registration:registrationConfirmedTemplate.html.twig' %}
     {% include 'RtxLabsUserBundle:Registration:termsOfServiceTemplate.html.twig' %}
 {% endblock %}
 
@@ -39,23 +36,12 @@
         '@RtxLabsUserBundle/Resources/public/js/Collection/UserCollection.js'
 
         '@RtxLabsUserBundle/Resources/public/js/View/TermsofServiceView.js'
-        '@RtxLabsUserBundle/Resources/public/js/View/ReactivationView.js'
         '@RtxLabsUserBundle/Resources/public/js/View/RegistrationView.js'
-        '@RtxLabsUserBundle/Resources/public/js/View/RegistrationConfirmedView.js'
-        '@RtxLabsUserBundle/Resources/public/js/View/ReactivationConfirmedView.js'
 
         '@RtxLabsUserBundle/Resources/public/js/Router/RegistrationRouter.js'
     %}
         <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
-
-    <script type="text/javascript">
-        function redirectOnConfirm() {
-            setTimeout(function() {
-                window.location.href = '{{ path('uac') }}';
-            }, 10000);
-        }
-    </script>
 
     <script type="text/javascript">
         App.User.initRegistrationModule();
