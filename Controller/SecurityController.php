@@ -39,7 +39,7 @@ class SecurityController extends Controller
         return array(
             'last_username' => $this->get('request')->getSession()->get(SecurityContext::LAST_USERNAME),
             'error'         => $error,
-            'registrationEnabled' => $this->routeExists('rtxlabs_user_registration_register')
+            'registrationEnabled' => $this->routeExists('rtxlabs_user_registration_index')
         );
     }
 
