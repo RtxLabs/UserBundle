@@ -9,11 +9,3 @@
 .row-fluid .center {
     margin: 0 25%;
 }
-
-#password-email-div .control-label {
-    width: 60px;
-}
-
-#password-email-div .controls {
-    margin-left: 80px;
-}

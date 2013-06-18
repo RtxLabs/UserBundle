@@ -1,6 +1,6 @@
 Core.ns('App.User.View');
 
-App.User.View.GroupEditView = Backbone.View.extend({
+App.User.View.GroupEditView = App.Core.View.View.extend({
     el: $('#user-main'),
 
     events: {
@@ -31,8 +31,7 @@ App.User.View.GroupEditView = Backbone.View.extend({
         this.model.save(this.getFormValues(), {
             wait: true,
             success: function(group, response) {
-                $('.alert-success').show();
-                $('.alert-error').hide();
+                self.defaultSuccess(group, response);
 
                 if (self.isNew) {
                     self.collection.add(group);

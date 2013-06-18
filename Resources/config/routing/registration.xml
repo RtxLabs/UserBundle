@@ -26,8 +26,14 @@
         <default key="_controller">RtxLabsUserBundle:Registration:confirmed</default>
     </route>
 
+    <route id="rtxlabs_user_registration_success" pattern="/success">
+        <default key="_controller">RtxLabsUserBundle:Registration:success</default>
+        <option key="expose">true</option>
+    </route>
+
     <route id="rtxlabs_user_reactivation_index" pattern="/reactivation">
         <default key="_controller">RtxLabsUserBundle:Reactivation:index</default>
+        <option key="expose">true</option>
     </route>
 
     <route id="rtxlabs_user_reactivation_confirm" pattern="/reactivate/{token}">

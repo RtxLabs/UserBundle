@@ -4,9 +4,18 @@ namespace RtxLabs\UserBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
+    /**
+     * @Route("/", name="rtxlabs_userbundle_index", options={"expose"="true"})
+     */
+    public function indexAction()
+    {
+        return new Response();
+    }
+
     /**
      * @Route("/admin/user", name="rtxlabs_userbundle_admin_user")
      * @Route("/admin/user#list", name="rtxlabs_userbundle_admin_user_list")
