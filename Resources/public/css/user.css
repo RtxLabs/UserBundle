@@ -9,3 +9,7 @@
 .row-fluid .center {
     margin: 0 25%;
 }
+
+#registration-main .popover {
+    max-width: 276px;
+}

@@ -29,12 +29,12 @@
             {% endif %}
 
             <form action="{{ path("_security_check") }}" method="post">
-                <label>{{ "rtxlabs.user.login.form.username"|trans }}</label>
+                <label>{{ "rtxlabs.user.label.username"|trans }}</label>
                 <div class="input">
                     <input type="text" id="username" name="_username" value="{{ last_username }}" class="xlarge">
                 </div>
 
-                <label>{{ "rtxlabs.user.login.form.password"|trans }}</label>
+                <label>{{ "rtxlabs.user.label.password" | trans }}</label>
                 <div class="input">
                     <input type="password" id="password" name="_password" class="xlarge">
                 </div>
