@@ -84,6 +84,7 @@ rtxlabs.user.validation.email.inUse: Die E-Mail-Adresse ist bereits vergeben
 rtxlabs.user.validation.personnelNumber: Eine gültige Personalnummer (4 Stellen) muß angegeben werden und eindeutig sein
 rtxlabs.user.validation.username: Ein Benutzername muß angegeben werden und eindeutig sein
 rtxlabs.user.validation.username.inUse: Der Benutzername ist bereits vergeben
+rtxlabs.user.validation.username.toShort: Ein Benutzername muss mindestens 6 Zeichen lang sein # translate
 rtxlabs.user.validation.password: Ein Passwort muß angegeben werden und mindestens 8 Zeichen lang sein
 rtxlabs.user.validation.passwordRepeat: Die Passwörter stimmen nicht überein
 rtxlabs.user.validation.passwordRequiredAndFilled: Ein Passwort muß angegeben werden
@@ -92,7 +93,6 @@ rtxlabs.user.validation.passwordRequirements: Ein Passwort muss mindestens 8 Zei
 # --- Welcome Email
 rtxlabs.user.mail.title.welcome: Willkommen
 rtxlabs.user.mail.label.username: Benutzername
-rtxlabs.user.mail.label.password: Passwort
 rtxlabs.user.mail.label.login: Anmeldeseite
 
 # --- Registration Email
@@ -137,8 +137,6 @@ rtxlabs.user.group.roles.selector: Bitte Rolle(n) auswählen
 
 # Login Form
 rtxlabs.user.login.message: Bitte melden Sie sich mit Ihrem Benutzernamen / Passwort an
-rtxlabs.user.login.form.username: Benutzername
-rtxlabs.user.login.form.password: Passwort
 rtxlabs.user.login.form.remember_me: Angemeldet bleiben
 rtxlabs.user.login.form.login: Login
 rtxlabs.user.login.form.error: Benutzer konnte mit den angegebenen Daten nicht angemeldet werden. Bitte versuchen Sie es erneut.
