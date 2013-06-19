@@ -34,10 +34,10 @@ App.User.View.RegistrationView = App.Core.View.View.extend({
             success: function(user, response) {
                 if(response.success == false &&
                     response.message.status == '304') {
-                    window.location.href = response.message.url;
+                    window.location.href = Routing.generate('rtxlabs_user_reactivation_index');
                 }
                 else {
-                    self.defaultSuccess(self);
+                    window.location.href = Routing.generate('rtxlabs_user_registration_success');
                 }
             },
             error: self.defaultError,

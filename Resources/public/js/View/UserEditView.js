@@ -65,7 +65,6 @@ App.User.View.UserEditView = App.Core.View.View.extend({
         });
 
         values.attributes.passwordRequired = $("#user-passwordRequired").attr('checked') == 'checked';
-        values.attributes.admin = $("#user-admin").attr('checked') == 'checked';
         if(values.attributes.roles !== 'null') {
             values.attributes.roles = values.attributes.roles.split(",");
         }

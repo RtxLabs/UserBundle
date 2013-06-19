@@ -22,7 +22,6 @@ App.User.Model.User = App.Core.Model.Model.extend({
         "password": "",
         "plainPassword": "",
         "passwordRepeat": "",
-        "admin": false,
         "locale": "de",
         "lastLogin": null,
         "roles": [],

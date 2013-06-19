@@ -31,10 +31,7 @@ class RegistrationController extends RestController
             $userManager->saveUser($user);
             $this->get('rtxlabs.user.mailer')->sendReactivationEmailMessage($user);
             $response['success'] = false;
-            $response['message'] = array(
-                'status' => 304,
-                'url'    => $this->container->get('router')->generate('rtxlabs_user_reactivation_index')
-            );
+            $response['message'] = array('status' => 304);
             return new Response(Dencoder::encode($response));
         }
 
@@ -46,8 +43,7 @@ class RegistrationController extends RestController
         if (count($errors) > 0 ) {
             return new ValidationErrorResponse($errors);
         }
-        
-        $this->persistAndFlush($user);
+
         $userManager->saveUser($user);
         $this->get('rtxlabs.user.mailer')->sendRegistrationEmailMessage($user);
 
@@ -69,6 +65,11 @@ class RegistrationController extends RestController
         $userManager->saveUser($user);
         $this->signin($user);
         return new RedirectResponse($this->container->get('router')->generate('rtxlabs_user_registration_confirmed'));
+    }
+
+    public function successAction()
+    {
+        return $this->render('RtxLabsUserBundle:Registration:successTemplate.html.twig');
     }
 
     public function expiredAction()

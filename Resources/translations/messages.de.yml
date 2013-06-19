@@ -45,6 +45,8 @@ rtxlabs.user.registration.redirect.link: klicken sie bitte hier.
 rtxlabs.user.registration.expired: |
   Ihr Registrierung ist entweder abgelaufen, oder ihr Registrierungsschlüssel war falsch.
   Bitte registrieren sie sich erneut.
+rtxlabs.user.registration.success.information: | 
+  Ihre Registrierung war erfolgreich. Sie erhalten in kürze eine E-Mail mit Informationen zur weiteren Vorgehensweise. # translate
 
 rtxlabs.user.reactivation.title: Account-Reaktivierung
 rtxlabs.user.reactivation.confirmed: |
