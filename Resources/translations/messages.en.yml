@@ -1,0 +1,138 @@
+rtxlabs.user.header: User management
+rtxlabs.user.label.add: Add user
+rtxlabs.user.label.name: First name
+rtxlabs.user.label.firstname: First name
+rtxlabs.user.label.lastname: Last name
+rtxlabs.user.label.personnel_number: Personnel number
+rtxlabs.user.label.email: E-mail
+rtxlabs.user.label.username: User name
+rtxlabs.user.label.password: Password
+rtxlabs.user.label.passwordRepeat: Password (repeat)
+rtxlabs.user.label.locale: Language
+rtxlabs.user.label.admin.edit: Edit
+rtxlabs.user.label.admin.list: List
+rtxlabs.user.label.admin.create: Create
+rtxlabs.user.label.tos: I agree to the %link_start%terms of use%link_end%
+rtxlabs.user.label.administrator: Administrator
+rtxlabs.user.label.last_login: Last login
+rtxlabs.user.label.edit: Edit user
+rtxlabs.user.label.delete: Delete user
+rtxlabs.user.label.passwordRequired: Password entry
+rtxlabs.user.label.has_admin_rights: Your administrator
+rtxlabs.user.validation.password.match: Passwords need to be equal
+rtxlabs.user.edit.header: Edit user
+rtxlabs.user.edit.legend: User information
+rtxlabs.user.edit.legend.accessdata: Login data
+rtxlabs.user.delete.confirm: Really delete user?
+rtxlabs.user.myaccount.header: My account
+rtxlabs.user.myaccount.edit: Edit account information
+rtxlabs.user.cancel: Cancel
+rtxlabs.user.send: Send
+rtxlabs.user.tos: Please accept the terms of use
+
+rtxlabs.user.registration.header: Registration
+rtxlabs.user.registration.register: Registration
+rtxlabs.user.registration.success: Registration successful
+rtxlabs.user.registration.failure: Registration failed
+rtxlabs.user.registration.fillIn: Please fill in the following fields
+rtxlabs.user.registration.confirmed: Your registration was successfull
+rtxlabs.user.registration.redirect: You will be redirected shortly. If not,
+rtxlabs.user.registration.redirect.link: please click here.
+rtxlabs.user.registration.expired: |
+  Your registration is either expired or your registry token was wrong.
+  Please register again.
+rtxlabs.user.registration.success.information: | 
+  Your registration was successful. You will shortly receive an email with further information.
+
+rtxlabs.user.reactivation.title: Account reactivation
+rtxlabs.user.reactivation.confirmed: The reactivation of your account was successful.
+rtxlabs.user.reactivation.success: Reactivation successful
+rtxlabs.user.reactivation.information: |
+  The entered e-mail was already in the system. The associated account is not active at the moment.
+  An e-mail with information on how to reactivate your account was sent to you.
+
+rtxlabs.user.password.header: Forgot password
+rtxlabs.user.password.forgotten: Forgot password?
+rtxlabs.user.password.save: Change password
+rtxlabs.user.password.success: Password changed successfully
+rtxlabs.user.password.confirmed: Your password was changed successfully
+rtxlabs.user.password.reset: Reset password
+rtxlabs.user.password.reset.info: Please enter your new password
+rtxlabs.user.password.reset.mail: Send e-mail
+rtxlabs.user.password.reset.mail.invalid: This is no valid e-mail address
+rtxlabs.user.password.reset.mail.notfound: The entered e-mail address is not in the system.
+rtxlabs.user.password.reset.send: An e-mail with the informations for a password reset was sent to you.
+
+rtxlabs.user.label.groups: Groups
+rtxlabs.user.label.roles: Roles
+rtxlabs.user.roles.selector: Please select your role(s)
+rtxlabs.user.groups.selector: Please select your group(s)
+
+rtxlabs.user.notification.user_successfully_saved: User successfully saved
+rtxlabs.user.notification.user_successfully_deleted: User successfully deleted
+
+rtxlabs.user.validation.forbidden: This operation isn't allowed 
+rtxlabs.user.validation.firstname: A first name must be entered
+rtxlabs.user.validation.lastname: A last name must be entered
+rtxlabs.user.validation.email: A e-mail address must be entered and has to be definite
+rtxlabs.user.validation.email.inUse: This e-mail address is already assinged
+rtxlabs.user.validation.username.toShort: A username has to be at least 6 chars long.
+rtxlabs.user.validation.personnelNumber: A valid personnel number must be entered and has to be definite
+rtxlabs.user.validation.username: A user name must be entered and has to be definite
+rtxlabs.user.validation.username.inUse: The user name is already in use
+rtxlabs.user.validation.password: A password must be entered and has to be at least 8 characters long
+rtxlabs.user.validation.passwordRepeat: The passwords need to be similar
+rtxlabs.user.validation.passwordRequiredAndFilled: A password must be entered
+rtxlabs.user.validation.passwordRequirements: A password needs to be at least 8 characters long, as well as contain one capital, one small letter and one figure.
+
+# --- Welcome Email
+rtxlabs.user.mail.title.welcome: Welcome
+rtxlabs.user.mail.label.username: User name
+rtxlabs.user.mail.label.login: Login page
+
+# --- Registration Email
+rtxlabs.user.mail.registration.title: Thank you very much for your registration
+rtxlabs.user.mail.salutation: Dear business partner,
+rtxlabs.user.mail.registration.body: to finish the registration, please click on the following link:
+rtxlabs.user.mail.registration.link: Finish registration
+rtxlabs.user.mail.label.information: Following your entered data
+rtxlabs.user.mail.label.firstname: First name
+rtxlabs.user.mail.label.lastname: Last name
+rtxlabs.user.mail.label.email: eMail
+rtxlabs.user.mail.footer: |
+  Best regards,
+  
+  ROTEX
+  Heating Systems GmbH
+
+# --- Password resetting email
+rtxlabs.user.mail.title.request_resetting: Reset password
+rtxlabs.user.mail.title.request_resetting_information: To create a new password for %name%, please click on the following link.
+
+# --- Account reactivation email
+rtxlabs.user.mail.reactivation.title: Your account is not active at the moment
+rtxlabs.user.mail.reactivation.body: |
+  You are already registered but your account is not active any more.
+  To reactivate your account, please click on the following link:
+rtxlabs.user.mail.reactivation.link: Reactivate account
+rtxlabs.user.mail.reactivation.information: Following you receive additional login information 
+
+# --- Group management
+rtxlabs.user.group.header: User groups
+rtxlabs.user.group.label.name: Name
+rtxlabs.user.group.label.user_amount: Number of users
+rtxlabs.user.group.label.add: Add group
+rtxlabs.user.group.edit.header: Edit group
+rtxlabs.user.group.edit.legend: Group information
+rtxlabs.user.group.edit.legend.accessdata: Assigned roles
+rtxlabs.user.group.label.roles: Roles
+rtxlabs.user.group.validation.name: A groupe name must be entered
+rtxlabs.user.group.roles.selector: Please select the role(s)
+
+# Login Form
+rtxlabs.user.login.message: Please login with your user name / password
+rtxlabs.user.login.form.remember_me: Stay logged in
+rtxlabs.user.login.form.login: Login
+rtxlabs.user.login.form.error: User couldn't login with the entered data. Please try again.
+rtxlabs.user.login.lost_password: Forgot password
+rtxlabs.user.login.hide_notification: Hide notification

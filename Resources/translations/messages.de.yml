@@ -13,9 +13,6 @@ rtxlabs.user.label.admin.edit: Bearbeiten
 rtxlabs.user.label.admin.list: Liste
 rtxlabs.user.label.admin.create: Erstellen
 rtxlabs.user.label.tos: Hiermit akzeptiere ich die %link_start%Nutzungsbedingungen%link_end%
-
-rtxlabs.user.edit.legend.accessdata: Anmeldedaten
-
 rtxlabs.user.label.administrator: Administrator
 rtxlabs.user.label.last_login: Letzter Login
 rtxlabs.user.label.edit: Benutzer bearbeiten
@@ -25,6 +22,7 @@ rtxlabs.user.label.has_admin_rights: Ist Administrator
 rtxlabs.user.validation.password.match: Passwörter müssen übereinstimmen
 rtxlabs.user.edit.header: Benutzer bearbeiten
 rtxlabs.user.edit.legend: Benutzerinformationen
+rtxlabs.user.edit.legend.accessdata: Anmeldedaten
 rtxlabs.user.delete.confirm: Benutzer wirklich löschen?
 rtxlabs.user.myaccount.header: Mein Account
 rtxlabs.user.myaccount.edit: Accountinformationen bearbeiten
@@ -37,10 +35,8 @@ rtxlabs.user.registration.register: Registrieren
 rtxlabs.user.registration.success: Registrierung erfolgreich
 rtxlabs.user.registration.failure: Registrierung fehlgeschlagen
 rtxlabs.user.registration.fillIn: Bitte füllen sie alle nachfolgenden Felder aus
-rtxlabs.user.registration.confirmed: |
-  Ihre Registrierungsbestätigung war erfolgreich.
-rtxlabs.user.registration.redirect: |
-  Sie werden in Kürze weitergeleitet. Falls nicht,
+rtxlabs.user.registration.confirmed: Ihre Registrierungsbestätigung war erfolgreich.
+rtxlabs.user.registration.redirect: Sie werden in Kürze weitergeleitet. Falls nicht,
 rtxlabs.user.registration.redirect.link: klicken sie bitte hier.
 rtxlabs.user.registration.expired: |
   Ihr Registrierung ist entweder abgelaufen, oder ihr Registrierungsschlüssel war falsch.
@@ -49,8 +45,7 @@ rtxlabs.user.registration.success.information: |
   Ihre Registrierung war erfolgreich. Sie erhalten in kürze eine E-Mail mit Informationen zur weiteren Vorgehensweise.
 
 rtxlabs.user.reactivation.title: Account-Reaktivierung
-rtxlabs.user.reactivation.confirmed: |
-  Die Reaktivierung ihres Accounts war erfolgreich.
+rtxlabs.user.reactivation.confirmed: Die Reaktivierung ihres Accounts war erfolgreich.
 rtxlabs.user.reactivation.success: Reaktivierung erfolgreich
 rtxlabs.user.reactivation.information: |
   Die angegebene E-Mail war bereits im System hinterlegt. Der dazugehörige Account ist im Moment nicht aktiv.
@@ -130,7 +125,6 @@ rtxlabs.user.group.label.add: Gruppe hinzufügen
 rtxlabs.user.group.edit.header: Gruppe bearbeiten
 rtxlabs.user.group.edit.legend: Gruppeninformationen
 rtxlabs.user.group.edit.legend.accessdata: Zugeordnete Rollen
-
 rtxlabs.user.group.label.roles: Rollen
 rtxlabs.user.group.validation.name: Ein Gruppenname muss angegeben werden
 rtxlabs.user.group.roles.selector: Bitte Rolle(n) auswählen
