@@ -1,0 +1,138 @@
+rtxlabs.user.header: ユーザー管理
+rtxlabs.user.label.add: ユーザー追加
+rtxlabs.user.label.name: 名
+rtxlabs.user.label.firstname: 名
+rtxlabs.user.label.lastname: 姓
+rtxlabs.user.label.personnel_number: ユーザー番号
+rtxlabs.user.label.email: 電子メール
+rtxlabs.user.label.username: ユーザー名
+rtxlabs.user.label.password: パスワード
+rtxlabs.user.label.passwordRepeat: パスワード（再入力）
+rtxlabs.user.label.locale: 言語
+rtxlabs.user.label.admin.edit: 編集
+rtxlabs.user.label.admin.list: 一覧
+rtxlabs.user.label.admin.create: 作成
+rtxlabs.user.label.tos: 私は利用規約に同意します。
+rtxlabs.user.label.administrator: 管理者
+rtxlabs.user.label.last_login: 前回のログイン
+rtxlabs.user.label.edit: ユーザーの編集
+rtxlabs.user.label.delete: ユーザーの削除
+rtxlabs.user.label.passwordRequired: パスワード入力
+rtxlabs.user.label.has_admin_rights: あなたの管理者
+rtxlabs.user.validation.password.match: パスワードが一致している必要があります。
+rtxlabs.user.edit.header: ユーザーの編集
+rtxlabs.user.edit.legend: ユーザー情報
+rtxlabs.user.edit.legend.accessdata: ログインデータ
+rtxlabs.user.delete.confirm: 本当にユーザーを削除しますか？
+rtxlabs.user.myaccount.header: マイアカウント
+rtxlabs.user.myaccount.edit: アカウント情報の編集
+rtxlabs.user.cancel: キャンセル
+rtxlabs.user.send: 送信する
+rtxlabs.user.tos: 利用規約に同意してください。
+
+rtxlabs.user.registration.header: 登録
+rtxlabs.user.registration.register: 登録する
+rtxlabs.user.registration.success: 登録完了
+rtxlabs.user.registration.failure: 登録の失敗
+rtxlabs.user.registration.fillIn: 以下の全ての欄に必要事項を記入してください。
+rtxlabs.user.registration.confirmed: 登録が完了しました。
+rtxlabs.user.registration.redirect: まもなく進められます。そうでない場合は、
+rtxlabs.user.registration.redirect.link: ここをクリックしてください。
+rtxlabs.user.registration.expired: |
+  Your registration is either expired or your registry token was wrong.
+  Please register again.
+rtxlabs.user.registration.success.information: |
+  あなたの登録は完了しました。まもなく詳細情報がメールで送信されます。
+
+rtxlabs.user.reactivation.title: アカウントの再開
+rtxlabs.user.reactivation.confirmed: あなたのアカウントの再開に成功しました。
+rtxlabs.user.reactivation.success: アカウント再開完了
+rtxlabs.user.reactivation.information: |
+  入力された電子メールは、既にシステム内に存在します。関連するアカウントは、現時点ではアクティブではありません。
+  アカウント再開に関する情報が電子メールで送信されました。
+
+rtxlabs.user.password.header: パスワードの紛失
+rtxlabs.user.password.forgotten: パスワードの紛失？
+rtxlabs.user.password.save: パスワード変更
+rtxlabs.user.password.success: パスワード変更完了
+rtxlabs.user.password.confirmed: パスワードが正常に変更されました。
+rtxlabs.user.password.reset: パスワードのリセット
+rtxlabs.user.password.reset.info: 新しいパスワードを入力してください。
+rtxlabs.user.password.reset.mail: 電子メールを送信する
+rtxlabs.user.password.reset.mail.invalid: この電子メールアドレスは正しくありません。
+rtxlabs.user.password.reset.mail.notfound: 入力された電子メールアドレスはシステムに存在しません。
+rtxlabs.user.password.reset.send: パスワードリセットに関する情報が電子メールで送信されました。
+
+rtxlabs.user.label.groups: グループ
+rtxlabs.user.label.roles: 役割
+rtxlabs.user.roles.selector: 役割を選択してください
+rtxlabs.user.groups.selector: グループを選択してください
+
+rtxlabs.user.notification.user_successfully_saved: ユーザーが正常に保存されました
+rtxlabs.user.notification.user_successfully_deleted: ユーザーが正常に削除されました
+
+rtxlabs.user.validation.forbidden: この操作は許可されていません
+rtxlabs.user.validation.firstname: 名を入力する必要があります
+rtxlabs.user.validation.lastname: 姓を入力する必要があります
+rtxlabs.user.validation.email: 確定するため電子メールアドレスを入力する必要があります
+rtxlabs.user.validation.email.inUse: このメールアドレスは既に使用されています
+rtxlabs.user.validation.username.toShort: ユーザー名は少なくとも6文字以上として下さい。
+rtxlabs.user.validation.personnelNumber: 確定するため、有効なユーザー番号（4桁）を入力する必要があります
+rtxlabs.user.validation.username: 確定するためユーザー名を入力する必要があります
+rtxlabs.user.validation.username.inUse: このユーザー名は既に使用されています
+rtxlabs.user.validation.password: パスワード（8文字以上）を入力する必要があります
+rtxlabs.user.validation.passwordRepeat: パスワードが一致しません
+rtxlabs.user.validation.passwordRequiredAndFilled: パスワードを入力する必要があります
+rtxlabs.user.validation.passwordRequirements: パスワードは少なくとも8文字以上で、大文字１字、小文字１字と数字１字が含まれている必要があります。
+
+# --- Welcome Email
+rtxlabs.user.mail.title.welcome: ようこそ
+rtxlabs.user.mail.label.username: ユーザー名
+rtxlabs.user.mail.label.login: ログインページ
+
+# --- Registration Email
+rtxlabs.user.mail.registration.title: ご登録ありがとうございます
+rtxlabs.user.mail.salutation: ビジネスパートナー様へ
+rtxlabs.user.mail.registration.body: 登録を完了するには次のリンクをクリックしてください：
+rtxlabs.user.mail.registration.link: 登録完了
+rtxlabs.user.mail.label.information: 入力されたデータ
+rtxlabs.user.mail.label.firstname: 名
+rtxlabs.user.mail.label.lastname: 姓
+rtxlabs.user.mail.label.email: 電子メール
+rtxlabs.user.mail.footer: |
+  敬具
+  
+  ROTEX
+  Heating Systems GmbH
+
+# --- Password resetting email
+rtxlabs.user.mail.title.request_resetting: パスワードのリセット
+rtxlabs.user.mail.title.request_resetting_information: %name%の新しいパスワードを作成するには、次のリンクをクリックしてください。
+
+# --- Account reactivation email
+rtxlabs.user.mail.reactivation.title: あなたのアカウントは現在機能していません。
+rtxlabs.user.mail.reactivation.body: |
+  あなたは既に登録されていますが、アカウントは機能していません。
+  アカウントを再開するには、次のリンクをクリックしてください。
+rtxlabs.user.mail.reactivation.link: アカウントの再開
+rtxlabs.user.mail.reactivation.information: 追加のログイン情報
+
+# --- Group management
+rtxlabs.user.group.header: ユーザーグループ
+rtxlabs.user.group.label.name: 名前
+rtxlabs.user.group.label.user_amount: ユーザー数
+rtxlabs.user.group.label.add: グループの追加
+rtxlabs.user.group.edit.header: グループの編集
+rtxlabs.user.group.edit.legend: グループ情報
+rtxlabs.user.group.edit.legend.accessdata: 選定された役割
+rtxlabs.user.group.label.roles: 役割
+rtxlabs.user.group.validation.name: グループ名を入力する必要があります。
+rtxlabs.user.group.roles.selector: 役割を選択してください
+
+# Login Form
+rtxlabs.user.login.message: ユーザー名/パスワードを入力しログインしてください。
+rtxlabs.user.login.form.remember_me: ログイン情報を記憶させる
+rtxlabs.user.login.form.login: ログイン
+rtxlabs.user.login.form.error: 入力されたデータでログインできませんでした。もう一度やり直してください。
+rtxlabs.user.login.lost_password: パスワードの紛失
+rtxlabs.user.login.hide_notification: 通知を隠す
