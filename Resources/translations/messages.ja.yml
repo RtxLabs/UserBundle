@@ -39,8 +39,8 @@ rtxlabs.user.registration.confirmed: 登録が完了しました。
 rtxlabs.user.registration.redirect: まもなく進められます。そうでない場合は、
 rtxlabs.user.registration.redirect.link: ここをクリックしてください。
 rtxlabs.user.registration.expired: |
-  Your registration is either expired or your registry token was wrong.
-  Please register again.
+  ご登録の有効期限が切れているか、ご登録内容に間違いがあります。
+  再度ご登録ください。
 rtxlabs.user.registration.success.information: |
   あなたの登録は完了しました。まもなく詳細情報がメールで送信されます。
 
