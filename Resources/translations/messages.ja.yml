@@ -1,6 +1,6 @@
 rtxlabs.user.header: ユーザー管理
 rtxlabs.user.label.add: ユーザー追加
-rtxlabs.user.label.name: 名
+rtxlabs.user.label.name: 氏名
 rtxlabs.user.label.firstname: 名
 rtxlabs.user.label.lastname: 姓
 rtxlabs.user.label.personnel_number: ユーザー番号
@@ -39,8 +39,8 @@ rtxlabs.user.registration.confirmed: 登録が完了しました。
 rtxlabs.user.registration.redirect: まもなく進められます。そうでない場合は、
 rtxlabs.user.registration.redirect.link: ここをクリックしてください。
 rtxlabs.user.registration.expired: |
-  Your registration is either expired or your registry token was wrong.
-  Please register again.
+  ご登録の有効期限が切れているか、ご登録内容に間違いがあります。
+  再度ご登録ください。
 rtxlabs.user.registration.success.information: |
   あなたの登録は完了しました。まもなく詳細情報がメールで送信されます。
 
@@ -51,7 +51,7 @@ rtxlabs.user.reactivation.information: |
   入力された電子メールは、既にシステム内に存在します。関連するアカウントは、現時点ではアクティブではありません。
   アカウント再開に関する情報が電子メールで送信されました。
 
-rtxlabs.user.password.header: パスワードの紛失
+rtxlabs.user.password.header: パスワード再発行
 rtxlabs.user.password.forgotten: パスワードの紛失？
 rtxlabs.user.password.save: パスワード変更
 rtxlabs.user.password.success: パスワード変更完了
@@ -124,13 +124,15 @@ rtxlabs.user.group.label.user_amount: ユーザー数
 rtxlabs.user.group.label.add: グループの追加
 rtxlabs.user.group.edit.header: グループの編集
 rtxlabs.user.group.edit.legend: グループ情報
-rtxlabs.user.group.edit.legend.accessdata: 選定された役割
+rtxlabs.user.group.edit.legend.accessdata: 役割選択
 rtxlabs.user.group.label.roles: 役割
 rtxlabs.user.group.validation.name: グループ名を入力する必要があります。
 rtxlabs.user.group.roles.selector: 役割を選択してください
 
 # Login Form
-rtxlabs.user.login.message: ユーザー名/パスワードを入力しログインしてください。
+rtxlabs.user.login.message: |
+  ユーザー名/パスワードを入力し
+  ログインしてください。
 rtxlabs.user.login.form.remember_me: ログイン情報を記憶させる
 rtxlabs.user.login.form.login: ログイン
 rtxlabs.user.login.form.error: 入力されたデータでログインできませんでした。もう一度やり直してください。
