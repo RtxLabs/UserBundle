@@ -72,6 +72,14 @@ class UserController extends RestController
         $data = Dencoder::decode($this->getRequest()->getContent());
         $binder = $this->createDataBinder($whitelist)->bind($data)->to($user)->except("password");
 
+        if (!$data->passwordRequired) {
+            $password = "IAmADummyPasswordForValidation1";
+            $data->plainPassword = $password;
+            $data->passwordRepeat = $password;
+            $user->setPassword($password);
+            $user->setPlainPassword($password);
+        }
+
         if ($this->getCurrentUser()->isAdmin()) {
             $binder->field("roles", $data->roles);
 
@@ -101,10 +109,11 @@ class UserController extends RestController
         $validator = $this->get('validator');
         $errors = $validator->validate($entity);
 
-        if($data->plainPassword !== $data->passwordRepeat) {
+        if($data->passwordRequired && $data->plainPassword !== $data->passwordRepeat) {
             $errors[] = array('propertyPath' => 'passwordRepeat', 'message' => 'rtxlabs.user.validation.passwordRepeat');
         }
-        if ($entity->getPlainPassword() != $this->container->getParameter('password_placeholder') &&
+
+        if ($data->passwordRequired && $entity->getPlainPassword() != $this->container->getParameter('password_placeholder') &&
             $entity->getPlainPassword() != "" && !count($errors)) {
 
             $userManager->updatePassword($entity);
@@ -136,7 +145,7 @@ class UserController extends RestController
      */
      protected function getRepository()
      {
-        $repository = $this->getDoctrine()->getRepository($this->getUserClass());
+        $repository = $this->getDoctrine()->getRepository($this->getEntityClass());
         assert($repository instanceof \RtxLabs\UserBundle\Entity\UserRepository);
         return $repository;
      }
@@ -144,7 +153,7 @@ class UserController extends RestController
     /**
      * @return \RtxLabs\UserBundle\Entity\User
      */
-    private function getUserClass() {
+    protected function getEntityClass() {
         $user = $this->container->getParameter("rtxlabs.user.class");
         return $user;
     }
