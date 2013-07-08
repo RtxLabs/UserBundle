@@ -6,7 +6,6 @@
 
     <parameters>
         <parameter key="rtxlabs.user.roles"></parameter>
-        <parameter key="rtxlabs.user.class">RtxLabs\UserBundle\Entity\User</parameter>
     </parameters>
 
     <services>
