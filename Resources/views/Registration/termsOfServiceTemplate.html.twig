@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block body %}
-    
+    {% include 'RtxLabsUserBundle:Registration:termsOfServiceTemplate.' ~ app.session.locale |slice(0, 2) ~ '.html.twig' %}
 {% endblock %}
 
 {% block footer %}
