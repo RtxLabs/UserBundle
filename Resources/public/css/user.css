@@ -13,3 +13,25 @@
 #registration-main .popover {
     max-width: 276px;
 }
+#user-tos-list {
+    margin: 0px;
+}
+#user-tos-list,
+#user-tos-list ol {
+    counter-reset: item;
+    margin-bottom: 15px;
+}
+#user-tos-list p {
+    margin-left: 25px;
+}
+#user-tos-list li {
+    display: block;
+    margin: 5px 0;
+}
+#user-tos-list ol li {
+    text-indent: -1.7em;
+}
+#user-tos-list li:before {
+    content: counters(item, ".") " ";
+    counter-increment: item;
+}
