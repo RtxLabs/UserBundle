@@ -18,6 +18,7 @@ rtxlabs.user.label.last_login: Last login
 rtxlabs.user.label.edit: Edit user
 rtxlabs.user.label.delete: Delete user
 rtxlabs.user.label.passwordRequired: Password entry
+rtxlabs.user.label.localPassword: Local password
 rtxlabs.user.label.has_admin_rights: Your administrator
 rtxlabs.user.label.active: Active
 rtxlabs.user.validation.password.match: Passwords need to be equal
