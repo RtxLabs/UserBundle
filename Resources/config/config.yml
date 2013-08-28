@@ -1,2 +1,6 @@
 parameters:
     password_placeholder: "Sbp_unchanged_1$%!//"
+
+twig:
+    globals:
+        local_password_input: true

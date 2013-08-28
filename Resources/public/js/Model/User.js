@@ -25,6 +25,7 @@ App.User.Model.User = App.Core.Model.Model.extend({
         "locale": "de",
         "lastLogin": null,
         "roles": [],
-        "groups": []
+        "groups": [],
+        "active": false
     }
 });

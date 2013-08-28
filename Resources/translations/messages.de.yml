@@ -19,6 +19,7 @@ rtxlabs.user.label.edit: Benutzer bearbeiten
 rtxlabs.user.label.delete: Benutzer löschen
 rtxlabs.user.label.passwordRequired: Passworteingabe
 rtxlabs.user.label.has_admin_rights: Ist Administrator
+rtxlabs.user.label.active: Aktiv
 rtxlabs.user.validation.password.match: Passwörter müssen übereinstimmen
 rtxlabs.user.edit.header: Benutzer bearbeiten
 rtxlabs.user.edit.legend: Benutzerinformationen

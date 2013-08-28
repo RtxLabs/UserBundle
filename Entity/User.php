@@ -168,6 +168,13 @@ class User implements \RtxLabs\UserBundle\Model\AdvancedUserInterface
     protected $attributes;
 
     /**
+     * @var boolean $passwordRequired
+     *
+     * @ORM\Column(name="password_required", type="boolean")
+     */
+    protected $passwordRequired = true;
+
+    /**
      * Get id
      *
      * @return integer
@@ -661,20 +668,23 @@ class User implements \RtxLabs\UserBundle\Model\AdvancedUserInterface
     }
 
     /**
-     * @param boolean $required
-     * @return void
+     * Set passwordRequired
+     *
+     * @param boolean $passwordRequired
      */
-    public function setPasswordRequired($required)
+    public function setPasswordRequired($passwordRequired)
     {
-        // TODO: Implement setPasswordRequired() method.
+        $this->passwordRequired = $passwordRequired;
     }
 
     /**
-     * @return mixed
+     * Get passwordRequired
+     *
+     * @return boolean
      */
     public function getPasswordRequired()
     {
-        // TODO: Implement getPasswordRequired() method.
+        return $this->passwordRequired;
     }
 
     /**

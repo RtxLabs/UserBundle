@@ -65,12 +65,14 @@
                         <input class="span11" id="user-username" name="user[username]" type="text" value="<%= username %>">
                     </div>
                 </div>
-                <div class="control-group" id="password-required-div">
-                    <label class="control-label" for="user-passwordRequired">{{ 'rtxlabs.user.label.passwordRequired' | trans }}:</label>
-                    <div class="controls">
-                        <input id="user-passwordRequired" type="checkbox" name="user[passwordRequired]" <%= passwordRequired==true ? 'checked=checked' : '' %>/>
+                {% if local_password_input %}
+                    <div class="control-group" id="password-required-div">
+                        <label class="control-label" for="user-passwordRequired">{{ 'rtxlabs.user.label.passwordRequired' | trans }}:</label>
+                        <div class="controls">
+                            <input id="user-passwordRequired" type="checkbox" name="user[passwordRequired]" <%= passwordRequired==true ? 'checked=checked' : '' %>/>
+                        </div>
                     </div>
-                </div>
+                {% endif %}
                 <div class="control-group" id="user-password-div">
                     <label class="control-label" for="user-plainPassword">{{ 'rtxlabs.user.label.password' | trans }}:</label>
                     <div class="controls">
@@ -93,6 +95,12 @@
                                 <option value="{{ locale }}" <%= locale == "{{ locale }}" ? 'selected="selected"' : '' %> >{{ locale | rtx_locale_realname(app.user.locale) }}</option>
                             {% endfor %}
                         </select>
+                    </div>
+                </div>
+                <div class="control-group" id="user-active-div">
+                    <label class="control-label" for="user-active">{{ 'rtxlabs.user.label.active' | trans }}:</label>
+                    <div class="controls">
+                        <input id="user-active" type="checkbox" name="user[active]" <%= active==true ? 'checked=checked' : '' %>/>
                     </div>
                 </div>
             </div>
