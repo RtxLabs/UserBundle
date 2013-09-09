@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class GroupController extends RestController
 {
-    private $whitelist = array("name", "roles");
+    private $whitelist = array("name", "roles", "userCount");
     /**
      * @Route("/usergroup", name="rtxlabs_userbundle_group_list", requirements={"_method"="GET"}, options={"expose"="true"})
      */
@@ -69,7 +69,7 @@ class GroupController extends RestController
     protected function bindRequestData($group, $whitelist)
     {
         $data = Dencoder::decode($this->getRequest()->getContent());
-        $binder = $this->createDataBinder($whitelist)->bind($data)->to($group);
+        $binder = $this->createDataBinder($this->whitelist)->bind($data)->to($group);
 
         if ($this->getCurrentUser()->isAdmin()) {
             $binder->field("roles", explode(",", $data->roles));
@@ -78,5 +78,13 @@ class GroupController extends RestController
             $binder->except("roles");
         }
         $binder->execute();
+    }
+
+    protected function createEntityBinder()
+    {
+        $binder = $this->createDoctrineBinder()
+            ->field('userCount', function($group) { return count($group->getUsers()); });
+
+        return $binder;
     }
 }

@@ -44,6 +44,7 @@ App.User.View.UserEditView = App.Core.View.View.extend({
             wait: true,
             success: function(user, response) {
                 self.defaultSuccess(user, response);
+                App.User.router.navigate("#list", true);
             },
             error: self.defaultError,
             scope: self

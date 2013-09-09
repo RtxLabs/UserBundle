@@ -350,7 +350,7 @@ class User implements \RtxLabs\UserBundle\Model\AdvancedUserInterface
      */
     public function setRoles($roles)
     {
-        $this->roles = $roles;
+        // deprecated
     }
 
     /**
@@ -370,6 +370,26 @@ class User implements \RtxLabs\UserBundle\Model\AdvancedUserInterface
         $roles[] = static::ROLE_DEFAULT;
 
         return array_unique($roles);
+    }
+
+    /**
+     * Set roles
+     *
+     * @param array $userRoles
+     */
+    public function setUserRoles($roles)
+    {
+        $this->roles = $roles;
+    }
+
+    /**
+     * Gets an array of userRoles.
+     *
+     * @return array An array of userRole objects
+     */
+    public function getUserRoles()
+    {
+        return $this->roles;
     }
 
     /**

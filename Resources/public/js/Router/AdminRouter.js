@@ -76,10 +76,10 @@ App.User.Router.AdminRouter = App.Core.Router.CoreRouter.extend({
         if (view == null) {
             view = new App.User.View.GroupListView({collection: this.groupCollection});
             this.cacheView(view, "GroupListView");
-            this.groupCollection.fetch();
         }
 
         view.render();
+        this.groupCollection.fetch();
     },
 
     renderCreateGroup: function() {

@@ -37,11 +37,11 @@
                     <div class="controls">
                         <select id="group-roles" name="user[roles]" multiple="multiple" class="span11 chzn-select" data-placeholder="{{ 'rtxlabs.user.roles.selector' | trans }}" size="15">
                             {% for groupname, group in roles %}
-                            <optgroup label="{{ ('rotex.sbp.'~groupname~'.role.groupname') | trans }}">
-                                {% for role in group %}
-                                    <option value="{{ role }}" <%= _.find(roles, function(role){ return role == '{{ role }}' }) !== undefined ? 'selected="selected"' : '' %> >{{ ('rotex.sbp.'~groupname~'.role.'~role | lower) | trans }}</option>
-                                {% endfor %}
-                            </optgroup>
+                                <optgroup label="{{ ('rotex.sbp.'~groupname~'.role.groupname') | trans }}">
+                                    {% for role in group %}
+                                        <option value="{{ role }}" <%= _.find(userRoles, function(role){ return role == '{{ role }}' }) !== undefined ? 'selected="selected"' : '' %> >{{ ('rotex.sbp.'~groupname~'.role.'~role | lower) | trans }}</option>
+                                    {% endfor %}
+                                </optgroup>
                             {% endfor %}
                         </select>
                     </div>
@@ -67,7 +67,7 @@
                 </div>
                 {% if local_password_input %}
                     <div class="control-group" id="password-required-div">
-                        <label class="control-label" for="user-passwordRequired">{{ 'rtxlabs.user.label.passwordRequired' | trans }}:</label>
+                        <label class="control-label" for="user-passwordRequired">{{ 'rtxlabs.user.label.localPassword' | trans }}:</label>
                         <div class="controls">
                             <input id="user-passwordRequired" type="checkbox" name="user[passwordRequired]" <%= passwordRequired==true ? 'checked=checked' : '' %>/>
                         </div>
