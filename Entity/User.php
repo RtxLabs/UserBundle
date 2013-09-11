@@ -347,10 +347,11 @@ class User implements \RtxLabs\UserBundle\Model\AdvancedUserInterface
      * Set roles
      *
      * @param array $roles
+	 * @deprecated 2012/10/09
      */
     public function setRoles($roles)
     {
-        // deprecated
+        // deprecated, use setUserRoles instead
     }
 
     /**
