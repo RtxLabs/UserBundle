@@ -36,6 +36,8 @@ App.User.View.GroupEditView = App.Core.View.View.extend({
                 if (self.isNew) {
                     self.collection.add(group);
                 }
+
+                App.User.router.navigate("#group/list", true);
             },
             error: function(group, response){
                 if (response.responseText !== undefined && response.status != 406) {

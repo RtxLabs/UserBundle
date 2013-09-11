@@ -168,6 +168,13 @@ class User implements \RtxLabs\UserBundle\Model\AdvancedUserInterface
     protected $attributes;
 
     /**
+     * @var boolean $passwordRequired
+     *
+     * @ORM\Column(name="password_required", type="boolean")
+     */
+    protected $passwordRequired = true;
+
+    /**
      * Get id
      *
      * @return integer
@@ -340,10 +347,11 @@ class User implements \RtxLabs\UserBundle\Model\AdvancedUserInterface
      * Set roles
      *
      * @param array $roles
+	 * @deprecated 2013/10/09
      */
     public function setRoles($roles)
     {
-        $this->roles = $roles;
+        // deprecated, use setUserRoles instead
     }
 
     /**
@@ -363,6 +371,26 @@ class User implements \RtxLabs\UserBundle\Model\AdvancedUserInterface
         $roles[] = static::ROLE_DEFAULT;
 
         return array_unique($roles);
+    }
+
+    /**
+     * Set roles
+     *
+     * @param array $userRoles
+     */
+    public function setUserRoles($roles)
+    {
+        $this->roles = $roles;
+    }
+
+    /**
+     * Gets an array of userRoles.
+     *
+     * @return array An array of userRole objects
+     */
+    public function getUserRoles()
+    {
+        return $this->roles;
     }
 
     /**
@@ -661,20 +689,23 @@ class User implements \RtxLabs\UserBundle\Model\AdvancedUserInterface
     }
 
     /**
-     * @param boolean $required
-     * @return void
+     * Set passwordRequired
+     *
+     * @param boolean $passwordRequired
      */
-    public function setPasswordRequired($required)
+    public function setPasswordRequired($passwordRequired)
     {
-        // TODO: Implement setPasswordRequired() method.
+        $this->passwordRequired = $passwordRequired;
     }
 
     /**
-     * @return mixed
+     * Get passwordRequired
+     *
+     * @return boolean
      */
     public function getPasswordRequired()
     {
-        // TODO: Implement getPasswordRequired() method.
+        return $this->passwordRequired;
     }
 
     /**

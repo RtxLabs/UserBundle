@@ -44,6 +44,7 @@ App.User.View.UserEditView = App.Core.View.View.extend({
             wait: true,
             success: function(user, response) {
                 self.defaultSuccess(user, response);
+                App.User.router.navigate("#list", true);
             },
             error: self.defaultError,
             scope: self
@@ -64,7 +65,10 @@ App.User.View.UserEditView = App.Core.View.View.extend({
             values.set(objInst);
         });
 
-        values.attributes.passwordRequired = $("#user-passwordRequired").attr('checked') == 'checked';
+        if($('#user-passwordRequired').length > 0) {
+            values.attributes.passwordRequired = $("#user-passwordRequired").attr('checked') == 'checked';
+        }
+        values.attributes.active = $("#user-active").attr('checked') == 'checked';
         if(values.attributes.roles !== 'null') {
             values.attributes.roles = values.attributes.roles.split(",");
         }
@@ -75,15 +79,17 @@ App.User.View.UserEditView = App.Core.View.View.extend({
     },
 
     updatePasswordFieldVisibility: function() {
-        var passwordRequired = $('#user-passwordRequired').attr('checked') == 'checked';
+        if($('#user-passwordRequired').length > 0) {
+            var passwordRequired = $('#user-passwordRequired').attr('checked') == 'checked';
 
-        if (passwordRequired) {
-            $('#user-password-div').show();
-            $('#user-passwordRepeat-div').show();
-        }
-        else {
-            $('#user-password-div').hide();
-            $('#user-passwordRepeat-div').hide();
+            if (passwordRequired) {
+                $('#user-password-div').show();
+                $('#user-passwordRepeat-div').show();
+            }
+            else {
+                $('#user-password-div').hide();
+                $('#user-passwordRepeat-div').hide();
+            }
         }
     },
 
