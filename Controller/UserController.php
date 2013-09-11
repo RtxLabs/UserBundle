@@ -81,7 +81,7 @@ class UserController extends RestController
         }
 
         if ($this->getCurrentUser()->isAdmin()) {
-            $binder->field("roles", $data->roles);
+            $binder->field("userRoles", $data->roles);
 
             if(isset($data->group)) {
                 $user->getGroups()->clear();
@@ -126,6 +126,7 @@ class UserController extends RestController
     {
         $binder = $this->createDoctrineBinder()
             ->field('admin', function($user) { return $user->hasRole('ROLE_ADMIN'); })
+            ->field('userRoles', function($user) { return $user->getUserRoles(); })
             ->field('plainPassword', $this->container->getParameter('password_placeholder'))
             ->field('passwordRepeat', $this->container->getParameter('password_placeholder'))
             ->except("password")

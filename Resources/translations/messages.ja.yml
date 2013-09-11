@@ -18,7 +18,9 @@ rtxlabs.user.label.last_login: 前回のログイン
 rtxlabs.user.label.edit: ユーザーの編集
 rtxlabs.user.label.delete: ユーザーの削除
 rtxlabs.user.label.passwordRequired: パスワード入力
+rtxlabs.user.label.localPassword: Local password # translate
 rtxlabs.user.label.has_admin_rights: あなたの管理者
+rtxlabs.user.label.active: Active # translate
 rtxlabs.user.validation.password.match: パスワードが一致している必要があります。
 rtxlabs.user.edit.header: ユーザーの編集
 rtxlabs.user.edit.legend: ユーザー情報

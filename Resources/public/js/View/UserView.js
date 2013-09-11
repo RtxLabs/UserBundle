@@ -89,6 +89,7 @@ App.User.View.UserView = Backbone.View.extend({
         });
 
         values.attributes.passwordRequired = $("#user-passwordRequired").attr('checked') == 'checked';
+        values.attributes.active = $("#user-active").attr('checked') == 'checked';
         values.attributes.admin = $("#user-admin").attr('checked') == 'checked';
 
         return values.attributes;
