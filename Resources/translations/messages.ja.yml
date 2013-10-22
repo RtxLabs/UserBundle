@@ -98,14 +98,12 @@ rtxlabs.user.mail.salutation: ビジネスパートナー様へ
 rtxlabs.user.mail.registration.body: 登録を完了するには次のリンクをクリックしてください：
 rtxlabs.user.mail.registration.link: 登録完了
 rtxlabs.user.mail.label.information: 入力されたデータ
+rtxlabs.user.mail.label.information2: You can always edit these on your account settings at %name%    # translate
 rtxlabs.user.mail.label.firstname: 名
 rtxlabs.user.mail.label.lastname: 姓
 rtxlabs.user.mail.label.email: 電子メール
-rtxlabs.user.mail.footer: |
-  敬具
-  
-  ROTEX
-  Heating Systems GmbH
+rtxlabs.user.mail.footer: 敬具
+rtxlabs.user.mail.footer.name: ROTEX Heating Systems GmbH
 
 # --- Password resetting email
 rtxlabs.user.mail.title.request_resetting: パスワードのリセット

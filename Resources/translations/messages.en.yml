@@ -94,18 +94,16 @@ rtxlabs.user.mail.label.login: Login page
 
 # --- Registration Email
 rtxlabs.user.mail.registration.title: Thank you very much for your registration
-rtxlabs.user.mail.salutation: Dear business partner,
-rtxlabs.user.mail.registration.body: to finish the registration, please click on the following link:
+rtxlabs.user.mail.salutation: Greetings,
+rtxlabs.user.mail.registration.body: to complete your registration, please click on the following link:
 rtxlabs.user.mail.registration.link: Finish registration
-rtxlabs.user.mail.label.information: Following your entered data
+rtxlabs.user.mail.label.information: Below you can see the information you entered.
+rtxlabs.user.mail.label.information2: You can always edit these on your account settings at %name%
 rtxlabs.user.mail.label.firstname: First name
 rtxlabs.user.mail.label.lastname: Last name
 rtxlabs.user.mail.label.email: eMail
-rtxlabs.user.mail.footer: |
-  Best regards,
-  
-  ROTEX
-  Heating Systems GmbH
+rtxlabs.user.mail.footer: Kind regards
+rtxlabs.user.mail.footer.name: ROTEX Heating Systems GmbH
 
 # --- Password resetting email
 rtxlabs.user.mail.title.request_resetting: Reset password

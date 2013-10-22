@@ -1,21 +1,26 @@
 {% extends 'RtxLabsUserBundle:Mail:mail_layout.html.twig' %}
 
-{% block rtxlabs_email_subject %}{{ "rtxlabs.user.mail.registration.title" | trans }}{% endblock %}
+{% block rtxlabs_email_subject %}[{{ pageTitle }}] - {{ "rtxlabs.user.mail.registration.title" | trans }}{% endblock %}
 
 {% block rtxlabs_email_body %}
-
-<p>{{ "rtxlabs.user.mail.salutation" | trans }}</p>
-<p>{{ "rtxlabs.user.mail.registration.body" | trans }}:</p>
-<a href="{{ homepage }}">{{ "rtxlabs.user.mail.registration.link" | trans }}</a>
-<br/>
-<br/>
-<p>{{ "rtxlabs.user.mail.label.information" | trans }}:</p>
-<ul>
-    <li>{{ "rtxlabs.user.mail.label.username" | trans }}: {{ user.username }}</li>
-    <li>{{ "rtxlabs.user.mail.label.firstname" | trans }}: {{ user.firstname }}</li>
-    <li>{{ "rtxlabs.user.mail.label.lastname" | trans }}: {{ user.lastname }}</li>
-    <li>{{ "rtxlabs.user.mail.label.email" | trans }}: {{ user.email }}</li>
-</ul>
-<br/>
-<p>{{ "rtxlabs.user.mail.footer" | trans | raw }}</p>
+    <p>{{ "rtxlabs.user.mail.salutation" | trans }}</p>
+    <p>{{ "rtxlabs.user.mail.registration.body" | trans }}:</p>
+    <a href="{{ homepage }}">{{ "rtxlabs.user.mail.registration.link" | trans }}</a>
+    <br/>
+    <br/>
+    <p>
+        {{ "rtxlabs.user.mail.label.information" | trans }}<br>
+        {{ "rtxlabs.user.mail.label.information2" | trans({"%name%": pageTitle}) }}:
+    </p>
+    <ul>
+        <li>{{ "rtxlabs.user.mail.label.username" | trans }}: {{ user.username }}</li>
+        <li>{{ "rtxlabs.user.mail.label.firstname" | trans }}: {{ user.firstname }}</li>
+        <li>{{ "rtxlabs.user.mail.label.lastname" | trans }}: {{ user.lastname }}</li>
+        <li>{{ "rtxlabs.user.mail.label.email" | trans }}: {{ user.email }}</li>
+    </ul>
+    <p>{{ "rtxlabs.user.mail.registration.title" | trans | raw }}.</p>
+    <p>
+        {{ "rtxlabs.user.mail.footer" | trans | raw }}<br />
+        {{ "rtxlabs.user.mail.footer.name" | trans | raw }}
+    </p>
 {% endblock %}
