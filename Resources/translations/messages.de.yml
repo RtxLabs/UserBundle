@@ -94,18 +94,16 @@ rtxlabs.user.mail.label.login: Anmeldeseite
 
 # --- Registration Email
 rtxlabs.user.mail.registration.title: Vielen Dank für Ihre Registrierung
-rtxlabs.user.mail.salutation: Sehr geehrter Geschäftspartner,
-rtxlabs.user.mail.registration.body: um die Registrierung abzuschließen klicken Sie bitte auf folgenden Link
+rtxlabs.user.mail.salutation: Guten Tag,
+rtxlabs.user.mail.registration.body: um Ihre Registrierung abzuschließen klicken Sie bitte auf folgenden Link
 rtxlabs.user.mail.registration.link: Registrierung abschließen
-rtxlabs.user.mail.label.information: Nachfolgend Ihre eingegebenen Daten
+rtxlabs.user.mail.label.information: Nachfolgend sehen sie noch einmal Ihre eingegebenen Daten.
+rtxlabs.user.mail.label.information2: Diese können Sie jederzeit über Ihren Account auf %name% bearbeiten
 rtxlabs.user.mail.label.firstname: Vorname
 rtxlabs.user.mail.label.lastname: Nachname
-rtxlabs.user.mail.label.email: eMail
-rtxlabs.user.mail.footer: |
-  Mit freundlichen Grüßen,
-
-  ROTEX
-  Heating Systems GmbH
+rtxlabs.user.mail.label.email: E-Mail
+rtxlabs.user.mail.footer: Mit freundlichen Grüßen
+rtxlabs.user.mail.footer.name: ROTEX Heating Systems GmbH
 
 # --- Password resetting email
 rtxlabs.user.mail.title.request_resetting: Passwort zurücksetzen
@@ -114,8 +112,8 @@ rtxlabs.user.mail.title.request_resetting_information: um ein neues Passwort fü
 # --- Account reactivation email
 rtxlabs.user.mail.reactivation.title: Ihr Account ist im Moment nicht aktiv
 rtxlabs.user.mail.reactivation.body: |
-  sie waren bereits im System hinterlegt aber ihr Account ist im Moment nicht mehr aktiv.
-  Um ihren Account wieder zu reaktivieren klicken Sie bitte auf folgenden Link
+  Sie waren bereits im System hinterlegt, aber Ihr Account ist im Moment nicht mehr aktiv.
+  Um Ihren Account wieder zu reaktivieren klicken Sie bitte auf folgenden Link
 rtxlabs.user.mail.reactivation.link: Account reaktivieren
 rtxlabs.user.mail.reactivation.information: Nachfolgend erhalten sie weitere Anmeldeinformationen
 

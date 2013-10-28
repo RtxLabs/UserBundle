@@ -32,6 +32,7 @@
                 <argument type="string" key="resetting.template">RtxLabsUserBundle:Mail:resetting</argument>
                 <argument type="string" key="registration.template">RtxLabsUserBundle:Mail:registration</argument>
                 <argument type="string" key="reactivation.template">RtxLabsUserBundle:Mail:reactivation</argument>
+                <argument type="string" key="pageTitle">%page.title%</argument>
             </argument>
         </service>
 
