@@ -27,10 +27,13 @@ hr {
 </style>
 </head>
 <body>
-
-{% block rtxlabs_email_body %}
-{% endblock %}
-
+    <p>{{ "rtxlabs.user.mail.salutation" | trans }}</p>
+    {% block rtxlabs_email_body %}
+    {% endblock %}
+    <p>
+        {{ "rtxlabs.user.mail.footer" | trans | raw }}<br />
+        {{ "rtxlabs.user.mail.footer.name" | trans | raw }}
+    </p>
 <br/><br/>
 {% block footer %}
 {% endblock %}

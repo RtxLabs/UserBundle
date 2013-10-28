@@ -3,7 +3,6 @@
 {% block rtxlabs_email_subject %}[{{ pageTitle }}] - {{ "rtxlabs.user.mail.registration.title" | trans }}{% endblock %}
 
 {% block rtxlabs_email_body %}
-    <p>{{ "rtxlabs.user.mail.salutation" | trans }}</p>
     <p>{{ "rtxlabs.user.mail.registration.body" | trans }}:</p>
     <a href="{{ homepage }}">{{ "rtxlabs.user.mail.registration.link" | trans }}</a>
     <br/>
@@ -19,8 +18,4 @@
         <li>{{ "rtxlabs.user.mail.label.email" | trans }}: {{ user.email }}</li>
     </ul>
     <p>{{ "rtxlabs.user.mail.registration.title" | trans | raw }}.</p>
-    <p>
-        {{ "rtxlabs.user.mail.footer" | trans | raw }}<br />
-        {{ "rtxlabs.user.mail.footer.name" | trans | raw }}
-    </p>
 {% endblock %}

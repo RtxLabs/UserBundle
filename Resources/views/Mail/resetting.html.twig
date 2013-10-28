@@ -3,14 +3,9 @@
 {% block rtxlabs_email_subject %}[{{ pageTitle }}] - {{ "rtxlabs.user.mail.title.request_resetting" | trans }}{% endblock %}
 
 {% block rtxlabs_email_body %}
-    <p>{{ "rtxlabs.user.mail.salutation" | trans }}</p>
     <p>{{ "rtxlabs.user.mail.title.request_resetting_information" | trans({"%name%": pageTitle}) }}:</p>
     <a href="{{ homepage }}">{{ "rtxlabs.user.mail.title.request_resetting" | trans }}</a>
     <ul>
         <li>{{ "rtxlabs.user.mail.label.username" | trans }}: {{ user.username }}</li>
     </ul>
-    <p>
-        {{ "rtxlabs.user.mail.footer" | trans | raw }}<br />
-        {{ "rtxlabs.user.mail.footer.name" | trans | raw }}
-    </p>
 {% endblock %}
