@@ -22,7 +22,7 @@ class LoginHandler implements AuthenticationSuccessHandlerInterface
         $session = $request->getSession();
 
         if ($user->getLocale()) {
-            $session->setLocale($user->getLocale());
+            $request->setLocale($user->getLocale());
         }
 
         $user->setLastLogin(new \DateTime());
