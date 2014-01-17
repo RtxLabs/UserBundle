@@ -36,7 +36,7 @@ class User implements \RtxLabs\UserBundle\Model\AdvancedUserInterface
      *
      * @ORM\Column(name="username", type="string", length=255, unique=true)
      * @Assert\NotBlank(message = "rtxlabs.user.validation.username")
-     * @Assert\MinLength(limit=6, message = "rtxlabs.user.validation.username.toShort")
+     * @Assert\Length(min=6, minMessage = "rtxlabs.user.validation.username.toShort")
      */
     private $username;
 

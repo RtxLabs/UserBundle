@@ -96,6 +96,6 @@ App.User.View.UserEditView = App.Core.View.View.extend({
     updateBreadcrumb: function() {
         var lastSpanEl = $(".breadcrumb .divider").last().parent();
         lastSpanEl.next().remove();
-        $(".breadcrumb").append("<li>"+Translator.get('rtxlabs.user.edit.header')+"</li>");
+        $(".breadcrumb").append("<li>"+Translator.trans('rtxlabs.user.edit.header')+"</li>");
     }
 });

@@ -15,10 +15,10 @@ App.User.Router.AdminRouter = App.Core.Router.CoreRouter.extend({
     viewCache: {},
 
     breadcrumbs: {
-        "group": Translator.get("rtxlabs.user.group.header"),
-        "list": Translator.get("rtxlabs.user.label.admin.list"),
-        "create": Translator.get("rtxlabs.user.label.admin.create"),
-        "edit": Translator.get("rtxlabs.user.label.admin.edit")
+        "group": Translator.trans("rtxlabs.user.group.header"),
+        "list": Translator.trans("rtxlabs.user.label.admin.list"),
+        "create": Translator.trans("rtxlabs.user.label.admin.create"),
+        "edit": Translator.trans("rtxlabs.user.label.admin.edit")
     },
 
     initialize: function() {

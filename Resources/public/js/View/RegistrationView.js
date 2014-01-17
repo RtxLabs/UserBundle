@@ -19,14 +19,14 @@ App.User.View.RegistrationView = App.Core.View.View.extend({
         $('#registration-username').popover({
             trigger: 'focus',
             placement: 'bottom',
-            title: Translator.get('rtxlabs.user.label.username'),
-            content: Translator.get('rtxlabs.user.validation.username.toShort')+'.'
+            title: Translator.trans('rtxlabs.user.label.username'),
+            content: Translator.trans('rtxlabs.user.validation.username.toShort')+'.'
         });
         $('#registration-password, #registration-passwordRepeat').popover({
             trigger: 'focus',
             placement: 'bottom',
-            title: Translator.get('rtxlabs.user.label.password'),
-            content: Translator.get('rtxlabs.user.validation.passwordRequirements')+'.'
+            title: Translator.trans('rtxlabs.user.label.password'),
+            content: Translator.trans('rtxlabs.user.validation.passwordRequirements')+'.'
         });
 
         return this;

@@ -61,7 +61,7 @@ App.User.View.UserView = Backbone.View.extend({
                     $.each(response, function(key, value) {
                         $('#user-'+key+'-div').addClass('error');
                         $('#user-'+key).addClass('error');
-                        $('#notification-error-body').append(Translator.get('rtxlabs.user.validation.'+key)+'<br/>');
+                        $('#notification-error-body').append(Translator.trans('rtxlabs.user.validation.'+key)+'<br/>');
                     });
                 }
 
