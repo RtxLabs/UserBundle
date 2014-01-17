@@ -22,6 +22,7 @@ class LoginHandler implements AuthenticationSuccessHandlerInterface
         $session = $request->getSession();
 
         if ($user->getLocale()) {
+            $request->getSession()->set('locale', $user->getLocale());
             $request->setLocale($user->getLocale());
         }
 
