@@ -25,7 +25,6 @@ class LoginHandler implements AuthenticationSuccessHandlerInterface
             $session->setLocale($user->getLocale());
         }
 
-        $user->setLastLogin(new \DateTime());
         $this->em->persist($user);
         $this->em->flush();
         

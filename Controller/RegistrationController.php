@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use RtxLabs\DataTransformationBundle\Dencoder\Dencoder;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 
 class RegistrationController extends RestController
 {
@@ -123,5 +124,8 @@ class RegistrationController extends RestController
         $token = new UsernamePasswordToken($user, $user->getPassword(), 'secured_area', $user->getRoles());
         $session = $this->getRequest()->getSession();
         $session->set('_security_secured_area', serialize($token));
+
+        $event = new InteractiveLoginEvent($this->getRequest(), $token);
+        $this->get("event_dispatcher")->dispatch("security.interactive_login", $event);
     }
 }
