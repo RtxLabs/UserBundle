@@ -45,6 +45,11 @@
             <argument type="string">%user_registration_token_expire_days%</argument>
             <argument type="string">%user_password_token_expire_days%</argument>
         </service>
+
+        <service id="rtxlabs.user.locale_listener" class="RtxLabs\UserBundle\Listener\LocaleListener">
+            <argument>%kernel.default_locale%</argument>
+            <tag name="kernel.event_subscriber" />
+        </service>
     </services>
 
 </container>
