@@ -25,7 +25,7 @@ App.User.View.GroupListRowView = Backbone.View.extend({
     handleDelete: function() {
         $('[rel=tooltip]').tooltip('hide');
 
-        if (true == confirm(Translator.get('rtxlabs.user.delete.confirm'))) {
+        if (true == confirm(Translator.trans('rtxlabs.user.delete.confirm'))) {
             this.model.destroy();
         }
     }
