@@ -1,0 +1,140 @@
+rtxlabs.user.header: Gestion des utilisateurs
+rtxlabs.user.label.add: Rajouter un utilisateur
+rtxlabs.user.label.name: Prénom
+rtxlabs.user.label.firstname: Prénom
+rtxlabs.user.label.lastname: Nom
+rtxlabs.user.label.personnel_number: Numéro de personnel
+rtxlabs.user.label.email: E-mail
+rtxlabs.user.label.username: Nom d'utilisateur
+rtxlabs.user.label.password: Mot de passe
+rtxlabs.user.label.passwordRepeat: Mot de passe (répéter)
+rtxlabs.user.label.locale: Langue
+rtxlabs.user.label.admin.edit: Editer
+rtxlabs.user.label.admin.list: Liste
+rtxlabs.user.label.admin.create: Editer
+rtxlabs.user.label.tos: J'accepte les conditions d'utilisation.
+rtxlabs.user.label.administrator: Administrateur
+rtxlabs.user.label.last_login: Dernière connexion
+rtxlabs.user.label.edit: Editer l'utilisateur
+rtxlabs.user.label.delete: Supprimer l'utilisateur
+rtxlabs.user.label.passwordRequired: Entrer mot de passe
+rtxlabs.user.label.localPassword: mot de passe local
+rtxlabs.user.label.has_admin_rights: Votre administrateur
+rtxlabs.user.label.active: Actif
+rtxlabs.user.validation.password.match: Les mots de passe doivent correspondre
+rtxlabs.user.edit.header: Editer l'utilisateur
+rtxlabs.user.edit.legend: Informations utilisateur
+rtxlabs.user.edit.legend.accessdata: Données de connexion
+rtxlabs.user.delete.confirm: Supprimer vraiment l'utilisateur ?
+rtxlabs.user.myaccount.header: Mon compte
+rtxlabs.user.myaccount.edit: Editer informations de mon compte
+rtxlabs.user.cancel: Annuler
+rtxlabs.user.send: Envoyer
+rtxlabs.user.tos: Veuillez accépter les conditions d'utilisation
+
+rtxlabs.user.registration.header: Enregistrement
+rtxlabs.user.registration.register: Enregistrer 
+rtxlabs.user.registration.success: Enregistrement réussi
+rtxlabs.user.registration.failure: Echec de l'enregistrement
+rtxlabs.user.registration.fillIn: Veuillez compléter les champs suivants
+rtxlabs.user.registration.confirmed: Votre enregistrement a été avec succès.
+rtxlabs.user.registration.redirect: Vous serez redirigé bientôt. Si non, 
+rtxlabs.user.registration.redirect.link: veuillez cliquer ici.
+# translate
+rtxlabs.user.registration.expired: |
+  Your registration is either expired or your registry token was wrong.
+  Please register again.
+rtxlabs.user.registration.success.information: |
+  Votre enregistrement a été avec succès. Vous recevrez très rapidement un email avec des explications pour la suite.
+
+rtxlabs.user.reactivation.title: Réactivation du compte
+rtxlabs.user.reactivation.confirmed: La réactivation de votre compte a été avec succès.
+rtxlabs.user.reactivation.success: Réactivation avec succès
+rtxlabs.user.reactivation.information: |
+  L'email a déjà été enregistré. Le compte utilisateur le concernant n'est pas actif en ce moment.
+  Un email pour réactiver votre compte vous a été envoyé.
+
+rtxlabs.user.password.header: Mot de passe oublié  
+rtxlabs.user.password.forgotten: Mot de passe oublié ?
+rtxlabs.user.password.save: Modifier mot de passe
+rtxlabs.user.password.success: Mot de passe modifié avec succès
+rtxlabs.user.password.confirmed: Votre mot de passe a été modifié avec succès
+rtxlabs.user.password.reset: Réinitialiser mot de passe
+rtxlabs.user.password.reset.info: Veuillez indiquer votre nouveau mot de passe
+rtxlabs.user.password.reset.mail: Envoyer email
+rtxlabs.user.password.reset.mail.invalid: L'adresse email n'est pas valide
+rtxlabs.user.password.reset.mail.notfound: L'adresse email indiquée n'existe pas dans le système.
+rtxlabs.user.password.reset.send: Un email d'information pour réinitialiser le mot de passe vous a été envoyé.
+
+rtxlabs.user.label.groups: Groupes
+rtxlabs.user.label.roles: Rôles
+rtxlabs.user.roles.selector: Sélectionner rôle(s)
+rtxlabs.user.groups.selector: Sélectionner groupe(s)
+
+rtxlabs.user.notification.user_successfully_saved: Utilisateur enregistré avec succès
+rtxlabs.user.notification.user_successfully_deleted: Utilisateur supprimé avec succès
+
+rtxlabs.user.validation.forbidden: Cette opération n'est pas autorisée
+rtxlabs.user.validation.firstname: Veuillez indiquer un prénom
+rtxlabs.user.validation.lastname: Veuillez indiquer un nom
+rtxlabs.user.validation.email: Une adresse email doit être indiquée
+rtxlabs.user.validation.email.inUse: L'adresse email est déjà attribuée
+rtxlabs.user.validation.username.toShort: Un nom d'utilisateur doit contenir au moins 6 caractères
+rtxlabs.user.validation.personnelNumber: Un numéro de personnel (à 4 caractères) doit être indiqué
+rtxlabs.user.validation.username: Un nom d'utilisateur doit être indiqué
+rtxlabs.user.validation.username.inUse: Le nom d'utilisateur est déjà utilisé
+rtxlabs.user.validation.password: Veuillez indiquer un mot de passe à 8 caratères au moins
+rtxlabs.user.validation.passwordRepeat: Les mots de passe ne correspondent pas
+rtxlabs.user.validation.passwordRequiredAndFilled: Veuillez indiquer un mot de passe  
+rtxlabs.user.validation.passwordRequirements: Le mot de passe doit avoir au moins 8 caractères et doit contenir au moins une lettre en majuscule et un chiffre.
+
+# --- Welcome Email
+rtxlabs.user.mail.title.welcome: Bienvenue
+rtxlabs.user.mail.label.username: Nom d'utilisateur
+rtxlabs.user.mail.label.login: Page de connexion
+
+# --- Registration Email
+rtxlabs.user.mail.registration.title: Merci pour votre inscription
+rtxlabs.user.mail.salutation: Cher partenaire,
+rtxlabs.user.mail.registration.body: pour terminer l'enregistrement, veuillez cliquer sur ce lien :
+rtxlabs.user.mail.registration.link: Terminer l'enregistrement
+rtxlabs.user.mail.label.information: Voici vos données d'enregistrement
+rtxlabs.user.mail.label.firstname: Prénom
+rtxlabs.user.mail.label.lastname: Nom  
+rtxlabs.user.mail.label.email: email
+rtxlabs.user.mail.footer: Sincères Salutations,
+rtxlabs.user.mail.footer.name: ROTEX Heating Systems GmbH
+
+# --- Password resetting email
+rtxlabs.user.mail.title.request_resetting: Réinitialiser mot de passe
+rtxlabs.user.mail.title.request_resetting_information: Pour créer un nouveau mot de passe pour %nom% veuillez cliquer sur ce lien.
+
+# --- Account reactivation email
+rtxlabs.user.mail.reactivation.title: Votre compte d'utilisateur n'est pas actif en ce moment
+rtxlabs.user.mail.reactivation.body: |
+  Vous étiez déjà enregistré dans le système mais votre compte d'utilisateur n'est plus actif.
+  Pour réactiver votre compte d'utilisateur veuillez cliquer sur ce lien :
+rtxlabs.user.mail.reactivation.link: Réactiver compte
+rtxlabs.user.mail.reactivation.information: Vous recevrez des informations complémentaires concernant l'enregistrement
+
+# --- Group management
+rtxlabs.user.group.header: Groupes d'utilisateurs
+rtxlabs.user.group.label.name: Nom
+rtxlabs.user.group.label.user_amount: Nombre d'utilisateurs
+rtxlabs.user.group.label.add: Rajouter groupe
+rtxlabs.user.group.edit.header: Editer groupe
+rtxlabs.user.group.edit.legend: Informations sur les groupes
+rtxlabs.user.group.edit.legend.accessdata: Rôles attribués
+rtxlabs.user.group.label.roles: Rôles  
+rtxlabs.user.group.validation.name: Veuillez indiquer un nom de groupe
+rtxlabs.user.group.roles.selector: Veuillez sélctionner le(s) rôle(s)
+
+# Login Form
+rtxlabs.user.login.message: Veuillez vous connecter avec votre nom d'utilisateur / mot de passe
+rtxlabs.user.login.form.username: Nom d'utilisateur
+rtxlabs.user.login.form.password: Mot de passe
+rtxlabs.user.login.form.remember_me: Resté connecté
+rtxlabs.user.login.form.login: Données de connexion
+rtxlabs.user.login.form.error: L'utilisateur ne pouvait pas être connecté avec les données indiquées. Veuillez réessayer.
+rtxlabs.user.login.lost_password: Mot de passe oublier
+rtxlabs.user.login.hide_notification: Masquer remarque
