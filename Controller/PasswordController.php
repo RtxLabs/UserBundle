@@ -2,7 +2,6 @@
 namespace RtxLabs\UserBundle\Controller;
 
 use RtxLabs\UserBundle\Entity\User;
-
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -33,16 +32,16 @@ class PasswordController extends RestController
 
         $errorList = $this->get('validator')->validateValue($data['email'], new Email());
         if(count($errorList) > 0) {
-            $this->get('session')->setFlash('reset-error', 'rtxlabs.user.password.reset.mail.invalid');
+            $this->get('session')->getFlashBag()->set('reset-error', 'rtxlabs.user.password.reset.mail.invalid');
         }
         else if($user instanceof \RtxLabs\UserBundle\Entity\User) {
             $user_manager->generatePasswordToken($user);
             $user_manager->saveUser($user);
-            $this->get('session')->setFlash('reset-send', 'rtxlabs.user.password.reset.send');
+            $this->get('session')->getFlashBag()->set('reset-send', 'rtxlabs.user.password.reset.send');
             $this->get('rtxlabs.user.mailer')->sendResettingEmailMessage($user);
         }
         else {
-            $this->get('session')->setFlash('reset-error', 'rtxlabs.user.password.reset.mail.notfound');
+            $this->get('session')->getFlashBag()->set('reset-error', 'rtxlabs.user.password.reset.mail.notfound');
         }
         return $this->render(
             'RtxLabsUserBundle:Password:passwordTemplate.html.twig',
@@ -76,7 +75,7 @@ class PasswordController extends RestController
         $data = $request->request->get('password');
 
         if($data['password'] !== $data['passwordRepeat']) {
-            $this->get('session')->setFlash('reset-error', 'rtxlabs.user.validation.passwordRepeat');
+            $this->get('session')->getFlashBag()->set('reset-error', 'rtxlabs.user.validation.passwordRepeat');
             return $this->render(
                 'RtxLabsUserBundle:Password:resetTemplate.html.twig',
                 array('token' => $token, 'errorList' => array())

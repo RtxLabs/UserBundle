@@ -17,15 +17,12 @@ Installation
 First, grab the RtxLabsUserBundle. There are two different ways
 to do this:
 
-#### Method a) Using the `deps` file
+#### Method a) Using `composer`
 
-Add the following lines to your  `deps` file and then run `php bin/vendors
-install`:
+Add the following lines to your `composer.json` file and then run `php composer.phar install`:
 
 ```
-[RtxLabsUserBundle]
-    git=https://github.com/RtxLabs/UserBundle.git
-    target=bundles/RtxLabs/UserBundle
+    "rtxlabs/user-bundle": "dev-master"
 ```
 
 #### Method b) Using submodules
@@ -36,22 +33,7 @@ Run the following commands to bring in the needed libraries as submodules.
 git submodule add https://github.com/RtxLabs/UserBundle.git vendor/bundles/RtxLabs/UserBundle
 ```
 
-### Step 2) Register the namespaces
-
-Add the following namespace entry to the `registerNamespaces` call
-in your autoloader:
-
-``` php
-<?php
-// app/autoload.php
-$loader->registerNamespaces(array(
-    // ...
-    'RtxLabs' => __DIR__.'/../vendor/bundles',
-    // ...
-));
-```
-
-### Step 3) Register the bundle
+### Step 2) Register the bundle
 
 To start using the bundle, register it in your Kernel:
 
@@ -63,7 +45,7 @@ public function registerBundles()
 {
     $bundles = array(
         // ...
-        new RtxLabs\LiquibaseBundle\RtxLabsUserBundle(),
+        new RtxLabs\UserBundle\RtxLabsUserBundle(),
     );
     // ...
 )

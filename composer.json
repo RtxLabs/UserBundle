@@ -11,12 +11,12 @@
     }
   ],
   "require": {
-    "symfony/framework-bundle": "2.*",
+    "symfony/framework-bundle": ">=2.1",
     "rtxlabs/backbone-bundle": "*",
     "rtxlabs/core-bundle": "*"
   },
   "autoload": {
-    "psr-0": { "RtxLabs\\UserBundle": "" }
+    "psr-0": { "RtxLabs\\UserBundle": "vendor/rtxlabs/user-bundle" }
   },
   "target-dir": "RtxLabs/UserBundle"
 }
