@@ -53,7 +53,7 @@ class GroupController extends RestController
      */
     public function deleteAction($id)
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $group = $em->find('RtxLabsUserBundle:Group', $id);
 
         if (!$group) {
