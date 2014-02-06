@@ -68,7 +68,7 @@ class GroupController extends RestController
 
     protected function bindRequestData($group, $whitelist)
     {
-        $data = Dencoder::decode($this->getRequest()->getContent());
+        $data = Dencoder::decode($this->get('request_stack')->getCurrentRequest()->getContent());
         $binder = $this->createDataBinder($this->whitelist)->bind($data)->to($group);
 
         if ($this->getCurrentUser()->isAdmin()) {

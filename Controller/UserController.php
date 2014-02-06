@@ -69,7 +69,7 @@ class UserController extends RestController
 
     protected function bindRequestData($user, $whitelist)
     {
-        $data = Dencoder::decode($this->getRequest()->getContent());
+        $data = Dencoder::decode($this->get('request_stack')->getCurrentRequest()->getContent());
         $binder = $this->createDataBinder($whitelist)->bind($data)->to($user)->except("password");
 
         if (!$data->passwordRequired) {
@@ -105,7 +105,7 @@ class UserController extends RestController
     protected function findValidationErrors($entity)
     {
         $userManager = $this->get('rtxlabs.user.user_manager');
-        $data = Dencoder::decode($this->getRequest()->getContent());
+        $data = Dencoder::decode($this->get('request_stack')->getCurrentRequest()->getContent());
         $validator = $this->get('validator');
         $errors = $validator->validate($entity);
 
