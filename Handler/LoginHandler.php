@@ -30,8 +30,11 @@ class LoginHandler implements AuthenticationSuccessHandlerInterface
         $this->em->persist($user);
         $this->em->flush();
         
-        if ($targetUrl = $session->get('_security.target_path')) {
-            $session->remove('_security.target_path');
+        if (($targetUrl = $session->get('_security.secured_device.target_path'))
+            || ($targetUrl = $session->get('_security.secured_main.target_path'))) {
+
+            $session->remove('_security.secured_device.target_path');
+            $session->remove('_security.secured_main.target_path');
         }
         else {
             $targetUrl = '/';
