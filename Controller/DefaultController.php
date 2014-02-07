@@ -28,7 +28,7 @@ class DefaultController extends Controller
     public function indexAdminAction()
     {
         $roleManager = $this->get('rtxlabs.user.rolemanager');
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $groups = $em->getRepository('RtxLabsUserBundle:Group')->findAll();
         return array('roles' => $roleManager->getRoles(), 'groups' => $groups);
     }
@@ -40,7 +40,7 @@ class DefaultController extends Controller
     public function indexUserAction()
     {
         $roleManager = $this->get('rtxlabs.user.rolemanager');
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $groups = $em->getRepository('RtxLabsUserBundle:Group')->findAll();
         return array('roles' => $roleManager->getRoles(), 'groups' => $groups);
     }

@@ -50,7 +50,7 @@ App.User.View.GroupEditView = App.Core.View.View.extend({
                     $.each(response, function(key, value) {
                         $('#group-'+key+'-div').addClass('error');
                         $('#group-'+key).addClass('error');
-                        $('#notification-error-body').append(Translator.get('rtxlabs.user.group.validation.'+key)+'<br/>');
+                        $('#notification-error-body').append(Translator.trans('rtxlabs.user.group.validation.'+key)+'<br/>');
                     });
                 }
 

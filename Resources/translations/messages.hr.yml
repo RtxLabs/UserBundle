@@ -1,0 +1,129 @@
+rtxlabs.user.header: Korisničko upravljanje
+rtxlabs.user.label.add: Dodati korisnika
+rtxlabs.user.label.name: Ime
+rtxlabs.user.label.firstname: Srednje ime
+rtxlabs.user.label.lastname: Prezime
+rtxlabs.user.label.personnel_number: Broj telefona
+rtxlabs.user.label.email: E-mail
+rtxlabs.user.label.username: Korisničko ime
+rtxlabs.user.label.password: Lozinka
+rtxlabs.user.label.passwordRepeat: Ponovite lozinku
+rtxlabs.user.label.locale: Jezik
+rtxlabs.user.label.admin.edit: Uredi
+rtxlabs.user.label.admin.list: Popis
+rtxlabs.user.label.admin.create: Stvori
+rtxlabs.user.label.tos: Slažem se sa uvjetima korištenja
+rtxlabs.user.label.administrator: Administrator
+rtxlabs.user.label.last_login: Zadnji login
+rtxlabs.user.label.edit: Dodaj korisnika
+rtxlabs.user.label.delete: Izbriši korisnika
+rtxlabs.user.label.passwordRequired: Unos lozinke
+rtxlabs.user.label.localPassword: Local password # translate
+rtxlabs.user.label.has_admin_rights: Vaš administrator
+rtxlabs.user.label.active: Active # translate
+rtxlabs.user.validation.password.match: Lozinke se moraju podudarati
+rtxlabs.user.edit.header: Uredi korisnika
+rtxlabs.user.edit.legend: Korisničke informacije
+rtxlabs.user.edit.legend.accessdata: Podaci za prijavu
+rtxlabs.user.delete.confirm: Zaista obrisati korisnika?
+rtxlabs.user.myaccount.header: Moj račun
+rtxlabs.user.myaccount.edit: Uredi korisnički račun
+rtxlabs.user.cancel: Odustati
+rtxlabs.user.send: Poslati
+rtxlabs.user.tos: Molimo prihvatite uvjete korištenja
+
+rtxlabs.user.registration.header: Registracija
+rtxlabs.user.registration.register: Registrirati se
+rtxlabs.user.registration.success: Registracija uspješna
+rtxlabs.user.registration.fillIn: Molimo ispunite sljedeća polja
+rtxlabs.user.registration.confirmed: Vaša registracija bila je uspješna
+rtxlabs.user.registration.redirect: Uskoro ćete biti proslijeđeni, ako ne
+rtxlabs.user.registration.redirect.link: molimo kliknite ovdje
+# translate
+rtxlabs.user.registration.expired: |
+  Your registration is either expired or your registry token was wrong.
+  Please register again.
+rtxlabs.user.registration.success.information: |
+  Registracija je uspješna. Uskoro ćete primiti e-mail sa daljnim imformacijama.
+
+rtxlabs.user.reactivation.title: Reaktivacija računa
+rtxlabs.user.reactivation.confirmed: Reaktivacija računa izvršena
+rtxlabs.user.reactivation.success: Reaktivacija uspješna
+rtxlabs.user.reactivation.information: Unesena e-mail adresa se već nalazi u sustavu.Povezan račun trenutno nije aktivan. E-mail koji sadrži informacije za reaktivaciju Vam je poslan.
+
+rtxlabs.user.password.header: Zaboravljena lozinka
+rtxlabs.user.password.forgotten: Zaboravljena lozinka?
+rtxlabs.user.password.save: Promijeniti lozinku
+rtxlabs.user.password.success: Lozinka uspješno promijenjena 
+rtxlabs.user.password.confirmed: Vaša lozinks je uspješno promijenjena
+rtxlabs.user.password.reset: Reset lozinke
+rtxlabs.user.password.reset.info: Molimo unesite novu lozinku
+rtxlabs.user.password.reset.mail: Pošaljite e-mail
+rtxlabs.user.password.reset.mail.invalid: E-mail adresa nije važeća
+rtxlabs.user.password.reset.mail.notfound: Unesena e-mail adresa nije u sustavu
+rtxlabs.user.password.reset.send: E-mail sa informacijama za reset lozinke je poslan
+
+rtxlabs.user.label.groups: Korisnička grupa
+rtxlabs.user.label.roles: Korisnički nivo
+rtxlabs.user.roles.selector: Odaberite korisnički nivo
+rtxlabs.user.groups.selector: Molimo odaberite korisničku grupu
+
+rtxlabs.user.notification.user_successfully_saved: Korisnik je uspješno spremljen
+rtxlabs.user.notification.user_successfully_deleted: Korisnik je uspješno izbrisan
+
+rtxlabs.user.validation.forbidden: Operacija nije dopuštena
+rtxlabs.user.validation.firstname: Ime mora biti unešeno
+rtxlabs.user.validation.lastname: Prezime mora biti unešeno
+rtxlabs.user.validation.email: E-mail adresa mora biti unešena
+rtxlabs.user.validation.email.inUse: Ova e-mail adresa je već dodijeljena
+rtxlabs.user.validation.username.toShort: Korisničko ime mora sadržavati bar 6 znakova.
+rtxlabs.user.validation.personnelNumber: Unesite valjani broj telefona, mora biti konačan
+rtxlabs.user.validation.username: Unesite korisničko ime, mora biti konačno
+rtxlabs.user.validation.username.inUse: Korisničko ime se već koristi
+rtxlabs.user.validation.password: Unesite lozinku - minimalno 8 znakova
+rtxlabs.user.validation.passwordRepeat: Lozinke moraju biti iste
+rtxlabs.user.validation.passwordRequiredAndFilled: Unesite lozinku
+rtxlabs.user.validation.passwordRequirements: Lozinka mora sadržavati minimalno 8 znakova, jedno veliko slovo, jedno malo i jednu brojku.
+
+rtxlabs.user.mail.title.welcome: Dobro došli
+rtxlabs.user.mail.label.username: Korisničko ime
+rtxlabs.user.mail.label.password: Lozinka
+rtxlabs.user.mail.label.login: Stranica za prijavu
+rtxlabs.user.mail.registration.title: Zahvaljujemo na registraciji
+rtxlabs.user.mail.salutation: Poštovani partner,
+rtxlabs.user.mail.registration.body: da bi završili registraciju, molimo kliknite na sljedeći link:
+rtxlabs.user.mail.registration.link: Završiti registraciju
+rtxlabs.user.mail.label.information: Prema unijetim podacima
+rtxlabs.user.mail.label.information2: You can always edit these on your account settings at %name% # translate
+rtxlabs.user.mail.label.firstname: Ime
+rtxlabs.user.mail.label.lastname: Prezime
+rtxlabs.user.mail.label.email: E-mail
+rtxlabs.user.mail.footer: "Srdačan pozdrav,"
+rtxlabs.user.mail.footer.name: ROTEX Heating Systems GmbH
+
+rtxlabs.user.mail.title.request_resetting: Reset lozinke
+rtxlabs.user.mail.title.request_resetting_information: Da bi stvorili novu lozinku za %name%, molimo kliknitena sljedeći link.
+rtxlabs.user.mail.reactivation.title: Korisnički račun trenutno nije aktivan
+rtxlabs.user.mail.reactivation.body: Već ste registrirani ali Vaš korisnički račun nije više aktivan. Za reaktiviranje Vašeg korisničkog računa, molimo kliknite na sljedeći link:
+rtxlabs.user.mail.reactivation.link: Rektivirati račun
+rtxlabs.user.mail.reactivation.information: U nastavku ćete dobiti dodatne informacije za prijavu
+
+rtxlabs.user.group.header: Korisničke grupe
+rtxlabs.user.group.label.name: Ime
+rtxlabs.user.group.label.user_amount: Broj korisnika
+rtxlabs.user.group.label.add: Dodati grupu
+rtxlabs.user.group.edit.header: Urediti grupu
+rtxlabs.user.group.edit.legend: Informacije o grupi
+rtxlabs.user.group.edit.legend.accessdata: Fnkcija je odabrana
+rtxlabs.user.group.label.roles: Funkcija
+rtxlabs.user.group.validation.name: Unesite ime grupe
+rtxlabs.user.group.roles.selector: Molimo odaberite funkciju
+
+rtxlabs.user.login.message: Molimo prijavite se sa Vašim korisničkim imenom / lozinkom
+rtxlabs.user.login.form.username: Korisničko ime
+rtxlabs.user.login.form.password: Lozinka
+rtxlabs.user.login.form.remember_me: Ostani prijavljen
+rtxlabs.user.login.form.login: Prijava
+rtxlabs.user.login.form.error: Sa unesenim podacima nije moguća prijava. Molimo pokušajte ponovno.
+rtxlabs.user.login.lost_password: Zaboravljena lozinka
+rtxlabs.user.login.hide_notification: Sakriti obavijest
