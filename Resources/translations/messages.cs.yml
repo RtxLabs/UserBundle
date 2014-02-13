@@ -1,0 +1,129 @@
+rtxlabs.user.header: Správa uživatelů
+rtxlabs.user.label.add: Přidat uživatele
+rtxlabs.user.label.name: Jméno
+rtxlabs.user.label.firstname: Jméno
+rtxlabs.user.label.lastname: Příjmení
+rtxlabs.user.label.personnel_number: Osobní číslo
+rtxlabs.user.label.email: E-mail
+rtxlabs.user.label.username: Uživatelské jméno
+rtxlabs.user.label.password: Heslo
+rtxlabs.user.label.passwordRepeat: Heslo (zopakovat)
+rtxlabs.user.label.locale: Jazyk
+rtxlabs.user.label.admin.edit: Upravit
+rtxlabs.user.label.admin.list: Seznam
+rtxlabs.user.label.admin.create: Vytvořit
+rtxlabs.user.label.tos: Souhlasím s %link_start%podmínkami využívání%link_end%.
+rtxlabs.user.label.administrator: Administrator
+rtxlabs.user.label.last_login: Poslední login
+rtxlabs.user.label.edit: Upravit uživatele
+rtxlabs.user.label.delete: Vymazat uživatele
+rtxlabs.user.label.passwordRequired: Vložit heslo
+rtxlabs.user.label.localPassword: Local password # translate
+rtxlabs.user.label.has_admin_rights: Váš administrátor
+rtxlabs.user.label.active: Active # translate
+rtxlabs.user.validation.password.match: Hesla musejí být shodná
+rtxlabs.user.edit.header: Upravit uživatele
+rtxlabs.user.edit.legend: Informace o uživateli
+rtxlabs.user.edit.legend.accessdata: Přihlašovací data
+rtxlabs.user.delete.confirm: Opravdu smazat uživatele?
+rtxlabs.user.myaccount.header: Můj účet 
+rtxlabs.user.myaccount.edit: Upravit informace o účtu
+rtxlabs.user.cancel: Zrušit
+rtxlabs.user.send: Poslat
+rtxlabs.user.tos: Prosím akceptujte podmínky použití
+
+rtxlabs.user.registration.header: Registrace
+rtxlabs.user.registration.register: Registr
+rtxlabs.user.registration.success: Registrace proběhla úspěšně
+rtxlabs.user.registration.fillIn: Prosím vyplňte následující pole
+rtxlabs.user.registration.confirmed: Vaše registrace proběhla úspěšně
+rtxlabs.user.registration.redirect: Budete přesmerováni během chvilky. Jestli ne, 
+rtxlabs.user.registration.redirect.link: prosím klikněte zde.
+# translate
+rtxlabs.user.registration.expired: |
+  Your registration is either expired or your registry token was wrong.
+  Please register again.
+rtxlabs.user.registration.success.information: |
+  Vaše registrace proběhla úspěšně. V brzké době obdržíte email s dalšími informacemi.
+
+rtxlabs.user.reactivation.title: Reaktivace konta
+rtxlabs.user.reactivation.confirmed: Reaktivace vašeho konta proběhla úspěšně.
+rtxlabs.user.reactivation.success: Reaktivace proběhla úspěšně
+rtxlabs.user.reactivation.information: Vložený email je již uložen v systému. Přiřazený účet není v současné době aktivní. Byl vám zaslán email s informacemi o reaktivaci. 
+
+rtxlabs.user.password.header: Zapomenuté heslo
+rtxlabs.user.password.forgotten: Zapomenuté heslo?
+rtxlabs.user.password.save: Změnit heslo
+rtxlabs.user.password.success: Změna hesla proběhla úspěšně
+rtxlabs.user.password.confirmed: Změna vašeho hesla proběhla úspěšně
+rtxlabs.user.password.reset: Resetovat heslo
+rtxlabs.user.password.reset.info: Prosím vložte nové heslo
+rtxlabs.user.password.reset.mail: Poslat email
+rtxlabs.user.password.reset.mail.invalid: Tato email adresa je neplatná
+rtxlabs.user.password.reset.mail.notfound: Vložená emailová adresa není v systému
+rtxlabs.user.password.reset.send: Byl vám zaslán email s informacemi pro resetování hesla. 
+
+rtxlabs.user.label.groups: Skupiny
+rtxlabs.user.label.roles: Role
+rtxlabs.user.roles.selector: Prosím zvolte svoji roli €.
+rtxlabs.user.groups.selector: Prosím zvolte svoji skupinu (y)
+
+rtxlabs.user.notification.user_successfully_saved: Uživatel úspěšně uložen.
+rtxlabs.user.notification.user_successfully_deleted: Uživatel úspěšně smazán
+
+rtxlabs.user.validation.forbidden: Tato operace není povolena
+rtxlabs.user.validation.firstname: Musí být vloženo jméno
+rtxlabs.user.validation.lastname: Musí být vloženo příjmení
+rtxlabs.user.validation.email: Musí být vložena emailová adresa 
+rtxlabs.user.validation.email.inUse: Tato emailová adresa je již zapsána
+rtxlabs.user.validation.username.toShort: Uživatelské jméno musí mít alespoň 6 znaků.
+rtxlabs.user.validation.personnelNumber: Musí být vloženo platné osobní číslo 
+rtxlabs.user.validation.username: Musí být vloženo uživatelské jméno
+rtxlabs.user.validation.username.inUse: Toto uživatelské jméno je již použito
+rtxlabs.user.validation.password: Heslo musí obsahovat alespoň 8 znaků
+rtxlabs.user.validation.passwordRepeat: Hesla se neshodují
+rtxlabs.user.validation.passwordRequiredAndFilled: Heslo musí být vloženo
+rtxlabs.user.validation.passwordRequirements: Heslo musí obsahovat alespoň 8 znaků, jedno písmeno musí být velké, alespoň jedno malé a jedna číslice. 
+
+rtxlabs.user.mail.title.welcome: Vítejte
+rtxlabs.user.mail.label.username: Uživatelské jméno
+rtxlabs.user.mail.label.password: Heslo
+rtxlabs.user.mail.label.login: Přihlašovací stránka
+rtxlabs.user.mail.registration.title: Děkujem vám za registraci
+rtxlabs.user.mail.salutation: Vážení obchodní partneři, 
+rtxlabs.user.mail.registration.body: k ukončení registrace klikněte prosím na následující odkaz
+rtxlabs.user.mail.registration.link: Ukončit registraci
+rtxlabs.user.mail.label.information: Niže uvedená vstupní data
+rtxlabs.user.mail.label.information2: You can always edit these on your account settings at %name% # translate
+rtxlabs.user.mail.label.firstname: Jméno
+rtxlabs.user.mail.label.lastname: Příjmení
+rtxlabs.user.mail.label.email: eMail
+rtxlabs.user.mail.footer: "S pozdravem"
+rtxlabs.user.mail.footer.name: ROTEX Heating Systems GmbH
+
+rtxlabs.user.mail.title.request_resetting: Resetovat heslo
+rtxlabs.user.mail.title.request_resetting_information: Pro vytvoření nového hesla  %name%, psoím klikněte na následující odkaz.
+rtxlabs.user.mail.reactivation.title: Vaše konto je právě neaktivní
+rtxlabs.user.mail.reactivation.body: Jste iž registrována,ale vaše konto již není aktivní.Pro reaktivaci vašeho konta, klikněte prosím na následující link. 
+rtxlabs.user.mail.reactivation.link: Reaktivace konta
+rtxlabs.user.mail.reactivation.information: Následně obdržíte doplňkové informace o přihlášení
+
+rtxlabs.user.group.header: Skupiny uživatelů
+rtxlabs.user.group.label.name: Jméno
+rtxlabs.user.group.label.user_amount: Počet uživatelů
+rtxlabs.user.group.label.add: Přidat skupinu
+rtxlabs.user.group.edit.header: Upravit skupinu
+rtxlabs.user.group.edit.legend: Informace o skupině
+rtxlabs.user.group.edit.legend.accessdata: Vybrabá role
+rtxlabs.user.group.label.roles: Role
+rtxlabs.user.group.validation.name: Musí být vloženo jméno skupiny
+rtxlabs.user.group.roles.selector: Prosím zvolte roli €
+
+rtxlabs.user.login.message: Prosím přihlaště se svým uživatelským jménem/ heslem
+rtxlabs.user.login.form.username: Uživatelské jméno
+rtxlabs.user.login.form.password: Heslo
+rtxlabs.user.login.form.remember_me: Zůstat přihlášen
+rtxlabs.user.login.form.login: Login
+rtxlabs.user.login.form.error: Uživatel se nemůže přihlásit s vloženými daty, Prosím zkuste znovu. 
+rtxlabs.user.login.lost_password: Zapomenuté heslo
+rtxlabs.user.login.hide_notification: Schovat oznámení

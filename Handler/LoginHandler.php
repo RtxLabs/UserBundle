@@ -39,7 +39,7 @@ class LoginHandler implements AuthenticationSuccessHandlerInterface
         else {
             $targetUrl = '/';
         }
-        
+
         return new RedirectResponse(0 !== strpos($targetUrl, 'http') ? $request->getUriForPath($targetUrl) : $targetUrl);
     }
 
