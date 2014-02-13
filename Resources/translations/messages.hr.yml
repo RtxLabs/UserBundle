@@ -12,7 +12,7 @@ rtxlabs.user.label.locale: Jezik
 rtxlabs.user.label.admin.edit: Uredi
 rtxlabs.user.label.admin.list: Popis
 rtxlabs.user.label.admin.create: Stvori
-rtxlabs.user.label.tos: Slažem se sa uvjetima korištenja
+rtxlabs.user.label.tos: Slažem se sa %link_start%uvjetima korištenja%link_end%.
 rtxlabs.user.label.administrator: Administrator
 rtxlabs.user.label.last_login: Zadnji login
 rtxlabs.user.label.edit: Dodaj korisnika
