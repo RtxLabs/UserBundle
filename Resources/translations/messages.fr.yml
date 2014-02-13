@@ -12,7 +12,7 @@ rtxlabs.user.label.locale: Langue
 rtxlabs.user.label.admin.edit: Editer
 rtxlabs.user.label.admin.list: Liste
 rtxlabs.user.label.admin.create: Editer
-rtxlabs.user.label.tos: J'accepte les conditions d'utilisation.
+rtxlabs.user.label.tos: J'accepte les %link_start%conditions d'utilisation%link_end%.
 rtxlabs.user.label.administrator: Administrateur
 rtxlabs.user.label.last_login: Dernière connexion
 rtxlabs.user.label.edit: Editer l'utilisateur
