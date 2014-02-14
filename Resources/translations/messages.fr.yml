@@ -18,7 +18,7 @@ rtxlabs.user.label.last_login: Dernière connexion
 rtxlabs.user.label.edit: Editer l'utilisateur
 rtxlabs.user.label.delete: Supprimer l'utilisateur
 rtxlabs.user.label.passwordRequired: Entrer mot de passe
-rtxlabs.user.label.localPassword: mot de passe local
+rtxlabs.user.label.localPassword: Mot de passe local
 rtxlabs.user.label.has_admin_rights: Votre administrateur
 rtxlabs.user.label.active: Actif
 rtxlabs.user.validation.password.match: Les mots de passe doivent correspondre
@@ -35,15 +35,14 @@ rtxlabs.user.tos: Veuillez accépter les conditions d'utilisation
 rtxlabs.user.registration.header: Enregistrement
 rtxlabs.user.registration.register: Enregistrer 
 rtxlabs.user.registration.success: Enregistrement réussi
-rtxlabs.user.registration.failure: Echec de l'enregistrement
+rtxlabs.user.registration.failure: Enregistrement échoué
 rtxlabs.user.registration.fillIn: Veuillez compléter les champs suivants
 rtxlabs.user.registration.confirmed: Votre enregistrement a été avec succès.
 rtxlabs.user.registration.redirect: Vous serez redirigé bientôt. Si non, 
 rtxlabs.user.registration.redirect.link: veuillez cliquer ici.
-# translate
 rtxlabs.user.registration.expired: |
-  Your registration is either expired or your registry token was wrong.
-  Please register again.
+  Soit votre enregistrement est expiré soit vos coordonnées d'enregisterment sont erronnées.
+  Veuillez vous enregistrer à nouveau.
 rtxlabs.user.registration.success.information: |
   Votre enregistrement a été avec succès. Vous recevrez très rapidement un email avec des explications pour la suite.
 
@@ -99,6 +98,7 @@ rtxlabs.user.mail.salutation: Cher partenaire,
 rtxlabs.user.mail.registration.body: pour terminer l'enregistrement, veuillez cliquer sur ce lien :
 rtxlabs.user.mail.registration.link: Terminer l'enregistrement
 rtxlabs.user.mail.label.information: Voici vos données d'enregistrement
+rtxlabs.user.mail.label.information2: Vous pouvez toujours les éditer via votre compte à %name%
 rtxlabs.user.mail.label.firstname: Prénom
 rtxlabs.user.mail.label.lastname: Nom  
 rtxlabs.user.mail.label.email: email

@@ -18,9 +18,9 @@ rtxlabs.user.label.last_login: Poslední login
 rtxlabs.user.label.edit: Upravit uživatele
 rtxlabs.user.label.delete: Vymazat uživatele
 rtxlabs.user.label.passwordRequired: Vložit heslo
-rtxlabs.user.label.localPassword: Local password # translate
+rtxlabs.user.label.localPassword: Místní heslo
 rtxlabs.user.label.has_admin_rights: Váš administrátor
-rtxlabs.user.label.active: Active # translate
+rtxlabs.user.label.active: Aktivní
 rtxlabs.user.validation.password.match: Hesla musejí být shodná
 rtxlabs.user.edit.header: Upravit uživatele
 rtxlabs.user.edit.legend: Informace o uživateli
@@ -35,14 +35,14 @@ rtxlabs.user.tos: Prosím akceptujte podmínky použití
 rtxlabs.user.registration.header: Registrace
 rtxlabs.user.registration.register: Registr
 rtxlabs.user.registration.success: Registrace proběhla úspěšně
+rtxlabs.user.registration.failure: Registrace neproběhla
 rtxlabs.user.registration.fillIn: Prosím vyplňte následující pole
 rtxlabs.user.registration.confirmed: Vaše registrace proběhla úspěšně
 rtxlabs.user.registration.redirect: Budete přesmerováni během chvilky. Jestli ne, 
 rtxlabs.user.registration.redirect.link: prosím klikněte zde.
-# translate
 rtxlabs.user.registration.expired: |
-  Your registration is either expired or your registry token was wrong.
-  Please register again.
+  Vaše registrace vypršela nebo váš token je špatný.
+  Prosím opakujte později.
 rtxlabs.user.registration.success.information: |
   Vaše registrace proběhla úspěšně. V brzké době obdržíte email s dalšími informacemi.
 
@@ -94,7 +94,7 @@ rtxlabs.user.mail.salutation: Vážení obchodní partneři,
 rtxlabs.user.mail.registration.body: k ukončení registrace klikněte prosím na následující odkaz
 rtxlabs.user.mail.registration.link: Ukončit registraci
 rtxlabs.user.mail.label.information: Niže uvedená vstupní data
-rtxlabs.user.mail.label.information2: You can always edit these on your account settings at %name% # translate
+rtxlabs.user.mail.label.information2: Zde můžete kdykoliv změnit nastavení %name%
 rtxlabs.user.mail.label.firstname: Jméno
 rtxlabs.user.mail.label.lastname: Příjmení
 rtxlabs.user.mail.label.email: eMail
