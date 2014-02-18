@@ -29,7 +29,7 @@ class LoginHandler implements AuthenticationSuccessHandlerInterface
         $user->setLastLogin(new \DateTime());
         $this->em->persist($user);
         $this->em->flush();
-
+        
         if (($targetUrl = $session->get('_security.secured_device.target_path'))
             || ($targetUrl = $session->get('_security.secured_main.target_path'))) {
 
