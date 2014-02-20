@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Rotex\Sbp\CoreBundle\Annotations\VoterSecured;
 
 /**
  * RtxLabs\UserBundle\Entity\User
@@ -16,6 +17,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *
  * @UniqueEntity(fields="email", message="rtxlabs.user.validation.email.inUse")
  * @UniqueEntity(fields="username", message="rtxlabs.user.validation.username.inUse")
+ * @VoterSecured(method="getVotingUser")
  */
 class User implements \RtxLabs\UserBundle\Model\AdvancedUserInterface
 {
@@ -744,5 +746,10 @@ class User implements \RtxLabs\UserBundle\Model\AdvancedUserInterface
     public function isCredentialsNonExpired()
     {
         return true;
+    }
+
+    public function getVotingUser()
+    {
+        return $this;
     }
 }
