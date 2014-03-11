@@ -12,7 +12,7 @@ use RtxLabs\UserBundle\Model\UserManager;
 
 class UserController extends RestController
 {
-    private $whitelist = array("firstname", "lastname", "email", "username",
+    private $whitelist = array("id", "firstname", "lastname", "email", "username",
         "passwordRequired", "plainPassword", "passwordRepeat", "locale", "active");
 
     /**
@@ -20,7 +20,7 @@ class UserController extends RestController
      */
     public function listAction()
     {
-        return $this->defaultListAction();
+        return $this->defaultListAction($this->whitelist);
     }
 
     /**
@@ -29,7 +29,7 @@ class UserController extends RestController
     public function readAction($id)
     {
         $user = $this->findEntity($id);
-        return $this->defaultReadAction($user);
+        return $this->defaultReadAction($user, $this->whitelist);
     }
 
     /**
@@ -122,14 +122,13 @@ class UserController extends RestController
         return $errors;
     }
 
-    protected function createEntityBinder()
+    protected function createEntityBinder(array $whitelist)
     {
-        $binder = $this->createDoctrineBinder()
+        $binder = parent::createEntityBinder($whitelist)
             ->field('admin', function($user) { return $user->hasRole('ROLE_ADMIN'); })
             ->field('userRoles', function($user) { return $user->getUserRoles(); })
             ->field('plainPassword', $this->container->getParameter('password_placeholder'))
             ->field('passwordRepeat', $this->container->getParameter('password_placeholder'))
-            ->except("password")
             ->join('groups', $this->createDoctrineBinder());
 
         return $binder;

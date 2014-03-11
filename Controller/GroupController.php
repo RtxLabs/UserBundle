@@ -13,13 +13,13 @@ use Symfony\Component\HttpFoundation\Response;
 
 class GroupController extends RestController
 {
-    private $whitelist = array("name", "roles", "userCount");
+    private $whitelist = array("id", "name", "roles", "userCount");
     /**
      * @Route("/usergroup", name="rtxlabs_userbundle_group_list", requirements={"_method"="GET"}, options={"expose"="true"})
      */
     public function listAction()
     {
-        return $this->defaultListAction();
+        return $this->defaultListAction($this->whitelist);
     }
 
     /**
@@ -28,7 +28,7 @@ class GroupController extends RestController
     public function readAction($id)
     {
         $group = $this->findEntity($id);
-        return $this->defaultReadAction($group);
+        return $this->defaultReadAction($group, $this->whitelist);
     }
 
     /**
@@ -80,9 +80,9 @@ class GroupController extends RestController
         $binder->execute();
     }
 
-    protected function createEntityBinder()
+    protected function createEntityBinder(array $whitelist)
     {
-        $binder = $this->createDoctrineBinder()
+        $binder = parent::createEntityBinder($whitelist)
             ->field('userCount', function($group) { return count($group->getUsers()); });
 
         return $binder;
