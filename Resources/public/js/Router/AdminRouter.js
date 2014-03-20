@@ -39,9 +39,9 @@ App.User.Router.AdminRouter = App.Core.Router.CoreRouter.extend({
             view = new App.User.View.UserListView({collection: this.userCollection});
             this.cacheView(view, "UserListView");
         }
-        view.userCollection.offset = offset;
-        view.userCollection.limit = 30;
-        view.userCollection.fetch();
+        view.collection.offset = offset;
+        view.collection.limit = 30;
+        view.collection.fetch();
 
         view.render();
     },
