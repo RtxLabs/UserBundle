@@ -4,6 +4,7 @@ App.User.Router.AdminRouter = App.Core.Router.CoreRouter.extend({
     routes: {
         "": "renderUserList",
         "list": "renderUserList",
+        "list/offset/:offset": "renderUserList",
         "create": "renderCreateUser",
         "edit/:user": "renderEditUser",
         "group": "renderGroupList",
@@ -27,17 +28,38 @@ App.User.Router.AdminRouter = App.Core.Router.CoreRouter.extend({
         this.groupCollection = new App.User.Collection.GroupCollection();
     },
 
-    renderUserList: function() {
+    renderUserList: function(offset) {
+        if (offset == undefined) {
+            offset = 0;
+        }
+
         var view = this.findCachedView("UserListView");
 
         if (view == null) {
             view = new App.User.View.UserListView({collection: this.userCollection});
             this.cacheView(view, "UserListView");
-            this.userCollection.limit = 500;
-            this.userCollection.fetch();
         }
+        view.userCollection.offset = offset;
+        view.userCollection.limit = 30;
+        view.userCollection.fetch();
 
         view.render();
+    },
+
+    renderIndex: function(offset, filter) {
+        if (offset == undefined) {
+            offset = 0;
+        }
+
+        var view = this.findCachedView("WebClientSupportView");
+        if (view == null) {
+            view = new App.WebClient.View.SupportView();
+            this.cacheView(view, "WebClientSupportView");
+        }
+        view.collection.offset = offset;
+        view.collection.filter.parse(filter);
+        view.render();
+        view.collection.fetch();
     },
 
     renderCreateUser: function() {
