@@ -13,6 +13,8 @@ use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 
 class RegistrationController extends RestController
 {
+    private $whitelist = array("username", "firstname", "lastname", "email", "locale");
+
     /**
      * @Template("RtxLabsUserBundle:Registration:index.html.twig")
      */
@@ -48,8 +50,7 @@ class RegistrationController extends RestController
         $userManager->saveUser($user);
         $this->get('rtxlabs.user.mailer')->sendRegistrationEmailMessage($user);
 
-        $userArray = $this->createUserBinder()->bind($user)->execute();
-        return new Response(Dencoder::encode($userArray));
+        return new Response(Dencoder::encode(array()));
     }
     
     public function confirmAction($token)
@@ -85,11 +86,10 @@ class RegistrationController extends RestController
 
     protected function updateUser($user, $json, $userManager)
     {
-        $binder = $this->createDoctrineBinder()
+        $binder =$this->createDataBinder($this->whitelist)
             ->bind($json)
             ->field("plainPassword", $json->password)
             ->to($user);
-        $binder->except("roles");
         $binder->execute();
         $userManager->generateRegistrationToken($user);
 
@@ -107,17 +107,6 @@ class RegistrationController extends RestController
             $userManager->updatePassword($user);
         }
         return array();
-    }
-
-    private function createUserBinder()
-    {
-        $binder = $this->createDoctrineBinder()
-            ->field('admin', function($user) { return $user->hasRole('ROLE_ADMIN'); })
-            ->field('plainPassword', $this->container->getParameter('password_placeholder'))
-            ->field('passwordRepeat', $this->container->getParameter('password_placeholder'))
-            ->except("password")
-            ->join('groups', $this->createDoctrineBinder());
-        return $binder;
     }
 
     protected function signin(\RtxLabs\UserBundle\Model\AdvancedUserInterface $user) {
