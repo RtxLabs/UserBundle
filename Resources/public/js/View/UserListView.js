@@ -1,6 +1,6 @@
 Core.ns("App.User.View");
 
-App.User.View.UserListView = Backbone.View.extend({
+App.User.View.UserListView = App.Core.View.ListView.extend({
     el: $('#user-main'),
 
     initialize: function() {
@@ -15,6 +15,11 @@ App.User.View.UserListView = Backbone.View.extend({
 
         this.collection.each(this.renderRow);
         $('[rel=tooltip]').tooltip();
+
+        this.renderPager($("#user-list-pager"), this.collection, function(offset) {
+            var fragment = "list/offset/"+offset;
+            return fragment;
+        });
 
         return this;
     },
