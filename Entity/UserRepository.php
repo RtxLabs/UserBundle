@@ -14,7 +14,7 @@ class UserRepository extends EntityRepository
             ->getQuery()->getSingleScalarResult();
     }
 
-    public function findByFilter(FilterBag $filter, $limit=100, $offset=0)
+    public function findByFilter(FilterBag $filter, $limit=30, $offset=0)
     {
         return $this->createFilterQueryBuilder($filter)
             ->select("u")
