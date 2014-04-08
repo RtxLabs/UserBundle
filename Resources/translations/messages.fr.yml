@@ -133,7 +133,7 @@ rtxlabs.user.group.roles.selector: Veuillez sélctionner le(s) rôle(s)
 rtxlabs.user.login.message: Veuillez vous connecter avec votre nom d'utilisateur / mot de passe
 rtxlabs.user.login.form.username: Nom d'utilisateur
 rtxlabs.user.login.form.password: Mot de passe
-rtxlabs.user.login.form.remember_me: Resté connecté
+rtxlabs.user.login.form.remember_me: Rester connecté
 rtxlabs.user.login.form.login: Données de connexion
 rtxlabs.user.login.form.error: L'utilisateur ne pouvait pas être connecté avec les données indiquées. Veuillez réessayer.
 rtxlabs.user.login.lost_password: Mot de passe oublier
