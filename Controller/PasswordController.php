@@ -37,12 +37,10 @@ class PasswordController extends RestController
         else if($user instanceof \RtxLabs\UserBundle\Entity\User) {
             $user_manager->generatePasswordToken($user);
             $user_manager->saveUser($user);
-            $this->get('session')->getFlashBag()->set('reset-send', 'rtxlabs.user.password.reset.send');
             $this->get('rtxlabs.user.mailer')->sendResettingEmailMessage($user);
         }
-        else {
-            $this->get('session')->getFlashBag()->set('reset-error', 'rtxlabs.user.password.reset.mail.notfound');
-        }
+        $this->get('session')->getFlashBag()->set('reset-send', 'rtxlabs.user.password.reset.information');
+
         return $this->render(
             'RtxLabsUserBundle:Password:passwordTemplate.html.twig',
             array('email' => $data['email'])
