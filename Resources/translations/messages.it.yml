@@ -28,6 +28,7 @@ rtxlabs.user.edit.legend.accessdata: Data di accesso
 rtxlabs.user.delete.confirm: Vuoi veramente cancellare l'utente?
 rtxlabs.user.myaccount.header: Mio account
 rtxlabs.user.myaccount.edit: Modifica le informazioni associate all'account
+rtxlabs.user.myaccount.edit.failed: The account information could not be updated, please check your inputs. # translate
 rtxlabs.user.cancel: Cancella
 rtxlabs.user.send: Invia
 rtxlabs.user.tos: Si prega di accettare le condizioni d'uso
