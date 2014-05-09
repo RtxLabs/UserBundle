@@ -28,6 +28,7 @@ rtxlabs.user.edit.legend.accessdata: Anmeldedaten
 rtxlabs.user.delete.confirm: Benutzer wirklich löschen?
 rtxlabs.user.myaccount.header: Mein Account
 rtxlabs.user.myaccount.edit: Accountinformationen bearbeiten
+rtxlabs.user.myaccount.edit.failed: Die Accountinformationen konnten nicht aktualisiert werden, bitte überprüfen sie Ihre Eingaben.
 rtxlabs.user.cancel: Abbrechen
 rtxlabs.user.send: Abschicken
 rtxlabs.user.tos: Bitte akzeptieren sie die Nutzungsbedingungen

@@ -1,19 +1,22 @@
 {% extends "RtxLabsUserBundle:Password:index.html.twig" %}
 {% block main %}
     <div class="row">
-        {% if (app.session.hasFlash('reset-error') or errorList) %}
+        {% for flashMessage in app.session.flashbag.get('reset-error') %}
             <div class="alert alert-error span8 offset2">
-                <strong>{{ "core.general.notification.error.header" | trans }}</strong>
-                <ul>
-                    {% if (app.session.hasFlash('reset-error')) %}
-                        <li>{{ app.session.flash('reset-error') | trans }}</li>
-                    {% endif %}
-                    {% for error in errorList %}
-                        <li>{{ error | trans }}</li>
-                    {% endfor %}
-                </ul>
+                <p>
+                    <strong>{{ "core.general.notification.error.header" | trans }}</strong>
+                    {{ flashMessage | trans }}
+                </p>
             </div>
-        {% endif %}
+        {% endfor %}
+        {% for flashMessage in app.session.flashbag.get('reset-send') %}
+            <div class="alert alert-success span8 offset2">
+                <p>
+                    <strong>{{ "core.general.notification.success.header" | trans }}</strong>
+                    {{ flashMessage | trans }}
+                </p>
+            </div>
+        {% endfor %}
     </div>
 
     <div id="password-main" class="full-block clearfix">
