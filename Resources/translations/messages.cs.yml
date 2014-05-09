@@ -28,6 +28,7 @@ rtxlabs.user.edit.legend.accessdata: Přihlašovací data
 rtxlabs.user.delete.confirm: Opravdu smazat uživatele?
 rtxlabs.user.myaccount.header: Můj účet 
 rtxlabs.user.myaccount.edit: Upravit informace o účtu
+rtxlabs.user.myaccount.edit.failed: The account information could not be updated, please check your inputs. # translate
 rtxlabs.user.cancel: Zrušit
 rtxlabs.user.send: Poslat
 rtxlabs.user.tos: Prosím akceptujte podmínky použití

@@ -28,6 +28,7 @@ rtxlabs.user.edit.legend.accessdata: ログインデータ
 rtxlabs.user.delete.confirm: 本当にユーザーを削除しますか？
 rtxlabs.user.myaccount.header: マイアカウント
 rtxlabs.user.myaccount.edit: アカウント情報の編集
+rtxlabs.user.myaccount.edit.failed: The account information could not be updated, please check your inputs. # translate
 rtxlabs.user.cancel: キャンセル
 rtxlabs.user.send: 送信する
 rtxlabs.user.tos: 利用規約に同意してください。

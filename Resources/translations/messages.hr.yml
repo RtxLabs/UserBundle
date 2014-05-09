@@ -28,6 +28,7 @@ rtxlabs.user.edit.legend.accessdata: Podaci za prijavu
 rtxlabs.user.delete.confirm: Zaista obrisati korisnika?
 rtxlabs.user.myaccount.header: Moj račun
 rtxlabs.user.myaccount.edit: Uredi korisnički račun
+rtxlabs.user.myaccount.edit.failed: The account information could not be updated, please check your inputs. # translate
 rtxlabs.user.cancel: Odustati
 rtxlabs.user.send: Poslati
 rtxlabs.user.tos: Molimo prihvatite uvjete korištenja
