@@ -63,8 +63,7 @@ rtxlabs.user.password.reset: Passwort zurücksetzen
 rtxlabs.user.password.reset.info: Bitte geben sie ihr neues Passwort ein
 rtxlabs.user.password.reset.mail: E-Mail senden
 rtxlabs.user.password.reset.mail.invalid: Dies ist keine gültige E-Mail Adresse.
-rtxlabs.user.password.reset.mail.notfound: Die eingegebene E-Mail Adresse existiert nicht im System.
-rtxlabs.user.password.reset.send: Eine E-Mail mit Informationen zum Zurücksetzen ihres Passworts wurde ihnen zugesandt.
+rtxlabs.user.password.reset.information: Wenn die eingegebene E-Mail Adresse im System hinterlegt ist wurde eine E-Mail mit Informationen zum Zurücksetzen Ihres Passworts an Sie geschickt.
 
 rtxlabs.user.label.groups: Gruppen
 rtxlabs.user.label.roles: Rollen

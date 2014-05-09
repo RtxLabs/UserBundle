@@ -63,8 +63,7 @@ rtxlabs.user.password.reset: Réinitialiser mot de passe
 rtxlabs.user.password.reset.info: Veuillez indiquer votre nouveau mot de passe
 rtxlabs.user.password.reset.mail: Envoyer email
 rtxlabs.user.password.reset.mail.invalid: L'adresse email n'est pas valide
-rtxlabs.user.password.reset.mail.notfound: L'adresse email indiquée n'existe pas dans le système.
-rtxlabs.user.password.reset.send: Un email d'information pour réinitialiser le mot de passe vous a été envoyé.
+rtxlabs.user.password.reset.information: If the entered e-mail address is in the system, an e-mail with the information for a password reset has been sent to you. # translate
 
 rtxlabs.user.label.groups: Groupes
 rtxlabs.user.label.roles: Rôles

@@ -61,8 +61,7 @@ rtxlabs.user.password.reset: Reset lozinke
 rtxlabs.user.password.reset.info: Molimo unesite novu lozinku
 rtxlabs.user.password.reset.mail: Pošaljite e-mail
 rtxlabs.user.password.reset.mail.invalid: E-mail adresa nije važeća
-rtxlabs.user.password.reset.mail.notfound: Unesena e-mail adresa nije u sustavu
-rtxlabs.user.password.reset.send: E-mail sa informacijama za reset lozinke je poslan
+rtxlabs.user.password.reset.information: If the entered e-mail address is in the system, an e-mail with the information for a password reset has been sent to you. # translate
 
 rtxlabs.user.label.groups: Korisnička grupa
 rtxlabs.user.label.roles: Korisnički nivo
