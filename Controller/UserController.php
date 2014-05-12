@@ -13,7 +13,7 @@ use Symfony\Component\Validator\ConstraintViolation;
 
 class UserController extends RestController
 {
-    private $whitelist = array("id", "firstname", "lastname", "username",
+    private $whitelist = array("id", "firstname", "lastname", "username", "email",
         "passwordRequired", "plainPassword", "passwordRepeat", "locale", "active", "lastLogin");
 
     /**
@@ -70,8 +70,12 @@ class UserController extends RestController
 
     protected function bindRequestData($user, $whitelist)
     {
+        $whitelist = array_diff($whitelist, array('email'));
         $data = Dencoder::decode($this->get('request_stack')->getCurrentRequest()->getContent());
-        $binder = $this->createDataBinder($whitelist)->bind($data)->to($user)->except("password");
+        $binder = $this->createDataBinder($whitelist)->bind($data)->to($user)
+            ->except("password")
+            ->xssExcept('plainPassword')
+            ->xssExcept('passwordRepeat');
 
         $data->plainPassword = $data->plainPassword == "" ?
             $this->container->getParameter('password_placeholder') :
@@ -109,6 +113,7 @@ class UserController extends RestController
 
     protected function findValidationErrors($entity)
     {
+        $currentUser = $this->getCurrentUser();
         $userManager = $this->get('rtxlabs.user.user_manager');
         $data = Dencoder::decode($this->get('request_stack')->getCurrentRequest()->getContent());
         $validator = $this->get('validator');
@@ -121,13 +126,15 @@ class UserController extends RestController
 
         $entity->setEmail($data->email);
 
-        if ($entity->getPasswordRequired() && $emailVerification || $passwordVerification) {
+        if (!$currentUser->hasRole('ROLE_ADMIN') &&
+            ($entity->getPasswordRequired() && $emailVerification || $passwordVerification)) {
             if(!$userManager->verifyPassword($entity, $data->password)) {
                 $errors->add(new ConstraintViolation('rtxlabs.user.myaccount.edit.failed', null, array(), null, 'password', null));
             }
         }
 
-        if ($entity->getPasswordRequired() && $data->plainPassword !== $data->passwordRepeat) {
+        if (!$currentUser->hasRole('ROLE_ADMIN') &&
+            ($entity->getPasswordRequired() && $data->plainPassword !== $data->passwordRepeat)) {
             $errors->add(new ConstraintViolation('rtxlabs.user.validation.passwordRepeat', null, array(), null, 'plainPassword', null));
         }
 
