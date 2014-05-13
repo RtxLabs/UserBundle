@@ -73,9 +73,7 @@ class UserController extends RestController
         $whitelist = array_diff($whitelist, array('email'));
         $data = Dencoder::decode($this->get('request_stack')->getCurrentRequest()->getContent());
         $binder = $this->createDataBinder($whitelist)->bind($data)->to($user)
-            ->except("password")
-            ->xssExcept('plainPassword')
-            ->xssExcept('passwordRepeat');
+            ->except("password");
 
         $data->plainPassword = $data->plainPassword == "" ?
             $this->container->getParameter('password_placeholder') :

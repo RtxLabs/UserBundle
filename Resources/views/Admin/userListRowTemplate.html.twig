@@ -1,15 +1,15 @@
 <script type="text/template" id="user-list-row-template">
-    <td><img class="gravatar" width="14" height="14" src="<%= Core.Gravatar.url(email, {size: 14}) %>" /></td>
+    <td><img class="gravatar" width="14" height="14" src="<%- Core.Gravatar.url(email, {size: 14}) %>" /></td>
     <td>
-        <a class="user-edit" href="#edit/<%= id %>" title="{{ "core.general.tooltip.edit" | trans }}" rel="tooltip">
-            <%= lastname %>, <%= firstname %>
+        <a class="user-edit" href="#edit/<%- id %>" title="{{ "core.general.tooltip.edit" | trans }}" rel="tooltip">
+            <%- lastname %>, <%- firstname %>
         </a>
     </td>
-    <td><%= personnelNumber %></td>
-    <td><%= email %></td>
-    <td><%= username %></td>
-    <td><%= _.indexOf(roles, 'ROLE_ADMIN')==-1 ? "&nbsp;" : '<i class="icon-ok"></i>' %></td>
-    <td><%= lastLogin == null ? '-' : moment.unix(lastLogin).format("DD.MM.YYYY HH:mm:ss") %></td>
+    <td><%- personnelNumber %></td>
+    <td><%- email %></td>
+    <td><%- username %></td>
+    <td><%- _.indexOf(roles, 'ROLE_ADMIN')==-1 ? "&nbsp;" : '<i class="icon-ok"></i>' %></td>
+    <td><%- lastLogin == null ? '-' : moment.unix(lastLogin).format("DD.MM.YYYY HH:mm:ss") %></td>
     <td>
         <a class="user-delete" href="#" title="{{ "core.general.tooltip.delete" | trans }}" rel="tooltip">
             <i class="icon-trash"></i>

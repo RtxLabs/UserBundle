@@ -9,25 +9,25 @@
                 <div class="control-group" id="user-firstname-div">
                     <label class="control-label" for="user-firstname">{{ 'rtxlabs.user.label.firstname' | trans }}:</label>
                     <div class="controls">
-                        <input class="span11" id="user-firstname" name="user[firstname]" type="text" value="<%= firstname %>">
+                        <input class="span11" id="user-firstname" name="user[firstname]" type="text" value="<%- firstname %>">
                     </div>
                 </div>
                 <div class="control-group" id="user-lastname-div">
                     <label class="control-label" for="user-lastname">{{ 'rtxlabs.user.label.lastname' | trans }}:</label>
                     <div class="controls">
-                        <input class="span11" id="user-lastname" name="user[lastname]" type="text" value="<%= lastname %>">
+                        <input class="span11" id="user-lastname" name="user[lastname]" type="text" value="<%- lastname %>">
                     </div>
                 </div>
                 <div class="control-group" id="user-personnelNumber-div">
                     <label class="control-label" for="user-personnelNumber">{{ 'rtxlabs.user.label.personnel_number' | trans }}:</label>
                     <div class="controls">
-                        <input class="span11" id="user-personnelNumber" name="user[personnelNumber]" type="text" value="<%= personnelNumber %>">
+                        <input class="span11" id="user-personnelNumber" name="user[personnelNumber]" type="text" value="<%- personnelNumber %>">
                     </div>
                 </div>
                 <div class="control-group" id="user-email-div">
                     <label class="control-label" for="user-email">{{ 'rtxlabs.user.label.email' | trans }}:</label>
                     <div class="controls">
-                        <input class="span11" id="user-email" name="user[email]" type="text" value="<%= email %>">
+                        <input class="span11" id="user-email" name="user[email]" type="text" value="<%- email %>">
                     </div>
                 </div>
                 
@@ -39,7 +39,7 @@
                             {% for groupname, group in roles %}
                                 <optgroup label="{{ ('rotex.sbp.'~groupname~'.role.groupname') | trans }}">
                                     {% for role in group %}
-                                        <option value="{{ role }}" <%= _.find(userRoles, function(role){ return role == '{{ role }}' }) !== undefined ? 'selected="selected"' : '' %> >{{ ('rotex.sbp.'~groupname~'.role.'~role | lower) | trans }}</option>
+                                        <option value="{{ role }}" <%- _.find(userRoles, function(role){ return role == '{{ role }}' }) !== undefined ? 'selected="selected"' : '' %> >{{ ('rotex.sbp.'~groupname~'.role.'~role | lower) | trans }}</option>
                                     {% endfor %}
                                 </optgroup>
                             {% endfor %}
@@ -51,7 +51,7 @@
                     <div class="controls">
                         <select id="user-group" name="user[groups]" multiple="multiple" class="span11 chzn-select" data-placeholder="{{ 'rtxlabs.user.groups.selector' | trans }}" size="15">
                             {% for group in groups %}
-                                <option value="{{ group.id }}" <%= _.find(obj.groups, function(group){ return group.id == {{ group.id }} }) !== undefined ? 'selected="selected"' : '' %> >{{ group }}</option>
+                                <option value="{{ group.id }}" <%- _.find(obj.groups, function(group){ return group.id == {{ group.id }} }) !== undefined ? 'selected="selected"' : '' %> >{{ group }}</option>
                             {% endfor %}
                         </select>
                     </div>
@@ -62,14 +62,14 @@
                 <div class="control-group" id="user-username-div">
                     <label class="control-label" for="user-username">{{ 'rtxlabs.user.label.username' | trans }}:</label>
                     <div class="controls">
-                        <input class="span11" id="user-username" name="user[username]" type="text" value="<%= username %>">
+                        <input class="span11" id="user-username" name="user[username]" type="text" value="<%- username %>">
                     </div>
                 </div>
                 {% if local_password_input %}
                     <div class="control-group" id="password-required-div">
                         <label class="control-label" for="user-passwordRequired">{{ 'rtxlabs.user.label.localPassword' | trans }}:</label>
                         <div class="controls">
-                            <input id="user-passwordRequired" type="checkbox" name="user[passwordRequired]" <%= passwordRequired==true ? 'checked=checked' : '' %>/>
+                            <input id="user-passwordRequired" type="checkbox" name="user[passwordRequired]" <%- passwordRequired==true ? 'checked=checked' : '' %>/>
                         </div>
                     </div>
                 {% endif %}
@@ -77,14 +77,14 @@
                     <label class="control-label" for="user-plainPassword">{{ 'rtxlabs.user.label.password' | trans }}:</label>
                     <div class="controls">
                         <input class="medium" id="user-plainPassword" name="user[plainPassword]" type="password"
-                               value="<%= plainPassword %>">
+                               value="<%- plainPassword %>">
                     </div>
                 </div>
                 <div class="control-group" id="user-passwordRepeat-div">
                     <label class="control-label" for="user-passwordRepeat">{{ 'rtxlabs.user.label.passwordRepeat' | trans }}:</label>
                     <div class="controls">
                         <input class="medium" id="user-passwordRepeat" name="user[passwordRepeat]"
-                               type="password" value="<%= passwordRepeat %>">
+                               type="password" value="<%- passwordRepeat %>">
                     </div>
                 </div>
                 <div class="control-group" id="user-locale-div">
@@ -92,7 +92,7 @@
                     <div class="controls">
                         <select id="user-locale" class="chzn-single" name="user[locale]">
                             {% for locale in rtx_available_locales() %}
-                                <option value="{{ locale }}" <%= locale == "{{ locale }}" ? 'selected="selected"' : '' %> >{{ locale | rtx_locale_realname(app.user.locale) }}</option>
+                                <option value="{{ locale }}" <%- locale == "{{ locale }}" ? 'selected="selected"' : '' %> >{{ locale | rtx_locale_realname(app.user.locale) }}</option>
                             {% endfor %}
                         </select>
                     </div>
@@ -100,7 +100,7 @@
                 <div class="control-group" id="user-active-div">
                     <label class="control-label" for="user-active">{{ 'rtxlabs.user.label.active' | trans }}:</label>
                     <div class="controls">
-                        <input id="user-active" type="checkbox" name="user[active]" <%= active==true ? 'checked=checked' : '' %>/>
+                        <input id="user-active" type="checkbox" name="user[active]" <%- active==true ? 'checked=checked' : '' %>/>
                     </div>
                 </div>
             </div>
