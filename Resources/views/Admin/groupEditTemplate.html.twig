@@ -8,7 +8,7 @@
                 <div class="control-group" id="group-name-div">
                     <label class="control-label" for="group-name">{{ 'rtxlabs.user.group.label.name' | trans }}:</label>
                     <div class="controls">
-                        <input class="span11" id="group-name" name="group[name]" type="text" required="required" value="<%= name %>">
+                        <input class="span11" id="group-name" name="group[name]" type="text" required="required" value="<%- name %>">
                     </div>
                 </div>
             </div>
@@ -21,7 +21,7 @@
                             {% for groupname, group in roles %}
                                 <optgroup label="{{ ('rotex.sbp.'~groupname~'.role.groupname') | trans }}">
                                     {% for role in group %}
-                                        <option value="{{ role }}" <%= _.indexOf(roles, '{{ role }}') != -1 ? 'selected="selected"' : '' %> >{{ ('rotex.sbp.'~groupname~'.role.'~role | lower) | trans }}</option>
+                                        <option value="{{ role }}" <%- _.indexOf(roles, '{{ role }}') != -1 ? 'selected="selected"' : '' %> >{{ ('rotex.sbp.'~groupname~'.role.'~role | lower) | trans }}</option>
                                     {% endfor %}
                                 </optgroup>
                             {% endfor %}
