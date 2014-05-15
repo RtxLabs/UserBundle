@@ -13,6 +13,7 @@ use Symfony\Component\Validator\ConstraintViolation;
 
 class UserController extends RestController
 {
+    private $emailForValidation;
     private $whitelist = array("id", "firstname", "lastname", "username", "email",
         "passwordRequired", "plainPassword", "passwordRepeat", "locale", "active", "lastLogin");
 
@@ -70,7 +71,7 @@ class UserController extends RestController
 
     protected function bindRequestData($user, $whitelist)
     {
-        $whitelist = array_diff($whitelist, array('email'));
+        $this->emailForValidation = $user->getEmail();
         $data = Dencoder::decode($this->get('request_stack')->getCurrentRequest()->getContent());
         $binder = $this->createDataBinder($whitelist)->bind($data)->to($user)
             ->except("password");
@@ -117,12 +118,10 @@ class UserController extends RestController
         $validator = $this->get('validator');
         $errors = $validator->validate($entity);
 
-        $emailVerification = $data->email != $entity->getEmail();
+        $emailVerification = $data->email != $this->emailForValidation;
         $passwordVerification =
             $data->plainPassword != $this->container->getParameter('password_placeholder') &&
             $data->plainPassword != "";
-
-        $entity->setEmail($data->email);
 
         if (!$currentUser->hasRole('ROLE_ADMIN') &&
             ($entity->getPasswordRequired() && $emailVerification || $passwordVerification)) {
