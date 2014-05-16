@@ -79,7 +79,7 @@ class User implements \RtxLabs\UserBundle\Model\AdvancedUserInterface
     /**
      * @var string $email
      *
-     * @ORM\Column(name="email", type="string", length=255)
+     * @ORM\Column(name="email", type="string", length=255, unique=true)
      * @Assert\NotBlank(message = "rtxlabs.user.validation.email")
      * @Assert\Email()
      */
