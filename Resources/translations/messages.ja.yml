@@ -28,6 +28,7 @@ rtxlabs.user.edit.legend.accessdata: ログインデータ
 rtxlabs.user.delete.confirm: 本当にユーザーを削除しますか？
 rtxlabs.user.myaccount.header: マイアカウント
 rtxlabs.user.myaccount.edit: アカウント情報の編集
+rtxlabs.user.myaccount.edit.failed: The account information could not be updated, please check your inputs. # translate
 rtxlabs.user.cancel: キャンセル
 rtxlabs.user.send: 送信する
 rtxlabs.user.tos: 利用規約に同意してください。
@@ -62,8 +63,7 @@ rtxlabs.user.password.reset: パスワードのリセット
 rtxlabs.user.password.reset.info: 新しいパスワードを入力してください。
 rtxlabs.user.password.reset.mail: 電子メールを送信する
 rtxlabs.user.password.reset.mail.invalid: この電子メールアドレスは正しくありません。
-rtxlabs.user.password.reset.mail.notfound: 入力された電子メールアドレスはシステムに存在しません。
-rtxlabs.user.password.reset.send: パスワードリセットに関する情報が電子メールで送信されました。
+rtxlabs.user.password.reset.information: If the entered e-mail address is in the system, an e-mail with the information for a password reset has been sent to you. # translate
 
 rtxlabs.user.label.groups: グループ
 rtxlabs.user.label.roles: 役割

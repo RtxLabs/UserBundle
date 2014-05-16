@@ -28,6 +28,7 @@ rtxlabs.user.edit.legend.accessdata: Données de connexion
 rtxlabs.user.delete.confirm: Supprimer vraiment l'utilisateur ?
 rtxlabs.user.myaccount.header: Mon compte
 rtxlabs.user.myaccount.edit: Editer informations de mon compte
+rtxlabs.user.myaccount.edit.failed: The account information could not be updated, please check your inputs. # translate
 rtxlabs.user.cancel: Annuler
 rtxlabs.user.send: Envoyer
 rtxlabs.user.tos: Veuillez accépter les conditions d'utilisation
@@ -62,8 +63,7 @@ rtxlabs.user.password.reset: Réinitialiser mot de passe
 rtxlabs.user.password.reset.info: Veuillez indiquer votre nouveau mot de passe
 rtxlabs.user.password.reset.mail: Envoyer email
 rtxlabs.user.password.reset.mail.invalid: L'adresse email n'est pas valide
-rtxlabs.user.password.reset.mail.notfound: L'adresse email indiquée n'existe pas dans le système.
-rtxlabs.user.password.reset.send: Un email d'information pour réinitialiser le mot de passe vous a été envoyé.
+rtxlabs.user.password.reset.information: If the entered e-mail address is in the system, an e-mail with the information for a password reset has been sent to you. # translate
 
 rtxlabs.user.label.groups: Groupes
 rtxlabs.user.label.roles: Rôles
@@ -133,7 +133,7 @@ rtxlabs.user.group.roles.selector: Veuillez sélctionner le(s) rôle(s)
 rtxlabs.user.login.message: Veuillez vous connecter avec votre nom d'utilisateur / mot de passe
 rtxlabs.user.login.form.username: Nom d'utilisateur
 rtxlabs.user.login.form.password: Mot de passe
-rtxlabs.user.login.form.remember_me: Resté connecté
+rtxlabs.user.login.form.remember_me: Rester connecté
 rtxlabs.user.login.form.login: Données de connexion
 rtxlabs.user.login.form.error: L'utilisateur ne pouvait pas être connecté avec les données indiquées. Veuillez réessayer.
 rtxlabs.user.login.lost_password: Mot de passe oublier

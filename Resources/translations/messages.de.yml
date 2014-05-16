@@ -28,6 +28,7 @@ rtxlabs.user.edit.legend.accessdata: Anmeldedaten
 rtxlabs.user.delete.confirm: Benutzer wirklich löschen?
 rtxlabs.user.myaccount.header: Mein Account
 rtxlabs.user.myaccount.edit: Accountinformationen bearbeiten
+rtxlabs.user.myaccount.edit.failed: Die Accountinformationen konnten nicht aktualisiert werden, bitte überprüfen sie Ihre Eingaben.
 rtxlabs.user.cancel: Abbrechen
 rtxlabs.user.send: Abschicken
 rtxlabs.user.tos: Bitte akzeptieren sie die Nutzungsbedingungen
@@ -62,8 +63,7 @@ rtxlabs.user.password.reset: Passwort zurücksetzen
 rtxlabs.user.password.reset.info: Bitte geben sie ihr neues Passwort ein
 rtxlabs.user.password.reset.mail: E-Mail senden
 rtxlabs.user.password.reset.mail.invalid: Dies ist keine gültige E-Mail Adresse.
-rtxlabs.user.password.reset.mail.notfound: Die eingegebene E-Mail Adresse existiert nicht im System.
-rtxlabs.user.password.reset.send: Eine E-Mail mit Informationen zum Zurücksetzen ihres Passworts wurde ihnen zugesandt.
+rtxlabs.user.password.reset.information: Wenn die eingegebene E-Mail Adresse im System hinterlegt ist wurde eine E-Mail mit Informationen zum Zurücksetzen Ihres Passworts an Sie geschickt.
 
 rtxlabs.user.label.groups: Gruppen
 rtxlabs.user.label.roles: Rollen

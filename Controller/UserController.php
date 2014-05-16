@@ -9,11 +9,13 @@ use RtxLabs\DataTransformationBundle\Dencoder\Dencoder;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use RtxLabs\UserBundle\Model\UserManager;
+use Symfony\Component\Validator\ConstraintViolation;
 
 class UserController extends RestController
 {
-    private $whitelist = array("id", "firstname", "lastname", "email", "username",
-        "passwordRequired", "plainPassword", "passwordRepeat", "locale", "active");
+    private $emailForValidation;
+    private $whitelist = array("id", "firstname", "lastname", "username", "email",
+        "passwordRequired", "plainPassword", "passwordRepeat", "locale", "active", "lastLogin");
 
     /**
      * @Route("/user", name="rtxlabs_userbundle_user_list", requirements={"_method"="GET"}, options={"expose"="true"})
@@ -69,8 +71,14 @@ class UserController extends RestController
 
     protected function bindRequestData($user, $whitelist)
     {
+        $this->emailForValidation = $user->getEmail();
         $data = Dencoder::decode($this->get('request_stack')->getCurrentRequest()->getContent());
-        $binder = $this->createDataBinder($whitelist)->bind($data)->to($user)->except("password");
+        $binder = $this->createDataBinder($whitelist)->bind($data)->to($user)
+            ->except("password");
+
+        $data->plainPassword = $data->plainPassword == "" ?
+            $this->container->getParameter('password_placeholder') :
+            $data->plainPassword;
 
         if (!$data->passwordRequired) {
             $password = "IAmADummyPasswordForValidation1";
@@ -104,18 +112,30 @@ class UserController extends RestController
 
     protected function findValidationErrors($entity)
     {
+        $currentUser = $this->getCurrentUser();
         $userManager = $this->get('rtxlabs.user.user_manager');
         $data = Dencoder::decode($this->get('request_stack')->getCurrentRequest()->getContent());
         $validator = $this->get('validator');
         $errors = $validator->validate($entity);
 
-        if($data->passwordRequired && $data->plainPassword !== $data->passwordRepeat) {
-            $errors[] = array('propertyPath' => 'passwordRepeat', 'message' => 'rtxlabs.user.validation.passwordRepeat');
+        $emailVerification = $data->email != $this->emailForValidation;
+        $passwordVerification =
+            $data->plainPassword != $this->container->getParameter('password_placeholder') &&
+            $data->plainPassword != "";
+
+        if (!$currentUser->hasRole('ROLE_ADMIN') &&
+            ($entity->getPasswordRequired() && $emailVerification || $passwordVerification)) {
+            if(!$userManager->verifyPassword($entity, $data->password)) {
+                $errors->add(new ConstraintViolation('rtxlabs.user.myaccount.edit.failed', null, array(), null, 'password', null));
+            }
         }
 
-        if ($data->passwordRequired && $entity->getPlainPassword() != $this->container->getParameter('password_placeholder') &&
-            $entity->getPlainPassword() != "" && !count($errors)) {
+        if (!$currentUser->hasRole('ROLE_ADMIN') &&
+            ($entity->getPasswordRequired() && $data->plainPassword !== $data->passwordRepeat)) {
+            $errors->add(new ConstraintViolation('rtxlabs.user.validation.passwordRepeat', null, array(), null, 'plainPassword', null));
+        }
 
+        if ($entity->getPasswordRequired() && $passwordVerification && !count($errors)) {
             $userManager->updatePassword($entity);
         }
 

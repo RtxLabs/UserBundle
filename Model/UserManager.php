@@ -104,7 +104,6 @@ class UserManager implements UserProviderInterface
         if (0 !== strlen($password = $user->getPlainPassword())) {
             $encoder = $this->getEncoder($user);
             $user->setPassword($encoder->encodePassword($password, $user->getSalt()));
-            //$user->eraseCredentials();
         }
     }
 
@@ -133,6 +132,14 @@ class UserManager implements UserProviderInterface
         }
     }
 
+    public function verifyPassword($user, $password)
+    {
+        $encoder = $this->getEncoder($user);
+        $encodedPassword = $encoder->encodePassword($password, $user->getSalt());
+
+        return ($encodedPassword == $user->getPassword());
+    }
+
     /**
      * @abstract
      * @return \Symfony\Component\Security\Core\User\UserInterface
@@ -156,10 +163,6 @@ class UserManager implements UserProviderInterface
      */
     function refreshUser(\Symfony\Component\Security\Core\User\UserInterface $user)
     {
-//        if (!$user instanceof User) {
-//            throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', get_class($user)));
-//        }
-
         return $this->loadUserByUsername($user->getUsername());
     }
 

@@ -28,6 +28,7 @@ rtxlabs.user.edit.legend.accessdata: Přihlašovací data
 rtxlabs.user.delete.confirm: Opravdu smazat uživatele?
 rtxlabs.user.myaccount.header: Můj účet 
 rtxlabs.user.myaccount.edit: Upravit informace o účtu
+rtxlabs.user.myaccount.edit.failed: The account information could not be updated, please check your inputs. # translate
 rtxlabs.user.cancel: Zrušit
 rtxlabs.user.send: Poslat
 rtxlabs.user.tos: Prosím akceptujte podmínky použití
@@ -60,8 +61,7 @@ rtxlabs.user.password.reset: Resetovat heslo
 rtxlabs.user.password.reset.info: Prosím vložte nové heslo
 rtxlabs.user.password.reset.mail: Poslat email
 rtxlabs.user.password.reset.mail.invalid: Tato email adresa je neplatná
-rtxlabs.user.password.reset.mail.notfound: Vložená emailová adresa není v systému
-rtxlabs.user.password.reset.send: Byl vám zaslán email s informacemi pro resetování hesla. 
+rtxlabs.user.password.reset.information: If the entered e-mail address is in the system, an e-mail with the information for a password reset has been sent to you. # translate
 
 rtxlabs.user.label.groups: Skupiny
 rtxlabs.user.label.roles: Role
