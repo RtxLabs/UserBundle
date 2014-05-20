@@ -177,6 +177,20 @@ class User implements \RtxLabs\UserBundle\Model\AdvancedUserInterface
     protected $passwordRequired = true;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="login_attempts", type="integer", nullable=true)
+     */
+    protected $loginAttempts;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\column(name="last_login_attempt", type="datetime", nullable=true)
+     */
+    protected $lastLoginAttempt;
+
+    /**
      * Get id
      *
      * @return integer
@@ -751,5 +765,45 @@ class User implements \RtxLabs\UserBundle\Model\AdvancedUserInterface
     public function getVotingUser()
     {
         return $this;
+    }
+
+    /**
+     * Set loginAttempts
+     *
+     * @param integer loginAttempts
+     */
+    public function setLoginAttempts($loginAttempts)
+    {
+        $this->loginAttempts = $loginAttempts;
+    }
+
+    /**
+     * Get loginAttempts
+     *
+     * @return integer
+     */
+    public function getLoginAttempts()
+    {
+        return $this->loginAttempts;
+    }
+
+    /**
+     * Set lastLoginAttempt
+     *
+     * @param datetime lastLoginAttempt
+     */
+    public function setLastLoginAttempt($lastLoginAttempt)
+    {
+        $this->lastLoginAttempt = $lastLoginAttempt;
+    }
+
+    /**
+     * Get lastLoginAttempt
+     *
+     * @return datetime
+     */
+    public function getLastLoginAttempt()
+    {
+        return $this->lastLoginAttempt;
     }
 }
