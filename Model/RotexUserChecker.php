@@ -17,7 +17,8 @@ class RotexUserChecker extends UserChecker
         $loginAttempts = $user->getLoginAttempts();
         $lastLoginAttempt = $user->getLastLoginAttempt();
 
-        if($lastLoginAttempt->getTimestamp() > $date->getTimestamp() && $loginAttempts == 100) {
+        if(!is_null($lastLoginAttempt)
+            && $lastLoginAttempt->getTimestamp() > $date->getTimestamp() && $loginAttempts >= 100) {
             throw new DisabledException('Possible Brute Force');
         }
     }

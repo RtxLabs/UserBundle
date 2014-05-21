@@ -1,7 +1,7 @@
 <?php
 namespace RtxLabs\UserBundle\Listener;
 
-use RtxLabs\UserBundle\Entity\User;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\RouterInterface;
@@ -37,8 +37,7 @@ class LoginListener
         $user = $this->em->getRepository("RtxLabsUserBundle:User")
             ->findOneByUsername($username);
 
-
-        if($user instanceof User) {
+        if($user instanceof AdvancedUserInterface) {
             $loginAttempts = $user->getLoginAttempts();
             $loginAttempts = is_null($loginAttempts) ? 1 : ($loginAttempts+1);
 
