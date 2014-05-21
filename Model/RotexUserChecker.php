@@ -1,14 +1,13 @@
 <?php
 namespace RtxLabs\UserBundle\Model;
 
-use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserChecker;
 use Symfony\Component\Security\Core\Exception\DisabledException;
-use Symfony\Component\Validator\Constraints\DateTime;
+use Symfony\Component\Security\Core\User\UserInterface as UI;
 
 class RotexUserChecker extends UserChecker
 {
-    public function checkPreAuth(UserInterface $user)
+    public function checkPreAuth(UI $user)
     {
         parent::checkPreAuth($user);
 
@@ -23,7 +22,7 @@ class RotexUserChecker extends UserChecker
         }
     }
 
-    public function checkPostAuth(UserInterface $user)
+    public function checkPostAuth(UI $user)
     {
         parent::checkPostAuth($user);
     }
