@@ -14,7 +14,7 @@ use Symfony\Component\Validator\ConstraintViolation;
 class UserController extends RestController
 {
     private $emailForValidation;
-    private $whitelist = array("id", "firstname", "lastname", "username", "email",
+    private $whitelist = array("id", "firstname", "lastname", "username", "email", "roles", "groups",
         "passwordRequired", "plainPassword", "passwordRepeat", "locale", "active", "lastLogin");
 
     /**
@@ -149,7 +149,7 @@ class UserController extends RestController
             ->field('userRoles', function($user) { return $user->getUserRoles(); })
             ->field('plainPassword', $this->container->getParameter('password_placeholder'))
             ->field('passwordRepeat', $this->container->getParameter('password_placeholder'))
-            ->join('groups', $this->createDoctrineBinder());
+            ->join('groups', parent::createEntityBinder(array('id')));
 
         return $binder;
     }
