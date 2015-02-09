@@ -56,9 +56,7 @@ class UserController extends RestController
      */
     public function deleteAction($id)
     {
-        $user = $this->getDoctrine()
-            ->getRepository('RtxLabsUserBundle:User')
-            ->findOneById($id);
+        $user = $this->findEntity($id);
         if($user) {
             if(!$this->getCurrentUser()->isAdmin()) {
                 return $this->responseForbidden();
