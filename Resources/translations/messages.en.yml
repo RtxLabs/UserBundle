@@ -77,7 +77,7 @@ rtxlabs.user.validation.forbidden: This operation isn't allowed
 rtxlabs.user.validation.firstname: A first name must be entered
 rtxlabs.user.validation.lastname: A last name must be entered
 rtxlabs.user.validation.email: A e-mail address must be entered and has to be definite
-rtxlabs.user.validation.email.inUse: This e-mail address is already assinged
+rtxlabs.user.validation.email.inUse: This e-mail address is already assigned
 rtxlabs.user.validation.username.toShort: A username has to be at least 6 chars long.
 rtxlabs.user.validation.personnelNumber: A valid personnel number must be entered and has to be definite
 rtxlabs.user.validation.username: A user name must be entered and has to be definite
