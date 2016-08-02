@@ -106,7 +106,7 @@ class Mailer
         $message = \Swift_Message::newInstance()
             ->setSubject($subject)
             ->setTo($toEmail)
-            ->setFrom('no-reply@rotex-heating.com', $this->parameters['pageTitle'])
+            ->setFrom($this->parameters['mailFrom'], $this->parameters['pageTitle'])
             ->setBody($body, 'text/html');
 
         if ($fromEmail != null) {

@@ -33,6 +33,7 @@
                 <argument type="string" key="registration.template">RtxLabsUserBundle:Mail:registration</argument>
                 <argument type="string" key="reactivation.template">RtxLabsUserBundle:Mail:reactivation</argument>
                 <argument type="string" key="pageTitle">%page.title%</argument>
+                <argument type="string" key="mailFrom">%web_client_mail_from%</argument>
             </argument>
         </service>
 
