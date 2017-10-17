@@ -82,4 +82,24 @@ class UserAttribute implements \RtxLabs\UserBundle\Model\UserAttributeInterface
     {
         return $this->value;
     }
+
+    /**
+     * Set user
+     *
+     * @param \RtxLabs\UserBundle\Entity\User $user
+     */
+    public function setUser(\RtxLabs\UserBundle\Entity\User $user)
+    {
+        $this->user = $user;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \RtxLabs\UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 }
