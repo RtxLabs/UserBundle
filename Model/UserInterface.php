@@ -212,4 +212,33 @@ interface UserInterface extends \Symfony\Component\Security\Core\User\UserInterf
     public function addUserAttribute(UserAttributeInterface $attributes);
 
     public function getAttributes();
+
+
+    /**
+     * Set loginAttempts
+     *
+     * @param integer loginAttempts
+     */
+    public function setLoginAttempts($loginAttempts);
+
+    /**
+     * Get loginAttempts
+     *
+     * @return integer
+     */
+    public function getLoginAttempts();
+
+    /**
+     * Set lastLoginAttempt
+     *
+     * @param datetime lastLoginAttempt
+     */
+    public function setLastLoginAttempt($lastLoginAttempt);
+
+    /**
+     * Get lastLoginAttempt
+     *
+     * @return datetime
+     */
+    public function getLastLoginAttempt();
 }
